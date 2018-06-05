@@ -43,5 +43,10 @@ namespace TSalesManagement
 
 
         }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

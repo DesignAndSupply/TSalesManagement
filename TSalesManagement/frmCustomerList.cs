@@ -16,8 +16,12 @@ namespace TSalesManagement
         public frmCustomerList()
         {
             InitializeComponent();
+            //dgvCustomer.CellDoubleClick += dgvCustomer_CellDoubleClick;
             fillGrid();
         }
+
+        private string custAccRef;
+        private string custName;
 
         private void frmCustomerList_Load(object sender, EventArgs e)
         {
@@ -62,6 +66,44 @@ namespace TSalesManagement
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtCustName.Text = "";
+            fillGrid();
+        }
+
+        private void dgvCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvCustomer.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgvCustomer.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgvCustomer.Rows[selectedrowindex];
+
+                custAccRef= selectedRow.Cells["Account Ref"].Value.ToString();
+                custName = selectedRow.Cells["Customer Name"].Value.ToString();
+
+
+                frmCustomerInformation frmCI = new frmCustomerInformation(custAccRef, custName);
+                frmCI.ShowDialog();
+                //fillGrid();
+
+
+            }
+
+
+
+           
+                
+            
+
+
+
+
+
+        }
+
+        private void btnNewCustomer_Click(object sender, EventArgs e)
+        {
+            frmNewCustomer frmNC = new frmNewCustomer();
+            frmNC.ShowDialog();
             fillGrid();
         }
     }
