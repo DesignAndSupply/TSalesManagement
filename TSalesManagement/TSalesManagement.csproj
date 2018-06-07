@@ -15,7 +15,7 @@
     <PublishUrl>\\designsvr1\apps\Design and Supply CSharp\MiniApps\Sales Management\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>24</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -127,7 +127,13 @@
       <DependentUpon>ActivityCentre.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Customer.cs" />
+    <Compile Include="CustomerVm.cs" />
     <Compile Include="Class\NewCustomer.cs" />
+    <Compile Include="Class\Pipeline.cs" />
+    <Compile Include="Class\Visualisations.cs" />
+    <Compile Include="CustomersTooltip.xaml.cs">
+      <DependentUpon>CustomersTooltip.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetailView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +151,12 @@
     </Compile>
     <Compile Include="frmCustomerInformation.Designer.cs">
       <DependentUpon>frmCustomerInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinkEstimating.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinkEstimating.Designer.cs">
+      <DependentUpon>frmLinkEstimating.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -182,6 +194,12 @@
     <Compile Include="frmPipeLine.Designer.cs">
       <DependentUpon>frmPipeLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPipelineLive.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPipelineLive.Designer.cs">
+      <DependentUpon>frmPipelineLive.cs</DependentUpon>
+    </Compile>
     <Compile Include="order_databaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -205,6 +223,9 @@
     <EmbeddedResource Include="frmCustomerInformation.resx">
       <DependentUpon>frmCustomerInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkEstimating.resx">
+      <DependentUpon>frmLinkEstimating.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -222,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPipeLine.resx">
       <DependentUpon>frmPipeLine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPipelineLive.resx">
+      <DependentUpon>frmPipelineLive.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -289,6 +313,12 @@
       <Project>{c0721d32-ee8c-4891-8fbe-76f975b2d944}</Project>
       <Name>StartupClass</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="CustomersTooltip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

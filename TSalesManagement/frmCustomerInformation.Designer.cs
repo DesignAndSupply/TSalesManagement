@@ -28,38 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.lblCName = new System.Windows.Forms.Label();
-            this.lblCAdd1 = new System.Windows.Forms.Label();
-            this.lblCAdd2 = new System.Windows.Forms.Label();
-            this.lblCAdd3 = new System.Windows.Forms.Label();
-            this.lblCAdd4 = new System.Windows.Forms.Label();
-            this.lblCAdd5 = new System.Windows.Forms.Label();
-            this.lblCTel1 = new System.Windows.Forms.Label();
-            this.lblCTel2 = new System.Windows.Forms.Label();
             this.lblCFax = new System.Windows.Forms.Label();
+            this.lblCTel2 = new System.Windows.Forms.Label();
+            this.lblCTel1 = new System.Windows.Forms.Label();
+            this.lblCAdd5 = new System.Windows.Forms.Label();
+            this.lblCAdd4 = new System.Windows.Forms.Label();
+            this.lblCAdd3 = new System.Windows.Forms.Label();
+            this.lblCAdd2 = new System.Windows.Forms.Label();
+            this.lblCAdd1 = new System.Windows.Forms.Label();
+            this.lblCName = new System.Windows.Forms.Label();
             this.tabCustomer = new System.Windows.Forms.TabControl();
+            this.tabActivity = new System.Windows.Forms.TabPage();
+            this.dgvActivity = new System.Windows.Forms.DataGridView();
             this.tabPipeline = new System.Windows.Forms.TabPage();
             this.dgvPipeline = new System.Windows.Forms.DataGridView();
-            this.dgvActivity = new System.Windows.Forms.DataGridView();
-            this.tabActivity = new System.Windows.Forms.TabPage();
+            this.tabVisual = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblActivity = new System.Windows.Forms.LinkLabel();
             this.lblPipeline = new System.Windows.Forms.LinkLabel();
+            this.lblActivity = new System.Windows.Forms.LinkLabel();
+            this.solidGauge5 = new LiveCharts.WinForms.SolidGauge();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblLinkEst = new System.Windows.Forms.LinkLabel();
             this.groupBox4.SuspendLayout();
             this.tabCustomer.SuspendLayout();
+            this.tabActivity.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivity)).BeginInit();
             this.tabPipeline.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPipeline)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActivity)).BeginInit();
-            this.tabActivity.SuspendLayout();
+            this.tabVisual.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Location = new System.Drawing.Point(12, 436);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(235, 182);
@@ -85,69 +93,14 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Company Details";
             // 
-            // lblCName
+            // lblCFax
             // 
-            this.lblCName.AutoSize = true;
-            this.lblCName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCName.Location = new System.Drawing.Point(7, 32);
-            this.lblCName.Name = "lblCName";
-            this.lblCName.Size = new System.Drawing.Size(41, 13);
-            this.lblCName.TabIndex = 0;
-            this.lblCName.Text = "label1";
-            // 
-            // lblCAdd1
-            // 
-            this.lblCAdd1.AutoSize = true;
-            this.lblCAdd1.Location = new System.Drawing.Point(7, 66);
-            this.lblCAdd1.Name = "lblCAdd1";
-            this.lblCAdd1.Size = new System.Drawing.Size(35, 13);
-            this.lblCAdd1.TabIndex = 1;
-            this.lblCAdd1.Text = "label2";
-            // 
-            // lblCAdd2
-            // 
-            this.lblCAdd2.AutoSize = true;
-            this.lblCAdd2.Location = new System.Drawing.Point(7, 90);
-            this.lblCAdd2.Name = "lblCAdd2";
-            this.lblCAdd2.Size = new System.Drawing.Size(35, 13);
-            this.lblCAdd2.TabIndex = 2;
-            this.lblCAdd2.Text = "label3";
-            // 
-            // lblCAdd3
-            // 
-            this.lblCAdd3.AutoSize = true;
-            this.lblCAdd3.Location = new System.Drawing.Point(7, 114);
-            this.lblCAdd3.Name = "lblCAdd3";
-            this.lblCAdd3.Size = new System.Drawing.Size(35, 13);
-            this.lblCAdd3.TabIndex = 3;
-            this.lblCAdd3.Text = "label4";
-            // 
-            // lblCAdd4
-            // 
-            this.lblCAdd4.AutoSize = true;
-            this.lblCAdd4.Location = new System.Drawing.Point(7, 138);
-            this.lblCAdd4.Name = "lblCAdd4";
-            this.lblCAdd4.Size = new System.Drawing.Size(35, 13);
-            this.lblCAdd4.TabIndex = 4;
-            this.lblCAdd4.Text = "label5";
-            // 
-            // lblCAdd5
-            // 
-            this.lblCAdd5.AutoSize = true;
-            this.lblCAdd5.Location = new System.Drawing.Point(7, 162);
-            this.lblCAdd5.Name = "lblCAdd5";
-            this.lblCAdd5.Size = new System.Drawing.Size(35, 13);
-            this.lblCAdd5.TabIndex = 5;
-            this.lblCAdd5.Text = "label6";
-            // 
-            // lblCTel1
-            // 
-            this.lblCTel1.AutoSize = true;
-            this.lblCTel1.Location = new System.Drawing.Point(7, 192);
-            this.lblCTel1.Name = "lblCTel1";
-            this.lblCTel1.Size = new System.Drawing.Size(35, 13);
-            this.lblCTel1.TabIndex = 6;
-            this.lblCTel1.Text = "label7";
+            this.lblCFax.AutoSize = true;
+            this.lblCFax.Location = new System.Drawing.Point(7, 240);
+            this.lblCFax.Name = "lblCFax";
+            this.lblCFax.Size = new System.Drawing.Size(35, 13);
+            this.lblCFax.TabIndex = 8;
+            this.lblCFax.Text = "label9";
             // 
             // lblCTel2
             // 
@@ -158,24 +111,120 @@
             this.lblCTel2.TabIndex = 7;
             this.lblCTel2.Text = "label8";
             // 
-            // lblCFax
+            // lblCTel1
             // 
-            this.lblCFax.AutoSize = true;
-            this.lblCFax.Location = new System.Drawing.Point(7, 240);
-            this.lblCFax.Name = "lblCFax";
-            this.lblCFax.Size = new System.Drawing.Size(35, 13);
-            this.lblCFax.TabIndex = 8;
-            this.lblCFax.Text = "label9";
+            this.lblCTel1.AutoSize = true;
+            this.lblCTel1.Location = new System.Drawing.Point(7, 192);
+            this.lblCTel1.Name = "lblCTel1";
+            this.lblCTel1.Size = new System.Drawing.Size(35, 13);
+            this.lblCTel1.TabIndex = 6;
+            this.lblCTel1.Text = "label7";
+            // 
+            // lblCAdd5
+            // 
+            this.lblCAdd5.AutoSize = true;
+            this.lblCAdd5.Location = new System.Drawing.Point(7, 162);
+            this.lblCAdd5.Name = "lblCAdd5";
+            this.lblCAdd5.Size = new System.Drawing.Size(35, 13);
+            this.lblCAdd5.TabIndex = 5;
+            this.lblCAdd5.Text = "label6";
+            // 
+            // lblCAdd4
+            // 
+            this.lblCAdd4.AutoSize = true;
+            this.lblCAdd4.Location = new System.Drawing.Point(7, 138);
+            this.lblCAdd4.Name = "lblCAdd4";
+            this.lblCAdd4.Size = new System.Drawing.Size(35, 13);
+            this.lblCAdd4.TabIndex = 4;
+            this.lblCAdd4.Text = "label5";
+            // 
+            // lblCAdd3
+            // 
+            this.lblCAdd3.AutoSize = true;
+            this.lblCAdd3.Location = new System.Drawing.Point(7, 114);
+            this.lblCAdd3.Name = "lblCAdd3";
+            this.lblCAdd3.Size = new System.Drawing.Size(35, 13);
+            this.lblCAdd3.TabIndex = 3;
+            this.lblCAdd3.Text = "label4";
+            // 
+            // lblCAdd2
+            // 
+            this.lblCAdd2.AutoSize = true;
+            this.lblCAdd2.Location = new System.Drawing.Point(7, 90);
+            this.lblCAdd2.Name = "lblCAdd2";
+            this.lblCAdd2.Size = new System.Drawing.Size(35, 13);
+            this.lblCAdd2.TabIndex = 2;
+            this.lblCAdd2.Text = "label3";
+            // 
+            // lblCAdd1
+            // 
+            this.lblCAdd1.AutoSize = true;
+            this.lblCAdd1.Location = new System.Drawing.Point(7, 66);
+            this.lblCAdd1.Name = "lblCAdd1";
+            this.lblCAdd1.Size = new System.Drawing.Size(35, 13);
+            this.lblCAdd1.TabIndex = 1;
+            this.lblCAdd1.Text = "label2";
+            // 
+            // lblCName
+            // 
+            this.lblCName.AutoSize = true;
+            this.lblCName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCName.Location = new System.Drawing.Point(7, 32);
+            this.lblCName.Name = "lblCName";
+            this.lblCName.Size = new System.Drawing.Size(41, 13);
+            this.lblCName.TabIndex = 0;
+            this.lblCName.Text = "label1";
             // 
             // tabCustomer
             // 
+            this.tabCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabCustomer.Controls.Add(this.tabActivity);
             this.tabCustomer.Controls.Add(this.tabPipeline);
+            this.tabCustomer.Controls.Add(this.tabVisual);
             this.tabCustomer.Location = new System.Drawing.Point(253, 19);
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.SelectedIndex = 0;
             this.tabCustomer.Size = new System.Drawing.Size(898, 599);
             this.tabCustomer.TabIndex = 5;
+            // 
+            // tabActivity
+            // 
+            this.tabActivity.Controls.Add(this.dgvActivity);
+            this.tabActivity.Location = new System.Drawing.Point(4, 22);
+            this.tabActivity.Name = "tabActivity";
+            this.tabActivity.Padding = new System.Windows.Forms.Padding(3);
+            this.tabActivity.Size = new System.Drawing.Size(890, 573);
+            this.tabActivity.TabIndex = 0;
+            this.tabActivity.Text = "Customer Activity";
+            this.tabActivity.UseVisualStyleBackColor = true;
+            // 
+            // dgvActivity
+            // 
+            this.dgvActivity.AllowUserToAddRows = false;
+            this.dgvActivity.AllowUserToDeleteRows = false;
+            this.dgvActivity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvActivity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvActivity.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvActivity.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvActivity.Location = new System.Drawing.Point(6, 6);
+            this.dgvActivity.Name = "dgvActivity";
+            this.dgvActivity.ReadOnly = true;
+            this.dgvActivity.RowHeadersVisible = false;
+            this.dgvActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvActivity.Size = new System.Drawing.Size(878, 561);
+            this.dgvActivity.TabIndex = 1;
             // 
             // tabPipeline
             // 
@@ -192,17 +241,20 @@
             // 
             this.dgvPipeline.AllowUserToAddRows = false;
             this.dgvPipeline.AllowUserToDeleteRows = false;
+            this.dgvPipeline.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPipeline.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPipeline.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvPipeline.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPipeline.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPipeline.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvPipeline.Location = new System.Drawing.Point(6, 10);
             this.dgvPipeline.MultiSelect = false;
             this.dgvPipeline.Name = "dgvPipeline";
@@ -212,42 +264,21 @@
             this.dgvPipeline.Size = new System.Drawing.Size(878, 557);
             this.dgvPipeline.TabIndex = 1;
             // 
-            // dgvActivity
+            // tabVisual
             // 
-            this.dgvActivity.AllowUserToAddRows = false;
-            this.dgvActivity.AllowUserToDeleteRows = false;
-            this.dgvActivity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvActivity.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvActivity.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvActivity.Location = new System.Drawing.Point(6, 6);
-            this.dgvActivity.Name = "dgvActivity";
-            this.dgvActivity.ReadOnly = true;
-            this.dgvActivity.RowHeadersVisible = false;
-            this.dgvActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvActivity.Size = new System.Drawing.Size(878, 561);
-            this.dgvActivity.TabIndex = 1;
-            // 
-            // tabActivity
-            // 
-            this.tabActivity.Controls.Add(this.dgvActivity);
-            this.tabActivity.Location = new System.Drawing.Point(4, 22);
-            this.tabActivity.Name = "tabActivity";
-            this.tabActivity.Padding = new System.Windows.Forms.Padding(3);
-            this.tabActivity.Size = new System.Drawing.Size(890, 573);
-            this.tabActivity.TabIndex = 0;
-            this.tabActivity.Text = "Customer Activity";
-            this.tabActivity.UseVisualStyleBackColor = true;
+            this.tabVisual.Controls.Add(this.label1);
+            this.tabVisual.Controls.Add(this.solidGauge5);
+            this.tabVisual.Location = new System.Drawing.Point(4, 22);
+            this.tabVisual.Name = "tabVisual";
+            this.tabVisual.Padding = new System.Windows.Forms.Padding(3);
+            this.tabVisual.Size = new System.Drawing.Size(890, 573);
+            this.tabVisual.TabIndex = 2;
+            this.tabVisual.Text = "Visualisations";
+            this.tabVisual.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblLinkEst);
             this.groupBox1.Controls.Add(this.lblPipeline);
             this.groupBox1.Controls.Add(this.lblActivity);
             this.groupBox1.Location = new System.Drawing.Point(12, 291);
@@ -256,17 +287,6 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
-            // 
-            // lblActivity
-            // 
-            this.lblActivity.AutoSize = true;
-            this.lblActivity.LinkColor = System.Drawing.Color.Teal;
-            this.lblActivity.Location = new System.Drawing.Point(10, 26);
-            this.lblActivity.Name = "lblActivity";
-            this.lblActivity.Size = new System.Drawing.Size(63, 13);
-            this.lblActivity.TabIndex = 0;
-            this.lblActivity.TabStop = true;
-            this.lblActivity.Text = "Add Activity";
             // 
             // lblPipeline
             // 
@@ -279,6 +299,50 @@
             this.lblPipeline.TabStop = true;
             this.lblPipeline.Text = "Add Pipeline Data";
             this.lblPipeline.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPipeline_LinkClicked);
+            // 
+            // lblActivity
+            // 
+            this.lblActivity.AutoSize = true;
+            this.lblActivity.LinkColor = System.Drawing.Color.Teal;
+            this.lblActivity.Location = new System.Drawing.Point(10, 26);
+            this.lblActivity.Name = "lblActivity";
+            this.lblActivity.Size = new System.Drawing.Size(63, 13);
+            this.lblActivity.TabIndex = 0;
+            this.lblActivity.TabStop = true;
+            this.lblActivity.Text = "Add Activity";
+            // 
+            // solidGauge5
+            // 
+            this.solidGauge5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.solidGauge5.Location = new System.Drawing.Point(19, 38);
+            this.solidGauge5.Name = "solidGauge5";
+            this.solidGauge5.Size = new System.Drawing.Size(412, 231);
+            this.solidGauge5.TabIndex = 0;
+            this.solidGauge5.Text = "solidGauge1";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(97, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(243, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Quotation to order converation rate:";
+            // 
+            // lblLinkEst
+            // 
+            this.lblLinkEst.AutoSize = true;
+            this.lblLinkEst.LinkColor = System.Drawing.Color.Teal;
+            this.lblLinkEst.Location = new System.Drawing.Point(10, 69);
+            this.lblLinkEst.Name = "lblLinkEst";
+            this.lblLinkEst.Size = new System.Drawing.Size(104, 13);
+            this.lblLinkEst.TabIndex = 2;
+            this.lblLinkEst.TabStop = true;
+            this.lblLinkEst.Text = "Link Estimating Data";
+            this.lblLinkEst.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLinkEst_LinkClicked);
             // 
             // frmCustomerInformation
             // 
@@ -296,10 +360,12 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.tabCustomer.ResumeLayout(false);
+            this.tabActivity.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvActivity)).EndInit();
             this.tabPipeline.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPipeline)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvActivity)).EndInit();
-            this.tabActivity.ResumeLayout(false);
+            this.tabVisual.ResumeLayout(false);
+            this.tabVisual.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -326,5 +392,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.LinkLabel lblPipeline;
         private System.Windows.Forms.LinkLabel lblActivity;
+        private System.Windows.Forms.TabPage tabVisual;
+        private LiveCharts.WinForms.SolidGauge solidGauge5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.LinkLabel lblLinkEst;
     }
 }

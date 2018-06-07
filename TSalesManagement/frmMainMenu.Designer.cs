@@ -36,6 +36,7 @@
             this.monthlyChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pipelineChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabForms = new System.Windows.Forms.TabControl();
+            this.pipelineLiveChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,14 +63,14 @@
             // activityLogToolStripMenuItem
             // 
             this.activityLogToolStripMenuItem.Name = "activityLogToolStripMenuItem";
-            this.activityLogToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.activityLogToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.activityLogToolStripMenuItem.Text = "Activity Log";
             this.activityLogToolStripMenuItem.Click += new System.EventHandler(this.activityLogToolStripMenuItem_Click);
             // 
             // customerListToolStripMenuItem
             // 
             this.customerListToolStripMenuItem.Name = "customerListToolStripMenuItem";
-            this.customerListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.customerListToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.customerListToolStripMenuItem.Text = "Customer List";
             this.customerListToolStripMenuItem.Click += new System.EventHandler(this.customerListToolStripMenuItem_Click);
             // 
@@ -77,7 +78,8 @@
             // 
             this.salesDataToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.monthlyChartToolStripMenuItem,
-            this.pipelineChartToolStripMenuItem});
+            this.pipelineChartToolStripMenuItem,
+            this.pipelineLiveChartToolStripMenuItem});
             this.salesDataToolStripMenuItem.Name = "salesDataToolStripMenuItem";
             this.salesDataToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.salesDataToolStripMenuItem.Text = "Sales Data";
@@ -85,14 +87,14 @@
             // monthlyChartToolStripMenuItem
             // 
             this.monthlyChartToolStripMenuItem.Name = "monthlyChartToolStripMenuItem";
-            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.monthlyChartToolStripMenuItem.Text = "Monthly Chart";
             this.monthlyChartToolStripMenuItem.Click += new System.EventHandler(this.monthlyChartToolStripMenuItem_Click);
             // 
             // pipelineChartToolStripMenuItem
             // 
             this.pipelineChartToolStripMenuItem.Name = "pipelineChartToolStripMenuItem";
-            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pipelineChartToolStripMenuItem.Text = "Pipeline Chart";
             this.pipelineChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineChartToolStripMenuItem_Click);
             // 
@@ -105,6 +107,13 @@
             this.tabForms.Size = new System.Drawing.Size(989, 28);
             this.tabForms.TabIndex = 4;
             this.tabForms.Visible = false;
+            // 
+            // pipelineLiveChartToolStripMenuItem
+            // 
+            this.pipelineLiveChartToolStripMenuItem.Name = "pipelineLiveChartToolStripMenuItem";
+            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pipelineLiveChartToolStripMenuItem.Text = "Pipeline Live Chart";
+            this.pipelineLiveChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineLiveChartToolStripMenuItem_Click);
             // 
             // frmMainMenu
             // 
@@ -133,5 +142,6 @@
         private System.Windows.Forms.ToolStripMenuItem pipelineChartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem customerListToolStripMenuItem;
         private System.Windows.Forms.TabControl tabForms;
+        private System.Windows.Forms.ToolStripMenuItem pipelineLiveChartToolStripMenuItem;
     }
 }

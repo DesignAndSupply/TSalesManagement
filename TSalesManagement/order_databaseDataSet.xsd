@@ -283,6 +283,26 @@ SELECT id, door_style, customer_acc_ref, order_ref, estimated_order_value, estim
               </DbSource>
             </Sources>
           </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="solidworks_quotation_logTableAdapter" GeneratorDataComponentClassName="solidworks_quotation_logTableAdapter" Name="solidworks_quotation_log" UserDataComponentName="solidworks_quotation_logTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="order_databaseConnectionString (Settings)" DbObjectName="order_database.dbo.solidworks_quotation_log" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        customer, SUM(total_quotation_value) AS SumTotal
+FROM            solidworks_quotation_log
+GROUP BY customer
+ORDER BY customer</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="customer" DataSetColumn="customer" />
+              <Mapping SourceColumn="SumTotal" DataSetColumn="SumTotal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
         </Tables>
         <Sources />
       </DataSource>
@@ -291,7 +311,7 @@ SELECT id, door_style, customer_acc_ref, order_ref, estimated_order_value, estim
   <xs:element name="order_databaseDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="order_databaseDataSet" msprop:Generator_UserDSName="order_databaseDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SALES_LEDGER" msprop:Generator_TableClassName="SALES_LEDGERDataTable" msprop:Generator_TableVarName="tableSALES_LEDGER" msprop:Generator_TablePropName="SALES_LEDGER" msprop:Generator_RowDeletingName="SALES_LEDGERRowDeleting" msprop:Generator_RowChangingName="SALES_LEDGERRowChanging" msprop:Generator_RowEvHandlerName="SALES_LEDGERRowChangeEventHandler" msprop:Generator_RowDeletedName="SALES_LEDGERRowDeleted" msprop:Generator_UserTableName="SALES_LEDGER" msprop:Generator_RowChangedName="SALES_LEDGERRowChanged" msprop:Generator_RowEvArgName="SALES_LEDGERRowChangeEvent" msprop:Generator_RowClassName="SALES_LEDGERRow">
+        <xs:element name="SALES_LEDGER" msprop:Generator_TableClassName="SALES_LEDGERDataTable" msprop:Generator_TableVarName="tableSALES_LEDGER" msprop:Generator_RowChangedName="SALES_LEDGERRowChanged" msprop:Generator_TablePropName="SALES_LEDGER" msprop:Generator_RowDeletingName="SALES_LEDGERRowDeleting" msprop:Generator_RowChangingName="SALES_LEDGERRowChanging" msprop:Generator_RowEvHandlerName="SALES_LEDGERRowChangeEventHandler" msprop:Generator_RowDeletedName="SALES_LEDGERRowDeleted" msprop:Generator_RowClassName="SALES_LEDGERRow" msprop:Generator_UserTableName="SALES_LEDGER" msprop:Generator_RowEvArgName="SALES_LEDGERRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ACCOUNT_REF" msprop:Generator_ColumnVarNameInTable="columnACCOUNT_REF" msprop:Generator_ColumnPropNameInRow="ACCOUNT_REF" msprop:Generator_ColumnPropNameInTable="ACCOUNT_REFColumn" msprop:Generator_UserColumnName="ACCOUNT_REF">
@@ -417,7 +437,7 @@ SELECT id, door_style, customer_acc_ref, order_ref, estimated_order_value, estim
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="sales_pipeline" msprop:Generator_TableClassName="sales_pipelineDataTable" msprop:Generator_TableVarName="tablesales_pipeline" msprop:Generator_TablePropName="sales_pipeline" msprop:Generator_RowDeletingName="sales_pipelineRowDeleting" msprop:Generator_RowChangingName="sales_pipelineRowChanging" msprop:Generator_RowEvHandlerName="sales_pipelineRowChangeEventHandler" msprop:Generator_RowDeletedName="sales_pipelineRowDeleted" msprop:Generator_UserTableName="sales_pipeline" msprop:Generator_RowChangedName="sales_pipelineRowChanged" msprop:Generator_RowEvArgName="sales_pipelineRowChangeEvent" msprop:Generator_RowClassName="sales_pipelineRow">
+        <xs:element name="sales_pipeline" msprop:Generator_TableClassName="sales_pipelineDataTable" msprop:Generator_TableVarName="tablesales_pipeline" msprop:Generator_RowChangedName="sales_pipelineRowChanged" msprop:Generator_TablePropName="sales_pipeline" msprop:Generator_RowDeletingName="sales_pipelineRowDeleting" msprop:Generator_RowChangingName="sales_pipelineRowChanging" msprop:Generator_RowEvHandlerName="sales_pipelineRowChangeEventHandler" msprop:Generator_RowDeletedName="sales_pipelineRowDeleted" msprop:Generator_RowClassName="sales_pipelineRow" msprop:Generator_UserTableName="sales_pipeline" msprop:Generator_RowEvArgName="sales_pipelineRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
@@ -460,6 +480,20 @@ SELECT id, door_style, customer_acc_ref, order_ref, estimated_order_value, estim
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="solidworks_quotation_log" msprop:Generator_TableClassName="solidworks_quotation_logDataTable" msprop:Generator_TableVarName="tablesolidworks_quotation_log" msprop:Generator_TablePropName="solidworks_quotation_log" msprop:Generator_RowDeletingName="solidworks_quotation_logRowDeleting" msprop:Generator_RowChangingName="solidworks_quotation_logRowChanging" msprop:Generator_RowEvHandlerName="solidworks_quotation_logRowChangeEventHandler" msprop:Generator_RowDeletedName="solidworks_quotation_logRowDeleted" msprop:Generator_UserTableName="solidworks_quotation_log" msprop:Generator_RowChangedName="solidworks_quotation_logRowChanged" msprop:Generator_RowEvArgName="solidworks_quotation_logRowChangeEvent" msprop:Generator_RowClassName="solidworks_quotation_logRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="customer" msprop:Generator_ColumnVarNameInTable="columncustomer" msprop:Generator_ColumnPropNameInRow="customer" msprop:Generator_ColumnPropNameInTable="customerColumn" msprop:Generator_UserColumnName="customer" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SumTotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSumTotal" msprop:Generator_ColumnPropNameInRow="SumTotal" msprop:Generator_ColumnPropNameInTable="SumTotalColumn" msprop:Generator_UserColumnName="SumTotal" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

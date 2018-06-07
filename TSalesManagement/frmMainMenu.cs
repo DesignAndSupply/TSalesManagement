@@ -115,5 +115,12 @@ namespace TSalesManagement
             frmCL.MdiParent = this;
             frmCL.Show();
         }
+
+        private void pipelineLiveChartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPipelineLive frmPL = new frmPipelineLive();
+            frmPL.MdiParent = this;
+            frmPL.Show();
+        }
     }
 }

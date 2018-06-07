@@ -135,11 +135,11 @@ namespace TSalesManagement
                         {
                             sb.Append(@" \line \ul Estimated Order Date: ");
                             sb.Append(Convert.ToDateTime(row["estimated_order_date"]).Date.ToString("MMMM") + @" \ul0 ");
-                            sb.Append(@" \line \b " + row["NAME"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
+                            sb.Append(@" \line \b " + row["Customer Name"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
                         }
                         else
                         {
-                            sb.Append(@" \line \b " + row["NAME"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
+                            sb.Append(@" \line \b " + row["Customer Name"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
                         }
                         salesEstimatedMonth = salesEstimatedMonthCurrentRow;
 
@@ -150,11 +150,11 @@ namespace TSalesManagement
                         {
                             sb.Append(@" \line \ul Estimated Order Date: ");
                             sb.Append(Convert.ToDateTime(row["estimated_order_date"]).Date.ToString("MMMM") + @" \ul0 ");
-                            sb.Append(@" \line \b " + row["NAME"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
+                            sb.Append(@" \line \b " + row["Customer Name"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
                         }
                         else
                         {
-                            sb.Append(@" \line \b " + row["NAME"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
+                            sb.Append(@" \line \b " + row["Customer Name"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
                         }
                         salesEstimatedMonth = salesEstimatedMonthCurrentRow;
                     }
@@ -233,7 +233,7 @@ namespace TSalesManagement
             chrtPipeline.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
             chrtPipeline.ChartAreas[0].AxisX.LabelStyle.Format = "MMM yyyy";
             chrtPipeline.ChartAreas["ChartArea1"].AxisX.Interval = 1;
-            chrtPipeline.ChartAreas["ChartArea1"].AxisY.Interval = 10000;
+            chrtPipeline.ChartAreas["ChartArea1"].AxisY.Interval = 50000;
 
         }
 

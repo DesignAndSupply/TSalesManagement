@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtOrderRef = new System.Windows.Forms.TextBox();
             this.txtOrderValue = new System.Windows.Forms.TextBox();
-            this.txtOrderDate = new System.Windows.Forms.TextBox();
             this.txtDetails = new System.Windows.Forms.TextBox();
             this.cmbStatus = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtOrderDate = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // cmbDoorStyle
@@ -85,13 +85,6 @@
             this.txtOrderValue.Name = "txtOrderValue";
             this.txtOrderValue.Size = new System.Drawing.Size(121, 20);
             this.txtOrderValue.TabIndex = 4;
-            // 
-            // txtOrderDate
-            // 
-            this.txtOrderDate.Location = new System.Drawing.Point(129, 102);
-            this.txtOrderDate.Name = "txtOrderDate";
-            this.txtOrderDate.Size = new System.Drawing.Size(121, 20);
-            this.txtOrderDate.TabIndex = 5;
             // 
             // txtDetails
             // 
@@ -159,11 +152,19 @@
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
+            // txtOrderDate
+            // 
+            this.txtOrderDate.Location = new System.Drawing.Point(129, 102);
+            this.txtOrderDate.Name = "txtOrderDate";
+            this.txtOrderDate.Size = new System.Drawing.Size(200, 20);
+            this.txtOrderDate.TabIndex = 13;
+            // 
             // frmNewPipeline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(467, 414);
+            this.Controls.Add(this.txtOrderDate);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -171,7 +172,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbStatus);
             this.Controls.Add(this.txtDetails);
-            this.Controls.Add(this.txtOrderDate);
             this.Controls.Add(this.txtOrderValue);
             this.Controls.Add(this.txtOrderRef);
             this.Controls.Add(this.label2);
@@ -195,7 +195,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtOrderRef;
         private System.Windows.Forms.TextBox txtOrderValue;
-        private System.Windows.Forms.TextBox txtOrderDate;
         private System.Windows.Forms.TextBox txtDetails;
         private System.Windows.Forms.ComboBox cmbStatus;
         private System.Windows.Forms.Label label3;
@@ -203,5 +202,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.DateTimePicker txtOrderDate;
     }
 }

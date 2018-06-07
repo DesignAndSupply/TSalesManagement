@@ -6,9 +6,21 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 using System.Windows.Forms;
+
 using TSalesManagement.Class;
 using System.Data.SqlClient;
+
+
+
+
+using System.Windows.Media;
+using System.Windows;
+
+
+
+
 
 namespace TSalesManagement
 {
@@ -41,14 +53,39 @@ namespace TSalesManagement
 
             lblCFax.Text = c._fax;
             fillPipelineGrid();
+            addConversionGauge();
 
         }
 
         private void frmCustomerInformation_Load(object sender, EventArgs e)
         {
-
+            addConversionGauge();
         }
 
+
+        private void addConversionGauge()
+        {
+
+            //custom fill
+            Visualisations v = new Visualisations(_custAccRef);
+            
+            solidGauge5.From = 0;
+            solidGauge5.To = 100;
+            solidGauge5.Value = v.conversionRate;
+            solidGauge5.Text = "Quotation Conversion";
+            solidGauge5.Base.LabelsVisibility = Visibility.Hidden;
+            solidGauge5.Base.GaugeActiveFill = new LinearGradientBrush
+            {
+                GradientStops = new GradientStopCollection
+                {
+                    new GradientStop(Colors.Yellow, 0),
+                    new GradientStop(Colors.Orange, .5),
+                    new GradientStop(Colors.Red, 1)
+                }
+            };
+
+
+        }
 
 
         private void fillPipelineGrid()
@@ -93,6 +130,14 @@ namespace TSalesManagement
             frmNewPipeline frmNP = new frmNewPipeline(_custAccRef);
             frmNP.ShowDialog();
             fillPipelineGrid();
+        }
+
+        private void lblLinkEst_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmLinkEstimating frmLE = new frmLinkEstimating(_custName, _custAccRef);
+            frmLE.ShowDialog();
+            addConversionGauge();
+
         }
     }
 }
