@@ -106,5 +106,10 @@ namespace TSalesManagement
             frmNC.ShowDialog();
             fillGrid();
         }
+
+        private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

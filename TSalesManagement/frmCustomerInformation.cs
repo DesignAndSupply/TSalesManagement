@@ -38,7 +38,7 @@ namespace TSalesManagement
             _custName = custName;
 
 
-           
+            lblAccRef.Text = "Account Ref: " + _custAccRef;
             lblCName.Text = _custName;
 
             Customer c = new Customer(_custAccRef);
@@ -96,7 +96,7 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT door_style as 'Door Style', order_ref as 'Order Reference' ,estimated_order_date as 'Estimated date of order' ,added_by_id as 'Added by',date_added as 'Added on' ,estimated_order_value as 'Estimated Value' ,order_status as 'Status' FROM c_view_sales_pipeline_text where customer_acc_ref =@custAccRef order by date_added DESC";
+            cmd.CommandText = "SELECT id as 'Pipeline ID',door_style as 'Door Style', order_ref as 'Order Reference' ,estimated_order_date as 'Estimated date of order' ,added_by_id as 'Added by',date_added as 'Added on' ,estimated_order_value as 'Estimated Value' ,order_status as 'Status' FROM c_view_sales_pipeline_text where customer_acc_ref =@custAccRef order by date_added DESC";
 
             cmd.Parameters.AddWithValue("@custAccRef", _custAccRef);
 
@@ -137,6 +137,31 @@ namespace TSalesManagement
             frmLinkEstimating frmLE = new frmLinkEstimating(_custName, _custAccRef);
             frmLE.ShowDialog();
             addConversionGauge();
+
+        }
+
+        private void dgvPipeline_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int pID;
+            if (dgvPipeline.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgvPipeline.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgvPipeline.Rows[selectedrowindex];
+
+                pID = Convert.ToInt32(selectedRow.Cells["Pipeline ID"].Value);
+
+                frmAmendPipeline frmAP = new frmAmendPipeline(pID);
+                frmAP.ShowDialog();
+
+                fillPipelineGrid();
+
+
+            }
+        }
+
+        private void dgvPipeline_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
