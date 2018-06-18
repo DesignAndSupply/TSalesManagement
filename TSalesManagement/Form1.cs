@@ -22,6 +22,13 @@ namespace TSalesManagement
         DateTime lastDayOfMonth;
         Bitmap memoryImage;
 
+
+        public double _slimlineSales { get; set; }
+        public double _traditionalSales { get; set; }
+
+        public double _slimlinePotential { get; set; }
+        public double _traditionalPotential { get; set; }
+
         private void CaptureScreen()
         {
             Graphics myGraphics = this.CreateGraphics();
@@ -67,6 +74,18 @@ namespace TSalesManagement
             DrawSalesChart();
             SlimlineDrawSalesChart();
             FillMeetingData();
+
+
+            lblOverView.Text = "AS A COMPANY OUR POSSIBLE SALES OUTPUT FOR THIS MONTH WAS : £" + (_slimlinePotential + _traditionalPotential) + " WE ACHEIVED : £" + (_slimlineSales + _traditionalSales);
+            if((_slimlinePotential + _traditionalPotential) > _slimlineSales + _traditionalSales)
+            {
+                lblOverView.ForeColor = Color.Red;
+            }
+            else
+            {
+                lblOverView.ForeColor = Color.Green;
+            }
+
         }
         private void btnView_Click(object sender, EventArgs e)
         {
@@ -186,7 +205,8 @@ namespace TSalesManagement
                 seriesTarget.Points.AddXY(row["date_completion"], monthlyTarget);
             }
 
-
+            _slimlinePotential = cumulativePotential;
+            _slimlineSales = cumulativeSalesFigure;
 
             txtSlimlineSales.Text = "£" + cumulativeSalesFigure.ToString();
             txtDailyTargetHitSlimline.Text = "£" + cumulativePotential.ToString();
@@ -331,6 +351,9 @@ namespace TSalesManagement
 
 
             //FILL TRADITIONAL TEXTBOXES
+
+            _traditionalPotential = cumulativePotential;
+            _traditionalSales = cumulativeSalesFigure;
 
             txtTraditionalSales.Text = "£" + cumulativeSalesFigure.ToString();
             txtDailyTargetHit.Text = "£" + cumulativePotential.ToString();

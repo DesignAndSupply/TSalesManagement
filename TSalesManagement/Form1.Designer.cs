@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form1));
             this.cmbMonth = new System.Windows.Forms.ComboBox();
             this.cmbYear = new System.Windows.Forms.ComboBox();
@@ -62,6 +62,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBigGoal = new System.Windows.Forms.TextBox();
             this.txtWorkingDays = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -74,8 +76,7 @@
             this.txtDailyTargetHitFromNowSlimline = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnPipeLine = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtBigGoal = new System.Windows.Forms.TextBox();
+            this.lblOverView = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgInvoice)).BeginInit();
             this.grpInvoice.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -104,7 +105,7 @@
             "October",
             "November",
             "December"});
-            this.cmbMonth.Location = new System.Drawing.Point(12, 53);
+            this.cmbMonth.Location = new System.Drawing.Point(12, 66);
             this.cmbMonth.Name = "cmbMonth";
             this.cmbMonth.Size = new System.Drawing.Size(251, 21);
             this.cmbMonth.TabIndex = 0;
@@ -122,14 +123,14 @@
             "2023",
             "2024",
             "2025"});
-            this.cmbYear.Location = new System.Drawing.Point(269, 53);
+            this.cmbYear.Location = new System.Drawing.Point(269, 66);
             this.cmbYear.Name = "cmbYear";
             this.cmbYear.Size = new System.Drawing.Size(68, 21);
             this.cmbYear.TabIndex = 1;
             // 
             // btnView
             // 
-            this.btnView.Location = new System.Drawing.Point(343, 53);
+            this.btnView.Location = new System.Drawing.Point(343, 66);
             this.btnView.Name = "btnView";
             this.btnView.Size = new System.Drawing.Size(75, 23);
             this.btnView.TabIndex = 2;
@@ -255,16 +256,16 @@
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea3.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.chart1.Legends.Add(legend3);
+            chartArea7.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea7);
+            legend7.Name = "Legend1";
+            this.chart1.Legends.Add(legend7);
             this.chart1.Location = new System.Drawing.Point(-36, 86);
             this.chart1.Name = "chart1";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Series1";
-            this.chart1.Series.Add(series3);
+            series7.ChartArea = "ChartArea1";
+            series7.Legend = "Legend1";
+            series7.Name = "Series1";
+            this.chart1.Series.Add(series7);
             this.chart1.Size = new System.Drawing.Size(950, 352);
             this.chart1.TabIndex = 6;
             this.chart1.Text = "chart1";
@@ -274,23 +275,23 @@
             // 
             this.chrtSlimline.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea4.Name = "ChartArea1";
-            this.chrtSlimline.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend1";
-            this.chrtSlimline.Legends.Add(legend4);
+            chartArea8.Name = "ChartArea1";
+            this.chrtSlimline.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.chrtSlimline.Legends.Add(legend8);
             this.chrtSlimline.Location = new System.Drawing.Point(-36, 462);
             this.chrtSlimline.Name = "chrtSlimline";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Series1";
-            this.chrtSlimline.Series.Add(series4);
+            series8.ChartArea = "ChartArea1";
+            series8.Legend = "Legend1";
+            series8.Name = "Series1";
+            this.chrtSlimline.Series.Add(series8);
             this.chrtSlimline.Size = new System.Drawing.Size(950, 375);
             this.chrtSlimline.TabIndex = 7;
             this.chrtSlimline.Text = "chart2";
             // 
             // progressBar1
             // 
-            this.progressBar1.Location = new System.Drawing.Point(425, 53);
+            this.progressBar1.Location = new System.Drawing.Point(425, 66);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(100, 23);
             this.progressBar1.TabIndex = 8;
@@ -298,7 +299,7 @@
             // btnPrintScreen
             // 
             this.btnPrintScreen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPrintScreen.Location = new System.Drawing.Point(1259, 29);
+            this.btnPrintScreen.Location = new System.Drawing.Point(1259, 46);
             this.btnPrintScreen.Name = "btnPrintScreen";
             this.btnPrintScreen.Size = new System.Drawing.Size(75, 23);
             this.btnPrintScreen.TabIndex = 9;
@@ -391,6 +392,25 @@
             this.groupBox3.TabIndex = 17;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Traditional";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(8, 106);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(277, 13);
+            this.label9.TabIndex = 18;
+            this.label9.Text = "Output if daily goal acheived from now until 10 day cut off";
+            // 
+            // txtBigGoal
+            // 
+            this.txtBigGoal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtBigGoal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtBigGoal.Location = new System.Drawing.Point(312, 104);
+            this.txtBigGoal.Name = "txtBigGoal";
+            this.txtBigGoal.Size = new System.Drawing.Size(93, 20);
+            this.txtBigGoal.TabIndex = 17;
             // 
             // txtWorkingDays
             // 
@@ -506,7 +526,7 @@
             // btnPipeLine
             // 
             this.btnPipeLine.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPipeLine.Location = new System.Drawing.Point(1178, 29);
+            this.btnPipeLine.Location = new System.Drawing.Point(1178, 46);
             this.btnPipeLine.Name = "btnPipeLine";
             this.btnPipeLine.Size = new System.Drawing.Size(75, 23);
             this.btnPipeLine.TabIndex = 20;
@@ -514,24 +534,16 @@
             this.btnPipeLine.UseVisualStyleBackColor = true;
             this.btnPipeLine.Click += new System.EventHandler(this.btnPipeLine_Click);
             // 
-            // label9
+            // lblOverView
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 106);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(277, 13);
-            this.label9.TabIndex = 18;
-            this.label9.Text = "Output if daily goal acheived from now until 10 day cut off";
-            // 
-            // txtBigGoal
-            // 
-            this.txtBigGoal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBigGoal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtBigGoal.Location = new System.Drawing.Point(312, 104);
-            this.txtBigGoal.Name = "txtBigGoal";
-            this.txtBigGoal.Size = new System.Drawing.Size(93, 20);
-            this.txtBigGoal.TabIndex = 17;
+            this.lblOverView.AutoSize = true;
+            this.lblOverView.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblOverView.Location = new System.Drawing.Point(191, 9);
+            this.lblOverView.Name = "lblOverView";
+            this.lblOverView.Size = new System.Drawing.Size(101, 31);
+            this.lblOverView.TabIndex = 21;
+            this.lblOverView.Text = "label10";
+            this.lblOverView.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // form1
             // 
@@ -539,6 +551,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1376, 852);
+            this.Controls.Add(this.lblOverView);
             this.Controls.Add(this.btnPipeLine);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.txtRemainingWorkingDays);
@@ -621,6 +634,7 @@
         private System.Windows.Forms.Button btnPipeLine;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtBigGoal;
+        private System.Windows.Forms.Label lblOverView;
     }
 }
 
