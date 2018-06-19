@@ -41,11 +41,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbDoorStyle = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtCustomer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtOrderDate
             // 
-            this.txtOrderDate.Location = new System.Drawing.Point(128, 110);
+            this.txtOrderDate.Location = new System.Drawing.Point(128, 139);
             this.txtOrderDate.Name = "txtOrderDate";
             this.txtOrderDate.Size = new System.Drawing.Size(200, 20);
             this.txtOrderDate.TabIndex = 26;
@@ -63,7 +65,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 315);
+            this.label6.Location = new System.Drawing.Point(11, 344);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(79, 13);
             this.label6.TabIndex = 24;
@@ -72,7 +74,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 139);
+            this.label5.Location = new System.Drawing.Point(11, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 13);
             this.label5.TabIndex = 23;
@@ -81,7 +83,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 113);
+            this.label4.Location = new System.Drawing.Point(11, 142);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 22;
@@ -90,7 +92,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 87);
+            this.label3.Location = new System.Drawing.Point(11, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 21;
@@ -103,14 +105,14 @@
             "Pending",
             "Ordered",
             "Lost"});
-            this.cmbStatus.Location = new System.Drawing.Point(128, 312);
+            this.cmbStatus.Location = new System.Drawing.Point(128, 341);
             this.cmbStatus.Name = "cmbStatus";
             this.cmbStatus.Size = new System.Drawing.Size(121, 21);
             this.cmbStatus.TabIndex = 20;
             // 
             // txtDetails
             // 
-            this.txtDetails.Location = new System.Drawing.Point(128, 136);
+            this.txtDetails.Location = new System.Drawing.Point(128, 165);
             this.txtDetails.Multiline = true;
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.Size = new System.Drawing.Size(319, 170);
@@ -118,14 +120,14 @@
             // 
             // txtOrderValue
             // 
-            this.txtOrderValue.Location = new System.Drawing.Point(128, 84);
+            this.txtOrderValue.Location = new System.Drawing.Point(128, 113);
             this.txtOrderValue.Name = "txtOrderValue";
             this.txtOrderValue.Size = new System.Drawing.Size(121, 20);
             this.txtOrderValue.TabIndex = 18;
             // 
             // txtOrderRef
             // 
-            this.txtOrderRef.Location = new System.Drawing.Point(128, 58);
+            this.txtOrderRef.Location = new System.Drawing.Point(128, 87);
             this.txtOrderRef.Name = "txtOrderRef";
             this.txtOrderRef.Size = new System.Drawing.Size(121, 20);
             this.txtOrderRef.TabIndex = 17;
@@ -133,7 +135,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 61);
+            this.label2.Location = new System.Drawing.Point(11, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 16;
@@ -142,7 +144,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 24);
+            this.label1.Location = new System.Drawing.Point(11, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 13);
             this.label1.TabIndex = 15;
@@ -154,16 +156,35 @@
             this.cmbDoorStyle.Items.AddRange(new object[] {
             "Slimline",
             "Traditional"});
-            this.cmbDoorStyle.Location = new System.Drawing.Point(128, 21);
+            this.cmbDoorStyle.Location = new System.Drawing.Point(128, 50);
             this.cmbDoorStyle.Name = "cmbDoorStyle";
             this.cmbDoorStyle.Size = new System.Drawing.Size(121, 21);
             this.cmbDoorStyle.TabIndex = 14;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(11, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(51, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Customer";
+            // 
+            // txtCustomer
+            // 
+            this.txtCustomer.Enabled = false;
+            this.txtCustomer.Location = new System.Drawing.Point(128, 20);
+            this.txtCustomer.Name = "txtCustomer";
+            this.txtCustomer.Size = new System.Drawing.Size(319, 20);
+            this.txtCustomer.TabIndex = 28;
             // 
             // frmAmendPipeline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 435);
+            this.Controls.Add(this.txtCustomer);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtOrderDate);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label6);
@@ -203,5 +224,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbDoorStyle;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtCustomer;
     }
 }

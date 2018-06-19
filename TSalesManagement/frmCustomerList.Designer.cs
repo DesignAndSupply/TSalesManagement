@@ -121,6 +121,7 @@
             this.txtCustName.Name = "txtCustName";
             this.txtCustName.Size = new System.Drawing.Size(179, 20);
             this.txtCustName.TabIndex = 0;
+            this.txtCustName.TextChanged += new System.EventHandler(this.txtCustName_TextChanged);
             // 
             // btnNewCustomer
             // 

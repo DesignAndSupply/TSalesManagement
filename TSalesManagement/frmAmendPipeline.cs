@@ -26,6 +26,22 @@ namespace TSalesManagement
         private string _details { get; set; }
         private string _status { get; set; }
 
+
+        private string _customerName { get
+            {
+                SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT [Customer Name] from dbo.c_sales_view_customer_data where [Account Ref]=@accRef", conn);
+
+                cmd.Parameters.AddWithValue("@accRef", _accRef);
+                return cmd.ExecuteScalar().ToString();
+             
+
+            }
+        }
+
+
         public frmAmendPipeline(int pipeID)
         {
             InitializeComponent();
@@ -68,6 +84,7 @@ namespace TSalesManagement
             txtOrderDate.Text = _orderDate.ToString();
             txtDetails.Text = _details;
             cmbStatus.Text = _status;
+            txtCustomer.Text = _customerName;
 
         }
 
@@ -97,7 +114,7 @@ namespace TSalesManagement
                                   " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status)";
 
                 cmd.CommandText = "UPDATE dbo.sales_pipeline SET door_style = @doorStyle, customer_acc_ref = @custAccRef, order_ref = @orderRef, estimated_order_value = @estimatedOrderValue, estimated_order_date = @estimatedOrderDate ," +
-                                  "added_by_id = @addedBy, date_added = @dateAdded, description_of_doors_on_order =@description, order_status = @status WHERE id=@id";
+                                  "  description_of_doors_on_order =@description, order_status = @status WHERE id=@id";
 
                 cmd.Parameters.AddWithValue("@id", _pID);
                 cmd.Parameters.AddWithValue("@doorStyle", cmbDoorStyle.Text);
@@ -105,8 +122,7 @@ namespace TSalesManagement
                 cmd.Parameters.AddWithValue("@orderRef", txtOrderRef.Text);
                 cmd.Parameters.AddWithValue("@estimatedOrderValue", txtOrderValue.Text);
                 cmd.Parameters.AddWithValue("@estimatedOrderDate", txtOrderDate.Text);
-                cmd.Parameters.AddWithValue("@addedBy", Login.globalUserID);
-                cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
+              
                 cmd.Parameters.AddWithValue("@description", txtDetails.Text);
                 cmd.Parameters.AddWithValue("@status", cmbStatus.Text);
 

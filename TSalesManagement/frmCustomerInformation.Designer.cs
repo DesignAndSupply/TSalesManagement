@@ -32,6 +32,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.lblAccRef = new System.Windows.Forms.Label();
             this.lblCFax = new System.Windows.Forms.Label();
             this.lblCTel2 = new System.Windows.Forms.Label();
             this.lblCTel1 = new System.Windows.Forms.Label();
@@ -53,7 +54,9 @@
             this.lblLinkEst = new System.Windows.Forms.LinkLabel();
             this.lblPipeline = new System.Windows.Forms.LinkLabel();
             this.lblActivity = new System.Windows.Forms.LinkLabel();
-            this.lblAccRef = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgContacts = new System.Windows.Forms.DataGridView();
+            this.lblAddContact = new System.Windows.Forms.LinkLabel();
             this.groupBox4.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             this.tabActivity.SuspendLayout();
@@ -62,6 +65,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPipeline)).BeginInit();
             this.tabVisual.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -94,6 +99,16 @@
             this.groupBox4.TabIndex = 4;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Company Details";
+            // 
+            // lblAccRef
+            // 
+            this.lblAccRef.AutoSize = true;
+            this.lblAccRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAccRef.Location = new System.Drawing.Point(7, 23);
+            this.lblAccRef.Name = "lblAccRef";
+            this.lblAccRef.Size = new System.Drawing.Size(41, 13);
+            this.lblAccRef.TabIndex = 9;
+            this.lblAccRef.Text = "label1";
             // 
             // lblCFax
             // 
@@ -185,6 +200,7 @@
             this.tabCustomer.Controls.Add(this.tabActivity);
             this.tabCustomer.Controls.Add(this.tabPipeline);
             this.tabCustomer.Controls.Add(this.tabVisual);
+            this.tabCustomer.Controls.Add(this.tabPage1);
             this.tabCustomer.Location = new System.Drawing.Point(253, 19);
             this.tabCustomer.Name = "tabCustomer";
             this.tabCustomer.SelectedIndex = 0;
@@ -303,6 +319,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblAddContact);
             this.groupBox1.Controls.Add(this.lblLinkEst);
             this.groupBox1.Controls.Add(this.lblPipeline);
             this.groupBox1.Controls.Add(this.lblActivity);
@@ -347,16 +364,45 @@
             this.lblActivity.TabIndex = 0;
             this.lblActivity.TabStop = true;
             this.lblActivity.Text = "Add Activity";
+            this.lblActivity.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblActivity_LinkClicked);
             // 
-            // lblAccRef
+            // tabPage1
             // 
-            this.lblAccRef.AutoSize = true;
-            this.lblAccRef.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAccRef.Location = new System.Drawing.Point(7, 23);
-            this.lblAccRef.Name = "lblAccRef";
-            this.lblAccRef.Size = new System.Drawing.Size(41, 13);
-            this.lblAccRef.TabIndex = 9;
-            this.lblAccRef.Text = "label1";
+            this.tabPage1.Controls.Add(this.dgContacts);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(890, 573);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Contacts";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgContacts
+            // 
+            this.dgContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgContacts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgContacts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgContacts.Location = new System.Drawing.Point(4, 7);
+            this.dgContacts.Name = "dgContacts";
+            this.dgContacts.RowHeadersVisible = false;
+            this.dgContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgContacts.Size = new System.Drawing.Size(880, 560);
+            this.dgContacts.TabIndex = 0;
+            // 
+            // lblAddContact
+            // 
+            this.lblAddContact.AutoSize = true;
+            this.lblAddContact.LinkColor = System.Drawing.Color.Teal;
+            this.lblAddContact.Location = new System.Drawing.Point(10, 91);
+            this.lblAddContact.Name = "lblAddContact";
+            this.lblAddContact.Size = new System.Drawing.Size(66, 13);
+            this.lblAddContact.TabIndex = 3;
+            this.lblAddContact.TabStop = true;
+            this.lblAddContact.Text = "Add Contact";
+            this.lblAddContact.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAddContact_LinkClicked);
             // 
             // frmCustomerInformation
             // 
@@ -382,6 +428,8 @@
             this.tabVisual.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -411,5 +459,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.LinkLabel lblLinkEst;
         private System.Windows.Forms.Label lblAccRef;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.DataGridView dgContacts;
+        private System.Windows.Forms.LinkLabel lblAddContact;
     }
 }

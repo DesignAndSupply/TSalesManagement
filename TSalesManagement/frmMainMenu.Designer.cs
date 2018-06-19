@@ -35,8 +35,10 @@
             this.salesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlyChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pipelineChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabForms = new System.Windows.Forms.TabControl();
             this.pipelineLiveChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabForms = new System.Windows.Forms.TabControl();
+            this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,7 +46,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customersToolStripMenuItem,
-            this.salesDataToolStripMenuItem});
+            this.salesDataToolStripMenuItem,
+            this.userManagementToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(989, 24);
@@ -87,16 +90,23 @@
             // monthlyChartToolStripMenuItem
             // 
             this.monthlyChartToolStripMenuItem.Name = "monthlyChartToolStripMenuItem";
-            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.monthlyChartToolStripMenuItem.Text = "Monthly Chart";
             this.monthlyChartToolStripMenuItem.Click += new System.EventHandler(this.monthlyChartToolStripMenuItem_Click);
             // 
             // pipelineChartToolStripMenuItem
             // 
             this.pipelineChartToolStripMenuItem.Name = "pipelineChartToolStripMenuItem";
-            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.pipelineChartToolStripMenuItem.Text = "Pipeline Chart";
             this.pipelineChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineChartToolStripMenuItem_Click);
+            // 
+            // pipelineLiveChartToolStripMenuItem
+            // 
+            this.pipelineLiveChartToolStripMenuItem.Name = "pipelineLiveChartToolStripMenuItem";
+            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.pipelineLiveChartToolStripMenuItem.Text = "Pipeline Live Chart";
+            this.pipelineLiveChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineLiveChartToolStripMenuItem_Click);
             // 
             // tabForms
             // 
@@ -108,12 +118,20 @@
             this.tabForms.TabIndex = 4;
             this.tabForms.Visible = false;
             // 
-            // pipelineLiveChartToolStripMenuItem
+            // userManagementToolStripMenuItem
             // 
-            this.pipelineLiveChartToolStripMenuItem.Name = "pipelineLiveChartToolStripMenuItem";
-            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pipelineLiveChartToolStripMenuItem.Text = "Pipeline Live Chart";
-            this.pipelineLiveChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineLiveChartToolStripMenuItem_Click);
+            this.userManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.userActivityToolStripMenuItem});
+            this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
+            this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
+            this.userManagementToolStripMenuItem.Text = "User Management";
+            // 
+            // userActivityToolStripMenuItem
+            // 
+            this.userActivityToolStripMenuItem.Name = "userActivityToolStripMenuItem";
+            this.userActivityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userActivityToolStripMenuItem.Text = "User Activity";
+            this.userActivityToolStripMenuItem.Click += new System.EventHandler(this.userActivityToolStripMenuItem_Click);
             // 
             // frmMainMenu
             // 
@@ -143,5 +161,7 @@
         private System.Windows.Forms.ToolStripMenuItem customerListToolStripMenuItem;
         private System.Windows.Forms.TabControl tabForms;
         private System.Windows.Forms.ToolStripMenuItem pipelineLiveChartToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userActivityToolStripMenuItem;
     }
 }

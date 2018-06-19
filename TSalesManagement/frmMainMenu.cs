@@ -122,5 +122,12 @@ namespace TSalesManagement
             frmPL.MdiParent = this;
             frmPL.Show();
         }
+
+        private void userActivityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserInfo frmUI = new frmUserInfo();
+            frmUI.MdiParent = this;
+            frmUI.Show();
+        }
     }
 }

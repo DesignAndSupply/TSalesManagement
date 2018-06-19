@@ -111,5 +111,10 @@ namespace TSalesManagement
         {
 
         }
+
+        private void txtCustName_TextChanged(object sender, EventArgs e)
+        {
+            fillGrid();
+        }
     }
 }

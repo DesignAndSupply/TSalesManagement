@@ -53,6 +53,8 @@ namespace TSalesManagement
 
             lblCFax.Text = c._fax;
             fillPipelineGrid();
+            fillActivityGrid();
+            fillContactsGrid();
             addConversionGauge();
 
         }
@@ -117,6 +119,72 @@ namespace TSalesManagement
 
         }
 
+        private void fillContactsGrid()
+        {
+            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandText = "SELECT id,contact_name,contact_email,contact_tel,job_title from dbo.crm_customer_contacts WHERE cust_acc_ref = @custAccRef";
+
+            cmd.Parameters.AddWithValue("@custAccRef", _custAccRef);
+
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+
+            try
+            {
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+                dgContacts.DataSource = dt;
+
+              
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        private void fillActivityGrid()
+        {
+            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandText = "SELECT [Activity Date],Type,reference,Details,Contact,[Logged By] from dbo.c_sales_view_activity_list where customer_acc_ref =@accRef order by  [Activity Date] desc";
+
+            cmd.Parameters.AddWithValue("@accRef", _custAccRef);
+
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+
+            try
+            {
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+                dgvActivity.DataSource = dt;
+
+               
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+
+
+
+
+
+
+
+
         private void fillActiviyGrid()
         {
 
@@ -155,13 +223,27 @@ namespace TSalesManagement
                 frmAP.ShowDialog();
 
                 fillPipelineGrid();
-
-
             }
         }
 
         private void dgvPipeline_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+
+        private void lblActivity_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmNewActivity frmna = new frmNewActivity(_custAccRef);
+            frmna.ShowDialog();
+            fillActivityGrid();
+        }
+
+        private void lblAddContact_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+            frmNewContact frmNC = new frmNewContact(_custAccRef);
+            frmNC.ShowDialog();
+            fillContactsGrid();
 
         }
     }

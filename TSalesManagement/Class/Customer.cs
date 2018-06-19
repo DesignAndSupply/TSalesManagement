@@ -20,6 +20,25 @@ namespace TSalesManagement.Class
         public string _tel2 { get; set; }
         public string _fax { get; set; }
 
+
+        public string _customerName
+        {
+            get
+            {
+                SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("SELECT [Customer Name] from dbo.c_sales_view_customer_data where [Account Ref]=@accRef", conn);
+
+                cmd.Parameters.AddWithValue("@accRef", _custAccRef);
+                return cmd.ExecuteScalar().ToString();
+
+
+            }
+        }
+
+
+
         public Customer(string accRef)
         {
             _custAccRef = accRef;
