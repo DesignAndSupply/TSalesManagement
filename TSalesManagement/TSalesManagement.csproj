@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>28</ApplicationRevision>
+    <ApplicationRevision>29</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -146,6 +146,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAmendActivity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAmendActivity.Designer.cs">
+      <DependentUpon>frmAmendActivity.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAmendPipeline.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAmendActivity.resx">
+      <DependentUpon>frmAmendActivity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAmendPipeline.resx">
       <DependentUpon>frmAmendPipeline.cs</DependentUpon>

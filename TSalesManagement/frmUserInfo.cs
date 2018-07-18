@@ -39,13 +39,13 @@ namespace TSalesManagement
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
-           // try
+            // try
             //{
-                DataTable dt = new DataTable();
-                adap.Fill(dt);
-                dgPipeline.DataSource = dt;
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+            dgPipeline.DataSource = dt;
 
-                dgPipeline.Columns["Estimated Value"].DefaultCellStyle.Format = "c";
+            dgPipeline.Columns["Estimated Value"].DefaultCellStyle.Format = "c";
             //}
             //catch (Exception)
             //{
@@ -62,21 +62,21 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT [Customer Name],[Activity Date],Type,reference,Details,Contact,[Logged By] from dbo.c_sales_view_activity_list where [Logged By] = @sender order by  [Activity Date] desc";
+            cmd.CommandText = "SELECT id,[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By] from dbo.c_sales_view_activity_list where [Logged By] = @sender order by  [Activity Date] desc";
 
             cmd.Parameters.AddWithValue("@sender", cmbStaff.Text);
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
             //try
-           // {
-                DataTable dt = new DataTable();
-                adap.Fill(dt);
-                dgActivity.DataSource = dt;
+            // {
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+            dgActivity.DataSource = dt;
 
 
             //}
-           // catch (Exception)
+            // catch (Exception)
             //{
 
             //}
@@ -93,7 +93,7 @@ namespace TSalesManagement
             fillActivityGrid();
         }
 
-        
+
         private void dgPipeline_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int pID;
@@ -113,5 +113,28 @@ namespace TSalesManagement
 
             }
         }
+
+        private void dgActivity_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int aID;
+            
+
+            if (dgActivity.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgActivity.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgActivity.Rows[selectedrowindex];
+
+                aID = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+                frmAmendActivity frmAA = new frmAmendActivity(aID);
+                frmAA.ShowDialog();
+
+                fillActivityGrid();
+
+
+            }
+        }
     }
 }
+

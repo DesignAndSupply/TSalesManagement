@@ -135,6 +135,7 @@
             this.dgActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgActivity.Size = new System.Drawing.Size(968, 322);
             this.dgActivity.TabIndex = 3;
+            this.dgActivity.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActivity_CellDoubleClick);
             // 
             // dgPipeline
             // 

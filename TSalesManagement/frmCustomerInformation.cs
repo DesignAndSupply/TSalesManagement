@@ -156,7 +156,7 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT [Activity Date],Type,reference,Details,Contact,[Logged By] from dbo.c_sales_view_activity_list where customer_acc_ref =@accRef order by  [Activity Date] desc";
+            cmd.CommandText = "SELECT ID ,[Activity Date],date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By] from dbo.c_sales_view_activity_list where customer_acc_ref =@accRef order by  [Activity Date] desc";
 
             cmd.Parameters.AddWithValue("@accRef", _custAccRef);
 
@@ -245,6 +245,28 @@ namespace TSalesManagement
             frmNC.ShowDialog();
             fillContactsGrid();
 
+        }
+
+        private void dgvActivity_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int aID;
+
+
+            if (dgvActivity.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgvActivity.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgvActivity.Rows[selectedrowindex];
+
+                aID = Convert.ToInt32(selectedRow.Cells["id"].Value);
+
+                frmAmendActivity frmAA = new frmAmendActivity(aID);
+                frmAA.ShowDialog();
+
+                fillActivityGrid();
+
+
+            }
         }
     }
 }

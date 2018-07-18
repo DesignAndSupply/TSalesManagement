@@ -50,13 +50,13 @@
             this.tabVisual = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.solidGauge5 = new LiveCharts.WinForms.SolidGauge();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.dgContacts = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblAddContact = new System.Windows.Forms.LinkLabel();
             this.lblLinkEst = new System.Windows.Forms.LinkLabel();
             this.lblPipeline = new System.Windows.Forms.LinkLabel();
             this.lblActivity = new System.Windows.Forms.LinkLabel();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dgContacts = new System.Windows.Forms.DataGridView();
-            this.lblAddContact = new System.Windows.Forms.LinkLabel();
             this.groupBox4.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             this.tabActivity.SuspendLayout();
@@ -64,9 +64,9 @@
             this.tabPipeline.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPipeline)).BeginInit();
             this.tabVisual.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -243,6 +243,7 @@
             this.dgvActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvActivity.Size = new System.Drawing.Size(878, 561);
             this.dgvActivity.TabIndex = 1;
+            this.dgvActivity.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvActivity_CellDoubleClick);
             // 
             // tabPipeline
             // 
@@ -317,6 +318,32 @@
             this.solidGauge5.TabIndex = 0;
             this.solidGauge5.Text = "solidGauge1";
             // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.dgContacts);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(890, 573);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Contacts";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // dgContacts
+            // 
+            this.dgContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgContacts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgContacts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgContacts.Location = new System.Drawing.Point(4, 7);
+            this.dgContacts.Name = "dgContacts";
+            this.dgContacts.RowHeadersVisible = false;
+            this.dgContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgContacts.Size = new System.Drawing.Size(880, 560);
+            this.dgContacts.TabIndex = 0;
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lblAddContact);
@@ -329,6 +356,18 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
+            // 
+            // lblAddContact
+            // 
+            this.lblAddContact.AutoSize = true;
+            this.lblAddContact.LinkColor = System.Drawing.Color.Teal;
+            this.lblAddContact.Location = new System.Drawing.Point(10, 91);
+            this.lblAddContact.Name = "lblAddContact";
+            this.lblAddContact.Size = new System.Drawing.Size(66, 13);
+            this.lblAddContact.TabIndex = 3;
+            this.lblAddContact.TabStop = true;
+            this.lblAddContact.Text = "Add Contact";
+            this.lblAddContact.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAddContact_LinkClicked);
             // 
             // lblLinkEst
             // 
@@ -366,44 +405,6 @@
             this.lblActivity.Text = "Add Activity";
             this.lblActivity.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblActivity_LinkClicked);
             // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.dgContacts);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(890, 573);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Contacts";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // dgContacts
-            // 
-            this.dgContacts.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgContacts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgContacts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgContacts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgContacts.Location = new System.Drawing.Point(4, 7);
-            this.dgContacts.Name = "dgContacts";
-            this.dgContacts.RowHeadersVisible = false;
-            this.dgContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgContacts.Size = new System.Drawing.Size(880, 560);
-            this.dgContacts.TabIndex = 0;
-            // 
-            // lblAddContact
-            // 
-            this.lblAddContact.AutoSize = true;
-            this.lblAddContact.LinkColor = System.Drawing.Color.Teal;
-            this.lblAddContact.Location = new System.Drawing.Point(10, 91);
-            this.lblAddContact.Name = "lblAddContact";
-            this.lblAddContact.Size = new System.Drawing.Size(66, 13);
-            this.lblAddContact.TabIndex = 3;
-            this.lblAddContact.TabStop = true;
-            this.lblAddContact.Text = "Add Contact";
-            this.lblAddContact.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAddContact_LinkClicked);
-            // 
             // frmCustomerInformation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,10 +427,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvPipeline)).EndInit();
             this.tabVisual.ResumeLayout(false);
             this.tabVisual.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

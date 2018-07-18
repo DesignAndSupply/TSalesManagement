@@ -89,15 +89,6 @@ namespace TSalesManagement
             }
 
 
-
-           
-                
-            
-
-
-
-
-
         }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
