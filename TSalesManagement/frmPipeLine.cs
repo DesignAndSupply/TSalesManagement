@@ -88,8 +88,12 @@ namespace TSalesManagement
 
             if (string.IsNullOrWhiteSpace(toolTipMonth))
             {
-                sqlcmd.CommandText = "Select * from c_view_sales_pipeline_text WHERE order_status = @status order by added_by_id , estimated_order_date";
+                sqlcmd.CommandText = "Select * from c_view_sales_pipeline_text WHERE order_status = 10 order by added_by_id , estimated_order_date";
                 sqlcmd.Parameters.AddWithValue("@status", cmbFilterStatus.Text);
+
+                this.txtPipelineData.Text = "Please hover over a bar on the chart to see breakdown information";
+
+
             }
             else
             {
@@ -106,11 +110,12 @@ namespace TSalesManagement
                 {
                     sqlcmd.Parameters.AddWithValue("@doorStyle", "Slimline");
                 }
-            }
 
-            DataTable DT = new DataTable();
-            SqlDataAdapter adapterText = new SqlDataAdapter(sqlcmd);
-            adapterText.Fill(DT);
+                ////ADDS THE TEXT
+
+                DataTable DT = new DataTable();
+                SqlDataAdapter adapterText = new SqlDataAdapter(sqlcmd);
+                adapterText.Fill(DT);
 
                 foreach (DataRow row in DT.Rows)
                 {
@@ -166,12 +171,22 @@ namespace TSalesManagement
 
                 if (sb.Length < 20)
                 {
-                    this.txtPipelineData.Text = "No Data to display";
+                    this.txtPipelineData.Text = "Please hover over a bar on the chart to see breakdown information";
                 }
                 else
                 {
                     this.txtPipelineData.Rtf = sb.ToString();
                 }
+
+
+
+
+
+
+
+            }
+
+
 
         }
 
@@ -227,8 +242,8 @@ namespace TSalesManagement
             chrtPipeline.Series["Slimline Pipeline"].ToolTip = "#SERIESNAME ( #VALY{C} ) #VALX";
 
             //sets bar width
-            chrtPipeline.Series["Traditional Pipeline"]["PixelPointWidth"] = "25";
-            chrtPipeline.Series["Slimline Pipeline"]["PixelPointWidth"] = "25";
+            chrtPipeline.Series["Traditional Pipeline"]["PixelPointWidth"] = "60";
+            chrtPipeline.Series["Slimline Pipeline"]["PixelPointWidth"] = "60";
 
             chrtPipeline.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
             chrtPipeline.ChartAreas[0].AxisX.LabelStyle.Format = "MMM yyyy";
@@ -279,7 +294,8 @@ namespace TSalesManagement
             catch
             {
                 txtDate.Text = "";
-                txtDept.Text = "Showing All " + cmbFilterStatus.Text;
+                //txtDept.Text = "Showing All " + cmbFilterStatus.Text;
+                txtDept.Text = "";
                 txtValue.Text = "";
 
             }

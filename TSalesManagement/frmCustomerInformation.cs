@@ -139,7 +139,6 @@ namespace TSalesManagement
                 adap.Fill(dt);
                 dgContacts.DataSource = dt;
 
-              
             }
             catch (Exception)
             {
@@ -178,19 +177,10 @@ namespace TSalesManagement
         }
 
 
-
-
-
-
-
-
-
         private void fillActiviyGrid()
         {
 
         }
-
-
 
 
         private void lblPipeline_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
