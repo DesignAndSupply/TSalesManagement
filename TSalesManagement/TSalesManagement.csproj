@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>30</ApplicationRevision>
+    <ApplicationRevision>35</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -63,6 +63,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>logo_4rq_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
@@ -127,6 +133,7 @@
       <DependentUpon>ActivityCentre.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Customer.cs" />
+    <Compile Include="Class\DateConversion.cs" />
     <Compile Include="CustomerVm.cs" />
     <Compile Include="Class\NewCustomer.cs" />
     <Compile Include="Class\Pipeline.cs" />
@@ -212,6 +219,18 @@
     <Compile Include="frmNewPipeline.Designer.cs">
       <DependentUpon>frmNewPipeline.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNonReturningCustomerNotes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNonReturningCustomerNotes.Designer.cs">
+      <DependentUpon>frmNonReturningCustomerNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNonReturningCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNonReturningCustomers.Designer.cs">
+      <DependentUpon>frmNonReturningCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPipeLine.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +302,12 @@
     <EmbeddedResource Include="frmNewPipeline.resx">
       <DependentUpon>frmNewPipeline.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNonReturningCustomerNotes.resx">
+      <DependentUpon>frmNonReturningCustomerNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNonReturningCustomers.resx">
+      <DependentUpon>frmNonReturningCustomers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPipeLine.resx">
       <DependentUpon>frmPipeLine.cs</DependentUpon>
     </EmbeddedResource>
@@ -313,6 +338,7 @@
       <DependentUpon>order_databaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

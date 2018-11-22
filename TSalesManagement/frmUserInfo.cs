@@ -30,12 +30,65 @@ namespace TSalesManagement
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
 
+            string test;
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT id as 'Pipeline ID',door_style as 'Door Style', order_ref as 'Order Reference' ,estimated_order_date as 'Estimated date of order' ,added_by_id as 'Added by',date_added as 'Added on' ,estimated_order_value as 'Estimated Value' ,order_status as 'Status' FROM c_view_sales_pipeline_text where added_by_id =@user order by date_added DESC";
+            StringBuilder sb = new StringBuilder("SELECT id as 'Pipeline ID',[Customer Name], door_style as 'Door Style', order_ref as 'Order Reference', estimated_order_date as 'Estimated date of order', added_by_id as 'Added by', date_added as 'Added on', estimated_order_value as 'Estimated Value', order_status as 'Status' FROM c_view_sales_pipeline_text where added_by_id =@user ");
 
+            //If filter on order status is selected
+            if (string.IsNullOrWhiteSpace(cmbSearchStatus.Text))
+            {
+                
+            }
+            else
+            {
+                sb.Append(" AND order_status = @oStatus " );
+            }
+
+
+            //If filter on customer is selected
+            if (string.IsNullOrWhiteSpace(txtCustomerSearch.Text))
+            {
+
+            }
+            else
+            {
+                sb.Append(" AND [Customer Name] = @cust ");
+            }
+
+            test = sb.ToString();
+            //MessageBox.Show(test);
+
+            sb.Append(" order by date_added DESC");
+
+
+            
+            //-------------
+            cmd.CommandText = sb.ToString();
             cmd.Parameters.AddWithValue("@user", cmbStaff.Text);
+            //----------
+
+            //Non mandatory filters
+
+            if (string.IsNullOrWhiteSpace(cmbSearchStatus.Text))
+            {
+                
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@oStatus", cmbSearchStatus.Text);
+            }
+            //If filter on customer is selected
+            if (string.IsNullOrWhiteSpace(txtCustomerSearch.Text))
+            {
+
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@cust", "%" + txtCustomerSearch.Text + "%");
+            }
+
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
@@ -51,8 +104,57 @@ namespace TSalesManagement
             //{
 
             //}
+
+            paintGrid();
         }
 
+
+        private void paintGrid()
+        {
+        
+
+            foreach (DataGridViewRow row in dgPipeline.Rows)
+            {
+
+
+                try
+                {
+                    if (row.Cells["Status"].Value.ToString() == "Ordered")
+                    {
+                        row.Cells["Pipeline ID"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Customer Name"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Door Style"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Order Reference"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Estimated date of order"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Added By"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Added on"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Estimated Value"].Style.BackColor = Color.LawnGreen;
+                        row.Cells["Status"].Style.BackColor = Color.LawnGreen;
+                    }
+                    else if (row.Cells["Status"].Value.ToString() == "Lost")
+                    {
+                        row.Cells["Pipeline ID"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Customer Name"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Door Style"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Order Reference"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Estimated date of order"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Added By"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Added on"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Estimated Value"].Style.BackColor = Color.PaleVioletRed;
+                        row.Cells["Status"].Style.BackColor = Color.PaleVioletRed;
+
+
+                    }
+                }
+                catch
+                {
+
+                }
+                    
+                }
+               
+            
+        }
 
         private void fillActivityGrid()
         {
@@ -134,6 +236,22 @@ namespace TSalesManagement
 
 
             }
+        }
+
+        private void cmbSearchStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            fillGrid();
+        }
+
+        private void txtCustomerSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            fillGrid();
+        }
+
+        private void btnClearSearch_Click(object sender, EventArgs e)
+        {
+            cmbSearchStatus.Text = "";
+            fillGrid();
         }
     }
 }

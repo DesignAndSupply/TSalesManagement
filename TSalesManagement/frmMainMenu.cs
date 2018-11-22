@@ -129,5 +129,12 @@ namespace TSalesManagement
             frmUI.MdiParent = this;
             frmUI.Show();
         }
+
+        private void nonReturningCustomersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNonReturningCustomers frmNR = new frmNonReturningCustomers();
+            frmNR.MdiParent = this;
+            frmNR.Show();
+        }
     }
 }
