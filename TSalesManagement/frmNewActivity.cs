@@ -63,6 +63,7 @@ namespace TSalesManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
 
@@ -84,6 +85,38 @@ namespace TSalesManagement
             cmd.ExecuteNonQuery();
 
             conn.Close();
+
+            //Prompts user to add task to ToDo  System
+
+            DialogResult dr = MessageBox.Show("Do you want to create a task from this activity?", "Create Task?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                double maxID;
+                SqlConnection connr = new SqlConnection(SqlStatements.ConnectionString);
+                connr.Open();
+                SqlCommand cmdr = new SqlCommand("select max(id) as maxID from dbo.crm_activity", connr);
+                SqlDataReader rdr = cmdr.ExecuteReader();
+
+                if (rdr.Read())
+                {
+                    maxID = Convert.ToDouble(rdr["maxID"]);
+                }
+                else
+                {
+                    maxID = 0;
+                }
+                
+                frmNewTask nt = new frmNewTask(maxID);
+                nt.ShowDialog();
+            }
+
+
+
+
+
+
+
             this.Close();
 
 

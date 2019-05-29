@@ -115,5 +115,13 @@ namespace TSalesManagement
             conn.Close();
             this.Close();
         }
+
+        private void btnPipeline_Click(object sender, EventArgs e)
+        {
+            frmNewPipeline frmNP = new frmNewPipeline(_custAccRef,_aID);
+            frmNP.ShowDialog();
+            this.Close();
+           
+        }
     }
 }

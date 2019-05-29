@@ -30,16 +30,17 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.customersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.activityLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nonReturningCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salesDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthlyChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pipelineChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pipelineLiveChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabForms = new System.Windows.Forms.TabControl();
-            this.nonReturningCustomersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,7 +49,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.customersToolStripMenuItem,
             this.salesDataToolStripMenuItem,
-            this.userManagementToolStripMenuItem});
+            this.userManagementToolStripMenuItem,
+            this.addTaskToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(989, 24);
@@ -58,19 +60,12 @@
             // customersToolStripMenuItem
             // 
             this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.activityLogToolStripMenuItem,
             this.customerListToolStripMenuItem,
-            this.nonReturningCustomersToolStripMenuItem});
+            this.nonReturningCustomersToolStripMenuItem,
+            this.newCustomersToolStripMenuItem});
             this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
             this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.customersToolStripMenuItem.Text = "Customers";
-            // 
-            // activityLogToolStripMenuItem
-            // 
-            this.activityLogToolStripMenuItem.Name = "activityLogToolStripMenuItem";
-            this.activityLogToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.activityLogToolStripMenuItem.Text = "Activity Log";
-            this.activityLogToolStripMenuItem.Click += new System.EventHandler(this.activityLogToolStripMenuItem_Click);
             // 
             // customerListToolStripMenuItem
             // 
@@ -78,6 +73,20 @@
             this.customerListToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.customerListToolStripMenuItem.Text = "Customer List";
             this.customerListToolStripMenuItem.Click += new System.EventHandler(this.customerListToolStripMenuItem_Click);
+            // 
+            // nonReturningCustomersToolStripMenuItem
+            // 
+            this.nonReturningCustomersToolStripMenuItem.Name = "nonReturningCustomersToolStripMenuItem";
+            this.nonReturningCustomersToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.nonReturningCustomersToolStripMenuItem.Text = "Non Returning Customers";
+            this.nonReturningCustomersToolStripMenuItem.Click += new System.EventHandler(this.nonReturningCustomersToolStripMenuItem_Click);
+            // 
+            // newCustomersToolStripMenuItem
+            // 
+            this.newCustomersToolStripMenuItem.Name = "newCustomersToolStripMenuItem";
+            this.newCustomersToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
+            this.newCustomersToolStripMenuItem.Text = "New Customers";
+            this.newCustomersToolStripMenuItem.Click += new System.EventHandler(this.newCustomersToolStripMenuItem_Click);
             // 
             // salesDataToolStripMenuItem
             // 
@@ -125,6 +134,13 @@
             this.userActivityToolStripMenuItem.Text = "User Activity";
             this.userActivityToolStripMenuItem.Click += new System.EventHandler(this.userActivityToolStripMenuItem_Click);
             // 
+            // addTaskToolStripMenuItem
+            // 
+            this.addTaskToolStripMenuItem.Name = "addTaskToolStripMenuItem";
+            this.addTaskToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.addTaskToolStripMenuItem.Text = "Add Task";
+            this.addTaskToolStripMenuItem.Click += new System.EventHandler(this.addTaskToolStripMenuItem_Click);
+            // 
             // tabForms
             // 
             this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
@@ -134,13 +150,6 @@
             this.tabForms.Size = new System.Drawing.Size(989, 28);
             this.tabForms.TabIndex = 4;
             this.tabForms.Visible = false;
-            // 
-            // nonReturningCustomersToolStripMenuItem
-            // 
-            this.nonReturningCustomersToolStripMenuItem.Name = "nonReturningCustomersToolStripMenuItem";
-            this.nonReturningCustomersToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
-            this.nonReturningCustomersToolStripMenuItem.Text = "Non Returning Customers";
-            this.nonReturningCustomersToolStripMenuItem.Click += new System.EventHandler(this.nonReturningCustomersToolStripMenuItem_Click);
             // 
             // frmMainMenu
             // 
@@ -163,7 +172,6 @@
         #endregion
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem customersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem activityLogToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salesDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem monthlyChartToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pipelineChartToolStripMenuItem;
@@ -173,5 +181,7 @@
         private System.Windows.Forms.ToolStripMenuItem userManagementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userActivityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nonReturningCustomersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newCustomersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addTaskToolStripMenuItem;
     }
 }

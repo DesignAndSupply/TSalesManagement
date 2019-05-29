@@ -37,6 +37,7 @@
             this.cmbRecipient = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbType = new System.Windows.Forms.ComboBox();
+            this.btnPipeline = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label5
@@ -121,11 +122,22 @@
             this.cmbType.Size = new System.Drawing.Size(361, 21);
             this.cmbType.TabIndex = 15;
             // 
+            // btnPipeline
+            // 
+            this.btnPipeline.Location = new System.Drawing.Point(731, 527);
+            this.btnPipeline.Name = "btnPipeline";
+            this.btnPipeline.Size = new System.Drawing.Size(98, 23);
+            this.btnPipeline.TabIndex = 23;
+            this.btnPipeline.Text = "Add to Pipline";
+            this.btnPipeline.UseVisualStyleBackColor = true;
+            this.btnPipeline.Click += new System.EventHandler(this.btnPipeline_Click);
+            // 
             // frmAmendActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 543);
+            this.ClientSize = new System.Drawing.Size(847, 561);
+            this.Controls.Add(this.btnPipeline);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtReference);
             this.Controls.Add(this.btnSave);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.ComboBox cmbRecipient;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbType;
+        private System.Windows.Forms.Button btnPipeline;
     }
 }

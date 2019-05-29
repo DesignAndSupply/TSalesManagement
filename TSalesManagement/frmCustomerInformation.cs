@@ -34,6 +34,7 @@ namespace TSalesManagement
         public frmCustomerInformation(string custAccRef, string custName)
         {
             InitializeComponent();
+            
             _custAccRef = custAccRef;
             _custName = custName;
 
@@ -57,6 +58,8 @@ namespace TSalesManagement
             fillContactsGrid();
             addConversionGauge();
 
+            
+
         }
 
         private void frmCustomerInformation_Load(object sender, EventArgs e)
@@ -64,6 +67,10 @@ namespace TSalesManagement
             addConversionGauge();
         }
 
+        public static void masterFillPipelineGrid()
+        {
+            
+        }
 
         private void addConversionGauge()
         {
@@ -112,7 +119,7 @@ namespace TSalesManagement
 
                 dgvPipeline.Columns["Estimated Value"].DefaultCellStyle.Format = "c";
             }
-            catch(Exception)
+            catch (Exception)
             {
 
             }
@@ -185,8 +192,8 @@ namespace TSalesManagement
 
         private void lblPipeline_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmNewPipeline frmNP = new frmNewPipeline(_custAccRef);
-            frmNP.ShowDialog();
+            //frmNewPipeline frmNP = new frmNewPipeline(_custAccRef);
+            //frmNP.ShowDialog();
             fillPipelineGrid();
         }
 
@@ -226,6 +233,7 @@ namespace TSalesManagement
             frmNewActivity frmna = new frmNewActivity(_custAccRef);
             frmna.ShowDialog();
             fillActivityGrid();
+            fillPipelineGrid();
         }
 
         private void lblAddContact_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

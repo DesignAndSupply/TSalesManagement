@@ -55,7 +55,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblAddContact = new System.Windows.Forms.LinkLabel();
             this.lblLinkEst = new System.Windows.Forms.LinkLabel();
-            this.lblPipeline = new System.Windows.Forms.LinkLabel();
             this.lblActivity = new System.Windows.Forms.LinkLabel();
             this.groupBox4.SuspendLayout();
             this.tabCustomer.SuspendLayout();
@@ -348,7 +347,6 @@
             // 
             this.groupBox1.Controls.Add(this.lblAddContact);
             this.groupBox1.Controls.Add(this.lblLinkEst);
-            this.groupBox1.Controls.Add(this.lblPipeline);
             this.groupBox1.Controls.Add(this.lblActivity);
             this.groupBox1.Location = new System.Drawing.Point(12, 291);
             this.groupBox1.Name = "groupBox1";
@@ -361,7 +359,7 @@
             // 
             this.lblAddContact.AutoSize = true;
             this.lblAddContact.LinkColor = System.Drawing.Color.Teal;
-            this.lblAddContact.Location = new System.Drawing.Point(10, 91);
+            this.lblAddContact.Location = new System.Drawing.Point(10, 70);
             this.lblAddContact.Name = "lblAddContact";
             this.lblAddContact.Size = new System.Drawing.Size(66, 13);
             this.lblAddContact.TabIndex = 3;
@@ -373,25 +371,13 @@
             // 
             this.lblLinkEst.AutoSize = true;
             this.lblLinkEst.LinkColor = System.Drawing.Color.Teal;
-            this.lblLinkEst.Location = new System.Drawing.Point(10, 69);
+            this.lblLinkEst.Location = new System.Drawing.Point(10, 48);
             this.lblLinkEst.Name = "lblLinkEst";
             this.lblLinkEst.Size = new System.Drawing.Size(104, 13);
             this.lblLinkEst.TabIndex = 2;
             this.lblLinkEst.TabStop = true;
             this.lblLinkEst.Text = "Link Estimating Data";
             this.lblLinkEst.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblLinkEst_LinkClicked);
-            // 
-            // lblPipeline
-            // 
-            this.lblPipeline.AutoSize = true;
-            this.lblPipeline.LinkColor = System.Drawing.Color.Teal;
-            this.lblPipeline.Location = new System.Drawing.Point(10, 48);
-            this.lblPipeline.Name = "lblPipeline";
-            this.lblPipeline.Size = new System.Drawing.Size(92, 13);
-            this.lblPipeline.TabIndex = 1;
-            this.lblPipeline.TabStop = true;
-            this.lblPipeline.Text = "Add Pipeline Data";
-            this.lblPipeline.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblPipeline_LinkClicked);
             // 
             // lblActivity
             // 
@@ -453,7 +439,6 @@
         private System.Windows.Forms.TabPage tabPipeline;
         private System.Windows.Forms.DataGridView dgvPipeline;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.LinkLabel lblPipeline;
         private System.Windows.Forms.LinkLabel lblActivity;
         private System.Windows.Forms.TabPage tabVisual;
         private LiveCharts.WinForms.SolidGauge solidGauge5;

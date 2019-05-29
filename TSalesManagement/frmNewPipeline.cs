@@ -16,12 +16,15 @@ namespace TSalesManagement
     {
 
         public string _accRef { get; set; }
+        public int _activityID { get; set; }
 
 
-        public frmNewPipeline(string custAccRef)
+        public frmNewPipeline(string custAccRef, int activityID)
         {
             InitializeComponent();
             _accRef = custAccRef;
+            _activityID = activityID;
+            
         }
 
         private void frmNewPipeline_Load(object sender, EventArgs e)
@@ -43,8 +46,8 @@ namespace TSalesManagement
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
-                cmd.CommandText = "INSERT INTO DBO.sales_pipeline (door_style,customer_acc_ref,order_ref,estimated_order_value, estimated_order_date,added_by_id, date_added,description_of_doors_on_order,order_status) " +
-                                  " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status)";
+                cmd.CommandText = "INSERT INTO DBO.sales_pipeline (door_style,customer_acc_ref,order_ref,estimated_order_value, estimated_order_date,added_by_id, date_added,description_of_doors_on_order,order_status,activity_id) " +
+                                  " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status,@activityID)";
                 cmd.Parameters.AddWithValue("@doorStyle", cmbDoorStyle.Text);
                 cmd.Parameters.AddWithValue("@custAccRef", _accRef);
                 cmd.Parameters.AddWithValue("@orderRef", txtOrderRef.Text);
@@ -54,9 +57,12 @@ namespace TSalesManagement
                 cmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
                 cmd.Parameters.AddWithValue("@description", txtDetails.Text);
                 cmd.Parameters.AddWithValue("@status", cmbStatus.Text);
+                cmd.Parameters.AddWithValue("@activityID", _activityID);
 
 
                 cmd.ExecuteNonQuery();
+
+                
 
                 conn.Close();
                 this.Close();

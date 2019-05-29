@@ -136,5 +136,18 @@ namespace TSalesManagement
             frmNR.MdiParent = this;
             frmNR.Show();
         }
+
+        private void newCustomersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewCustomers frmNC = new frmNewCustomers();
+            frmNC.MdiParent = this;
+            frmNC.Show();
+        }
+
+        private void addTaskToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmNewTask nt = new frmNewTask(null);
+            nt.ShowDialog();
+        }
     }
 }

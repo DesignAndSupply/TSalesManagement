@@ -17,6 +17,12 @@ namespace TSalesManagement
                                "database=order_database; " +
                                "connection timeout=30";
 
+        public const string ConnectionStringToDo = "user id=sa;" +
+             "password=Dodid1;Network Address=192.168.0.150\\sqlexpress;" +
+             "Trusted_Connection=no;" +
+             "database=ToDo; " +
+             "connection timeout=30";
+
 
         public Tuple<Int32,Int32> GetSalesTarget(string monthName, string yearName)
         {

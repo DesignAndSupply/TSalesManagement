@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="user_infoDataSet1" targetNamespace="http://tempuri.org/user_infoDataSet11.xsd" xmlns:mstns="http://tempuri.org/user_infoDataSet11.xsd" xmlns="http://tempuri.org/user_infoDataSet11.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="user_infoConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="user_infoConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.TSalesManagement.Properties.Settings.GlobalReference.Default.user_infoConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="view_current_users_with_emailTableAdapter" GeneratorDataComponentClassName="view_current_users_with_emailTableAdapter" Name="view_current_users_with_email" UserDataComponentName="view_current_users_with_emailTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="user_infoConnectionString (Settings)" DbObjectName="user_info.dbo.view_current_users_with_email" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT id, FullName, [current], email FROM dbo.view_current_users_with_email</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="FullName" DataSetColumn="FullName" />
+              <Mapping SourceColumn="current" DataSetColumn="current" />
+              <Mapping SourceColumn="email" DataSetColumn="email" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="user_infoDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="user_infoDataSet1" msprop:Generator_UserDSName="user_infoDataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="view_current_users_with_email" msprop:Generator_TableClassName="view_current_users_with_emailDataTable" msprop:Generator_TableVarName="tableview_current_users_with_email" msprop:Generator_TablePropName="view_current_users_with_email" msprop:Generator_RowDeletingName="view_current_users_with_emailRowDeleting" msprop:Generator_RowChangingName="view_current_users_with_emailRowChanging" msprop:Generator_RowEvHandlerName="view_current_users_with_emailRowChangeEventHandler" msprop:Generator_RowDeletedName="view_current_users_with_emailRowDeleted" msprop:Generator_UserTableName="view_current_users_with_email" msprop:Generator_RowChangedName="view_current_users_with_emailRowChanged" msprop:Generator_RowEvArgName="view_current_users_with_emailRowChangeEvent" msprop:Generator_RowClassName="view_current_users_with_emailRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="FullName" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnFullName" msprop:Generator_ColumnPropNameInRow="FullName" msprop:Generator_ColumnPropNameInTable="FullNameColumn" msprop:Generator_UserColumnName="FullName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="41" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="current" msprop:Generator_ColumnVarNameInTable="columncurrent" msprop:Generator_ColumnPropNameInRow="current" msprop:Generator_ColumnPropNameInTable="currentColumn" msprop:Generator_UserColumnName="current" type="xs:boolean" minOccurs="0" />
+              <xs:element name="email" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_UserColumnName="email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="255" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

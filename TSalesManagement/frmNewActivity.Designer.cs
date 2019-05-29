@@ -66,6 +66,7 @@
             this.cmbType.Items.AddRange(new object[] {
             "Email",
             "Verbal",
+            "Verbal & Email",
             "Meeting",
             "Other"});
             this.cmbType.Location = new System.Drawing.Point(13, 141);
