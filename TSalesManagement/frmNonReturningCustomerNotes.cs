@@ -81,8 +81,40 @@ namespace TSalesManagement
 
             conn.Close();
             this.Close();
+
+            DialogResult dr = MessageBox.Show("Would you like to add this to your activity list also?", "Add activity", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (dr == DialogResult.Yes)
+            {
+                updateActivity();
+                MessageBox.Show("Activity added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
+
+        private void updateActivity()
+        {
+            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("Insert INTO dbo.crm_activity (customer_acc_ref,date_created,correspondance_type,details_of,sender_id,date_modified) " +
+                "VALUES (@custAccRef,@dateCreated,@cType,@detailsOf,@senderID,@dateModified)", conn);
+
+            cmd.Parameters.AddWithValue("@custAccRef", _accRef);
+            cmd.Parameters.AddWithValue("@dateCreated", DateTime.Now);
+            cmd.Parameters.AddWithValue("@cType", "Non Returning Customer Update");
+            cmd.Parameters.AddWithValue("@detailsOf", txtNotes.Text);
+            cmd.Parameters.AddWithValue("@senderID", Login.globalUserID);
+            cmd.Parameters.AddWithValue("@dateModified", DateTime.Now);
+
+            cmd.ExecuteNonQuery();
+
+            conn.Close();
+
+
+
+
+        }
 
         private bool checkRecordExists()
         {
