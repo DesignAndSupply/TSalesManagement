@@ -107,7 +107,7 @@ namespace TSalesManagement
                     maxID = 0;
                 }
                 
-                frmNewTask nt = new frmNewTask(maxID, cmbRecipient.Text, txtReference.Text,txtDetails.Text);
+                frmNewTask nt = new frmNewTask(maxID, cmbRecipient.Text, txtReference.Text,txtDetails.Text, lblCustomer.Text);
                 nt.ShowDialog();
             }
 

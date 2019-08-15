@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +16,7 @@ namespace TSalesManagement
     {
         public double? _activityID { get; set; }
 
-        public frmNewTask(double? activityID, string contact, string reference, string details)
+        public frmNewTask(double? activityID, string contact, string reference, string details, string customer)
         {
             InitializeComponent();
             _activityID = activityID;
@@ -27,14 +28,16 @@ namespace TSalesManagement
             }
             else
             {
-                populateFromActivity(contact,reference,details);
+                populateFromActivity(contact,reference,details,customer);
             }
             
         }
 
-        private void populateFromActivity(string contact, string reference, string details)
+        private void populateFromActivity(string contact, string reference, string details,string customer)
         {
-            txtSubject.Text = contact + '-' + reference;
+            
+            cmbPriority.Text = "High";
+            txtSubject.Text = Regex.Replace(customer,"  ","") +  '-' + contact + '-' + reference;
             txtDetail.Text = details;
         }
 
@@ -66,7 +69,7 @@ namespace TSalesManagement
         {
             // TODO: This line of code loads data into the 'user_infoDataSet1.view_current_users_with_email' table. You can move, or remove it, as needed.
             this.view_current_users_with_emailTableAdapter.Fill(this.user_infoDataSet1.view_current_users_with_email);
-
+            cmbSetForID.SelectedValue = Login.globalUserID;
         }
 
         private void chkDueDateRequired_CheckedChanged(object sender, EventArgs e)
