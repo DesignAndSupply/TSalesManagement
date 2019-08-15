@@ -24,8 +24,6 @@ namespace TSalesManagement
             _custAccRef = custAccRef;
 
             Customer c = new Customer(_custAccRef);
-         
-
 
             lblHeader.Text = "New Contact info for: " + c._customerName;
         }

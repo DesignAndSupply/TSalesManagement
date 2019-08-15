@@ -15,13 +15,30 @@ namespace TSalesManagement
     {
         public double? _activityID { get; set; }
 
-        public frmNewTask(double? activityID)
+        public frmNewTask(double? activityID, string contact, string reference, string details)
         {
             InitializeComponent();
             _activityID = activityID;
             cmbSetForID.SelectedValue = Login.globalUserID;
             dueDateVisibility();
+            if (activityID is null)
+            {
+
+            }
+            else
+            {
+                populateFromActivity(contact,reference,details);
+            }
+            
         }
+
+        private void populateFromActivity(string contact, string reference, string details)
+        {
+            txtSubject.Text = contact + '-' + reference;
+            txtDetail.Text = details;
+        }
+
+
 
         private void btnSave_Click(object sender, EventArgs e)
         {

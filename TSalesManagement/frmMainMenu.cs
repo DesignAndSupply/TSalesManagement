@@ -146,7 +146,7 @@ namespace TSalesManagement
 
         private void addTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNewTask nt = new frmNewTask(null);
+            frmNewTask nt = new frmNewTask(null,null,null,null);
             nt.ShowDialog();
         }
     }
