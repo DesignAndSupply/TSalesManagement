@@ -24,7 +24,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>47</ApplicationRevision>
+    <ApplicationRevision>48</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -50,10 +50,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>A159CF542B739AA3498179AE6AF876CF24A41935</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>476C5CEE7EE7827D1A5C2E197B03F7B88614DEEB</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TSalesManagement_3_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>TSalesManagement_7_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -393,6 +393,7 @@
     <None Include="TSalesManagement_1_TemporaryKey.pfx" />
     <None Include="TSalesManagement_2_TemporaryKey.pfx" />
     <None Include="TSalesManagement_3_TemporaryKey.pfx" />
+    <None Include="TSalesManagement_7_TemporaryKey.pfx" />
     <None Include="TSalesManagement_TemporaryKey.pfx" />
     <None Include="user_infoDataSet.xsc">
       <DependentUpon>user_infoDataSet.xsd</DependentUpon>

@@ -24,6 +24,9 @@ namespace TSalesManagement
              "connection timeout=30";
 
 
+
+
+
         public Tuple<Int32,Int32> GetSalesTarget(string monthName, string yearName)
         {
 

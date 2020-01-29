@@ -266,5 +266,11 @@ namespace TSalesManagement
 
             }
         }
+
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+           
+
+        }
     }
 }

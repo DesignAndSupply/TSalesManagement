@@ -46,11 +46,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.btnClearSearch = new System.Windows.Forms.Button();
+            this.dgTask = new System.Windows.Forms.DataGridView();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgActivity)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPipeline)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTask)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbStaff
@@ -127,8 +130,7 @@
             this.dgActivity.AllowUserToOrderColumns = true;
             this.dgActivity.AllowUserToResizeColumns = false;
             this.dgActivity.AllowUserToResizeRows = false;
-            this.dgActivity.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgActivity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgActivity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgActivity.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -138,7 +140,7 @@
             this.dgActivity.Name = "dgActivity";
             this.dgActivity.RowHeadersVisible = false;
             this.dgActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgActivity.Size = new System.Drawing.Size(968, 322);
+            this.dgActivity.Size = new System.Drawing.Size(968, 159);
             this.dgActivity.TabIndex = 3;
             this.dgActivity.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActivity_CellDoubleClick);
             // 
@@ -232,11 +234,43 @@
             this.btnClearSearch.UseVisualStyleBackColor = true;
             this.btnClearSearch.Click += new System.EventHandler(this.btnClearSearch_Click);
             // 
+            // dgTask
+            // 
+            this.dgTask.AllowUserToAddRows = false;
+            this.dgTask.AllowUserToDeleteRows = false;
+            this.dgTask.AllowUserToOrderColumns = true;
+            this.dgTask.AllowUserToResizeColumns = false;
+            this.dgTask.AllowUserToResizeRows = false;
+            this.dgTask.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgTask.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgTask.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgTask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgTask.Location = new System.Drawing.Point(248, 217);
+            this.dgTask.MultiSelect = false;
+            this.dgTask.Name = "dgTask";
+            this.dgTask.RowHeadersVisible = false;
+            this.dgTask.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgTask.Size = new System.Drawing.Size(968, 137);
+            this.dgTask.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(247, 201);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "User ToDo\'s:";
+            // 
             // frmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1228, 632);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.dgTask);
             this.Controls.Add(this.btnClearSearch);
             this.Controls.Add(this.txtCustomerSearch);
             this.Controls.Add(this.label6);
@@ -258,6 +292,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgActivity)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgPipeline)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgTask)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +317,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.Button btnClearSearch;
+        private System.Windows.Forms.DataGridView dgTask;
+        private System.Windows.Forms.Label label7;
     }
 }

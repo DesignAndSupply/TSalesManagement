@@ -185,6 +185,35 @@ namespace TSalesManagement
 
         }
 
+        private void fillTaskGrid()
+        {
+            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionStringToDo);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandText = "SELECT * from c_view_task_list_crm where SetFor = @sender order by dueDate desc";
+
+            cmd.Parameters.AddWithValue("@sender", cmbStaff.Text);
+
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+
+            //try
+            // {
+            DataTable dt = new DataTable();
+            adap.Fill(dt);
+            dgTask.DataSource = dt;
+
+
+            //}
+            // catch (Exception)
+            //{
+
+            //}
+
+        }
+
 
 
 
@@ -193,6 +222,7 @@ namespace TSalesManagement
         {
             fillGrid();
             fillActivityGrid();
+            fillTaskGrid();
         }
 
 
