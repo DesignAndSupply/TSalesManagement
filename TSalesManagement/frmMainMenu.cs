@@ -149,5 +149,11 @@ namespace TSalesManagement
             frmNewTask nt = new frmNewTask(null,null,null,null,null);
             nt.ShowDialog();
         }
+
+        private void addNewProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddProject frmAP = new frmAddProject();
+            frmAP.ShowDialog();
+        }
     }
 }
