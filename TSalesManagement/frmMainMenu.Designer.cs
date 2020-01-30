@@ -40,10 +40,10 @@
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tabForms = new System.Windows.Forms.TabControl();
             this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewProjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabForms = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,21 +105,21 @@
             // monthlyChartToolStripMenuItem
             // 
             this.monthlyChartToolStripMenuItem.Name = "monthlyChartToolStripMenuItem";
-            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.monthlyChartToolStripMenuItem.Text = "Monthly Chart";
             this.monthlyChartToolStripMenuItem.Click += new System.EventHandler(this.monthlyChartToolStripMenuItem_Click);
             // 
             // pipelineChartToolStripMenuItem
             // 
             this.pipelineChartToolStripMenuItem.Name = "pipelineChartToolStripMenuItem";
-            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.pipelineChartToolStripMenuItem.Text = "Pipeline Chart";
             this.pipelineChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineChartToolStripMenuItem_Click);
             // 
             // pipelineLiveChartToolStripMenuItem
             // 
             this.pipelineLiveChartToolStripMenuItem.Name = "pipelineLiveChartToolStripMenuItem";
-            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
             this.pipelineLiveChartToolStripMenuItem.Text = "Pipeline Live Chart";
             this.pipelineLiveChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineLiveChartToolStripMenuItem_Click);
             // 
@@ -134,7 +134,7 @@
             // userActivityToolStripMenuItem
             // 
             this.userActivityToolStripMenuItem.Name = "userActivityToolStripMenuItem";
-            this.userActivityToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.userActivityToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.userActivityToolStripMenuItem.Text = "User Activity";
             this.userActivityToolStripMenuItem.Click += new System.EventHandler(this.userActivityToolStripMenuItem_Click);
             // 
@@ -144,16 +144,6 @@
             this.addTaskToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.addTaskToolStripMenuItem.Text = "Add Task";
             this.addTaskToolStripMenuItem.Click += new System.EventHandler(this.addTaskToolStripMenuItem_Click);
-            // 
-            // tabForms
-            // 
-            this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tabForms.Location = new System.Drawing.Point(0, 24);
-            this.tabForms.Name = "tabForms";
-            this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(989, 28);
-            this.tabForms.TabIndex = 4;
-            this.tabForms.Visible = false;
             // 
             // projectsToolStripMenuItem
             // 
@@ -176,6 +166,17 @@
             this.viewProjectsToolStripMenuItem.Name = "viewProjectsToolStripMenuItem";
             this.viewProjectsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewProjectsToolStripMenuItem.Text = "View Projects";
+            this.viewProjectsToolStripMenuItem.Click += new System.EventHandler(this.viewProjectsToolStripMenuItem_Click);
+            // 
+            // tabForms
+            // 
+            this.tabForms.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabForms.Location = new System.Drawing.Point(0, 24);
+            this.tabForms.Name = "tabForms";
+            this.tabForms.SelectedIndex = 0;
+            this.tabForms.Size = new System.Drawing.Size(989, 28);
+            this.tabForms.TabIndex = 4;
+            this.tabForms.Visible = false;
             // 
             // frmMainMenu
             // 

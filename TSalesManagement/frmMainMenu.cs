@@ -155,5 +155,12 @@ namespace TSalesManagement
             frmAddProject frmAP = new frmAddProject();
             frmAP.ShowDialog();
         }
+
+        private void viewProjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmViewProjects vp = new frmViewProjects();
+            vp.MdiParent = this;
+            vp.Show();
+        }
     }
 }
