@@ -54,5 +54,14 @@ namespace TSalesManagement
         {
 
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //get the ID of the row selected
+            DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
+            int ID = Convert.ToInt32(row.Cells["ID"].Value.ToString());
+            frmProjectManager PM = new frmProjectManager(ID);
+            PM.ShowDialog();
+        }
     }
 }
