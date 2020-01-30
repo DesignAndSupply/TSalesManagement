@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtProjectTitle = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtSiteAddress = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbCustomer = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -62,6 +62,8 @@
             this.txtAccountsName = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -101,13 +103,13 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Site Address";
             // 
-            // richTextBox1
+            // txtSiteAddress
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(47, 106);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(239, 67);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
+            this.txtSiteAddress.Location = new System.Drawing.Point(47, 106);
+            this.txtSiteAddress.Name = "txtSiteAddress";
+            this.txtSiteAddress.Size = new System.Drawing.Size(239, 67);
+            this.txtSiteAddress.TabIndex = 5;
+            this.txtSiteAddress.Text = "";
             // 
             // label4
             // 
@@ -364,11 +366,32 @@
             this.label19.TabIndex = 27;
             this.label19.Text = "Accounts Contact Information";
             // 
+            // btnAddCustomer
+            // 
+            this.btnAddCustomer.Location = new System.Drawing.Point(205, 602);
+            this.btnAddCustomer.Name = "btnAddCustomer";
+            this.btnAddCustomer.Size = new System.Drawing.Size(92, 23);
+            this.btnAddCustomer.TabIndex = 36;
+            this.btnAddCustomer.Text = "Add Customer";
+            this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(100, 602);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 37;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // frmAddProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(332, 637);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.txtAccountsPosition);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtAccountsEmail);
@@ -398,7 +421,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbCustomer);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtSiteAddress);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtProjectTitle);
             this.Controls.Add(this.label2);
@@ -416,7 +439,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtProjectTitle;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox txtSiteAddress;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbCustomer;
         private System.Windows.Forms.Label label5;
@@ -446,5 +469,7 @@
         private System.Windows.Forms.TextBox txtAccountsName;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnAddCustomer;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

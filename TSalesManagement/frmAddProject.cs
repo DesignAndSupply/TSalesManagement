@@ -24,7 +24,7 @@ namespace TSalesManagement
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     conn.Open();
-                    SqlDataReader DR = cmd.ExecuteReader();
+                    SqlDataReader DR = cmd.ExecuteReader(); // this needs testing 
                     while (DR.Read())
                     {
                         cmbCustomer.Items.Add(DR[0]);
@@ -54,6 +54,28 @@ namespace TSalesManagement
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void btnAddCustomer_Click(object sender, EventArgs e)
+        {
+            //work out which boxes can be null etc 
+            string sql = "INSERT INTO dbo.project (project_title,site_address,customer_acc_ref," +
+                "commercial_contact_name,commercial_phone_number,commercial_email,commercial_position," +
+                "onsite_contact_name,onsite_phone_number,onsite_email,onsite_posistion," +
+                "accounts_contact_name,accounts_phone_number,accounts_email,accounts_position" +
+                "VALUES('" + txtProjectTitle.Text + "','" + txtSiteAddress.Text + "','" + cmbCustomer.SelectedIndex.ToString() + "'," +
+                "'" + txtCommercialName.Text + "','" + txtCommercialNumber.Text + "','" + txtCommercialEmail.Text + "','" + txtCommercialPosition.Text + "'," +
+                "'" + txtOnSiteName.Text + "','" + txtOnSiteNumber.Text + "','" + txtOnSiteEmail.Text + "','" + txtOnSitePosition.Text + "'," +
+                "'" + txtAccountsName.Text + "','" + txtAccountsNumber.Text + "','" + txtAccountsEmail.Text + "','" + txtAccountsEmail.Text + "')"; 
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
         }
     }
