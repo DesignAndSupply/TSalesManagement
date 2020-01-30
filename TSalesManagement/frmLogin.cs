@@ -48,5 +48,17 @@ namespace TSalesManagement
         {
 
         }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.ActiveControl = txtPassword;
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin.PerformClick();
+        }
     }
 }
