@@ -60,14 +60,34 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.chk_tender_complete = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.chk_prelet = new System.Windows.Forms.CheckBox();
+            this.chk_design = new System.Windows.Forms.CheckBox();
+            this.chk_Order = new System.Windows.Forms.CheckBox();
+            this.chk_Survey = new System.Windows.Forms.CheckBox();
+            this.chk_SOS = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
+            this.tabControl1.Controls.Add(this.tabPage7);
             this.tabControl1.Location = new System.Drawing.Point(282, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -88,12 +108,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.chk_prelet);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(555, 378);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Prospect";
+            this.tabPage2.Text = "Prelet";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -343,12 +364,116 @@
             // chk_tender_complete
             // 
             this.chk_tender_complete.AutoSize = true;
-            this.chk_tender_complete.Location = new System.Drawing.Point(131, 95);
+            this.chk_tender_complete.Location = new System.Drawing.Point(228, 186);
             this.chk_tender_complete.Name = "chk_tender_complete";
             this.chk_tender_complete.Size = new System.Drawing.Size(107, 17);
             this.chk_tender_complete.TabIndex = 0;
             this.chk_tender_complete.Text = "Tender Complete";
             this.chk_tender_complete.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.chk_design);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(555, 378);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Design";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.chk_Order);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(555, 378);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Order";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.chk_Survey);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(555, 378);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Survey";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.chk_SOS);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(555, 378);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Start On Site";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(555, 378);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Completion";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // chk_prelet
+            // 
+            this.chk_prelet.AutoSize = true;
+            this.chk_prelet.Location = new System.Drawing.Point(224, 181);
+            this.chk_prelet.Name = "chk_prelet";
+            this.chk_prelet.Size = new System.Drawing.Size(100, 17);
+            this.chk_prelet.TabIndex = 1;
+            this.chk_prelet.Text = "Prelet Complete";
+            this.chk_prelet.UseVisualStyleBackColor = true;
+            // 
+            // chk_design
+            // 
+            this.chk_design.AutoSize = true;
+            this.chk_design.Location = new System.Drawing.Point(224, 181);
+            this.chk_design.Name = "chk_design";
+            this.chk_design.Size = new System.Drawing.Size(106, 17);
+            this.chk_design.TabIndex = 1;
+            this.chk_design.Text = "Design Complete";
+            this.chk_design.UseVisualStyleBackColor = true;
+            // 
+            // chk_Order
+            // 
+            this.chk_Order.AutoSize = true;
+            this.chk_Order.Location = new System.Drawing.Point(224, 181);
+            this.chk_Order.Name = "chk_Order";
+            this.chk_Order.Size = new System.Drawing.Size(99, 17);
+            this.chk_Order.TabIndex = 1;
+            this.chk_Order.Text = "Order Complete";
+            this.chk_Order.UseVisualStyleBackColor = true;
+            // 
+            // chk_Survey
+            // 
+            this.chk_Survey.AutoSize = true;
+            this.chk_Survey.Location = new System.Drawing.Point(224, 181);
+            this.chk_Survey.Name = "chk_Survey";
+            this.chk_Survey.Size = new System.Drawing.Size(106, 17);
+            this.chk_Survey.TabIndex = 1;
+            this.chk_Survey.Text = "Survey Complete";
+            this.chk_Survey.UseVisualStyleBackColor = true;
+            // 
+            // chk_SOS
+            // 
+            this.chk_SOS.AutoSize = true;
+            this.chk_SOS.Location = new System.Drawing.Point(224, 181);
+            this.chk_SOS.Name = "chk_SOS";
+            this.chk_SOS.Size = new System.Drawing.Size(133, 17);
+            this.chk_SOS.TabIndex = 1;
+            this.chk_SOS.Text = "Start On Site Complete";
+            this.chk_SOS.UseVisualStyleBackColor = true;
             // 
             // frmProjectManager
             // 
@@ -392,6 +517,16 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -431,5 +566,15 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.CheckBox chk_tender_complete;
+        private System.Windows.Forms.CheckBox chk_prelet;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.CheckBox chk_design;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.CheckBox chk_Order;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.CheckBox chk_Survey;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.CheckBox chk_SOS;
+        private System.Windows.Forms.TabPage tabPage7;
     }
 }

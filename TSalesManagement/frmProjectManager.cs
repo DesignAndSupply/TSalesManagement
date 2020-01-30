@@ -50,12 +50,35 @@ namespace TSalesManagement
         {
             if (chk_tender_complete.Checked == true)
             {
-
+                if (chk_prelet.Checked == true)
+                {
+                    if (chk_design.Checked == true)
+                    {
+                        if (chk_Order.Checked == true)
+                        {
+                            if (chk_Survey.Checked == true)
+                            {
+                                if (chk_SOS.Checked == true)
+                                {
+                                    // do nothing
+                                }
+                                else
+                                    tabControl1.SelectedIndex = 5;
+                            }
+                            else
+                                tabControl1.SelectedIndex = 4;
+                        }
+                        else
+                            tabControl1.SelectedIndex = 3;
+                    }
+                    else
+                        tabControl1.SelectedIndex = 2;
+                }
+                else
+                    tabControl1.SelectedIndex = 1;
             }
             else
-            {
                 tabControl1.SelectedIndex = 0;
-            }
         }
     }
 }
