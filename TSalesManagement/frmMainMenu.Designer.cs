@@ -157,14 +157,14 @@
             // addNewProjectToolStripMenuItem
             // 
             this.addNewProjectToolStripMenuItem.Name = "addNewProjectToolStripMenuItem";
-            this.addNewProjectToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addNewProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.addNewProjectToolStripMenuItem.Text = "Add New Project";
             this.addNewProjectToolStripMenuItem.Click += new System.EventHandler(this.addNewProjectToolStripMenuItem_Click);
             // 
             // viewProjectsToolStripMenuItem
             // 
             this.viewProjectsToolStripMenuItem.Name = "viewProjectsToolStripMenuItem";
-            this.viewProjectsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewProjectsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
             this.viewProjectsToolStripMenuItem.Text = "View Projects";
             this.viewProjectsToolStripMenuItem.Click += new System.EventHandler(this.viewProjectsToolStripMenuItem_Click);
             // 
@@ -189,6 +189,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMainMenu";
             this.Text = "InSight CRM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainMenu_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

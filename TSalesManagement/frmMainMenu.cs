@@ -162,5 +162,16 @@ namespace TSalesManagement
             vp.MdiParent = this;
             vp.Show();
         }
+
+        private void frmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (MessageBox.Show("Are you sure you want to exit?", "Exit!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    Environment.Exit(1);
+                else
+                    e.Cancel = true;
+            }
+        }
     }
 }

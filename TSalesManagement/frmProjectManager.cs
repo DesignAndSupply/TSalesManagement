@@ -97,15 +97,36 @@ namespace TSalesManagement
                 tabControl1.SelectedTab = tabPage1;
             }
 
-            //SOS
-            if ((chk_SOS.Checked == true) && (tabControl1.SelectedTab == tabPage7))
+            //On Site
+            if ((chk_onSite.Checked == true) && (tabControl1.SelectedTab == tabPage7))
             {
                 tabControl1.SelectedTab = tabPage7;
             }
-            else if ((chk_SOS.Checked == false) && (tabControl1.SelectedTab == tabPage7))
+            else if ((chk_onSite.Checked == false) && (tabControl1.SelectedTab == tabPage7))
             {
                 tabControl1.SelectedTab = tabPage1;
             }
+
+            //Completion 
+            if ((chk_completion.Checked == true) && (tabControl1.SelectedTab == tabPage8))
+            {
+                tabControl1.SelectedTab = tabPage8;
+            }
+            else if ((chk_completion.Checked == false) && (tabControl1.SelectedTab == tabPage8))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
+            //100% invoice
+            if ((chk_invoiced.Checked == true) && (tabControl1.SelectedTab == tabPage9))
+            {
+                tabControl1.SelectedTab = tabPage9;
+            }
+            else if ((chk_invoiced.Checked == false) && (tabControl1.SelectedTab == tabPage9))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
 
         }
     }

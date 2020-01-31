@@ -69,7 +69,12 @@
             this.chk_design = new System.Windows.Forms.CheckBox();
             this.chk_Order = new System.Windows.Forms.CheckBox();
             this.chk_Survey = new System.Windows.Forms.CheckBox();
-            this.chk_SOS = new System.Windows.Forms.CheckBox();
+            this.chk_onSite = new System.Windows.Forms.CheckBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.chk_completion = new System.Windows.Forms.CheckBox();
+            this.chk_invoiced = new System.Windows.Forms.CheckBox();
+            this.chk_retention = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -77,6 +82,9 @@
             this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.tabPage9.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -88,6 +96,8 @@
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage7);
+            this.tabControl1.Controls.Add(this.tabPage8);
+            this.tabControl1.Controls.Add(this.tabPage9);
             this.tabControl1.Location = new System.Drawing.Point(282, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -406,17 +416,18 @@
             // 
             // tabPage6
             // 
-            this.tabPage6.Controls.Add(this.chk_SOS);
+            this.tabPage6.Controls.Add(this.chk_onSite);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(555, 378);
             this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "Start On Site";
+            this.tabPage6.Text = "On Site";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.chk_completion);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
@@ -465,15 +476,67 @@
             this.chk_Survey.Text = "Survey Complete";
             this.chk_Survey.UseVisualStyleBackColor = true;
             // 
-            // chk_SOS
+            // chk_onSite
             // 
-            this.chk_SOS.AutoSize = true;
-            this.chk_SOS.Location = new System.Drawing.Point(224, 181);
-            this.chk_SOS.Name = "chk_SOS";
-            this.chk_SOS.Size = new System.Drawing.Size(133, 17);
-            this.chk_SOS.TabIndex = 1;
-            this.chk_SOS.Text = "Start On Site Complete";
-            this.chk_SOS.UseVisualStyleBackColor = true;
+            this.chk_onSite.AutoSize = true;
+            this.chk_onSite.Location = new System.Drawing.Point(224, 181);
+            this.chk_onSite.Name = "chk_onSite";
+            this.chk_onSite.Size = new System.Drawing.Size(108, 17);
+            this.chk_onSite.TabIndex = 1;
+            this.chk_onSite.Text = "On Site Complete";
+            this.chk_onSite.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.chk_invoiced);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(555, 378);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "100% invoiced";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.chk_retention);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(555, 378);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Retention";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // chk_completion
+            // 
+            this.chk_completion.AutoSize = true;
+            this.chk_completion.Location = new System.Drawing.Point(223, 181);
+            this.chk_completion.Name = "chk_completion";
+            this.chk_completion.Size = new System.Drawing.Size(130, 17);
+            this.chk_completion.TabIndex = 2;
+            this.chk_completion.Text = "Completion completed";
+            this.chk_completion.UseVisualStyleBackColor = true;
+            // 
+            // chk_invoiced
+            // 
+            this.chk_invoiced.AutoSize = true;
+            this.chk_invoiced.Location = new System.Drawing.Point(223, 181);
+            this.chk_invoiced.Name = "chk_invoiced";
+            this.chk_invoiced.Size = new System.Drawing.Size(147, 17);
+            this.chk_invoiced.TabIndex = 2;
+            this.chk_invoiced.Text = "100% invoiced completed";
+            this.chk_invoiced.UseVisualStyleBackColor = true;
+            // 
+            // chk_retention
+            // 
+            this.chk_retention.AutoSize = true;
+            this.chk_retention.Location = new System.Drawing.Point(223, 181);
+            this.chk_retention.Name = "chk_retention";
+            this.chk_retention.Size = new System.Drawing.Size(119, 17);
+            this.chk_retention.TabIndex = 2;
+            this.chk_retention.Text = "Retention Complete";
+            this.chk_retention.UseVisualStyleBackColor = true;
             // 
             // frmProjectManager
             // 
@@ -527,6 +590,12 @@
             this.tabPage5.PerformLayout();
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage7.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.tabPage9.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,7 +643,12 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.CheckBox chk_Survey;
         private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.CheckBox chk_SOS;
+        private System.Windows.Forms.CheckBox chk_onSite;
         private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.CheckBox chk_completion;
+        private System.Windows.Forms.CheckBox chk_invoiced;
+        private System.Windows.Forms.CheckBox chk_retention;
     }
 }
