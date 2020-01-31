@@ -136,7 +136,7 @@ namespace TSalesManagement
 
         private void btn_PDF_Click(object sender, EventArgs e)
         {
-            string folder = @"designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender";
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
