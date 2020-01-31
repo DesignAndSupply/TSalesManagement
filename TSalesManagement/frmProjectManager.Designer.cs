@@ -59,7 +59,7 @@
             this.txtCommercialName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.chk_tender_complete = new System.Windows.Forms.CheckBox();
+            this.chk_tender = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -97,7 +97,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.chk_tender_complete);
+            this.tabPage1.Controls.Add(this.chk_tender);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -361,15 +361,15 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Commercial Contact Information";
             // 
-            // chk_tender_complete
+            // chk_tender
             // 
-            this.chk_tender_complete.AutoSize = true;
-            this.chk_tender_complete.Location = new System.Drawing.Point(228, 186);
-            this.chk_tender_complete.Name = "chk_tender_complete";
-            this.chk_tender_complete.Size = new System.Drawing.Size(107, 17);
-            this.chk_tender_complete.TabIndex = 0;
-            this.chk_tender_complete.Text = "Tender Complete";
-            this.chk_tender_complete.UseVisualStyleBackColor = true;
+            this.chk_tender.AutoSize = true;
+            this.chk_tender.Location = new System.Drawing.Point(228, 186);
+            this.chk_tender.Name = "chk_tender";
+            this.chk_tender.Size = new System.Drawing.Size(107, 17);
+            this.chk_tender.TabIndex = 0;
+            this.chk_tender.Text = "Tender Complete";
+            this.chk_tender.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -565,7 +565,7 @@
         private System.Windows.Forms.TextBox txtCommercialName;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.CheckBox chk_tender_complete;
+        private System.Windows.Forms.CheckBox chk_tender;
         private System.Windows.Forms.CheckBox chk_prelet;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.CheckBox chk_design;

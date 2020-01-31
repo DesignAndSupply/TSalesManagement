@@ -48,37 +48,65 @@ namespace TSalesManagement
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (chk_tender_complete.Checked == true)
+            //tender
+            if ((chk_tender.Checked == true) && (tabControl1.SelectedTab == tabPage2))
             {
-                if (chk_prelet.Checked == true)
-                {
-                    if (chk_design.Checked == true)
-                    {
-                        if (chk_Order.Checked == true)
-                        {
-                            if (chk_Survey.Checked == true)
-                            {
-                                if (chk_SOS.Checked == true)
-                                {
-                                    // do nothing
-                                }
-                                else
-                                    tabControl1.SelectedIndex = 5;
-                            }
-                            else
-                                tabControl1.SelectedIndex = 4;
-                        }
-                        else
-                            tabControl1.SelectedIndex = 3;
-                    }
-                    else
-                        tabControl1.SelectedIndex = 2;
-                }
-                else
-                    tabControl1.SelectedIndex = 1;
+                tabControl1.SelectedTab = tabPage2;
             }
-            else
-                tabControl1.SelectedIndex = 0;
+            else if ((chk_tender.Checked == false) && (tabControl1.SelectedTab == tabPage2))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+            //prelet
+            if ((chk_prelet.Checked == true) && (tabControl1.SelectedTab == tabPage3))
+            {
+                tabControl1.SelectedTab = tabPage3;
+            }
+            else if ((chk_prelet.Checked == false) && (tabControl1.SelectedTab == tabPage3))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
+            //design
+            if ((chk_design.Checked == true) && (tabControl1.SelectedTab == tabPage4))
+            {
+                tabControl1.SelectedTab = tabPage4;
+            }
+            else if ((chk_design.Checked == false) && (tabControl1.SelectedTab == tabPage4))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
+            //Order
+            if ((chk_Order.Checked == true) && (tabControl1.SelectedTab == tabPage5))
+            {
+                tabControl1.SelectedTab = tabPage5;
+            }
+            else if ((chk_Order.Checked == false) && (tabControl1.SelectedTab == tabPage5))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
+            //Survey
+            if ((chk_Survey.Checked == true) && (tabControl1.SelectedTab == tabPage6))
+            {
+                tabControl1.SelectedTab = tabPage6;
+            }
+            else if ((chk_Survey.Checked == false) && (tabControl1.SelectedTab == tabPage6))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
+            //SOS
+            if ((chk_SOS.Checked == true) && (tabControl1.SelectedTab == tabPage7))
+            {
+                tabControl1.SelectedTab = tabPage7;
+            }
+            else if ((chk_SOS.Checked == false) && (tabControl1.SelectedTab == tabPage7))
+            {
+                tabControl1.SelectedTab = tabPage1;
+            }
+
         }
     }
 }
