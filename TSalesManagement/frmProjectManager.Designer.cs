@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProjectManager));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -75,6 +76,7 @@
             this.chk_completion = new System.Windows.Forms.CheckBox();
             this.chk_invoiced = new System.Windows.Forms.CheckBox();
             this.chk_retention = new System.Windows.Forms.CheckBox();
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -85,6 +87,7 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -107,6 +110,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.axAcroPDF1);
             this.tabPage1.Controls.Add(this.chk_tender);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -374,7 +378,7 @@
             // chk_tender
             // 
             this.chk_tender.AutoSize = true;
-            this.chk_tender.Location = new System.Drawing.Point(228, 186);
+            this.chk_tender.Location = new System.Drawing.Point(442, 355);
             this.chk_tender.Name = "chk_tender";
             this.chk_tender.Size = new System.Drawing.Size(107, 17);
             this.chk_tender.TabIndex = 0;
@@ -538,6 +542,15 @@
             this.chk_retention.Text = "Retention Complete";
             this.chk_retention.UseVisualStyleBackColor = true;
             // 
+            // axAcroPDF1
+            // 
+            this.axAcroPDF1.Enabled = true;
+            this.axAcroPDF1.Location = new System.Drawing.Point(3, 3);
+            this.axAcroPDF1.Name = "axAcroPDF1";
+            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+            this.axAcroPDF1.Size = new System.Drawing.Size(546, 346);
+            this.axAcroPDF1.TabIndex = 1;
+            // 
             // frmProjectManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -596,6 +609,7 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -650,5 +664,6 @@
         private System.Windows.Forms.CheckBox chk_completion;
         private System.Windows.Forms.CheckBox chk_invoiced;
         private System.Windows.Forms.CheckBox chk_retention;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
     }
 }

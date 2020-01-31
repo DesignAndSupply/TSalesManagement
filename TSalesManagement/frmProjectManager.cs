@@ -17,6 +17,7 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //get information
+            axAcroPDF1.src = @"\\designsvr1\dropbox\calendar-2020-landscape-2-pages.pdf";
             string sql = "SELECT * from dbo.projects WHERE ID = " + ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
