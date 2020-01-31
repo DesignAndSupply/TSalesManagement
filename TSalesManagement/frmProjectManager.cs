@@ -13,11 +13,14 @@ namespace TSalesManagement
 {
     public partial class frmProjectManager : Form
     {
-        public frmProjectManager(int ID)
+        public int _ID { get; set; }
+        public string _title { get; set; }
+        public frmProjectManager(int ID,string title)
         {
             InitializeComponent();
+            _ID = ID;
+            _title = title;
             //get information
-            axAcroPDF1.src = @"\\designsvr1\dropbox\calendar-2020-landscape-2-pages.pdf";
             string sql = "SELECT * from dbo.projects WHERE ID = " + ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
@@ -127,6 +130,28 @@ namespace TSalesManagement
             {
                 tabControl1.SelectedTab = tabPage1;
             }
+
+
+        }
+
+        private void btn_PDF_Click(object sender, EventArgs e)
+        {
+            string folder = @"designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btn_folders_Click(object sender, EventArgs e)
+        { //this is universal so it will make all folders for each operation
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention");
 
 
         }

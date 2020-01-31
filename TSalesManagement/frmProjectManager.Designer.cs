@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProjectManager));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -76,7 +75,9 @@
             this.chk_completion = new System.Windows.Forms.CheckBox();
             this.chk_invoiced = new System.Windows.Forms.CheckBox();
             this.chk_retention = new System.Windows.Forms.CheckBox();
-            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.btn_PDF = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_folders = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -87,7 +88,6 @@
             this.tabPage7.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.tabPage9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -110,7 +110,9 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.axAcroPDF1);
+            this.tabPage1.Controls.Add(this.btn_folders);
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btn_PDF);
             this.tabPage1.Controls.Add(this.chk_tender);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
@@ -542,14 +544,34 @@
             this.chk_retention.Text = "Retention Complete";
             this.chk_retention.UseVisualStyleBackColor = true;
             // 
-            // axAcroPDF1
+            // btn_PDF
             // 
-            this.axAcroPDF1.Enabled = true;
-            this.axAcroPDF1.Location = new System.Drawing.Point(3, 3);
-            this.axAcroPDF1.Name = "axAcroPDF1";
-            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
-            this.axAcroPDF1.Size = new System.Drawing.Size(546, 346);
-            this.axAcroPDF1.TabIndex = 1;
+            this.btn_PDF.Location = new System.Drawing.Point(442, 6);
+            this.btn_PDF.Name = "btn_PDF";
+            this.btn_PDF.Size = new System.Drawing.Size(107, 22);
+            this.btn_PDF.TabIndex = 1;
+            this.btn_PDF.Text = "PDF viewer";
+            this.btn_PDF.UseVisualStyleBackColor = true;
+            this.btn_PDF.Click += new System.EventHandler(this.btn_PDF_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(329, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 22);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Open Folder Location";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btn_folders
+            // 
+            this.btn_folders.Location = new System.Drawing.Point(6, 6);
+            this.btn_folders.Name = "btn_folders";
+            this.btn_folders.Size = new System.Drawing.Size(107, 22);
+            this.btn_folders.TabIndex = 3;
+            this.btn_folders.Text = "Create Folder";
+            this.btn_folders.UseVisualStyleBackColor = true;
+            this.btn_folders.Click += new System.EventHandler(this.btn_folders_Click);
             // 
             // frmProjectManager
             // 
@@ -609,7 +631,6 @@
             this.tabPage8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -664,6 +685,8 @@
         private System.Windows.Forms.CheckBox chk_completion;
         private System.Windows.Forms.CheckBox chk_invoiced;
         private System.Windows.Forms.CheckBox chk_retention;
-        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private System.Windows.Forms.Button btn_folders;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_PDF;
     }
 }

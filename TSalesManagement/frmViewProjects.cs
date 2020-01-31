@@ -60,7 +60,8 @@ namespace TSalesManagement
             //get the ID of the row selected
             DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
             int ID = Convert.ToInt32(row.Cells["ID"].Value.ToString());
-            frmProjectManager PM = new frmProjectManager(ID);
+            string title = row.Cells[1].Value.ToString();
+            frmProjectManager PM = new frmProjectManager(ID,title);
             PM.ShowDialog();
         }
     }
