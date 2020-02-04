@@ -29,10 +29,20 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPDF));
-            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             this.cmb_folder = new System.Windows.Forms.ComboBox();
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // cmb_folder
+            // 
+            this.cmb_folder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_folder.FormattingEnabled = true;
+            this.cmb_folder.Location = new System.Drawing.Point(243, 19);
+            this.cmb_folder.Name = "cmb_folder";
+            this.cmb_folder.Size = new System.Drawing.Size(255, 21);
+            this.cmb_folder.TabIndex = 1;
+            this.cmb_folder.SelectedIndexChanged += new System.EventHandler(this.cmb_folder_SelectedIndexChanged);
             // 
             // axAcroPDF1
             // 
@@ -45,15 +55,6 @@
             this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
             this.axAcroPDF1.Size = new System.Drawing.Size(716, 492);
             this.axAcroPDF1.TabIndex = 0;
-            // 
-            // cmb_folder
-            // 
-            this.cmb_folder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmb_folder.FormattingEnabled = true;
-            this.cmb_folder.Location = new System.Drawing.Point(243, 19);
-            this.cmb_folder.Name = "cmb_folder";
-            this.cmb_folder.Size = new System.Drawing.Size(255, 21);
-            this.cmb_folder.TabIndex = 1;
             // 
             // frmPDF
             // 
