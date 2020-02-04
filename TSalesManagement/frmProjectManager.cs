@@ -155,6 +155,11 @@ namespace TSalesManagement
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender");
+        }
     }
 }
 
