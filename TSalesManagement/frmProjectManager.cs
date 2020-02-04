@@ -50,7 +50,57 @@ namespace TSalesManagement
                     conn.Close();
                 }
             }
+            check_chkbox();
         }
+
+        private void check_chkbox()
+        {
+            int tender = 0,prelet = 0, design = 0, order = 0,survey = 0, on_site = 0, completion = 0, invoiced = 0, retention = 0;
+            string sql = "SELECT tender_complete,prelet_complete,design_complete,order_complete,survey_complete,on_site_complete,completion_complete,invoiced_complete,retention_complete FROM dbo.projects WHERE ID = " + _ID;
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    //reader in here 
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        tender = Convert.ToInt32(dr["tender_complete"]);
+                        prelet = Convert.ToInt32(dr["prelet_complete"]);
+                        design = Convert.ToInt32(dr["design_complete"]);
+                        order = Convert.ToInt32(dr["order_complete"]);
+                        survey = Convert.ToInt32(dr["survey_complete"]);
+                        on_site = Convert.ToInt32(dr["on_site_complete"]);
+                        completion = Convert.ToInt32(dr["completion_complete"]);
+                        invoiced = Convert.ToInt32(dr["invoiced_complete"]);
+                        retention = Convert.ToInt32(dr["retention_complete"]);
+                    }
+                    conn.Close();
+                }
+            }
+            //now adjust check boxes
+            if (tender == -1)
+                chk_tender.Checked = true;
+            if (prelet == -1)
+                chk_prelet.Checked = true;
+            if (design == -1)
+                chk_design.Checked = true;
+            if (order == -1)
+                chk_Order.Checked = true;
+            if (survey == -1)
+                chk_Survey.Checked = true;
+            if (on_site == -1)
+                chk_onSite.Checked = true;
+            if (completion == -1)
+                chk_completion.Checked = true;
+            if (invoiced == -1)
+                chk_invoiced.Checked = true;
+            if (retention == -1)
+                chk_retention.Checked = true;
+
+        }
+
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -242,7 +292,7 @@ namespace TSalesManagement
         private void btnPreletPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet"; //open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -250,7 +300,7 @@ namespace TSalesManagement
         private void btnDesignPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -258,7 +308,7 @@ namespace TSalesManagement
         private void btnOrderPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -266,7 +316,7 @@ namespace TSalesManagement
         private void btnSurveyPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -274,7 +324,7 @@ namespace TSalesManagement
         private void btnOnSitePDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -282,7 +332,7 @@ namespace TSalesManagement
         private void btnCompPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -290,7 +340,7 @@ namespace TSalesManagement
         private void btnInvoicePDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -298,7 +348,7 @@ namespace TSalesManagement
         private void btnRetentionPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention";
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
