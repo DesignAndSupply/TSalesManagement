@@ -18,8 +18,10 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //fill list box
-            GetFilesFromFolder(folder_location);
             folderPath = folder_location;
+            GetFilesFromFolder(folder_location);
+
+
 
 
 
@@ -29,10 +31,19 @@ namespace TSalesManagement
 
         private void GetFilesFromFolder(string file_location)
         {
+            int combo = 0;
             DirectoryInfo dinfo = new DirectoryInfo(file_location);
             FileInfo[] Files = dinfo.GetFiles("*.pdf");
             foreach (FileInfo file in Files)
+            {
                 cmb_folder.Items.Add(file.Name);
+                combo = 1;
+            }
+            if (combo != 0)
+            {
+                cmb_folder.SelectedIndex = 0;
+                axAcroPDF1.src = folderPath + @"\" + cmb_folder.Text.ToString();
+            }
         }
 
         private void cmb_folder_SelectedIndexChanged(object sender, EventArgs e)

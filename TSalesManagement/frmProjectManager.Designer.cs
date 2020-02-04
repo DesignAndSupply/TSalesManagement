@@ -77,7 +77,23 @@
             this.chk_retention = new System.Windows.Forms.CheckBox();
             this.btn_PDF = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btn_folders = new System.Windows.Forms.Button();
+            this.btnUpdateInfo = new System.Windows.Forms.Button();
+            this.btnPreletOF = new System.Windows.Forms.Button();
+            this.btnPreletPDF = new System.Windows.Forms.Button();
+            this.btnDesignOF = new System.Windows.Forms.Button();
+            this.btnDesignPDF = new System.Windows.Forms.Button();
+            this.btnOrderOF = new System.Windows.Forms.Button();
+            this.btnOrderPDF = new System.Windows.Forms.Button();
+            this.btnSurveyOF = new System.Windows.Forms.Button();
+            this.btnSurveyPDF = new System.Windows.Forms.Button();
+            this.btnOnSiteOF = new System.Windows.Forms.Button();
+            this.btnOnSitePDF = new System.Windows.Forms.Button();
+            this.btnCompOF = new System.Windows.Forms.Button();
+            this.btnCompPDF = new System.Windows.Forms.Button();
+            this.btnInvoiceOF = new System.Windows.Forms.Button();
+            this.btnInvoicePDF = new System.Windows.Forms.Button();
+            this.btnRetentionOF = new System.Windows.Forms.Button();
+            this.btnRetentionPDF = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -110,7 +126,6 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btn_folders);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.btn_PDF);
             this.tabPage1.Controls.Add(this.chk_tender);
@@ -124,6 +139,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnPreletOF);
+            this.tabPage2.Controls.Add(this.btnPreletPDF);
             this.tabPage2.Controls.Add(this.chk_prelet);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
@@ -137,7 +154,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(77, 12);
+            this.label1.Location = new System.Drawing.Point(77, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 19);
             this.label1.TabIndex = 1;
@@ -145,7 +162,7 @@
             // 
             // txtAccountsPosition
             // 
-            this.txtAccountsPosition.Location = new System.Drawing.Point(90, 396);
+            this.txtAccountsPosition.Location = new System.Drawing.Point(90, 377);
             this.txtAccountsPosition.Name = "txtAccountsPosition";
             this.txtAccountsPosition.Size = new System.Drawing.Size(187, 20);
             this.txtAccountsPosition.TabIndex = 62;
@@ -154,7 +171,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(33, 398);
+            this.label15.Location = new System.Drawing.Point(33, 379);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(52, 15);
             this.label15.TabIndex = 61;
@@ -162,7 +179,7 @@
             // 
             // txtAccountsEmail
             // 
-            this.txtAccountsEmail.Location = new System.Drawing.Point(90, 371);
+            this.txtAccountsEmail.Location = new System.Drawing.Point(90, 352);
             this.txtAccountsEmail.Name = "txtAccountsEmail";
             this.txtAccountsEmail.Size = new System.Drawing.Size(187, 20);
             this.txtAccountsEmail.TabIndex = 60;
@@ -171,7 +188,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(45, 373);
+            this.label16.Location = new System.Drawing.Point(45, 354);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(38, 15);
             this.label16.TabIndex = 59;
@@ -179,7 +196,7 @@
             // 
             // txtAccountsNumber
             // 
-            this.txtAccountsNumber.Location = new System.Drawing.Point(90, 346);
+            this.txtAccountsNumber.Location = new System.Drawing.Point(90, 327);
             this.txtAccountsNumber.Name = "txtAccountsNumber";
             this.txtAccountsNumber.Size = new System.Drawing.Size(187, 20);
             this.txtAccountsNumber.TabIndex = 58;
@@ -188,7 +205,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(-1, 348);
+            this.label17.Location = new System.Drawing.Point(-1, 329);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(87, 15);
             this.label17.TabIndex = 57;
@@ -196,7 +213,7 @@
             // 
             // txtAccountsName
             // 
-            this.txtAccountsName.Location = new System.Drawing.Point(90, 321);
+            this.txtAccountsName.Location = new System.Drawing.Point(90, 302);
             this.txtAccountsName.Name = "txtAccountsName";
             this.txtAccountsName.Size = new System.Drawing.Size(187, 20);
             this.txtAccountsName.TabIndex = 56;
@@ -205,7 +222,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(2, 323);
+            this.label18.Location = new System.Drawing.Point(2, 304);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(83, 15);
             this.label18.TabIndex = 55;
@@ -215,7 +232,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(98, 305);
+            this.label19.Location = new System.Drawing.Point(98, 286);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(170, 15);
             this.label19.TabIndex = 54;
@@ -223,7 +240,7 @@
             // 
             // txtOnSitePosition
             // 
-            this.txtOnSitePosition.Location = new System.Drawing.Point(90, 274);
+            this.txtOnSitePosition.Location = new System.Drawing.Point(90, 255);
             this.txtOnSitePosition.Name = "txtOnSitePosition";
             this.txtOnSitePosition.Size = new System.Drawing.Size(187, 20);
             this.txtOnSitePosition.TabIndex = 53;
@@ -232,7 +249,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(33, 276);
+            this.label10.Location = new System.Drawing.Point(33, 257);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(52, 15);
             this.label10.TabIndex = 52;
@@ -240,7 +257,7 @@
             // 
             // txtOnSiteEmail
             // 
-            this.txtOnSiteEmail.Location = new System.Drawing.Point(90, 249);
+            this.txtOnSiteEmail.Location = new System.Drawing.Point(90, 230);
             this.txtOnSiteEmail.Name = "txtOnSiteEmail";
             this.txtOnSiteEmail.Size = new System.Drawing.Size(187, 20);
             this.txtOnSiteEmail.TabIndex = 51;
@@ -249,7 +266,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(45, 251);
+            this.label11.Location = new System.Drawing.Point(45, 232);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(38, 15);
             this.label11.TabIndex = 50;
@@ -257,7 +274,7 @@
             // 
             // txtOnSiteNumber
             // 
-            this.txtOnSiteNumber.Location = new System.Drawing.Point(90, 224);
+            this.txtOnSiteNumber.Location = new System.Drawing.Point(90, 205);
             this.txtOnSiteNumber.Name = "txtOnSiteNumber";
             this.txtOnSiteNumber.Size = new System.Drawing.Size(187, 20);
             this.txtOnSiteNumber.TabIndex = 49;
@@ -266,7 +283,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(-1, 226);
+            this.label12.Location = new System.Drawing.Point(-1, 207);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(87, 15);
             this.label12.TabIndex = 48;
@@ -274,7 +291,7 @@
             // 
             // txtOnSiteName
             // 
-            this.txtOnSiteName.Location = new System.Drawing.Point(90, 199);
+            this.txtOnSiteName.Location = new System.Drawing.Point(90, 180);
             this.txtOnSiteName.Name = "txtOnSiteName";
             this.txtOnSiteName.Size = new System.Drawing.Size(187, 20);
             this.txtOnSiteName.TabIndex = 47;
@@ -283,7 +300,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(2, 201);
+            this.label13.Location = new System.Drawing.Point(2, 182);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(83, 15);
             this.label13.TabIndex = 46;
@@ -293,7 +310,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(105, 180);
+            this.label14.Location = new System.Drawing.Point(105, 161);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(156, 15);
             this.label14.TabIndex = 45;
@@ -301,7 +318,7 @@
             // 
             // txtCommercialPosition
             // 
-            this.txtCommercialPosition.Location = new System.Drawing.Point(88, 152);
+            this.txtCommercialPosition.Location = new System.Drawing.Point(88, 133);
             this.txtCommercialPosition.Name = "txtCommercialPosition";
             this.txtCommercialPosition.Size = new System.Drawing.Size(187, 20);
             this.txtCommercialPosition.TabIndex = 44;
@@ -310,7 +327,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(33, 154);
+            this.label9.Location = new System.Drawing.Point(33, 135);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 15);
             this.label9.TabIndex = 43;
@@ -318,7 +335,7 @@
             // 
             // txtCommercialEmail
             // 
-            this.txtCommercialEmail.Location = new System.Drawing.Point(88, 127);
+            this.txtCommercialEmail.Location = new System.Drawing.Point(88, 108);
             this.txtCommercialEmail.Name = "txtCommercialEmail";
             this.txtCommercialEmail.Size = new System.Drawing.Size(187, 20);
             this.txtCommercialEmail.TabIndex = 42;
@@ -327,7 +344,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(45, 129);
+            this.label8.Location = new System.Drawing.Point(45, 110);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 15);
             this.label8.TabIndex = 41;
@@ -335,7 +352,7 @@
             // 
             // txtCommercialNumber
             // 
-            this.txtCommercialNumber.Location = new System.Drawing.Point(88, 102);
+            this.txtCommercialNumber.Location = new System.Drawing.Point(88, 83);
             this.txtCommercialNumber.Name = "txtCommercialNumber";
             this.txtCommercialNumber.Size = new System.Drawing.Size(187, 20);
             this.txtCommercialNumber.TabIndex = 40;
@@ -344,7 +361,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(-1, 104);
+            this.label7.Location = new System.Drawing.Point(-1, 85);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(87, 15);
             this.label7.TabIndex = 39;
@@ -352,16 +369,17 @@
             // 
             // txtCommercialName
             // 
-            this.txtCommercialName.Location = new System.Drawing.Point(88, 77);
+            this.txtCommercialName.Location = new System.Drawing.Point(88, 58);
             this.txtCommercialName.Name = "txtCommercialName";
             this.txtCommercialName.Size = new System.Drawing.Size(187, 20);
             this.txtCommercialName.TabIndex = 38;
+            this.txtCommercialName.Leave += new System.EventHandler(this.txtCommercialName_Leave);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(2, 79);
+            this.label6.Location = new System.Drawing.Point(2, 60);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 15);
             this.label6.TabIndex = 37;
@@ -371,7 +389,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(90, 56);
+            this.label5.Location = new System.Drawing.Point(90, 37);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(186, 15);
             this.label5.TabIndex = 36;
@@ -389,6 +407,8 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.btnDesignOF);
+            this.tabPage3.Controls.Add(this.btnDesignPDF);
             this.tabPage3.Controls.Add(this.chk_design);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
@@ -400,6 +420,8 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnOrderOF);
+            this.tabPage4.Controls.Add(this.btnOrderPDF);
             this.tabPage4.Controls.Add(this.chk_Order);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
@@ -411,6 +433,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.btnSurveyOF);
+            this.tabPage5.Controls.Add(this.btnSurveyPDF);
             this.tabPage5.Controls.Add(this.chk_Survey);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
@@ -422,6 +446,8 @@
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.btnOnSiteOF);
+            this.tabPage6.Controls.Add(this.btnOnSitePDF);
             this.tabPage6.Controls.Add(this.chk_onSite);
             this.tabPage6.Location = new System.Drawing.Point(4, 22);
             this.tabPage6.Name = "tabPage6";
@@ -433,6 +459,8 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.btnCompOF);
+            this.tabPage7.Controls.Add(this.btnCompPDF);
             this.tabPage7.Controls.Add(this.chk_completion);
             this.tabPage7.Location = new System.Drawing.Point(4, 22);
             this.tabPage7.Name = "tabPage7";
@@ -494,6 +522,8 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.btnInvoiceOF);
+            this.tabPage8.Controls.Add(this.btnInvoicePDF);
             this.tabPage8.Controls.Add(this.chk_invoiced);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
@@ -505,6 +535,8 @@
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.btnRetentionOF);
+            this.tabPage9.Controls.Add(this.btnRetentionPDF);
             this.tabPage9.Controls.Add(this.chk_retention);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
@@ -564,21 +596,182 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btn_folders
+            // btnUpdateInfo
             // 
-            this.btn_folders.Location = new System.Drawing.Point(6, 6);
-            this.btn_folders.Name = "btn_folders";
-            this.btn_folders.Size = new System.Drawing.Size(107, 22);
-            this.btn_folders.TabIndex = 3;
-            this.btn_folders.Text = "Create Folder";
-            this.btn_folders.UseVisualStyleBackColor = true;
-            this.btn_folders.Click += new System.EventHandler(this.btn_folders_Click);
+            this.btnUpdateInfo.Location = new System.Drawing.Point(90, 401);
+            this.btnUpdateInfo.Name = "btnUpdateInfo";
+            this.btnUpdateInfo.Size = new System.Drawing.Size(102, 22);
+            this.btnUpdateInfo.TabIndex = 63;
+            this.btnUpdateInfo.Text = "Update";
+            this.btnUpdateInfo.UseVisualStyleBackColor = true;
+            this.btnUpdateInfo.Click += new System.EventHandler(this.btnUpdateInfo_Click);
+            // 
+            // btnPreletOF
+            // 
+            this.btnPreletOF.Location = new System.Drawing.Point(329, 6);
+            this.btnPreletOF.Name = "btnPreletOF";
+            this.btnPreletOF.Size = new System.Drawing.Size(107, 22);
+            this.btnPreletOF.TabIndex = 4;
+            this.btnPreletOF.Text = "Open Folder Location";
+            this.btnPreletOF.UseVisualStyleBackColor = true;
+            this.btnPreletOF.Click += new System.EventHandler(this.btnPreletOF_Click);
+            // 
+            // btnPreletPDF
+            // 
+            this.btnPreletPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnPreletPDF.Name = "btnPreletPDF";
+            this.btnPreletPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnPreletPDF.TabIndex = 3;
+            this.btnPreletPDF.Text = "PDF viewer";
+            this.btnPreletPDF.UseVisualStyleBackColor = true;
+            this.btnPreletPDF.Click += new System.EventHandler(this.btnPreletPDF_Click);
+            // 
+            // btnDesignOF
+            // 
+            this.btnDesignOF.Location = new System.Drawing.Point(329, 6);
+            this.btnDesignOF.Name = "btnDesignOF";
+            this.btnDesignOF.Size = new System.Drawing.Size(107, 22);
+            this.btnDesignOF.TabIndex = 4;
+            this.btnDesignOF.Text = "Open Folder Location";
+            this.btnDesignOF.UseVisualStyleBackColor = true;
+            this.btnDesignOF.Click += new System.EventHandler(this.btnDesignOF_Click);
+            // 
+            // btnDesignPDF
+            // 
+            this.btnDesignPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnDesignPDF.Name = "btnDesignPDF";
+            this.btnDesignPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnDesignPDF.TabIndex = 3;
+            this.btnDesignPDF.Text = "PDF viewer";
+            this.btnDesignPDF.UseVisualStyleBackColor = true;
+            this.btnDesignPDF.Click += new System.EventHandler(this.btnDesignPDF_Click);
+            // 
+            // btnOrderOF
+            // 
+            this.btnOrderOF.Location = new System.Drawing.Point(329, 6);
+            this.btnOrderOF.Name = "btnOrderOF";
+            this.btnOrderOF.Size = new System.Drawing.Size(107, 22);
+            this.btnOrderOF.TabIndex = 4;
+            this.btnOrderOF.Text = "Open Folder Location";
+            this.btnOrderOF.UseVisualStyleBackColor = true;
+            this.btnOrderOF.Click += new System.EventHandler(this.btnOrderOF_Click);
+            // 
+            // btnOrderPDF
+            // 
+            this.btnOrderPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnOrderPDF.Name = "btnOrderPDF";
+            this.btnOrderPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnOrderPDF.TabIndex = 3;
+            this.btnOrderPDF.Text = "PDF viewer";
+            this.btnOrderPDF.UseVisualStyleBackColor = true;
+            this.btnOrderPDF.Click += new System.EventHandler(this.btnOrderPDF_Click);
+            // 
+            // btnSurveyOF
+            // 
+            this.btnSurveyOF.Location = new System.Drawing.Point(329, 6);
+            this.btnSurveyOF.Name = "btnSurveyOF";
+            this.btnSurveyOF.Size = new System.Drawing.Size(107, 22);
+            this.btnSurveyOF.TabIndex = 4;
+            this.btnSurveyOF.Text = "Open Folder Location";
+            this.btnSurveyOF.UseVisualStyleBackColor = true;
+            this.btnSurveyOF.Click += new System.EventHandler(this.btnSurveyOF_Click);
+            // 
+            // btnSurveyPDF
+            // 
+            this.btnSurveyPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnSurveyPDF.Name = "btnSurveyPDF";
+            this.btnSurveyPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnSurveyPDF.TabIndex = 3;
+            this.btnSurveyPDF.Text = "PDF viewer";
+            this.btnSurveyPDF.UseVisualStyleBackColor = true;
+            this.btnSurveyPDF.Click += new System.EventHandler(this.btnSurveyPDF_Click);
+            // 
+            // btnOnSiteOF
+            // 
+            this.btnOnSiteOF.Location = new System.Drawing.Point(329, 6);
+            this.btnOnSiteOF.Name = "btnOnSiteOF";
+            this.btnOnSiteOF.Size = new System.Drawing.Size(107, 22);
+            this.btnOnSiteOF.TabIndex = 4;
+            this.btnOnSiteOF.Text = "Open Folder Location";
+            this.btnOnSiteOF.UseVisualStyleBackColor = true;
+            this.btnOnSiteOF.Click += new System.EventHandler(this.btnOnSiteOF_Click);
+            // 
+            // btnOnSitePDF
+            // 
+            this.btnOnSitePDF.Location = new System.Drawing.Point(442, 6);
+            this.btnOnSitePDF.Name = "btnOnSitePDF";
+            this.btnOnSitePDF.Size = new System.Drawing.Size(107, 22);
+            this.btnOnSitePDF.TabIndex = 3;
+            this.btnOnSitePDF.Text = "PDF viewer";
+            this.btnOnSitePDF.UseVisualStyleBackColor = true;
+            this.btnOnSitePDF.Click += new System.EventHandler(this.btnOnSitePDF_Click);
+            // 
+            // btnCompOF
+            // 
+            this.btnCompOF.Location = new System.Drawing.Point(329, 6);
+            this.btnCompOF.Name = "btnCompOF";
+            this.btnCompOF.Size = new System.Drawing.Size(107, 22);
+            this.btnCompOF.TabIndex = 4;
+            this.btnCompOF.Text = "Open Folder Location";
+            this.btnCompOF.UseVisualStyleBackColor = true;
+            this.btnCompOF.Click += new System.EventHandler(this.btnCompOF_Click);
+            // 
+            // btnCompPDF
+            // 
+            this.btnCompPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnCompPDF.Name = "btnCompPDF";
+            this.btnCompPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnCompPDF.TabIndex = 3;
+            this.btnCompPDF.Text = "PDF viewer";
+            this.btnCompPDF.UseVisualStyleBackColor = true;
+            this.btnCompPDF.Click += new System.EventHandler(this.btnCompPDF_Click);
+            // 
+            // btnInvoiceOF
+            // 
+            this.btnInvoiceOF.Location = new System.Drawing.Point(329, 6);
+            this.btnInvoiceOF.Name = "btnInvoiceOF";
+            this.btnInvoiceOF.Size = new System.Drawing.Size(107, 22);
+            this.btnInvoiceOF.TabIndex = 4;
+            this.btnInvoiceOF.Text = "Open Folder Location";
+            this.btnInvoiceOF.UseVisualStyleBackColor = true;
+            this.btnInvoiceOF.Click += new System.EventHandler(this.btnInvoiceOF_Click);
+            // 
+            // btnInvoicePDF
+            // 
+            this.btnInvoicePDF.Location = new System.Drawing.Point(442, 6);
+            this.btnInvoicePDF.Name = "btnInvoicePDF";
+            this.btnInvoicePDF.Size = new System.Drawing.Size(107, 22);
+            this.btnInvoicePDF.TabIndex = 3;
+            this.btnInvoicePDF.Text = "PDF viewer";
+            this.btnInvoicePDF.UseVisualStyleBackColor = true;
+            this.btnInvoicePDF.Click += new System.EventHandler(this.btnInvoicePDF_Click);
+            // 
+            // btnRetentionOF
+            // 
+            this.btnRetentionOF.Location = new System.Drawing.Point(329, 6);
+            this.btnRetentionOF.Name = "btnRetentionOF";
+            this.btnRetentionOF.Size = new System.Drawing.Size(107, 22);
+            this.btnRetentionOF.TabIndex = 4;
+            this.btnRetentionOF.Text = "Open Folder Location";
+            this.btnRetentionOF.UseVisualStyleBackColor = true;
+            this.btnRetentionOF.Click += new System.EventHandler(this.btnRetentionOF_Click);
+            // 
+            // btnRetentionPDF
+            // 
+            this.btnRetentionPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnRetentionPDF.Name = "btnRetentionPDF";
+            this.btnRetentionPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnRetentionPDF.TabIndex = 3;
+            this.btnRetentionPDF.Text = "PDF viewer";
+            this.btnRetentionPDF.UseVisualStyleBackColor = true;
+            this.btnRetentionPDF.Click += new System.EventHandler(this.btnRetentionPDF_Click);
             // 
             // frmProjectManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(857, 428);
+            this.Controls.Add(this.btnUpdateInfo);
             this.Controls.Add(this.txtAccountsPosition);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtAccountsEmail);
@@ -686,8 +879,24 @@
         private System.Windows.Forms.CheckBox chk_completion;
         private System.Windows.Forms.CheckBox chk_invoiced;
         private System.Windows.Forms.CheckBox chk_retention;
-        private System.Windows.Forms.Button btn_folders;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btn_PDF;
+        private System.Windows.Forms.Button btnUpdateInfo;
+        private System.Windows.Forms.Button btnPreletOF;
+        private System.Windows.Forms.Button btnPreletPDF;
+        private System.Windows.Forms.Button btnDesignOF;
+        private System.Windows.Forms.Button btnDesignPDF;
+        private System.Windows.Forms.Button btnOrderOF;
+        private System.Windows.Forms.Button btnOrderPDF;
+        private System.Windows.Forms.Button btnSurveyOF;
+        private System.Windows.Forms.Button btnSurveyPDF;
+        private System.Windows.Forms.Button btnOnSiteOF;
+        private System.Windows.Forms.Button btnOnSitePDF;
+        private System.Windows.Forms.Button btnCompOF;
+        private System.Windows.Forms.Button btnCompPDF;
+        private System.Windows.Forms.Button btnInvoiceOF;
+        private System.Windows.Forms.Button btnInvoicePDF;
+        private System.Windows.Forms.Button btnRetentionOF;
+        private System.Windows.Forms.Button btnRetentionPDF;
     }
 }

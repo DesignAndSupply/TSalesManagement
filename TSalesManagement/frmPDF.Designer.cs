@@ -64,7 +64,7 @@
             this.Controls.Add(this.cmb_folder);
             this.Controls.Add(this.axAcroPDF1);
             this.Name = "frmPDF";
-            this.Text = "frmPDF";
+            this.Text = "PDF Viewer";
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
 

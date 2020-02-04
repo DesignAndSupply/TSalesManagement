@@ -20,6 +20,8 @@ namespace TSalesManagement
             InitializeComponent();
             _ID = ID;
             _title = title;
+            this.Text = _title;
+            
             //get information
             string sql = "SELECT * from dbo.projects WHERE ID = " + ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
@@ -136,12 +138,13 @@ namespace TSalesManagement
 
         private void btn_PDF_Click(object sender, EventArgs e)
         {
+            create_folders();
             string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender";
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
 
-        private void btn_folders_Click(object sender, EventArgs e)
+        private void create_folders()
         { //this is universal so it will make all folders for each operation
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender");
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet");
@@ -156,9 +159,148 @@ namespace TSalesManagement
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //tender openfolder
         {
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender");
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void txtCommercialName_Leave(object sender, EventArgs e)
+        {
+        }
+
+        private void btnUpdateInfo_Click(object sender, EventArgs e)
+        {//update all the information in one place
+            //(commercial_contact_name,commercial_phone_number,commercial_email,commercial_position,onsite_contact_name,
+            //onsite_phone_number,onsite_email,onsite_position,accounts_contact_name,accounts_phone_number,accounts_email,accounts_position)
+            //make the sql string
+            string sql = "UPDATE dbo.projects" +
+                " SET  commercial_contact_name = '" + txtCommercialName.Text.ToString() + "',commercial_phone_number = '" + txtCommercialNumber.Text.ToString() + "',commercial_email = '" + txtCommercialEmail.Text.ToString() + "',commercial_position = '" + txtCommercialPosition.Text.ToString() + "'," +
+                "onsite_contact_name = '" + txtOnSiteName.Text.ToString() + "',onsite_phone_number = '" + txtOnSiteNumber.Text.ToString() + "',onsite_email = '" + txtOnSiteEmail.Text.ToString() + "',onsite_position = '" + txtOnSitePosition.Text.ToString() + "'," +
+                "accounts_contact_name = '" + txtAccountsName.Text.ToString() + "',accounts_phone_number = '" + txtAccountsNumber.Text.ToString() + "',accounts_email = '" + txtAccountsEmail.Text.ToString() + "',accounts_position = '" + txtAccountsPosition.Text.ToString() + "' " +
+                " WHERE id = " + _ID;
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Contact Information updated!");
+                }
+            }
+        }
+
+        private void btnPreletOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnDesignOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnOrderOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnSurveyOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnOnSiteOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnCompOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnInvoiceOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnRetentionOF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention"); //open the root folder for /this/ project @ /current/ stage
+        }
+
+        private void btnPreletPDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnDesignPDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnOrderPDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnSurveyPDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnOnSitePDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnCompPDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnInvoicePDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
+        }
+
+        private void btnRetentionPDF_Click(object sender, EventArgs e)
+        {
+            create_folders();
+            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention";
+            frmPDF pdf = new frmPDF(folder);
+            pdf.ShowDialog();
         }
     }
 }
