@@ -16,7 +16,17 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //onload of this form get info from dbo.project
-            string sql = "SELECT * FROM dbo.projects";
+            string sql = "SELECT [id],[project_title],[site_address]," +
+                "CASE WHEN[tender_complete] = -1 then 'Complete' else ' ' END as tender_complete," +
+                "CASE WHEN[prelet_complete] = -1 then 'Complete' else ' ' END as prelet_complete," +
+                "CASE WHEN[design_complete] = -1 then 'Complete' else ' ' END as design_complete," +
+                "CASE WHEN[order_complete] = -1 then 'Complete'  else ' ' END as order_complete," +
+                "CASE WHEN[survey_complete] = -1 then 'Complete' else ' ' END as survey_complete," +
+                "CASE WHEN[on_site_complete] = -1 then 'Complete' else ' ' END as on_site_complete," +
+                "CASE WHEN[completion_complete] = -1 then 'Complete' else ' ' END as completeion_complete," +
+                "CASE WHEN[invoiced_complete] = -1 then 'Complete' else ' ' END as invoice_complete," +
+                "CASE WHEN[retention_complete] = -1 then 'Complete' else ' ' END as retention_complete " +
+                "FROM [order_database].[dbo].[projects]";
             using  (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -36,19 +46,15 @@ namespace TSalesManagement
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Project Title";
             dataGridView1.Columns[2].HeaderText = "Site Address";
-            dataGridView1.Columns[3].HeaderText = "Customer";
-            dataGridView1.Columns[4].HeaderText = "Commercial Contact Name";
-            dataGridView1.Columns[5].HeaderText = "Commercial Phone Number";
-            dataGridView1.Columns[6].HeaderText = "Commercial Email";
-            dataGridView1.Columns[7].HeaderText = "Commercial Position";
-            dataGridView1.Columns[8].HeaderText = "OnSite Contact Name";
-            dataGridView1.Columns[9].HeaderText = "OnSite Phone Number";
-            dataGridView1.Columns[10].HeaderText = "OnSite Email";
-            dataGridView1.Columns[11].HeaderText = "Onsite Position";
-            dataGridView1.Columns[12].HeaderText = "Accounts Contact Name";
-            dataGridView1.Columns[13].HeaderText = "Accounts Phone Number";
-            dataGridView1.Columns[14].HeaderText = "Accounts Email";
-            dataGridView1.Columns[15].HeaderText = "Accounts Position";
+            dataGridView1.Columns[3].HeaderText = "Tender";
+            dataGridView1.Columns[4].HeaderText = "Prelet";
+            dataGridView1.Columns[5].HeaderText = "Design";
+            dataGridView1.Columns[6].HeaderText = "Order";
+            dataGridView1.Columns[7].HeaderText = "Survey";
+            dataGridView1.Columns[8].HeaderText = "On site";
+            dataGridView1.Columns[9].HeaderText = "Completion";
+            dataGridView1.Columns[10].HeaderText = "Invoice";
+            dataGridView1.Columns[11].HeaderText = "Retention";
         }
         private void frmViewProjects_Load(object sender, EventArgs e)
         {
