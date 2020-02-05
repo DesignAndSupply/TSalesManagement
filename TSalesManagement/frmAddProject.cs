@@ -85,5 +85,12 @@ namespace TSalesManagement
         {
             this.Close();
         }
+
+        private void frmAddProject_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //refresh my form
+
+                
+        }
     }
 }

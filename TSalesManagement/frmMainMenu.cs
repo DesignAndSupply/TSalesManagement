@@ -154,6 +154,19 @@ namespace TSalesManagement
         {
             frmAddProject frmAP = new frmAddProject();
             frmAP.ShowDialog();
+
+            //refresh other form here??
+            int was_it_closed = 0;
+            foreach (Form f in this.MdiChildren) //this works 100%
+            {
+                if (f is frmViewProjects)
+                {
+                    f.Close();
+                    was_it_closed = -1;
+                }
+            }
+            if (was_it_closed == -1)
+                viewProjectsToolStripMenuItem.PerformClick();
         }
 
         private void viewProjectsToolStripMenuItem_Click(object sender, EventArgs e)

@@ -48,7 +48,9 @@ namespace TSalesManagement
 
         private void cmb_folder_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             axAcroPDF1.src = folderPath + @"\" + cmb_folder.Text.ToString();
+            axAcroPDF1.setShowToolbar(false); //remove annoying toolbar
         }
     }
 }

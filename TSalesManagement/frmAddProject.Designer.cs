@@ -372,7 +372,7 @@
             this.btnAddCustomer.Name = "btnAddCustomer";
             this.btnAddCustomer.Size = new System.Drawing.Size(92, 23);
             this.btnAddCustomer.TabIndex = 36;
-            this.btnAddCustomer.Text = "Add Customer";
+            this.btnAddCustomer.Text = "Add Project";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
             this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
@@ -434,6 +434,7 @@
             this.Name = "frmAddProject";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Project";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmAddProject_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
