@@ -27,7 +27,7 @@ namespace TSalesManagement
                 "CASE WHEN[invoiced_complete] = -1 then 'Complete' else ' ' END as invoice_complete," +
                 "CASE WHEN[retention_complete] = -1 then 'Complete' else ' ' END as retention_complete " +
                 "FROM [order_database].[dbo].[projects]";
-            using  (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
@@ -66,10 +66,35 @@ namespace TSalesManagement
             dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[11].HeaderText = "Retention";
             dataGridView1.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            //add some colour
+          
+            
         }
         private void frmViewProjects_Load(object sender, EventArgs e)
         {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[3].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[3].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[4].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[7].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[8].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[8].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[9].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[10].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[10].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[11].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[11].Style.BackColor = Color.LightSeaGreen;
 
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -78,7 +103,7 @@ namespace TSalesManagement
             DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
             int ID = Convert.ToInt32(row.Cells["ID"].Value.ToString());
             string title = row.Cells[1].Value.ToString();
-            frmProjectManager PM = new frmProjectManager(ID,title);
+            frmProjectManager PM = new frmProjectManager(ID, title);
             PM.ShowDialog();
         }
     }

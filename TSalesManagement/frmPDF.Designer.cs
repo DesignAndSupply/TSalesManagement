@@ -36,11 +36,15 @@
             // 
             // cmb_folder
             // 
+            this.cmb_folder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmb_folder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmb_folder.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmb_folder.FormattingEnabled = true;
-            this.cmb_folder.Location = new System.Drawing.Point(243, 19);
+            this.cmb_folder.Location = new System.Drawing.Point(161, 12);
             this.cmb_folder.Name = "cmb_folder";
-            this.cmb_folder.Size = new System.Drawing.Size(255, 21);
+            this.cmb_folder.Size = new System.Drawing.Size(418, 31);
             this.cmb_folder.TabIndex = 1;
             this.cmb_folder.SelectedIndexChanged += new System.EventHandler(this.cmb_folder_SelectedIndexChanged);
             // 
