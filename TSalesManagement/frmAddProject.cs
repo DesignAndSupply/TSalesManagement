@@ -60,11 +60,14 @@ namespace TSalesManagement
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             //work out which boxes can be null etc 
+            char[] charsToTrim = { ' ' };
+            string customerName = cmbCustomer.Text.ToString();
+            customerName.Trim(charsToTrim);
             string sql = "INSERT INTO dbo.projects (project_title,site_address,customer_acc_ref," +
                 "commercial_contact_name,commercial_phone_number,commercial_email,commercial_position," +
                 "onsite_contact_name,onsite_phone_number,onsite_email,onsite_position," +
                 "accounts_contact_name,accounts_phone_number,accounts_email,accounts_position" +
-                ") VALUES ('" + txtProjectTitle.Text + "','" + txtSiteAddress.Text + "','" + cmbCustomer.SelectedIndex.ToString() + "'," +
+                ") VALUES ('" + txtProjectTitle.Text + "','" + txtSiteAddress.Text + "','" + customerName + "'," +
                 "'" + txtCommercialName.Text + "','" + txtCommercialNumber.Text + "','" + txtCommercialEmail.Text + "','" + txtCommercialPosition.Text + "'," +
                 "'" + txtOnSiteName.Text + "','" + txtOnSiteNumber.Text + "','" + txtOnSiteEmail.Text + "','" + txtOnSitePosition.Text + "'," +
                 "'" + txtAccountsName.Text + "','" + txtAccountsNumber.Text + "','" + txtAccountsEmail.Text + "','" + txtAccountsEmail.Text + "')"; 

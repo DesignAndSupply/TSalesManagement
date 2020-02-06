@@ -30,7 +30,41 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_PDF = new System.Windows.Forms.Button();
+            this.chk_tender = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnPreletOF = new System.Windows.Forms.Button();
+            this.btnPreletPDF = new System.Windows.Forms.Button();
+            this.chk_prelet = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnDesignOF = new System.Windows.Forms.Button();
+            this.btnDesignPDF = new System.Windows.Forms.Button();
+            this.chk_design = new System.Windows.Forms.CheckBox();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnOrderOF = new System.Windows.Forms.Button();
+            this.btnOrderPDF = new System.Windows.Forms.Button();
+            this.chk_Order = new System.Windows.Forms.CheckBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnSurveyOF = new System.Windows.Forms.Button();
+            this.btnSurveyPDF = new System.Windows.Forms.Button();
+            this.chk_Survey = new System.Windows.Forms.CheckBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnOnSiteOF = new System.Windows.Forms.Button();
+            this.btnOnSitePDF = new System.Windows.Forms.Button();
+            this.chk_onSite = new System.Windows.Forms.CheckBox();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.btnCompOF = new System.Windows.Forms.Button();
+            this.btnCompPDF = new System.Windows.Forms.Button();
+            this.chk_completion = new System.Windows.Forms.CheckBox();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnInvoiceOF = new System.Windows.Forms.Button();
+            this.btnInvoicePDF = new System.Windows.Forms.Button();
+            this.chk_invoiced = new System.Windows.Forms.CheckBox();
+            this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnRetentionOF = new System.Windows.Forms.Button();
+            this.btnRetentionPDF = new System.Windows.Forms.Button();
+            this.chk_retention = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAccountsPosition = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -59,41 +93,47 @@
             this.txtCommercialName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.chk_tender = new System.Windows.Forms.CheckBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.chk_prelet = new System.Windows.Forms.CheckBox();
-            this.chk_design = new System.Windows.Forms.CheckBox();
-            this.chk_Order = new System.Windows.Forms.CheckBox();
-            this.chk_Survey = new System.Windows.Forms.CheckBox();
-            this.chk_onSite = new System.Windows.Forms.CheckBox();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.chk_completion = new System.Windows.Forms.CheckBox();
-            this.chk_invoiced = new System.Windows.Forms.CheckBox();
-            this.chk_retention = new System.Windows.Forms.CheckBox();
-            this.btn_PDF = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnUpdateInfo = new System.Windows.Forms.Button();
-            this.btnPreletOF = new System.Windows.Forms.Button();
-            this.btnPreletPDF = new System.Windows.Forms.Button();
-            this.btnDesignOF = new System.Windows.Forms.Button();
-            this.btnDesignPDF = new System.Windows.Forms.Button();
-            this.btnOrderOF = new System.Windows.Forms.Button();
-            this.btnOrderPDF = new System.Windows.Forms.Button();
-            this.btnSurveyOF = new System.Windows.Forms.Button();
-            this.btnSurveyPDF = new System.Windows.Forms.Button();
-            this.btnOnSiteOF = new System.Windows.Forms.Button();
-            this.btnOnSitePDF = new System.Windows.Forms.Button();
-            this.btnCompOF = new System.Windows.Forms.Button();
-            this.btnCompPDF = new System.Windows.Forms.Button();
-            this.btnInvoiceOF = new System.Windows.Forms.Button();
-            this.btnInvoicePDF = new System.Windows.Forms.Button();
-            this.btnRetentionOF = new System.Windows.Forms.Button();
-            this.btnRetentionPDF = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.checkBox9 = new System.Windows.Forms.CheckBox();
+            this.checkBox10 = new System.Windows.Forms.CheckBox();
+            this.checkBox11 = new System.Windows.Forms.CheckBox();
+            this.checkBox12 = new System.Windows.Forms.CheckBox();
+            this.checkBox13 = new System.Windows.Forms.CheckBox();
+            this.checkBox14 = new System.Windows.Forms.CheckBox();
+            this.checkBox15 = new System.Windows.Forms.CheckBox();
+            this.checkBox16 = new System.Windows.Forms.CheckBox();
+            this.checkBox17 = new System.Windows.Forms.CheckBox();
+            this.checkBox18 = new System.Windows.Forms.CheckBox();
+            this.checkBox19 = new System.Windows.Forms.CheckBox();
+            this.checkBox20 = new System.Windows.Forms.CheckBox();
+            this.checkBox21 = new System.Windows.Forms.CheckBox();
+            this.checkBox22 = new System.Windows.Forms.CheckBox();
+            this.checkBox23 = new System.Windows.Forms.CheckBox();
+            this.checkBox24 = new System.Windows.Forms.CheckBox();
+            this.checkBox26 = new System.Windows.Forms.CheckBox();
+            this.checkBox25 = new System.Windows.Forms.CheckBox();
+            this.checkBox28 = new System.Windows.Forms.CheckBox();
+            this.checkBox27 = new System.Windows.Forms.CheckBox();
+            this.checkBox29 = new System.Windows.Forms.CheckBox();
+            this.checkBox30 = new System.Windows.Forms.CheckBox();
+            this.checkBox31 = new System.Windows.Forms.CheckBox();
+            this.checkBox32 = new System.Windows.Forms.CheckBox();
+            this.checkBox33 = new System.Windows.Forms.CheckBox();
+            this.checkBox34 = new System.Windows.Forms.CheckBox();
+            this.checkBox35 = new System.Windows.Forms.CheckBox();
+            this.checkBox36 = new System.Windows.Forms.CheckBox();
+            this.checkBox37 = new System.Windows.Forms.CheckBox();
+            this.checkBox38 = new System.Windows.Forms.CheckBox();
+            this.checkBox39 = new System.Windows.Forms.CheckBox();
+            this.checkBox40 = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -126,6 +166,9 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.checkBox3);
+            this.tabPage1.Controls.Add(this.checkBox2);
+            this.tabPage1.Controls.Add(this.checkBox1);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.btn_PDF);
             this.tabPage1.Controls.Add(this.chk_tender);
@@ -137,8 +180,42 @@
             this.tabPage1.Text = "Tender";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(329, 6);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(107, 22);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Open Folder Location";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_PDF
+            // 
+            this.btn_PDF.Location = new System.Drawing.Point(442, 6);
+            this.btn_PDF.Name = "btn_PDF";
+            this.btn_PDF.Size = new System.Drawing.Size(107, 22);
+            this.btn_PDF.TabIndex = 1;
+            this.btn_PDF.Text = "PDF viewer";
+            this.btn_PDF.UseVisualStyleBackColor = true;
+            this.btn_PDF.Click += new System.EventHandler(this.btn_PDF_Click);
+            // 
+            // chk_tender
+            // 
+            this.chk_tender.AutoSize = true;
+            this.chk_tender.Location = new System.Drawing.Point(442, 355);
+            this.chk_tender.Name = "chk_tender";
+            this.chk_tender.Size = new System.Drawing.Size(107, 17);
+            this.chk_tender.TabIndex = 0;
+            this.chk_tender.Text = "Tender Complete";
+            this.chk_tender.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBox7);
+            this.tabPage2.Controls.Add(this.checkBox6);
+            this.tabPage2.Controls.Add(this.checkBox5);
+            this.tabPage2.Controls.Add(this.checkBox4);
             this.tabPage2.Controls.Add(this.btnPreletOF);
             this.tabPage2.Controls.Add(this.btnPreletPDF);
             this.tabPage2.Controls.Add(this.chk_prelet);
@@ -149,6 +226,370 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Prelet";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnPreletOF
+            // 
+            this.btnPreletOF.Location = new System.Drawing.Point(329, 6);
+            this.btnPreletOF.Name = "btnPreletOF";
+            this.btnPreletOF.Size = new System.Drawing.Size(107, 22);
+            this.btnPreletOF.TabIndex = 4;
+            this.btnPreletOF.Text = "Open Folder Location";
+            this.btnPreletOF.UseVisualStyleBackColor = true;
+            this.btnPreletOF.Click += new System.EventHandler(this.btnPreletOF_Click);
+            // 
+            // btnPreletPDF
+            // 
+            this.btnPreletPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnPreletPDF.Name = "btnPreletPDF";
+            this.btnPreletPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnPreletPDF.TabIndex = 3;
+            this.btnPreletPDF.Text = "PDF viewer";
+            this.btnPreletPDF.UseVisualStyleBackColor = true;
+            this.btnPreletPDF.Click += new System.EventHandler(this.btnPreletPDF_Click);
+            // 
+            // chk_prelet
+            // 
+            this.chk_prelet.AutoSize = true;
+            this.chk_prelet.Location = new System.Drawing.Point(449, 355);
+            this.chk_prelet.Name = "chk_prelet";
+            this.chk_prelet.Size = new System.Drawing.Size(100, 17);
+            this.chk_prelet.TabIndex = 1;
+            this.chk_prelet.Text = "Prelet Complete";
+            this.chk_prelet.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.checkBox10);
+            this.tabPage3.Controls.Add(this.checkBox9);
+            this.tabPage3.Controls.Add(this.checkBox8);
+            this.tabPage3.Controls.Add(this.btnDesignOF);
+            this.tabPage3.Controls.Add(this.btnDesignPDF);
+            this.tabPage3.Controls.Add(this.chk_design);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(555, 378);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Design";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // btnDesignOF
+            // 
+            this.btnDesignOF.Location = new System.Drawing.Point(329, 6);
+            this.btnDesignOF.Name = "btnDesignOF";
+            this.btnDesignOF.Size = new System.Drawing.Size(107, 22);
+            this.btnDesignOF.TabIndex = 4;
+            this.btnDesignOF.Text = "Open Folder Location";
+            this.btnDesignOF.UseVisualStyleBackColor = true;
+            this.btnDesignOF.Click += new System.EventHandler(this.btnDesignOF_Click);
+            // 
+            // btnDesignPDF
+            // 
+            this.btnDesignPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnDesignPDF.Name = "btnDesignPDF";
+            this.btnDesignPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnDesignPDF.TabIndex = 3;
+            this.btnDesignPDF.Text = "PDF viewer";
+            this.btnDesignPDF.UseVisualStyleBackColor = true;
+            this.btnDesignPDF.Click += new System.EventHandler(this.btnDesignPDF_Click);
+            // 
+            // chk_design
+            // 
+            this.chk_design.AutoSize = true;
+            this.chk_design.Location = new System.Drawing.Point(442, 355);
+            this.chk_design.Name = "chk_design";
+            this.chk_design.Size = new System.Drawing.Size(106, 17);
+            this.chk_design.TabIndex = 1;
+            this.chk_design.Text = "Design Complete";
+            this.chk_design.UseVisualStyleBackColor = true;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.checkBox13);
+            this.tabPage4.Controls.Add(this.checkBox12);
+            this.tabPage4.Controls.Add(this.checkBox11);
+            this.tabPage4.Controls.Add(this.btnOrderOF);
+            this.tabPage4.Controls.Add(this.btnOrderPDF);
+            this.tabPage4.Controls.Add(this.chk_Order);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(555, 378);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Order";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnOrderOF
+            // 
+            this.btnOrderOF.Location = new System.Drawing.Point(329, 6);
+            this.btnOrderOF.Name = "btnOrderOF";
+            this.btnOrderOF.Size = new System.Drawing.Size(107, 22);
+            this.btnOrderOF.TabIndex = 4;
+            this.btnOrderOF.Text = "Open Folder Location";
+            this.btnOrderOF.UseVisualStyleBackColor = true;
+            this.btnOrderOF.Click += new System.EventHandler(this.btnOrderOF_Click);
+            // 
+            // btnOrderPDF
+            // 
+            this.btnOrderPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnOrderPDF.Name = "btnOrderPDF";
+            this.btnOrderPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnOrderPDF.TabIndex = 3;
+            this.btnOrderPDF.Text = "PDF viewer";
+            this.btnOrderPDF.UseVisualStyleBackColor = true;
+            this.btnOrderPDF.Click += new System.EventHandler(this.btnOrderPDF_Click);
+            // 
+            // chk_Order
+            // 
+            this.chk_Order.AutoSize = true;
+            this.chk_Order.Location = new System.Drawing.Point(450, 355);
+            this.chk_Order.Name = "chk_Order";
+            this.chk_Order.Size = new System.Drawing.Size(99, 17);
+            this.chk_Order.TabIndex = 1;
+            this.chk_Order.Text = "Order Complete";
+            this.chk_Order.UseVisualStyleBackColor = true;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.checkBox18);
+            this.tabPage5.Controls.Add(this.checkBox17);
+            this.tabPage5.Controls.Add(this.checkBox16);
+            this.tabPage5.Controls.Add(this.checkBox15);
+            this.tabPage5.Controls.Add(this.checkBox14);
+            this.tabPage5.Controls.Add(this.btnSurveyOF);
+            this.tabPage5.Controls.Add(this.btnSurveyPDF);
+            this.tabPage5.Controls.Add(this.chk_Survey);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(555, 378);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Survey";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnSurveyOF
+            // 
+            this.btnSurveyOF.Location = new System.Drawing.Point(329, 6);
+            this.btnSurveyOF.Name = "btnSurveyOF";
+            this.btnSurveyOF.Size = new System.Drawing.Size(107, 22);
+            this.btnSurveyOF.TabIndex = 4;
+            this.btnSurveyOF.Text = "Open Folder Location";
+            this.btnSurveyOF.UseVisualStyleBackColor = true;
+            this.btnSurveyOF.Click += new System.EventHandler(this.btnSurveyOF_Click);
+            // 
+            // btnSurveyPDF
+            // 
+            this.btnSurveyPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnSurveyPDF.Name = "btnSurveyPDF";
+            this.btnSurveyPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnSurveyPDF.TabIndex = 3;
+            this.btnSurveyPDF.Text = "PDF viewer";
+            this.btnSurveyPDF.UseVisualStyleBackColor = true;
+            this.btnSurveyPDF.Click += new System.EventHandler(this.btnSurveyPDF_Click);
+            // 
+            // chk_Survey
+            // 
+            this.chk_Survey.AutoSize = true;
+            this.chk_Survey.Location = new System.Drawing.Point(446, 355);
+            this.chk_Survey.Name = "chk_Survey";
+            this.chk_Survey.Size = new System.Drawing.Size(106, 17);
+            this.chk_Survey.TabIndex = 1;
+            this.chk_Survey.Text = "Survey Complete";
+            this.chk_Survey.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.checkBox24);
+            this.tabPage6.Controls.Add(this.checkBox23);
+            this.tabPage6.Controls.Add(this.checkBox22);
+            this.tabPage6.Controls.Add(this.checkBox21);
+            this.tabPage6.Controls.Add(this.checkBox20);
+            this.tabPage6.Controls.Add(this.checkBox19);
+            this.tabPage6.Controls.Add(this.btnOnSiteOF);
+            this.tabPage6.Controls.Add(this.btnOnSitePDF);
+            this.tabPage6.Controls.Add(this.chk_onSite);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(555, 378);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "On Site";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // btnOnSiteOF
+            // 
+            this.btnOnSiteOF.Location = new System.Drawing.Point(329, 6);
+            this.btnOnSiteOF.Name = "btnOnSiteOF";
+            this.btnOnSiteOF.Size = new System.Drawing.Size(107, 22);
+            this.btnOnSiteOF.TabIndex = 4;
+            this.btnOnSiteOF.Text = "Open Folder Location";
+            this.btnOnSiteOF.UseVisualStyleBackColor = true;
+            this.btnOnSiteOF.Click += new System.EventHandler(this.btnOnSiteOF_Click);
+            // 
+            // btnOnSitePDF
+            // 
+            this.btnOnSitePDF.Location = new System.Drawing.Point(442, 6);
+            this.btnOnSitePDF.Name = "btnOnSitePDF";
+            this.btnOnSitePDF.Size = new System.Drawing.Size(107, 22);
+            this.btnOnSitePDF.TabIndex = 3;
+            this.btnOnSitePDF.Text = "PDF viewer";
+            this.btnOnSitePDF.UseVisualStyleBackColor = true;
+            this.btnOnSitePDF.Click += new System.EventHandler(this.btnOnSitePDF_Click);
+            // 
+            // chk_onSite
+            // 
+            this.chk_onSite.AutoSize = true;
+            this.chk_onSite.Location = new System.Drawing.Point(444, 355);
+            this.chk_onSite.Name = "chk_onSite";
+            this.chk_onSite.Size = new System.Drawing.Size(108, 17);
+            this.chk_onSite.TabIndex = 1;
+            this.chk_onSite.Text = "On Site Complete";
+            this.chk_onSite.UseVisualStyleBackColor = true;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.checkBox26);
+            this.tabPage7.Controls.Add(this.checkBox25);
+            this.tabPage7.Controls.Add(this.btnCompOF);
+            this.tabPage7.Controls.Add(this.btnCompPDF);
+            this.tabPage7.Controls.Add(this.chk_completion);
+            this.tabPage7.Location = new System.Drawing.Point(4, 22);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(555, 378);
+            this.tabPage7.TabIndex = 6;
+            this.tabPage7.Text = "Completion";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // btnCompOF
+            // 
+            this.btnCompOF.Location = new System.Drawing.Point(329, 6);
+            this.btnCompOF.Name = "btnCompOF";
+            this.btnCompOF.Size = new System.Drawing.Size(107, 22);
+            this.btnCompOF.TabIndex = 4;
+            this.btnCompOF.Text = "Open Folder Location";
+            this.btnCompOF.UseVisualStyleBackColor = true;
+            this.btnCompOF.Click += new System.EventHandler(this.btnCompOF_Click);
+            // 
+            // btnCompPDF
+            // 
+            this.btnCompPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnCompPDF.Name = "btnCompPDF";
+            this.btnCompPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnCompPDF.TabIndex = 3;
+            this.btnCompPDF.Text = "PDF viewer";
+            this.btnCompPDF.UseVisualStyleBackColor = true;
+            this.btnCompPDF.Click += new System.EventHandler(this.btnCompPDF_Click);
+            // 
+            // chk_completion
+            // 
+            this.chk_completion.AutoSize = true;
+            this.chk_completion.Location = new System.Drawing.Point(419, 355);
+            this.chk_completion.Name = "chk_completion";
+            this.chk_completion.Size = new System.Drawing.Size(130, 17);
+            this.chk_completion.TabIndex = 2;
+            this.chk_completion.Text = "Completion completed";
+            this.chk_completion.UseVisualStyleBackColor = true;
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.checkBox36);
+            this.tabPage8.Controls.Add(this.checkBox35);
+            this.tabPage8.Controls.Add(this.checkBox34);
+            this.tabPage8.Controls.Add(this.checkBox33);
+            this.tabPage8.Controls.Add(this.checkBox32);
+            this.tabPage8.Controls.Add(this.checkBox31);
+            this.tabPage8.Controls.Add(this.checkBox30);
+            this.tabPage8.Controls.Add(this.checkBox29);
+            this.tabPage8.Controls.Add(this.checkBox27);
+            this.tabPage8.Controls.Add(this.checkBox28);
+            this.tabPage8.Controls.Add(this.btnInvoiceOF);
+            this.tabPage8.Controls.Add(this.btnInvoicePDF);
+            this.tabPage8.Controls.Add(this.chk_invoiced);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(555, 378);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "invoiced";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // btnInvoiceOF
+            // 
+            this.btnInvoiceOF.Location = new System.Drawing.Point(329, 6);
+            this.btnInvoiceOF.Name = "btnInvoiceOF";
+            this.btnInvoiceOF.Size = new System.Drawing.Size(107, 22);
+            this.btnInvoiceOF.TabIndex = 4;
+            this.btnInvoiceOF.Text = "Open Folder Location";
+            this.btnInvoiceOF.UseVisualStyleBackColor = true;
+            this.btnInvoiceOF.Click += new System.EventHandler(this.btnInvoiceOF_Click);
+            // 
+            // btnInvoicePDF
+            // 
+            this.btnInvoicePDF.Location = new System.Drawing.Point(442, 6);
+            this.btnInvoicePDF.Name = "btnInvoicePDF";
+            this.btnInvoicePDF.Size = new System.Drawing.Size(107, 22);
+            this.btnInvoicePDF.TabIndex = 3;
+            this.btnInvoicePDF.Text = "PDF viewer";
+            this.btnInvoicePDF.UseVisualStyleBackColor = true;
+            this.btnInvoicePDF.Click += new System.EventHandler(this.btnInvoicePDF_Click);
+            // 
+            // chk_invoiced
+            // 
+            this.chk_invoiced.AutoSize = true;
+            this.chk_invoiced.Location = new System.Drawing.Point(402, 343);
+            this.chk_invoiced.Name = "chk_invoiced";
+            this.chk_invoiced.Size = new System.Drawing.Size(119, 17);
+            this.chk_invoiced.TabIndex = 2;
+            this.chk_invoiced.Text = "Invoiced completed";
+            this.chk_invoiced.UseVisualStyleBackColor = true;
+            // 
+            // tabPage9
+            // 
+            this.tabPage9.Controls.Add(this.checkBox40);
+            this.tabPage9.Controls.Add(this.checkBox39);
+            this.tabPage9.Controls.Add(this.checkBox38);
+            this.tabPage9.Controls.Add(this.checkBox37);
+            this.tabPage9.Controls.Add(this.btnRetentionOF);
+            this.tabPage9.Controls.Add(this.btnRetentionPDF);
+            this.tabPage9.Controls.Add(this.chk_retention);
+            this.tabPage9.Location = new System.Drawing.Point(4, 22);
+            this.tabPage9.Name = "tabPage9";
+            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage9.Size = new System.Drawing.Size(555, 378);
+            this.tabPage9.TabIndex = 8;
+            this.tabPage9.Text = "Retention";
+            this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnRetentionOF
+            // 
+            this.btnRetentionOF.Location = new System.Drawing.Point(329, 6);
+            this.btnRetentionOF.Name = "btnRetentionOF";
+            this.btnRetentionOF.Size = new System.Drawing.Size(107, 22);
+            this.btnRetentionOF.TabIndex = 4;
+            this.btnRetentionOF.Text = "Open Folder Location";
+            this.btnRetentionOF.UseVisualStyleBackColor = true;
+            this.btnRetentionOF.Click += new System.EventHandler(this.btnRetentionOF_Click);
+            // 
+            // btnRetentionPDF
+            // 
+            this.btnRetentionPDF.Location = new System.Drawing.Point(442, 6);
+            this.btnRetentionPDF.Name = "btnRetentionPDF";
+            this.btnRetentionPDF.Size = new System.Drawing.Size(107, 22);
+            this.btnRetentionPDF.TabIndex = 3;
+            this.btnRetentionPDF.Text = "PDF viewer";
+            this.btnRetentionPDF.UseVisualStyleBackColor = true;
+            this.btnRetentionPDF.Click += new System.EventHandler(this.btnRetentionPDF_Click);
+            // 
+            // chk_retention
+            // 
+            this.chk_retention.AutoSize = true;
+            this.chk_retention.Location = new System.Drawing.Point(430, 355);
+            this.chk_retention.Name = "chk_retention";
+            this.chk_retention.Size = new System.Drawing.Size(119, 17);
+            this.chk_retention.TabIndex = 2;
+            this.chk_retention.Text = "Retention Complete";
+            this.chk_retention.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -395,207 +836,6 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Commercial Contact Information";
             // 
-            // chk_tender
-            // 
-            this.chk_tender.AutoSize = true;
-            this.chk_tender.Location = new System.Drawing.Point(442, 355);
-            this.chk_tender.Name = "chk_tender";
-            this.chk_tender.Size = new System.Drawing.Size(107, 17);
-            this.chk_tender.TabIndex = 0;
-            this.chk_tender.Text = "Tender Complete";
-            this.chk_tender.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.btnDesignOF);
-            this.tabPage3.Controls.Add(this.btnDesignPDF);
-            this.tabPage3.Controls.Add(this.chk_design);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(555, 378);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Design";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.btnOrderOF);
-            this.tabPage4.Controls.Add(this.btnOrderPDF);
-            this.tabPage4.Controls.Add(this.chk_Order);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(555, 378);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Order";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.btnSurveyOF);
-            this.tabPage5.Controls.Add(this.btnSurveyPDF);
-            this.tabPage5.Controls.Add(this.chk_Survey);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(555, 378);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Survey";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.btnOnSiteOF);
-            this.tabPage6.Controls.Add(this.btnOnSitePDF);
-            this.tabPage6.Controls.Add(this.chk_onSite);
-            this.tabPage6.Location = new System.Drawing.Point(4, 22);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(555, 378);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Text = "On Site";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.btnCompOF);
-            this.tabPage7.Controls.Add(this.btnCompPDF);
-            this.tabPage7.Controls.Add(this.chk_completion);
-            this.tabPage7.Location = new System.Drawing.Point(4, 22);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(555, 378);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Completion";
-            this.tabPage7.UseVisualStyleBackColor = true;
-            // 
-            // chk_prelet
-            // 
-            this.chk_prelet.AutoSize = true;
-            this.chk_prelet.Location = new System.Drawing.Point(224, 181);
-            this.chk_prelet.Name = "chk_prelet";
-            this.chk_prelet.Size = new System.Drawing.Size(100, 17);
-            this.chk_prelet.TabIndex = 1;
-            this.chk_prelet.Text = "Prelet Complete";
-            this.chk_prelet.UseVisualStyleBackColor = true;
-            // 
-            // chk_design
-            // 
-            this.chk_design.AutoSize = true;
-            this.chk_design.Location = new System.Drawing.Point(224, 181);
-            this.chk_design.Name = "chk_design";
-            this.chk_design.Size = new System.Drawing.Size(106, 17);
-            this.chk_design.TabIndex = 1;
-            this.chk_design.Text = "Design Complete";
-            this.chk_design.UseVisualStyleBackColor = true;
-            // 
-            // chk_Order
-            // 
-            this.chk_Order.AutoSize = true;
-            this.chk_Order.Location = new System.Drawing.Point(224, 181);
-            this.chk_Order.Name = "chk_Order";
-            this.chk_Order.Size = new System.Drawing.Size(99, 17);
-            this.chk_Order.TabIndex = 1;
-            this.chk_Order.Text = "Order Complete";
-            this.chk_Order.UseVisualStyleBackColor = true;
-            // 
-            // chk_Survey
-            // 
-            this.chk_Survey.AutoSize = true;
-            this.chk_Survey.Location = new System.Drawing.Point(224, 181);
-            this.chk_Survey.Name = "chk_Survey";
-            this.chk_Survey.Size = new System.Drawing.Size(106, 17);
-            this.chk_Survey.TabIndex = 1;
-            this.chk_Survey.Text = "Survey Complete";
-            this.chk_Survey.UseVisualStyleBackColor = true;
-            // 
-            // chk_onSite
-            // 
-            this.chk_onSite.AutoSize = true;
-            this.chk_onSite.Location = new System.Drawing.Point(224, 181);
-            this.chk_onSite.Name = "chk_onSite";
-            this.chk_onSite.Size = new System.Drawing.Size(108, 17);
-            this.chk_onSite.TabIndex = 1;
-            this.chk_onSite.Text = "On Site Complete";
-            this.chk_onSite.UseVisualStyleBackColor = true;
-            // 
-            // tabPage8
-            // 
-            this.tabPage8.Controls.Add(this.btnInvoiceOF);
-            this.tabPage8.Controls.Add(this.btnInvoicePDF);
-            this.tabPage8.Controls.Add(this.chk_invoiced);
-            this.tabPage8.Location = new System.Drawing.Point(4, 22);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(555, 378);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "100% invoiced";
-            this.tabPage8.UseVisualStyleBackColor = true;
-            // 
-            // tabPage9
-            // 
-            this.tabPage9.Controls.Add(this.btnRetentionOF);
-            this.tabPage9.Controls.Add(this.btnRetentionPDF);
-            this.tabPage9.Controls.Add(this.chk_retention);
-            this.tabPage9.Location = new System.Drawing.Point(4, 22);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(555, 378);
-            this.tabPage9.TabIndex = 8;
-            this.tabPage9.Text = "Retention";
-            this.tabPage9.UseVisualStyleBackColor = true;
-            // 
-            // chk_completion
-            // 
-            this.chk_completion.AutoSize = true;
-            this.chk_completion.Location = new System.Drawing.Point(223, 181);
-            this.chk_completion.Name = "chk_completion";
-            this.chk_completion.Size = new System.Drawing.Size(130, 17);
-            this.chk_completion.TabIndex = 2;
-            this.chk_completion.Text = "Completion completed";
-            this.chk_completion.UseVisualStyleBackColor = true;
-            // 
-            // chk_invoiced
-            // 
-            this.chk_invoiced.AutoSize = true;
-            this.chk_invoiced.Location = new System.Drawing.Point(223, 181);
-            this.chk_invoiced.Name = "chk_invoiced";
-            this.chk_invoiced.Size = new System.Drawing.Size(147, 17);
-            this.chk_invoiced.TabIndex = 2;
-            this.chk_invoiced.Text = "100% invoiced completed";
-            this.chk_invoiced.UseVisualStyleBackColor = true;
-            // 
-            // chk_retention
-            // 
-            this.chk_retention.AutoSize = true;
-            this.chk_retention.Location = new System.Drawing.Point(223, 181);
-            this.chk_retention.Name = "chk_retention";
-            this.chk_retention.Size = new System.Drawing.Size(119, 17);
-            this.chk_retention.TabIndex = 2;
-            this.chk_retention.Text = "Retention Complete";
-            this.chk_retention.UseVisualStyleBackColor = true;
-            // 
-            // btn_PDF
-            // 
-            this.btn_PDF.Location = new System.Drawing.Point(442, 6);
-            this.btn_PDF.Name = "btn_PDF";
-            this.btn_PDF.Size = new System.Drawing.Size(107, 22);
-            this.btn_PDF.TabIndex = 1;
-            this.btn_PDF.Text = "PDF viewer";
-            this.btn_PDF.UseVisualStyleBackColor = true;
-            this.btn_PDF.Click += new System.EventHandler(this.btn_PDF_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(329, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(107, 22);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Open Folder Location";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnUpdateInfo
             // 
             this.btnUpdateInfo.Location = new System.Drawing.Point(90, 401);
@@ -606,165 +846,445 @@
             this.btnUpdateInfo.UseVisualStyleBackColor = true;
             this.btnUpdateInfo.Click += new System.EventHandler(this.btnUpdateInfo_Click);
             // 
-            // btnPreletOF
+            // checkBox1
             // 
-            this.btnPreletOF.Location = new System.Drawing.Point(329, 6);
-            this.btnPreletOF.Name = "btnPreletOF";
-            this.btnPreletOF.Size = new System.Drawing.Size(107, 22);
-            this.btnPreletOF.TabIndex = 4;
-            this.btnPreletOF.Text = "Open Folder Location";
-            this.btnPreletOF.UseVisualStyleBackColor = true;
-            this.btnPreletOF.Click += new System.EventHandler(this.btnPreletOF_Click);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox1.Location = new System.Drawing.Point(14, 75);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(180, 19);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.Text = "Pricing Documents Recieved";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
-            // btnPreletPDF
+            // checkBox2
             // 
-            this.btnPreletPDF.Location = new System.Drawing.Point(442, 6);
-            this.btnPreletPDF.Name = "btnPreletPDF";
-            this.btnPreletPDF.Size = new System.Drawing.Size(107, 22);
-            this.btnPreletPDF.TabIndex = 3;
-            this.btnPreletPDF.Text = "PDF viewer";
-            this.btnPreletPDF.UseVisualStyleBackColor = true;
-            this.btnPreletPDF.Click += new System.EventHandler(this.btnPreletPDF_Click);
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(14, 149);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(104, 19);
+            this.checkBox2.TabIndex = 4;
+            this.checkBox2.Text = "Quotes Issued";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // btnDesignOF
+            // checkBox3
             // 
-            this.btnDesignOF.Location = new System.Drawing.Point(329, 6);
-            this.btnDesignOF.Name = "btnDesignOF";
-            this.btnDesignOF.Size = new System.Drawing.Size(107, 22);
-            this.btnDesignOF.TabIndex = 4;
-            this.btnDesignOF.Text = "Open Folder Location";
-            this.btnDesignOF.UseVisualStyleBackColor = true;
-            this.btnDesignOF.Click += new System.EventHandler(this.btnDesignOF_Click);
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox3.Location = new System.Drawing.Point(14, 223);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(186, 19);
+            this.checkBox3.TabIndex = 5;
+            this.checkBox3.Text = "Quote Compliance Confirmed";
+            this.checkBox3.UseVisualStyleBackColor = true;
             // 
-            // btnDesignPDF
+            // checkBox4
             // 
-            this.btnDesignPDF.Location = new System.Drawing.Point(442, 6);
-            this.btnDesignPDF.Name = "btnDesignPDF";
-            this.btnDesignPDF.Size = new System.Drawing.Size(107, 22);
-            this.btnDesignPDF.TabIndex = 3;
-            this.btnDesignPDF.Text = "PDF viewer";
-            this.btnDesignPDF.UseVisualStyleBackColor = true;
-            this.btnDesignPDF.Click += new System.EventHandler(this.btnDesignPDF_Click);
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox4.Location = new System.Drawing.Point(25, 76);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(89, 19);
+            this.checkBox4.TabIndex = 5;
+            this.checkBox4.Text = "Meeting Sat";
+            this.checkBox4.UseVisualStyleBackColor = true;
             // 
-            // btnOrderOF
+            // checkBox5
             // 
-            this.btnOrderOF.Location = new System.Drawing.Point(329, 6);
-            this.btnOrderOF.Name = "btnOrderOF";
-            this.btnOrderOF.Size = new System.Drawing.Size(107, 22);
-            this.btnOrderOF.TabIndex = 4;
-            this.btnOrderOF.Text = "Open Folder Location";
-            this.btnOrderOF.UseVisualStyleBackColor = true;
-            this.btnOrderOF.Click += new System.EventHandler(this.btnOrderOF_Click);
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox5.Location = new System.Drawing.Point(25, 146);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(127, 19);
+            this.checkBox5.TabIndex = 6;
+            this.checkBox5.Text = "Actions Completed";
+            this.checkBox5.UseVisualStyleBackColor = true;
             // 
-            // btnOrderPDF
+            // checkBox6
             // 
-            this.btnOrderPDF.Location = new System.Drawing.Point(442, 6);
-            this.btnOrderPDF.Name = "btnOrderPDF";
-            this.btnOrderPDF.Size = new System.Drawing.Size(107, 22);
-            this.btnOrderPDF.TabIndex = 3;
-            this.btnOrderPDF.Text = "PDF viewer";
-            this.btnOrderPDF.UseVisualStyleBackColor = true;
-            this.btnOrderPDF.Click += new System.EventHandler(this.btnOrderPDF_Click);
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox6.Location = new System.Drawing.Point(25, 219);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(232, 19);
+            this.checkBox6.TabIndex = 7;
+            this.checkBox6.Text = "Intent/Commitment to Order Recieved";
+            this.checkBox6.UseVisualStyleBackColor = true;
             // 
-            // btnSurveyOF
+            // checkBox7
             // 
-            this.btnSurveyOF.Location = new System.Drawing.Point(329, 6);
-            this.btnSurveyOF.Name = "btnSurveyOF";
-            this.btnSurveyOF.Size = new System.Drawing.Size(107, 22);
-            this.btnSurveyOF.TabIndex = 4;
-            this.btnSurveyOF.Text = "Open Folder Location";
-            this.btnSurveyOF.UseVisualStyleBackColor = true;
-            this.btnSurveyOF.Click += new System.EventHandler(this.btnSurveyOF_Click);
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox7.Location = new System.Drawing.Point(25, 280);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(232, 19);
+            this.checkBox7.TabIndex = 8;
+            this.checkBox7.Text = "Intent/Commitment to Order Recieved";
+            this.checkBox7.UseVisualStyleBackColor = true;
             // 
-            // btnSurveyPDF
+            // checkBox8
             // 
-            this.btnSurveyPDF.Location = new System.Drawing.Point(442, 6);
-            this.btnSurveyPDF.Name = "btnSurveyPDF";
-            this.btnSurveyPDF.Size = new System.Drawing.Size(107, 22);
-            this.btnSurveyPDF.TabIndex = 3;
-            this.btnSurveyPDF.Text = "PDF viewer";
-            this.btnSurveyPDF.UseVisualStyleBackColor = true;
-            this.btnSurveyPDF.Click += new System.EventHandler(this.btnSurveyPDF_Click);
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox8.Location = new System.Drawing.Point(47, 97);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(117, 19);
+            this.checkBox8.TabIndex = 6;
+            this.checkBox8.Text = "Drawings Issued";
+            this.checkBox8.UseVisualStyleBackColor = true;
             // 
-            // btnOnSiteOF
+            // checkBox9
             // 
-            this.btnOnSiteOF.Location = new System.Drawing.Point(329, 6);
-            this.btnOnSiteOF.Name = "btnOnSiteOF";
-            this.btnOnSiteOF.Size = new System.Drawing.Size(107, 22);
-            this.btnOnSiteOF.TabIndex = 4;
-            this.btnOnSiteOF.Text = "Open Folder Location";
-            this.btnOnSiteOF.UseVisualStyleBackColor = true;
-            this.btnOnSiteOF.Click += new System.EventHandler(this.btnOnSiteOF_Click);
+            this.checkBox9.AutoSize = true;
+            this.checkBox9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox9.Location = new System.Drawing.Point(47, 148);
+            this.checkBox9.Name = "checkBox9";
+            this.checkBox9.Size = new System.Drawing.Size(134, 19);
+            this.checkBox9.TabIndex = 7;
+            this.checkBox9.Text = "Comments Received";
+            this.checkBox9.UseVisualStyleBackColor = true;
             // 
-            // btnOnSitePDF
+            // checkBox10
             // 
-            this.btnOnSitePDF.Location = new System.Drawing.Point(442, 6);
-            this.btnOnSitePDF.Name = "btnOnSitePDF";
-            this.btnOnSitePDF.Size = new System.Drawing.Size(107, 22);
-            this.btnOnSitePDF.TabIndex = 3;
-            this.btnOnSitePDF.Text = "PDF viewer";
-            this.btnOnSitePDF.UseVisualStyleBackColor = true;
-            this.btnOnSitePDF.Click += new System.EventHandler(this.btnOnSitePDF_Click);
+            this.checkBox10.AutoSize = true;
+            this.checkBox10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox10.Location = new System.Drawing.Point(47, 223);
+            this.checkBox10.Name = "checkBox10";
+            this.checkBox10.Size = new System.Drawing.Size(147, 19);
+            this.checkBox10.TabIndex = 8;
+            this.checkBox10.Text = "Find Sign Off Received";
+            this.checkBox10.UseVisualStyleBackColor = true;
             // 
-            // btnCompOF
+            // checkBox11
             // 
-            this.btnCompOF.Location = new System.Drawing.Point(329, 6);
-            this.btnCompOF.Name = "btnCompOF";
-            this.btnCompOF.Size = new System.Drawing.Size(107, 22);
-            this.btnCompOF.TabIndex = 4;
-            this.btnCompOF.Text = "Open Folder Location";
-            this.btnCompOF.UseVisualStyleBackColor = true;
-            this.btnCompOF.Click += new System.EventHandler(this.btnCompOF_Click);
+            this.checkBox11.AutoSize = true;
+            this.checkBox11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox11.Location = new System.Drawing.Point(27, 76);
+            this.checkBox11.Name = "checkBox11";
+            this.checkBox11.Size = new System.Drawing.Size(89, 19);
+            this.checkBox11.TabIndex = 7;
+            this.checkBox11.Text = "Meeting Sat";
+            this.checkBox11.UseVisualStyleBackColor = true;
             // 
-            // btnCompPDF
+            // checkBox12
             // 
-            this.btnCompPDF.Location = new System.Drawing.Point(442, 6);
-            this.btnCompPDF.Name = "btnCompPDF";
-            this.btnCompPDF.Size = new System.Drawing.Size(107, 22);
-            this.btnCompPDF.TabIndex = 3;
-            this.btnCompPDF.Text = "PDF viewer";
-            this.btnCompPDF.UseVisualStyleBackColor = true;
-            this.btnCompPDF.Click += new System.EventHandler(this.btnCompPDF_Click);
+            this.checkBox12.AutoSize = true;
+            this.checkBox12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox12.Location = new System.Drawing.Point(27, 173);
+            this.checkBox12.Name = "checkBox12";
+            this.checkBox12.Size = new System.Drawing.Size(98, 19);
+            this.checkBox12.TabIndex = 8;
+            this.checkBox12.Text = "Terms Agreed";
+            this.checkBox12.UseVisualStyleBackColor = true;
             // 
-            // btnInvoiceOF
+            // checkBox13
             // 
-            this.btnInvoiceOF.Location = new System.Drawing.Point(329, 6);
-            this.btnInvoiceOF.Name = "btnInvoiceOF";
-            this.btnInvoiceOF.Size = new System.Drawing.Size(107, 22);
-            this.btnInvoiceOF.TabIndex = 4;
-            this.btnInvoiceOF.Text = "Open Folder Location";
-            this.btnInvoiceOF.UseVisualStyleBackColor = true;
-            this.btnInvoiceOF.Click += new System.EventHandler(this.btnInvoiceOF_Click);
+            this.checkBox13.AutoSize = true;
+            this.checkBox13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox13.Location = new System.Drawing.Point(27, 248);
+            this.checkBox13.Name = "checkBox13";
+            this.checkBox13.Size = new System.Drawing.Size(173, 19);
+            this.checkBox13.TabIndex = 9;
+            this.checkBox13.Text = "Order Signed and Returned";
+            this.checkBox13.UseVisualStyleBackColor = true;
             // 
-            // btnInvoicePDF
+            // checkBox14
             // 
-            this.btnInvoicePDF.Location = new System.Drawing.Point(442, 6);
-            this.btnInvoicePDF.Name = "btnInvoicePDF";
-            this.btnInvoicePDF.Size = new System.Drawing.Size(107, 22);
-            this.btnInvoicePDF.TabIndex = 3;
-            this.btnInvoicePDF.Text = "PDF viewer";
-            this.btnInvoicePDF.UseVisualStyleBackColor = true;
-            this.btnInvoicePDF.Click += new System.EventHandler(this.btnInvoicePDF_Click);
+            this.checkBox14.AutoSize = true;
+            this.checkBox14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox14.Location = new System.Drawing.Point(45, 97);
+            this.checkBox14.Name = "checkBox14";
+            this.checkBox14.Size = new System.Drawing.Size(119, 19);
+            this.checkBox14.TabIndex = 8;
+            this.checkBox14.Text = "Survey Booked In";
+            this.checkBox14.UseVisualStyleBackColor = true;
             // 
-            // btnRetentionOF
+            // checkBox15
             // 
-            this.btnRetentionOF.Location = new System.Drawing.Point(329, 6);
-            this.btnRetentionOF.Name = "btnRetentionOF";
-            this.btnRetentionOF.Size = new System.Drawing.Size(107, 22);
-            this.btnRetentionOF.TabIndex = 4;
-            this.btnRetentionOF.Text = "Open Folder Location";
-            this.btnRetentionOF.UseVisualStyleBackColor = true;
-            this.btnRetentionOF.Click += new System.EventHandler(this.btnRetentionOF_Click);
+            this.checkBox15.AutoSize = true;
+            this.checkBox15.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox15.Location = new System.Drawing.Point(45, 157);
+            this.checkBox15.Name = "checkBox15";
+            this.checkBox15.Size = new System.Drawing.Size(110, 19);
+            this.checkBox15.TabIndex = 9;
+            this.checkBox15.Text = "Survey Charged";
+            this.checkBox15.UseVisualStyleBackColor = true;
             // 
-            // btnRetentionPDF
+            // checkBox16
             // 
-            this.btnRetentionPDF.Location = new System.Drawing.Point(442, 6);
-            this.btnRetentionPDF.Name = "btnRetentionPDF";
-            this.btnRetentionPDF.Size = new System.Drawing.Size(107, 22);
-            this.btnRetentionPDF.TabIndex = 3;
-            this.btnRetentionPDF.Text = "PDF viewer";
-            this.btnRetentionPDF.UseVisualStyleBackColor = true;
-            this.btnRetentionPDF.Click += new System.EventHandler(this.btnRetentionPDF_Click);
+            this.checkBox16.AutoSize = true;
+            this.checkBox16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox16.Location = new System.Drawing.Point(45, 223);
+            this.checkBox16.Name = "checkBox16";
+            this.checkBox16.Size = new System.Drawing.Size(116, 19);
+            this.checkBox16.TabIndex = 10;
+            this.checkBox16.Text = "Survey Complete";
+            this.checkBox16.UseVisualStyleBackColor = true;
+            // 
+            // checkBox17
+            // 
+            this.checkBox17.AutoSize = true;
+            this.checkBox17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox17.Location = new System.Drawing.Point(45, 266);
+            this.checkBox17.Name = "checkBox17";
+            this.checkBox17.Size = new System.Drawing.Size(238, 19);
+            this.checkBox17.TabIndex = 11;
+            this.checkBox17.Text = "Quotes/Drawings Amended if Required";
+            this.checkBox17.UseVisualStyleBackColor = true;
+            // 
+            // checkBox18
+            // 
+            this.checkBox18.AutoSize = true;
+            this.checkBox18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox18.Location = new System.Drawing.Point(45, 307);
+            this.checkBox18.Name = "checkBox18";
+            this.checkBox18.Size = new System.Drawing.Size(158, 19);
+            this.checkBox18.TabIndex = 12;
+            this.checkBox18.Text = "Doors in Manufacturing";
+            this.checkBox18.UseVisualStyleBackColor = true;
+            // 
+            // checkBox19
+            // 
+            this.checkBox19.AutoSize = true;
+            this.checkBox19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox19.Location = new System.Drawing.Point(26, 22);
+            this.checkBox19.Name = "checkBox19";
+            this.checkBox19.Size = new System.Drawing.Size(105, 19);
+            this.checkBox19.TabIndex = 12;
+            this.checkBox19.Text = "Delivery Made";
+            this.checkBox19.UseVisualStyleBackColor = true;
+            // 
+            // checkBox20
+            // 
+            this.checkBox20.AutoSize = true;
+            this.checkBox20.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox20.Location = new System.Drawing.Point(26, 85);
+            this.checkBox20.Name = "checkBox20";
+            this.checkBox20.Size = new System.Drawing.Size(98, 19);
+            this.checkBox20.TabIndex = 13;
+            this.checkBox20.Text = "Install Began";
+            this.checkBox20.UseVisualStyleBackColor = true;
+            // 
+            // checkBox21
+            // 
+            this.checkBox21.AutoSize = true;
+            this.checkBox21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox21.Location = new System.Drawing.Point(26, 148);
+            this.checkBox21.Name = "checkBox21";
+            this.checkBox21.Size = new System.Drawing.Size(116, 19);
+            this.checkBox21.TabIndex = 14;
+            this.checkBox21.Text = "Install Complete";
+            this.checkBox21.UseVisualStyleBackColor = true;
+            // 
+            // checkBox22
+            // 
+            this.checkBox22.AutoSize = true;
+            this.checkBox22.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox22.Location = new System.Drawing.Point(26, 211);
+            this.checkBox22.Name = "checkBox22";
+            this.checkBox22.Size = new System.Drawing.Size(120, 19);
+            this.checkBox22.TabIndex = 15;
+            this.checkBox22.Text = "Sign Off Received";
+            this.checkBox22.UseVisualStyleBackColor = true;
+            // 
+            // checkBox23
+            // 
+            this.checkBox23.AutoSize = true;
+            this.checkBox23.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox23.Location = new System.Drawing.Point(26, 274);
+            this.checkBox23.Name = "checkBox23";
+            this.checkBox23.Size = new System.Drawing.Size(238, 19);
+            this.checkBox23.TabIndex = 16;
+            this.checkBox23.Text = "Quotes/Drawings Amended if Required";
+            this.checkBox23.UseVisualStyleBackColor = true;
+            // 
+            // checkBox24
+            // 
+            this.checkBox24.AutoSize = true;
+            this.checkBox24.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox24.Location = new System.Drawing.Point(26, 337);
+            this.checkBox24.Name = "checkBox24";
+            this.checkBox24.Size = new System.Drawing.Size(88, 19);
+            this.checkBox24.TabIndex = 17;
+            this.checkBox24.Text = "Completion";
+            this.checkBox24.UseVisualStyleBackColor = true;
+            // 
+            // checkBox26
+            // 
+            this.checkBox26.AutoSize = true;
+            this.checkBox26.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox26.Location = new System.Drawing.Point(50, 194);
+            this.checkBox26.Name = "checkBox26";
+            this.checkBox26.Size = new System.Drawing.Size(137, 19);
+            this.checkBox26.TabIndex = 21;
+            this.checkBox26.Text = "O+M Manual Issued";
+            this.checkBox26.UseVisualStyleBackColor = true;
+            // 
+            // checkBox25
+            // 
+            this.checkBox25.AutoSize = true;
+            this.checkBox25.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox25.Location = new System.Drawing.Point(50, 148);
+            this.checkBox25.Name = "checkBox25";
+            this.checkBox25.Size = new System.Drawing.Size(133, 19);
+            this.checkBox25.TabIndex = 20;
+            this.checkBox25.Text = "Handover Complete";
+            this.checkBox25.UseVisualStyleBackColor = true;
+            // 
+            // checkBox28
+            // 
+            this.checkBox28.AutoSize = true;
+            this.checkBox28.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox28.Location = new System.Drawing.Point(34, 37);
+            this.checkBox28.Name = "checkBox28";
+            this.checkBox28.Size = new System.Drawing.Size(49, 19);
+            this.checkBox28.TabIndex = 20;
+            this.checkBox28.Text = "10%";
+            this.checkBox28.UseVisualStyleBackColor = true;
+            // 
+            // checkBox27
+            // 
+            this.checkBox27.AutoSize = true;
+            this.checkBox27.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox27.Location = new System.Drawing.Point(34, 70);
+            this.checkBox27.Name = "checkBox27";
+            this.checkBox27.Size = new System.Drawing.Size(49, 19);
+            this.checkBox27.TabIndex = 21;
+            this.checkBox27.Text = "20%";
+            this.checkBox27.UseVisualStyleBackColor = true;
+            // 
+            // checkBox29
+            // 
+            this.checkBox29.AutoSize = true;
+            this.checkBox29.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox29.Location = new System.Drawing.Point(34, 103);
+            this.checkBox29.Name = "checkBox29";
+            this.checkBox29.Size = new System.Drawing.Size(49, 19);
+            this.checkBox29.TabIndex = 22;
+            this.checkBox29.Text = "30%";
+            this.checkBox29.UseVisualStyleBackColor = true;
+            // 
+            // checkBox30
+            // 
+            this.checkBox30.AutoSize = true;
+            this.checkBox30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox30.Location = new System.Drawing.Point(34, 136);
+            this.checkBox30.Name = "checkBox30";
+            this.checkBox30.Size = new System.Drawing.Size(49, 19);
+            this.checkBox30.TabIndex = 23;
+            this.checkBox30.Text = "40%";
+            this.checkBox30.UseVisualStyleBackColor = true;
+            // 
+            // checkBox31
+            // 
+            this.checkBox31.AutoSize = true;
+            this.checkBox31.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox31.Location = new System.Drawing.Point(34, 169);
+            this.checkBox31.Name = "checkBox31";
+            this.checkBox31.Size = new System.Drawing.Size(49, 19);
+            this.checkBox31.TabIndex = 24;
+            this.checkBox31.Text = "50%";
+            this.checkBox31.UseVisualStyleBackColor = true;
+            // 
+            // checkBox32
+            // 
+            this.checkBox32.AutoSize = true;
+            this.checkBox32.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox32.Location = new System.Drawing.Point(34, 301);
+            this.checkBox32.Name = "checkBox32";
+            this.checkBox32.Size = new System.Drawing.Size(49, 19);
+            this.checkBox32.TabIndex = 25;
+            this.checkBox32.Text = "90%";
+            this.checkBox32.UseVisualStyleBackColor = true;
+            // 
+            // checkBox33
+            // 
+            this.checkBox33.AutoSize = true;
+            this.checkBox33.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox33.Location = new System.Drawing.Point(34, 268);
+            this.checkBox33.Name = "checkBox33";
+            this.checkBox33.Size = new System.Drawing.Size(49, 19);
+            this.checkBox33.TabIndex = 26;
+            this.checkBox33.Text = "80%";
+            this.checkBox33.UseVisualStyleBackColor = true;
+            // 
+            // checkBox34
+            // 
+            this.checkBox34.AutoSize = true;
+            this.checkBox34.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox34.Location = new System.Drawing.Point(34, 202);
+            this.checkBox34.Name = "checkBox34";
+            this.checkBox34.Size = new System.Drawing.Size(49, 19);
+            this.checkBox34.TabIndex = 27;
+            this.checkBox34.Text = "60%";
+            this.checkBox34.UseVisualStyleBackColor = true;
+            // 
+            // checkBox35
+            // 
+            this.checkBox35.AutoSize = true;
+            this.checkBox35.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox35.Location = new System.Drawing.Point(34, 235);
+            this.checkBox35.Name = "checkBox35";
+            this.checkBox35.Size = new System.Drawing.Size(49, 19);
+            this.checkBox35.TabIndex = 28;
+            this.checkBox35.Text = "70%";
+            this.checkBox35.UseVisualStyleBackColor = true;
+            // 
+            // checkBox36
+            // 
+            this.checkBox36.AutoSize = true;
+            this.checkBox36.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox36.Location = new System.Drawing.Point(34, 334);
+            this.checkBox36.Name = "checkBox36";
+            this.checkBox36.Size = new System.Drawing.Size(56, 19);
+            this.checkBox36.TabIndex = 29;
+            this.checkBox36.Text = "100%";
+            this.checkBox36.UseVisualStyleBackColor = true;
+            // 
+            // checkBox37
+            // 
+            this.checkBox37.AutoSize = true;
+            this.checkBox37.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox37.Location = new System.Drawing.Point(33, 51);
+            this.checkBox37.Name = "checkBox37";
+            this.checkBox37.Size = new System.Drawing.Size(159, 19);
+            this.checkBox37.TabIndex = 21;
+            this.checkBox37.Text = "Onsite Retention Invoice";
+            this.checkBox37.UseVisualStyleBackColor = true;
+            // 
+            // checkBox38
+            // 
+            this.checkBox38.AutoSize = true;
+            this.checkBox38.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox38.Location = new System.Drawing.Point(33, 131);
+            this.checkBox38.Name = "checkBox38";
+            this.checkBox38.Size = new System.Drawing.Size(167, 19);
+            this.checkBox38.TabIndex = 22;
+            this.checkBox38.Text = "Onsite Retention Received";
+            this.checkBox38.UseVisualStyleBackColor = true;
+            // 
+            // checkBox39
+            // 
+            this.checkBox39.AutoSize = true;
+            this.checkBox39.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox39.Location = new System.Drawing.Point(33, 211);
+            this.checkBox39.Name = "checkBox39";
+            this.checkBox39.Size = new System.Drawing.Size(190, 19);
+            this.checkBox39.TabIndex = 23;
+            this.checkBox39.Text = "Practical Completion Invoiced";
+            this.checkBox39.UseVisualStyleBackColor = true;
+            // 
+            // checkBox40
+            // 
+            this.checkBox40.AutoSize = true;
+            this.checkBox40.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox40.Location = new System.Drawing.Point(33, 291);
+            this.checkBox40.Name = "checkBox40";
+            this.checkBox40.Size = new System.Drawing.Size(191, 19);
+            this.checkBox40.TabIndex = 24;
+            this.checkBox40.Text = "Practical Completion Recieved";
+            this.checkBox40.UseVisualStyleBackColor = true;
             // 
             // frmProjectManager
             // 
@@ -898,5 +1418,45 @@
         private System.Windows.Forms.Button btnInvoicePDF;
         private System.Windows.Forms.Button btnRetentionOF;
         private System.Windows.Forms.Button btnRetentionPDF;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox10;
+        private System.Windows.Forms.CheckBox checkBox9;
+        private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.CheckBox checkBox13;
+        private System.Windows.Forms.CheckBox checkBox12;
+        private System.Windows.Forms.CheckBox checkBox11;
+        private System.Windows.Forms.CheckBox checkBox18;
+        private System.Windows.Forms.CheckBox checkBox17;
+        private System.Windows.Forms.CheckBox checkBox16;
+        private System.Windows.Forms.CheckBox checkBox15;
+        private System.Windows.Forms.CheckBox checkBox14;
+        private System.Windows.Forms.CheckBox checkBox24;
+        private System.Windows.Forms.CheckBox checkBox23;
+        private System.Windows.Forms.CheckBox checkBox22;
+        private System.Windows.Forms.CheckBox checkBox21;
+        private System.Windows.Forms.CheckBox checkBox20;
+        private System.Windows.Forms.CheckBox checkBox19;
+        private System.Windows.Forms.CheckBox checkBox26;
+        private System.Windows.Forms.CheckBox checkBox25;
+        private System.Windows.Forms.CheckBox checkBox36;
+        private System.Windows.Forms.CheckBox checkBox35;
+        private System.Windows.Forms.CheckBox checkBox34;
+        private System.Windows.Forms.CheckBox checkBox33;
+        private System.Windows.Forms.CheckBox checkBox32;
+        private System.Windows.Forms.CheckBox checkBox31;
+        private System.Windows.Forms.CheckBox checkBox30;
+        private System.Windows.Forms.CheckBox checkBox29;
+        private System.Windows.Forms.CheckBox checkBox27;
+        private System.Windows.Forms.CheckBox checkBox28;
+        private System.Windows.Forms.CheckBox checkBox40;
+        private System.Windows.Forms.CheckBox checkBox39;
+        private System.Windows.Forms.CheckBox checkBox38;
+        private System.Windows.Forms.CheckBox checkBox37;
     }
 }

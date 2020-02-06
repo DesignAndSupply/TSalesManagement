@@ -16,7 +16,7 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //onload of this form get info from dbo.project
-            string sql = "SELECT [id],[project_title],[site_address]," +
+            string sql = "SELECT [id],[project_title],[customer_acc_ref]," +
                 "CASE WHEN[tender_complete] = -1 then 'Complete' else ' ' END as tender_complete," +
                 "CASE WHEN[prelet_complete] = -1 then 'Complete' else ' ' END as prelet_complete," +
                 "CASE WHEN[design_complete] = -1 then 'Complete' else ' ' END as design_complete," +
@@ -46,8 +46,8 @@ namespace TSalesManagement
             dataGridView1.Columns[0].HeaderText = "ID";
             dataGridView1.Columns[1].HeaderText = "Project Title";
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridView1.Columns[2].HeaderText = "Site Address";
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[2].HeaderText = "Customer";
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[3].HeaderText = "Tender";
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[4].HeaderText = "Prelet";
