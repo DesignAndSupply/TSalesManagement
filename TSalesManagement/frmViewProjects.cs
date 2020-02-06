@@ -103,7 +103,8 @@ namespace TSalesManagement
             DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
             int ID = Convert.ToInt32(row.Cells["ID"].Value.ToString());
             string title = row.Cells[1].Value.ToString();
-            frmProjectManager PM = new frmProjectManager(ID, title);
+            string customer = row.Cells[2].Value.ToString();
+            frmProjectManager PM = new frmProjectManager(ID, title,customer);
             PM.ShowDialog();
         }
     }

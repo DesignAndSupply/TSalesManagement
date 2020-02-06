@@ -15,11 +15,12 @@ namespace TSalesManagement
     {
         public int _ID { get; set; }
         public string _title { get; set; }
-        public frmProjectManager(int ID,string title)
+        public frmProjectManager(int ID,string title,string customer)
         {
             InitializeComponent();
             _ID = ID;
             _title = title;
+            label1.Text = customer;
             this.Text = _title;
             
             //get information
