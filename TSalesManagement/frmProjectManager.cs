@@ -15,48 +15,21 @@ namespace TSalesManagement
     {
         public int _ID { get; set; }
         public string _title { get; set; }
-        public frmProjectManager(int ID,string title,string customer)
+        public string _customer { get; set; }
+        public frmProjectManager(int ID, string title, string customer)
         {
             InitializeComponent();
             _ID = ID;
             _title = title;
-            label1.Text = customer;
-            this.Text = _title;
-            
-            //get information
-            string sql = "SELECT * from dbo.projects WHERE ID = " + ID;
-            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    conn.Open();
-                    SqlDataReader sdr = cmd.ExecuteReader();
-                    while (sdr.Read())
-                    {
-                        txtCommercialName.Text = sdr["commercial_contact_name"].ToString();
-                        txtCommercialNumber.Text = sdr["commercial_phone_number"].ToString();
-                        txtCommercialEmail.Text = sdr["commercial_email"].ToString();
-                        txtCommercialPosition.Text = sdr["commercial_position"].ToString();
-
-                        txtOnSiteName.Text = sdr["onsite_contact_name"].ToString();
-                        txtOnSiteNumber.Text = sdr["onsite_phone_number"].ToString();
-                        txtOnSiteEmail.Text = sdr["onsite_email"].ToString();
-                        txtOnSitePosition.Text = sdr["onsite_position"].ToString();
-
-                        txtAccountsName.Text = sdr["accounts_contact_name"].ToString();
-                        txtAccountsNumber.Text = sdr["accounts_phone_number"].ToString();
-                        txtAccountsEmail.Text = sdr["accounts_email"].ToString();
-                        txtAccountsPosition.Text = sdr["accounts_position"].ToString();
-                    }
-                    conn.Close();
-                }
-            }
+            label1.Text = title;
+            _customer = customer;
+            this.Text = customer;
             check_chkbox();
         }
 
         private void check_chkbox()
         {
-            int tender = 0,prelet = 0, design = 0, order = 0,survey = 0, on_site = 0, completion = 0, invoiced = 0, retention = 0;
+            int tender = 0, prelet = 0, design = 0, order = 0, survey = 0, on_site = 0, completion = 0, invoiced = 0, retention = 0;
             string sql = "SELECT tender_complete,prelet_complete,design_complete,order_complete,survey_complete,on_site_complete,completion_complete,invoiced_complete,retention_complete FROM dbo.projects WHERE ID = " + _ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
@@ -220,27 +193,6 @@ namespace TSalesManagement
         {
         }
 
-        private void btnUpdateInfo_Click(object sender, EventArgs e)
-        {//update all the information in one place
-            //(commercial_contact_name,commercial_phone_number,commercial_email,commercial_position,onsite_contact_name,
-            //onsite_phone_number,onsite_email,onsite_position,accounts_contact_name,accounts_phone_number,accounts_email,accounts_position)
-            //make the sql string
-            string sql = "UPDATE dbo.projects" +
-                " SET  commercial_contact_name = '" + txtCommercialName.Text.ToString() + "',commercial_phone_number = '" + txtCommercialNumber.Text.ToString() + "',commercial_email = '" + txtCommercialEmail.Text.ToString() + "',commercial_position = '" + txtCommercialPosition.Text.ToString() + "'," +
-                "onsite_contact_name = '" + txtOnSiteName.Text.ToString() + "',onsite_phone_number = '" + txtOnSiteNumber.Text.ToString() + "',onsite_email = '" + txtOnSiteEmail.Text.ToString() + "',onsite_position = '" + txtOnSitePosition.Text.ToString() + "'," +
-                "accounts_contact_name = '" + txtAccountsName.Text.ToString() + "',accounts_phone_number = '" + txtAccountsNumber.Text.ToString() + "',accounts_email = '" + txtAccountsEmail.Text.ToString() + "',accounts_position = '" + txtAccountsPosition.Text.ToString() + "' " +
-                " WHERE id = " + _ID;
-            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                    MessageBox.Show("Contact Information updated!");
-                }
-            }
-        }
 
         private void btnPreletOF_Click(object sender, EventArgs e)
         {
@@ -352,6 +304,12 @@ namespace TSalesManagement
             string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            frmProjectEdit frm = new frmProjectEdit(_ID, _customer, _title);
+            frm.ShowDialog();
         }
     }
 }

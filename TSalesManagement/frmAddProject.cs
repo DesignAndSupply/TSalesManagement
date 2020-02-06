@@ -24,11 +24,23 @@ namespace TSalesManagement
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     conn.Open();
-                    SqlDataReader DR = cmd.ExecuteReader(); // this needs testing 
+                    SqlDataReader DR = cmd.ExecuteReader(); //get customer details 
                     while (DR.Read())
                     {
                         cmbCustomer.Items.Add(DR[0]);
                     }
+                    conn.Close();
+                }
+                sql = "SELECT forename + ' ' + surname as [name] FROM [user_info].[dbo].[user] WHERE grouping = 5";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    SqlDataReader DR = cmd.ExecuteReader();  //get estimators
+                    while (DR.Read())
+                    {
+                        cmb_person_in_charge.Items.Add(DR[0]);
+                    }
+                    conn.Close();
                 }
             }
         }
@@ -63,11 +75,11 @@ namespace TSalesManagement
             char[] charsToTrim = { ' ' };
             string customerName = cmbCustomer.Text.ToString();
             customerName.Trim(charsToTrim);
-            string sql = "INSERT INTO dbo.projects (project_title,site_address,customer_acc_ref," +
+            string sql = "INSERT INTO dbo.projects (project_title,[project_manager],customer_acc_ref," +
                 "commercial_contact_name,commercial_phone_number,commercial_email,commercial_position," +
                 "onsite_contact_name,onsite_phone_number,onsite_email,onsite_position," +
                 "accounts_contact_name,accounts_phone_number,accounts_email,accounts_position" +
-                ") VALUES ('" + txtProjectTitle.Text + "','" + txtSiteAddress.Text + "','" + customerName + "'," +
+                ") VALUES ('" + txtProjectTitle.Text + "','" + cmb_person_in_charge.Text + "','" + customerName + "'," +
                 "'" + txtCommercialName.Text + "','" + txtCommercialNumber.Text + "','" + txtCommercialEmail.Text + "','" + txtCommercialPosition.Text + "'," +
                 "'" + txtOnSiteName.Text + "','" + txtOnSiteNumber.Text + "','" + txtOnSiteEmail.Text + "','" + txtOnSitePosition.Text + "'," +
                 "'" + txtAccountsName.Text + "','" + txtAccountsNumber.Text + "','" + txtAccountsEmail.Text + "','" + txtAccountsEmail.Text + "')"; 
