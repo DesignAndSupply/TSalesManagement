@@ -163,6 +163,7 @@
             this.chk_tender_3.TabIndex = 5;
             this.chk_tender_3.Text = "Quote Compliance Confirmed";
             this.chk_tender_3.UseVisualStyleBackColor = true;
+            this.chk_tender_3.CheckedChanged += new System.EventHandler(this.chk_tender_3_CheckedChanged);
             // 
             // chk_tender_2
             // 
@@ -174,6 +175,7 @@
             this.chk_tender_2.TabIndex = 4;
             this.chk_tender_2.Text = "Quotes Issued";
             this.chk_tender_2.UseVisualStyleBackColor = true;
+            this.chk_tender_2.CheckedChanged += new System.EventHandler(this.chk_tender_2_CheckedChanged);
             // 
             // chk_tender_1
             // 
@@ -185,6 +187,7 @@
             this.chk_tender_1.TabIndex = 3;
             this.chk_tender_1.Text = "Pricing Documents Recieved";
             this.chk_tender_1.UseVisualStyleBackColor = true;
+            this.chk_tender_1.CheckedChanged += new System.EventHandler(this.chk_tender_1_CheckedChanged);
             // 
             // button1
             // 
@@ -244,6 +247,7 @@
             this.chk_prelet_4.TabIndex = 8;
             this.chk_prelet_4.Text = "Intent/Commitment to Order Recieved";
             this.chk_prelet_4.UseVisualStyleBackColor = true;
+            this.chk_prelet_4.CheckedChanged += new System.EventHandler(this.chk_prelet_4_CheckedChanged);
             // 
             // chk_prelet_3
             // 
@@ -255,6 +259,7 @@
             this.chk_prelet_3.TabIndex = 7;
             this.chk_prelet_3.Text = "Intent/Commitment to Order Recieved";
             this.chk_prelet_3.UseVisualStyleBackColor = true;
+            this.chk_prelet_3.CheckedChanged += new System.EventHandler(this.chk_prelet_3_CheckedChanged);
             // 
             // chk_prelet_2
             // 
@@ -266,6 +271,7 @@
             this.chk_prelet_2.TabIndex = 6;
             this.chk_prelet_2.Text = "Actions Completed";
             this.chk_prelet_2.UseVisualStyleBackColor = true;
+            this.chk_prelet_2.CheckedChanged += new System.EventHandler(this.chk_prelet_2_CheckedChanged);
             // 
             // chk_prelet_1
             // 
@@ -277,6 +283,7 @@
             this.chk_prelet_1.TabIndex = 5;
             this.chk_prelet_1.Text = "Meeting Sat";
             this.chk_prelet_1.UseVisualStyleBackColor = true;
+            this.chk_prelet_1.CheckedChanged += new System.EventHandler(this.chk_prelet_1_CheckedChanged);
             // 
             // btnPreletOF
             // 
@@ -307,6 +314,7 @@
             this.chk_prelet.TabIndex = 1;
             this.chk_prelet.Text = "Prelet Complete";
             this.chk_prelet.UseVisualStyleBackColor = true;
+            this.chk_prelet.CheckedChanged += new System.EventHandler(this.chk_prelet_CheckedChanged);
             // 
             // tabPage3
             // 
@@ -334,6 +342,7 @@
             this.chk_design_3.TabIndex = 8;
             this.chk_design_3.Text = "Final Sign Off Received";
             this.chk_design_3.UseVisualStyleBackColor = true;
+            this.chk_design_3.CheckedChanged += new System.EventHandler(this.chk_design_3_CheckedChanged);
             // 
             // chk_design_2
             // 
@@ -345,6 +354,7 @@
             this.chk_design_2.TabIndex = 7;
             this.chk_design_2.Text = "Comments Received";
             this.chk_design_2.UseVisualStyleBackColor = true;
+            this.chk_design_2.CheckedChanged += new System.EventHandler(this.chk_design_2_CheckedChanged);
             // 
             // chk_design_1
             // 
@@ -356,6 +366,7 @@
             this.chk_design_1.TabIndex = 6;
             this.chk_design_1.Text = "Drawings Issued";
             this.chk_design_1.UseVisualStyleBackColor = true;
+            this.chk_design_1.CheckedChanged += new System.EventHandler(this.chk_design_1_CheckedChanged);
             // 
             // btnDesignOF
             // 
@@ -386,6 +397,7 @@
             this.chk_design.TabIndex = 1;
             this.chk_design.Text = "Design Complete";
             this.chk_design.UseVisualStyleBackColor = true;
+            this.chk_design.CheckedChanged += new System.EventHandler(this.chk_design_CheckedChanged);
             // 
             // tabPage4
             // 
@@ -413,6 +425,7 @@
             this.chk_order_3.TabIndex = 9;
             this.chk_order_3.Text = "Order Signed and Returned";
             this.chk_order_3.UseVisualStyleBackColor = true;
+            this.chk_order_3.CheckedChanged += new System.EventHandler(this.chk_order_3_CheckedChanged);
             // 
             // chk_order_2
             // 
@@ -424,6 +437,7 @@
             this.chk_order_2.TabIndex = 8;
             this.chk_order_2.Text = "Terms Agreed";
             this.chk_order_2.UseVisualStyleBackColor = true;
+            this.chk_order_2.CheckedChanged += new System.EventHandler(this.chk_order_2_CheckedChanged);
             // 
             // chk_order_1
             // 
@@ -435,6 +449,7 @@
             this.chk_order_1.TabIndex = 7;
             this.chk_order_1.Text = "Meeting Sat";
             this.chk_order_1.UseVisualStyleBackColor = true;
+            this.chk_order_1.CheckedChanged += new System.EventHandler(this.chk_order_1_CheckedChanged);
             // 
             // btnOrderOF
             // 
@@ -465,6 +480,7 @@
             this.chk_Order.TabIndex = 1;
             this.chk_Order.Text = "Order Complete";
             this.chk_Order.UseVisualStyleBackColor = true;
+            this.chk_Order.CheckedChanged += new System.EventHandler(this.chk_Order_CheckedChanged);
             // 
             // tabPage5
             // 
@@ -494,6 +510,7 @@
             this.chk_survey_5.TabIndex = 12;
             this.chk_survey_5.Text = "Doors in Manufacturing";
             this.chk_survey_5.UseVisualStyleBackColor = true;
+            this.chk_survey_5.CheckedChanged += new System.EventHandler(this.chk_survey_5_CheckedChanged);
             // 
             // chk_survey_4
             // 
@@ -505,6 +522,7 @@
             this.chk_survey_4.TabIndex = 11;
             this.chk_survey_4.Text = "Quotes/Drawings Amended if Required";
             this.chk_survey_4.UseVisualStyleBackColor = true;
+            this.chk_survey_4.CheckedChanged += new System.EventHandler(this.chk_survey_4_CheckedChanged);
             // 
             // chk_survey_3
             // 
@@ -516,6 +534,7 @@
             this.chk_survey_3.TabIndex = 10;
             this.chk_survey_3.Text = "Survey Complete";
             this.chk_survey_3.UseVisualStyleBackColor = true;
+            this.chk_survey_3.CheckedChanged += new System.EventHandler(this.chk_survey_3_CheckedChanged);
             // 
             // chk_survey_2
             // 
@@ -527,6 +546,7 @@
             this.chk_survey_2.TabIndex = 9;
             this.chk_survey_2.Text = "Survey Charged";
             this.chk_survey_2.UseVisualStyleBackColor = true;
+            this.chk_survey_2.CheckedChanged += new System.EventHandler(this.chk_survey_2_CheckedChanged);
             // 
             // chk_survey_1
             // 
@@ -538,6 +558,7 @@
             this.chk_survey_1.TabIndex = 8;
             this.chk_survey_1.Text = "Survey Booked In";
             this.chk_survey_1.UseVisualStyleBackColor = true;
+            this.chk_survey_1.CheckedChanged += new System.EventHandler(this.chk_survey_1_CheckedChanged);
             // 
             // btnSurveyOF
             // 
@@ -568,6 +589,7 @@
             this.chk_Survey.TabIndex = 1;
             this.chk_Survey.Text = "Survey Complete";
             this.chk_Survey.UseVisualStyleBackColor = true;
+            this.chk_Survey.CheckedChanged += new System.EventHandler(this.chk_Survey_CheckedChanged);
             // 
             // tabPage6
             // 
@@ -598,6 +620,7 @@
             this.chk_on_site_6.TabIndex = 17;
             this.chk_on_site_6.Text = "Completion";
             this.chk_on_site_6.UseVisualStyleBackColor = true;
+            this.chk_on_site_6.CheckedChanged += new System.EventHandler(this.chk_on_site_6_CheckedChanged);
             // 
             // chk_on_site_5
             // 
@@ -609,6 +632,7 @@
             this.chk_on_site_5.TabIndex = 16;
             this.chk_on_site_5.Text = "Quotes/Drawings Amended if Required";
             this.chk_on_site_5.UseVisualStyleBackColor = true;
+            this.chk_on_site_5.CheckedChanged += new System.EventHandler(this.chk_on_site_5_CheckedChanged);
             // 
             // chk_on_site_4
             // 
@@ -620,6 +644,7 @@
             this.chk_on_site_4.TabIndex = 15;
             this.chk_on_site_4.Text = "Sign Off Received";
             this.chk_on_site_4.UseVisualStyleBackColor = true;
+            this.chk_on_site_4.CheckedChanged += new System.EventHandler(this.chk_on_site_4_CheckedChanged);
             // 
             // chk_on_site_3
             // 
@@ -631,6 +656,7 @@
             this.chk_on_site_3.TabIndex = 14;
             this.chk_on_site_3.Text = "Install Complete";
             this.chk_on_site_3.UseVisualStyleBackColor = true;
+            this.chk_on_site_3.CheckedChanged += new System.EventHandler(this.chk_on_site_3_CheckedChanged);
             // 
             // chk_on_site_2
             // 
@@ -642,6 +668,7 @@
             this.chk_on_site_2.TabIndex = 13;
             this.chk_on_site_2.Text = "Install Began";
             this.chk_on_site_2.UseVisualStyleBackColor = true;
+            this.chk_on_site_2.CheckedChanged += new System.EventHandler(this.chk_on_site_2_CheckedChanged);
             // 
             // chk_on_site_1
             // 
@@ -654,6 +681,7 @@
             this.chk_on_site_1.TabIndex = 12;
             this.chk_on_site_1.Text = "Delivery Made";
             this.chk_on_site_1.UseVisualStyleBackColor = true;
+            this.chk_on_site_1.CheckedChanged += new System.EventHandler(this.chk_on_site_1_CheckedChanged);
             // 
             // btnOnSiteOF
             // 
@@ -684,6 +712,7 @@
             this.chk_onSite.TabIndex = 1;
             this.chk_onSite.Text = "On Site Complete";
             this.chk_onSite.UseVisualStyleBackColor = true;
+            this.chk_onSite.CheckedChanged += new System.EventHandler(this.chk_onSite_CheckedChanged);
             // 
             // tabPage7
             // 
@@ -710,6 +739,7 @@
             this.chk_completion_2.TabIndex = 21;
             this.chk_completion_2.Text = "O+M Manual Issued";
             this.chk_completion_2.UseVisualStyleBackColor = true;
+            this.chk_completion_2.CheckedChanged += new System.EventHandler(this.chk_completion_2_CheckedChanged);
             // 
             // chk_completion_1
             // 
@@ -721,6 +751,7 @@
             this.chk_completion_1.TabIndex = 20;
             this.chk_completion_1.Text = "Handover Complete";
             this.chk_completion_1.UseVisualStyleBackColor = true;
+            this.chk_completion_1.CheckedChanged += new System.EventHandler(this.chk_completion_1_CheckedChanged);
             // 
             // btnCompOF
             // 
@@ -751,6 +782,7 @@
             this.chk_completion.TabIndex = 2;
             this.chk_completion.Text = "Completion completed";
             this.chk_completion.UseVisualStyleBackColor = true;
+            this.chk_completion.CheckedChanged += new System.EventHandler(this.chk_completion_CheckedChanged);
             // 
             // tabPage8
             // 
@@ -785,6 +817,7 @@
             this.chk_invoice_10.TabIndex = 29;
             this.chk_invoice_10.Text = "100%";
             this.chk_invoice_10.UseVisualStyleBackColor = true;
+            this.chk_invoice_10.CheckedChanged += new System.EventHandler(this.chk_invoice_10_CheckedChanged);
             // 
             // chk_invoice_7
             // 
@@ -796,6 +829,7 @@
             this.chk_invoice_7.TabIndex = 28;
             this.chk_invoice_7.Text = "70%";
             this.chk_invoice_7.UseVisualStyleBackColor = true;
+            this.chk_invoice_7.CheckedChanged += new System.EventHandler(this.chk_invoice_7_CheckedChanged);
             // 
             // chk_invoice_6
             // 
@@ -807,6 +841,7 @@
             this.chk_invoice_6.TabIndex = 27;
             this.chk_invoice_6.Text = "60%";
             this.chk_invoice_6.UseVisualStyleBackColor = true;
+            this.chk_invoice_6.CheckedChanged += new System.EventHandler(this.chk_invoice_6_CheckedChanged);
             // 
             // chk_invoice_8
             // 
@@ -818,6 +853,7 @@
             this.chk_invoice_8.TabIndex = 26;
             this.chk_invoice_8.Text = "80%";
             this.chk_invoice_8.UseVisualStyleBackColor = true;
+            this.chk_invoice_8.CheckedChanged += new System.EventHandler(this.chk_invoice_8_CheckedChanged);
             // 
             // chk_invoice_9
             // 
@@ -829,6 +865,7 @@
             this.chk_invoice_9.TabIndex = 25;
             this.chk_invoice_9.Text = "90%";
             this.chk_invoice_9.UseVisualStyleBackColor = true;
+            this.chk_invoice_9.CheckedChanged += new System.EventHandler(this.chk_invoice_9_CheckedChanged);
             // 
             // chk_invoice_5
             // 
@@ -840,6 +877,7 @@
             this.chk_invoice_5.TabIndex = 24;
             this.chk_invoice_5.Text = "50%";
             this.chk_invoice_5.UseVisualStyleBackColor = true;
+            this.chk_invoice_5.CheckedChanged += new System.EventHandler(this.chk_invoice_5_CheckedChanged);
             // 
             // chk_invoice_4
             // 
@@ -851,6 +889,7 @@
             this.chk_invoice_4.TabIndex = 23;
             this.chk_invoice_4.Text = "40%";
             this.chk_invoice_4.UseVisualStyleBackColor = true;
+            this.chk_invoice_4.CheckedChanged += new System.EventHandler(this.chk_invoice_4_CheckedChanged);
             // 
             // chk_invoice_3
             // 
@@ -862,6 +901,7 @@
             this.chk_invoice_3.TabIndex = 22;
             this.chk_invoice_3.Text = "30%";
             this.chk_invoice_3.UseVisualStyleBackColor = true;
+            this.chk_invoice_3.CheckedChanged += new System.EventHandler(this.chk_invoice_3_CheckedChanged);
             // 
             // chk_invoice_2
             // 
@@ -873,6 +913,7 @@
             this.chk_invoice_2.TabIndex = 21;
             this.chk_invoice_2.Text = "20%";
             this.chk_invoice_2.UseVisualStyleBackColor = true;
+            this.chk_invoice_2.CheckedChanged += new System.EventHandler(this.chk_invoice_2_CheckedChanged);
             // 
             // chk_invoice_1
             // 
@@ -884,6 +925,7 @@
             this.chk_invoice_1.TabIndex = 20;
             this.chk_invoice_1.Text = "10%";
             this.chk_invoice_1.UseVisualStyleBackColor = true;
+            this.chk_invoice_1.CheckedChanged += new System.EventHandler(this.chk_invoice_1_CheckedChanged);
             // 
             // btnInvoiceOF
             // 
@@ -914,6 +956,7 @@
             this.chk_invoiced.TabIndex = 2;
             this.chk_invoiced.Text = "Invoiced completed";
             this.chk_invoiced.UseVisualStyleBackColor = true;
+            this.chk_invoiced.CheckedChanged += new System.EventHandler(this.chk_invoiced_CheckedChanged);
             // 
             // tabPage9
             // 
@@ -942,6 +985,7 @@
             this.chk_retention_4.TabIndex = 24;
             this.chk_retention_4.Text = "Practical Completion Recieved";
             this.chk_retention_4.UseVisualStyleBackColor = true;
+            this.chk_retention_4.CheckedChanged += new System.EventHandler(this.chk_retention_4_CheckedChanged);
             // 
             // chk_retention_3
             // 
@@ -953,6 +997,7 @@
             this.chk_retention_3.TabIndex = 23;
             this.chk_retention_3.Text = "Practical Completion Invoiced";
             this.chk_retention_3.UseVisualStyleBackColor = true;
+            this.chk_retention_3.CheckedChanged += new System.EventHandler(this.chk_retention_3_CheckedChanged);
             // 
             // chk_retention_2
             // 
@@ -964,6 +1009,7 @@
             this.chk_retention_2.TabIndex = 22;
             this.chk_retention_2.Text = "Onsite Retention Received";
             this.chk_retention_2.UseVisualStyleBackColor = true;
+            this.chk_retention_2.CheckedChanged += new System.EventHandler(this.chk_retention_2_CheckedChanged);
             // 
             // chk_retention_1
             // 
@@ -975,6 +1021,7 @@
             this.chk_retention_1.TabIndex = 21;
             this.chk_retention_1.Text = "Onsite Retention Invoice";
             this.chk_retention_1.UseVisualStyleBackColor = true;
+            this.chk_retention_1.CheckedChanged += new System.EventHandler(this.chk_retention_1_CheckedChanged);
             // 
             // btnRetentionOF
             // 
@@ -1005,6 +1052,7 @@
             this.chk_retention.TabIndex = 2;
             this.chk_retention.Text = "Retention Complete";
             this.chk_retention.UseVisualStyleBackColor = true;
+            this.chk_retention.CheckedChanged += new System.EventHandler(this.chk_retention_CheckedChanged);
             // 
             // label1
             // 

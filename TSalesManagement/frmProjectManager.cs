@@ -332,9 +332,493 @@ namespace TSalesManagement
             if (chk_tender_3.Checked == true)
             {
                 sqlStatement("tender_complete");
+                chk_tender.Enabled = false;
             }
             else
                 chk_tender.Checked = false;
+        }
+
+        private void chk_tender_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("tender_1");
+            chk_tender_1.Enabled = false;
+        }
+
+        private void chk_tender_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_tender_1.Checked == true)
+            {
+                sqlStatement("tender_2");
+                chk_tender_2.Enabled = false;
+            }
+            else
+                chk_tender_2.Checked = false;
+        }
+
+        private void chk_tender_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_tender_2.Checked == true)
+            {
+                sqlStatement("tender_3");
+                chk_tender_3.Enabled = false;
+            }
+            else
+                chk_tender_3.Checked = false;
+        }
+
+        private void chk_prelet_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("prelet_1");
+            chk_prelet_1.Enabled = false;
+        }
+
+        private void chk_prelet_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_prelet_1.Checked == true)
+            {
+                sqlStatement("prelet_2");
+                chk_prelet_2.Enabled = false;
+            }
+            else
+                chk_prelet_2.Checked = false;
+        }
+
+        private void chk_prelet_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_prelet_2.Checked == true)
+            {
+                sqlStatement("prelet_3");
+                chk_prelet_3.Enabled = false;
+            }
+            else
+                chk_prelet_3.Checked = false;
+        }
+
+        private void chk_prelet_4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_prelet_3.Checked == true)
+            {
+                sqlStatement("prelet_4");
+                chk_prelet_4.Enabled = false;
+            }
+            else
+                chk_prelet_4.Checked = false;
+        }
+
+        private void chk_prelet_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_prelet_4.Checked == true)
+            {
+                sqlStatement("prelet_complete");
+                chk_prelet.Enabled = false;
+            }
+            else
+                chk_prelet.Checked = false;
+        }
+
+        private void chk_design_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("design_1");
+            chk_design_1.Enabled = false;
+        }
+
+        private void chk_design_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_design_1.Checked == true)
+            {
+                sqlStatement("design_2");
+                chk_design_2.Enabled = false;
+            }
+            else
+                chk_design_2.Checked = false;
+        }
+
+        private void chk_design_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_design_2.Checked == true)
+            {
+                sqlStatement("design_3");
+                chk_design_3.Enabled = false;
+            }
+            else
+                chk_design_3.Checked = false;
+        }
+
+        private void chk_design_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_design_3.Checked == true)
+            {
+                sqlStatement("design_complete");
+                chk_design.Enabled = false;
+            }
+            else
+                chk_design.Checked = false;
+        }
+
+        private void chk_order_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("order_1");
+            chk_order_1.Enabled = false;
+        }
+
+        private void chk_order_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_order_1.Checked == true)
+            {
+                sqlStatement("order_2");
+                chk_order_2.Enabled = false;
+            }
+            else
+                chk_order_2.Checked = false;
+        }
+
+        private void chk_order_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_order_2.Checked == true)
+            {
+                sqlStatement("order_3");
+                chk_order_3.Enabled = false;
+            }
+            else
+                chk_order_3.Checked = false;
+        }
+
+        private void chk_Order_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_order_3.Checked == true)
+            {
+                sqlStatement("order_complete");
+                chk_Order.Enabled = false;
+            }
+            else
+                chk_Order.Checked = false;
+        }
+
+        private void chk_survey_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("survey_1");
+            chk_survey_1.Enabled = false;
+        }
+
+        private void chk_survey_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_survey_1.Checked == true)
+            {
+                sqlStatement("survey_2");
+                chk_survey_2.Enabled = false;
+            }
+            else
+                chk_survey_2.Checked = false;
+        }
+
+        private void chk_survey_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_survey_2.Checked == true)
+            {
+                sqlStatement("survey_3");
+                chk_survey_3.Enabled = false;
+            }
+            else
+                chk_survey_3.Checked = false;
+        }
+
+        private void chk_survey_4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_survey_3.Checked == true)
+            {
+                sqlStatement("survey_4");
+                chk_survey_4.Enabled = false;
+            }
+            else
+                chk_survey_4.Checked = false;
+        }
+
+        private void chk_survey_5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_survey_4.Checked == true)
+            {
+                sqlStatement("survey_5");
+                chk_survey_5.Enabled = false;
+            }
+            else
+                chk_survey_5.Checked = false;
+        }
+
+        private void chk_Survey_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_survey_5.Checked == true)
+            {
+                sqlStatement("survey_complete");
+                chk_Survey.Enabled = false;
+            }
+            else
+                chk_Survey.Checked = false;
+        }
+
+        private void chk_on_site_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("on_site_1");
+            chk_on_site_1.Enabled = false;
+        }
+
+        private void chk_on_site_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_on_site_1.Checked == true)
+            {
+                sqlStatement("on_site_2");
+                chk_on_site_2.Enabled = false;
+            }
+            else
+                chk_on_site_2.Checked = false;
+        }
+
+        private void chk_on_site_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_on_site_2.Checked == true)
+            {
+                sqlStatement("on_site_3");
+                chk_on_site_3.Enabled = false;
+            }
+            else
+                chk_on_site_3.Checked = false;
+        }
+
+        private void chk_on_site_4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_on_site_3.Checked == true)
+            {
+                sqlStatement("on_site_4");
+                chk_on_site_4.Enabled = false;
+            }
+            else
+                chk_on_site_4.Checked = false;
+        }
+
+        private void chk_on_site_5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_on_site_4.Checked == true)
+            {
+                sqlStatement("on_site_5");
+                chk_on_site_5.Enabled = false;
+            }
+            else
+                chk_on_site_5.Checked = false;
+        }
+
+        private void chk_on_site_6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_on_site_5.Checked == true)
+            {
+                sqlStatement("on_site_6");
+                chk_on_site_6.Enabled = false;
+            }
+            else
+                chk_on_site_6.Checked = false;
+        }
+
+        private void chk_onSite_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_on_site_6.Checked == true)
+            {
+                sqlStatement("on_site_complete");
+                chk_onSite.Enabled = false;
+            }
+            else
+                chk_onSite.Checked = false;
+        }
+
+        private void chk_completion_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("complete_1");
+            chk_completion_1.Enabled = false;
+        }
+
+        private void chk_completion_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_completion_1.Checked == true)
+            {
+                sqlStatement("complete_2");
+                chk_completion_2.Enabled = false;
+            }
+            else
+                chk_completion_2.Checked = false;
+        }
+
+        private void chk_completion_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_completion_2.Checked == true)
+            {
+                sqlStatement("completion_complete");
+                chk_completion.Enabled = false;
+            }
+            else
+                chk_completion.Checked = false;
+        }
+
+        private void chk_invoice_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("invoice_1");
+            chk_invoice_1.Enabled = false;
+        }
+
+        private void chk_invoice_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_1.Checked == true)
+            {
+                sqlStatement("invoice_2");
+                chk_invoice_2.Enabled = false;
+            }
+            else
+                chk_invoice_2.Checked = false;
+        }
+
+        private void chk_invoice_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_2.Checked == true)
+            {
+                sqlStatement("invoice_3");
+                chk_invoice_3.Enabled = false;
+            }
+            else
+                chk_invoice_3.Checked = false;
+        }
+
+        private void chk_invoice_4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_3.Checked == true)
+            {
+                sqlStatement("invoice_4");
+                chk_invoice_4.Enabled = false;
+            }
+            else
+                chk_invoice_4.Checked = false;
+        }
+
+        private void chk_invoice_5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_4.Checked == true)
+            {
+                sqlStatement("invoice_5");
+                chk_invoice_5.Enabled = false;
+            }
+            else
+                chk_invoice_5.Checked = false;
+        }
+
+        private void chk_invoice_6_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_5.Checked == true)
+            {
+                sqlStatement("invoice_6");
+                chk_invoice_6.Enabled = false;
+            }
+            else
+                chk_invoice_6.Checked = false;
+        }
+
+        private void chk_invoice_7_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_6.Checked == true)
+            {
+                sqlStatement("invoice_7");
+                chk_invoice_7.Enabled = false;
+            }
+            else
+                chk_invoice_7.Checked = false;
+        }
+
+        private void chk_invoice_8_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_7.Checked == true)
+            {
+                sqlStatement("invoice_8");
+                chk_invoice_8.Enabled = false;
+            }
+            else
+                chk_invoice_8.Checked = false;
+        }
+
+        private void chk_invoice_9_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_8.Checked == true)
+            {
+                sqlStatement("invoice_9");
+                chk_invoice_9.Enabled = false;
+            }
+            else
+                chk_invoice_9.Checked = false;
+        }
+
+        private void chk_invoice_10_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_9.Checked == true)
+            {
+                sqlStatement("invoice_10");
+                chk_invoice_10.Enabled = false;
+            }
+            else
+                chk_invoice_10.Checked = false;
+        }
+
+        private void chk_invoiced_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_invoice_10.Checked == true)
+            {
+                sqlStatement("invoiced_complete");
+                chk_invoiced.Enabled = false;
+            }
+            else
+                chk_invoiced.Checked = false;
+        }
+
+        private void chk_retention_1_CheckedChanged(object sender, EventArgs e)
+        {
+            sqlStatement("retention_1");
+            chk_retention_1.Enabled = false;
+        }
+
+        private void chk_retention_2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_retention_1.Checked == true)
+            {
+                sqlStatement("retention_2");
+                chk_retention_2.Enabled = false;
+            }
+            else
+                chk_retention_2.Checked = false;
+        }
+
+        private void chk_retention_3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_retention_2.Checked == true)
+            {
+                sqlStatement("retention_3");
+                chk_retention_3.Enabled = false;
+            }
+            else
+                chk_retention_3.Checked = false;
+        }
+
+        private void chk_retention_4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_retention_3.Checked == true)
+            {
+                sqlStatement("retention_4");
+                chk_retention_4.Enabled = false;
+            }
+            else
+                chk_retention_4.Checked = false;
+        }
+
+        private void chk_retention_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_retention_4.Checked == true)
+            {
+                sqlStatement("retention_complete");
+                chk_retention.Enabled = false;
+            }
+            else
+                chk_retention.Checked = false;
         }
     }
 }
