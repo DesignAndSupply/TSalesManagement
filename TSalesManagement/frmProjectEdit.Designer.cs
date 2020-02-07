@@ -109,6 +109,7 @@
             this.txtAccountsNumber.Name = "txtAccountsNumber";
             this.txtAccountsNumber.Size = new System.Drawing.Size(187, 20);
             this.txtAccountsNumber.TabIndex = 87;
+            this.txtAccountsNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAccountsNumber_KeyPress);
             // 
             // label17
             // 
@@ -187,6 +188,7 @@
             this.txtOnSiteNumber.Name = "txtOnSiteNumber";
             this.txtOnSiteNumber.Size = new System.Drawing.Size(187, 20);
             this.txtOnSiteNumber.TabIndex = 78;
+            this.txtOnSiteNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtOnSiteNumber_KeyPress);
             // 
             // label12
             // 
@@ -265,6 +267,7 @@
             this.txtCommercialNumber.Name = "txtCommercialNumber";
             this.txtCommercialNumber.Size = new System.Drawing.Size(187, 20);
             this.txtCommercialNumber.TabIndex = 69;
+            this.txtCommercialNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCommercialNumber_KeyPress);
             // 
             // label7
             // 
