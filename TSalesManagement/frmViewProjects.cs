@@ -16,7 +16,7 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //onload of this form get info from dbo.project
-            string sql = "SELECT [id],[project_title],[customer_acc_ref]," +
+            string sql = "SELECT [id],[project_title],[customer_acc_ref],[project_manager]," +
                 "CASE WHEN[tender_complete] = -1 then 'Complete' else ' ' END as tender_complete," +
                 "CASE WHEN[prelet_complete] = -1 then 'Complete' else ' ' END as prelet_complete," +
                 "CASE WHEN[design_complete] = -1 then 'Complete' else ' ' END as design_complete," +
@@ -48,24 +48,26 @@ namespace TSalesManagement
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[2].HeaderText = "Customer";
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[3].HeaderText = "Tender";
+            dataGridView1.Columns[3].HeaderText = "Project Manager";
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[4].HeaderText = "Prelet";
+            dataGridView1.Columns[4].HeaderText = "Tender";
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[5].HeaderText = "Design";
+            dataGridView1.Columns[5].HeaderText = "Prelet";
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[6].HeaderText = "Order";
+            dataGridView1.Columns[6].HeaderText = "Design";
             dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[7].HeaderText = "Survey";
+            dataGridView1.Columns[7].HeaderText = "Order";
             dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[8].HeaderText = "On site";
+            dataGridView1.Columns[8].HeaderText = "Survey";
             dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[9].HeaderText = "Completion";
+            dataGridView1.Columns[9].HeaderText = "On site";
             dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[10].HeaderText = "Invoice";
+            dataGridView1.Columns[10].HeaderText = "Completion";
             dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridView1.Columns[11].HeaderText = "Retention";
+            dataGridView1.Columns[11].HeaderText = "Invoice";
             dataGridView1.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[12].HeaderText = "Retention";
+            dataGridView1.Columns[12].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (dataGridView1.Rows[i].Cells[3].Value.ToString() == "Complete")
