@@ -29,8 +29,24 @@ namespace TSalesManagement
 
         private void check_chkbox()
         {
-            int tender = 0, prelet = 0, design = 0, order = 0, survey = 0, on_site = 0, completion = 0, invoiced = 0, retention = 0;
-            string sql = "SELECT tender_complete,prelet_complete,design_complete,order_complete,survey_complete,on_site_complete,completion_complete,invoiced_complete,retention_complete FROM dbo.projects WHERE ID = " + _ID;
+            int tender_comp = 0, tender_1 = 0, tender_2 = 0, tender_3 = 0;
+            int prelet_comp = 0, prelet_1 = 0, prelet_2 = 0, prelet_3 = 0, prelet_4 = 0;
+            int design_comp = 0, design_1 = 0, design_2 = 0, design_3 = 0;
+            int order_comp = 0, order_1 = 0, order_2 = 0, order_3 = 0;
+            int survey_comp = 0, survey_1 = 0, survey_2 = 0, survey_3 = 0, survey_4 = 0, survey_5 = 0;
+            int on_site_comp = 0, on_site_1 = 0, on_site_2 = 0, on_site_3 = 0, on_site_4 = 0, on_site_5 = 0, on_site_6 = 0;
+            int completion_comp = 0, completion_1 = 0, completion_2 = 0;
+            int invoiced_comp = 0, invoiced_1 = 0, invoiced_2 = 0, invoiced_3 = 0, invoiced_4 = 0, invoiced_5 = 0, invoiced_6 = 0, invoiced_7 = 0, invoiced_8 = 0, invoiced_9 = 0, invoiced_10 = 0;
+            int retention_comp = 0, retention_1 = 0, retention_2 = 0, retention_3 = 0, retention_4 = 0;
+            string sql = "SELECT COALESCE(tender_1,0) as [tender_1],COALESCE(tender_2,0)as [tender_2],COALESCE(tender_3,0)as [tender_3],COALESCE(tender_complete,0) as [tender_complete]," +
+                "COALESCE(prelet_1,0) as [prelet_1],COALESCE(prelet_2,0) as [prelet_2],COALESCE(prelet_3,0) as [prelet_3],COALESCE(prelet_4,0) as [prelet_4],COALESCE(prelet_complete,0) as [prelet_complete]," +
+                "COALESCE(design_1,0) as [design_1],COALESCE(design_2,0) as [design_2],COALESCE(design_3,0) as [design_3],COALESCE(design_complete,0) as [design_complete]," +
+                "COALESCE(order_1,0) as [order_1],COALESCE(order_2,0) as [order_2],COALESCE(order_3,0) as [order_3],COALESCE(order_complete,0) as [order_complete]," +
+                "COALESCE(survey_1,0) as [survey_1],COALESCE(survey_2,0) as [survey_2],COALESCE(survey_3,0) as [survey_3],COALESCE(survey_4,0) as [survey_4],COALESCE(survey_5,0) as [survey_5],COALESCE(survey_complete,0) as [survey_complete]," +
+                "COALESCE(on_site_1,0) as [on_site_1],COALESCE(on_site_2,0) as [on_site_2],COALESCE(on_site_3,0) as [on_site_3],COALESCE(on_site_4,0) as [on_site_4],COALESCE(on_site_5,0) as [on_site_5],COALESCE(on_site_6,0) as [on_site_6],COALESCE(on_site_complete,0) as [on_site_complete]," +
+                "COALESCE(complete_1,0) as [complete_1],COALESCE(complete_2,0) as [complete_2],COALESCE(completion_complete,0) as [completion_complete]," +
+                "COALESCE(invoice_1,0) as [invoice_1],COALESCE(invoice_2,0) as [invoice_2],COALESCE(invoice_3,0) as [invoice_3],COALESCE(invoice_4,0) as [invoice_4],COALESCE(invoice_5,0) as [invoice_5],COALESCE(invoice_6,0) as [invoice_6],COALESCE(invoice_7,0) as [invoice_7],COALESCE(invoice_8,0) as [invoice_8],COALESCE(invoice_9,0) as [invoice_9],COALESCE(invoice_10,0) as [invoice_10],COALESCE(invoiced_complete,0) as [invoiced_complete]," +
+                "COALESCE(retention_1,0) as [retention_1],COALESCE(retention_2,0) as [retention_2],COALESCE(retention_3,0) as [retention_3],COALESCE(retention_4,0) as [retention_4],COALESCE(retention_complete ,0) as [retention_complete] FROM dbo.projects WHERE ID = " + _ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -40,37 +56,176 @@ namespace TSalesManagement
                     SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
-                        tender = Convert.ToInt32(dr["tender_complete"]);
-                        prelet = Convert.ToInt32(dr["prelet_complete"]);
-                        design = Convert.ToInt32(dr["design_complete"]);
-                        order = Convert.ToInt32(dr["order_complete"]);
-                        survey = Convert.ToInt32(dr["survey_complete"]);
-                        on_site = Convert.ToInt32(dr["on_site_complete"]);
-                        completion = Convert.ToInt32(dr["completion_complete"]);
-                        invoiced = Convert.ToInt32(dr["invoiced_complete"]);
-                        retention = Convert.ToInt32(dr["retention_complete"]);
+                        //tender
+                        tender_1 = Convert.ToInt32(dr["tender_1"]);
+                        tender_2 = Convert.ToInt32(dr["tender_2"]);
+                        tender_3 = Convert.ToInt32(dr["tender_3"]);
+                        tender_comp = Convert.ToInt32(dr["tender_complete"]);
+                        //prelet
+                        prelet_1 = Convert.ToInt32(dr["prelet_1"]);
+                        prelet_2 = Convert.ToInt32(dr["prelet_2"]);
+                        prelet_3 = Convert.ToInt32(dr["prelet_3"]);
+                        prelet_4 = Convert.ToInt32(dr["prelet_4"]);
+                        prelet_comp = Convert.ToInt32(dr["prelet_complete"]);
+                        //design
+                        design_1 = Convert.ToInt32(dr["design_1"]);
+                        design_2 = Convert.ToInt32(dr["design_2"]);
+                        design_3 = Convert.ToInt32(dr["design_3"]);
+                        design_comp = Convert.ToInt32(dr["design_complete"]);
+                        //order
+                        order_1 = Convert.ToInt32(dr["order_1"]);
+                        order_2 = Convert.ToInt32(dr["order_2"]);
+                        order_3 = Convert.ToInt32(dr["order_3"]);
+                        order_comp = Convert.ToInt32(dr["order_complete"]);
+                        //survey
+                        survey_1 = Convert.ToInt32(dr["survey_1"]);
+                        survey_2 = Convert.ToInt32(dr["survey_2"]);
+                        survey_3 = Convert.ToInt32(dr["survey_3"]);
+                        survey_4 = Convert.ToInt32(dr["survey_4"]);
+                        survey_5 = Convert.ToInt32(dr["survey_5"]);
+                        survey_comp = Convert.ToInt32(dr["survey_complete"]);
+                        //on_site
+                        on_site_1 = Convert.ToInt32(dr["on_site_1"]);
+                        on_site_2 = Convert.ToInt32(dr["on_site_2"]);
+                        on_site_3 = Convert.ToInt32(dr["on_site_3"]);
+                        on_site_4 = Convert.ToInt32(dr["on_site_4"]);
+                        on_site_5 = Convert.ToInt32(dr["on_site_5"]);
+                        on_site_6 = Convert.ToInt32(dr["on_site_6"]);
+                        on_site_comp = Convert.ToInt32(dr["on_site_complete"]);
+                        //comp
+                        completion_1 = Convert.ToInt32(dr["complete_1"]);
+                        completion_2 = Convert.ToInt32(dr["complete_2"]);
+                        completion_comp = Convert.ToInt32(dr["completion_complete"]);
+                        //invoiced
+                        invoiced_1 = Convert.ToInt32(dr["invoice_1"]);
+                        invoiced_2 = Convert.ToInt32(dr["invoice_2"]);
+                        invoiced_3 = Convert.ToInt32(dr["invoice_3"]);
+                        invoiced_4 = Convert.ToInt32(dr["invoice_4"]);
+                        invoiced_5 = Convert.ToInt32(dr["invoice_5"]);
+                        invoiced_6 = Convert.ToInt32(dr["invoice_6"]);
+                        invoiced_7 = Convert.ToInt32(dr["invoice_7"]);
+                        invoiced_8 = Convert.ToInt32(dr["invoice_8"]);
+                        invoiced_9 = Convert.ToInt32(dr["invoice_9"]);
+                        invoiced_10 = Convert.ToInt32(dr["invoice_10"]);
+                        invoiced_comp = Convert.ToInt32(dr["invoiced_complete"]);
+                        //retention
+                        retention_1 = Convert.ToInt32(dr["retention_1"]);
+                        retention_2 = Convert.ToInt32(dr["retention_2"]);
+                        retention_3 = Convert.ToInt32(dr["retention_3"]);
+                        retention_4 = Convert.ToInt32(dr["retention_4"]);
+                        retention_comp = Convert.ToInt32(dr["retention_complete"]);
                     }
                     conn.Close();
                 }
             }
             //now adjust check boxes
-            if (tender == -1)
+            //tender
+            if (tender_1 == -1)
+                chk_tender_1.Checked = true;
+            if (tender_2 == -1)
+                chk_tender_2.Checked = true;
+            if (tender_3 == -1)
+                chk_tender_3.Checked = true;
+            if (tender_comp == -1)
                 chk_tender.Checked = true;
-            if (prelet == -1)
+            //prelet
+            if (prelet_1 == -1)
+                chk_prelet_1.Checked = true;
+            if (prelet_2 == -1)
+                chk_prelet_2.Checked = true;
+            if (prelet_3 == -1)
+                chk_prelet_3.Checked = true;
+            if (prelet_4 == -1)
+                chk_prelet_4.Checked = true;
+            if (prelet_comp == -1)
                 chk_prelet.Checked = true;
-            if (design == -1)
+            //design
+            if (design_1 == -1)
+                chk_design_1.Checked = true;
+            if (design_2 == -1)
+                chk_design_2.Checked = true;
+            if (design_3 == -1)
+                chk_design_3.Checked = true;
+            if (design_comp == -1)
                 chk_design.Checked = true;
-            if (order == -1)
+            //order
+            if (order_1 == -1)
+                chk_order_1.Checked = true;
+            if (order_2 == -1)
+                chk_order_2.Checked = true;
+            if (order_3 == -1)
+                chk_order_3.Checked = true;
+            if (order_comp == -1)
                 chk_Order.Checked = true;
-            if (survey == -1)
+            //survey
+            if (survey_1 == -1)
+                chk_survey_1.Checked = true;
+            if (survey_2 == -1)
+                chk_survey_2.Checked = true;
+            if (survey_3 == -1)
+                chk_survey_3.Checked = true;
+            if (survey_4 == -1)
+                chk_survey_4.Checked = true;
+            if (survey_5 == -1)
+                chk_survey_5.Checked = true;
+            if (survey_comp == -1)
                 chk_Survey.Checked = true;
-            if (on_site == -1)
+            //on_site
+            if (on_site_1 == -1)
+                chk_on_site_1.Checked = true;
+            if (on_site_2 == -1)
+                chk_on_site_2.Checked = true;
+            if (on_site_3 == -1)
+                chk_on_site_3.Checked = true;
+            if (on_site_4 == -1)
+                chk_on_site_4.Checked = true;
+            if (on_site_5 == -1)
+                chk_on_site_5.Checked = true;
+            if (on_site_6 == -1)
+                chk_on_site_6.Checked = true;
+            if (on_site_comp == -1)
                 chk_onSite.Checked = true;
-            if (completion == -1)
+            //comp
+            if (completion_1 == -1)
+                chk_completion_1.Checked = true;
+            if (completion_2 == -1)
+                chk_completion_2.Checked = true;
+            if (completion_comp == -1)
                 chk_completion.Checked = true;
-            if (invoiced == -1)
+            //invoiced
+            if (invoiced_1 == -1)
+                chk_invoice_1.Checked = true;
+            if (invoiced_2 == -1)
+                chk_invoice_2.Checked = true;
+            if (invoiced_3 == -1)
+                chk_invoice_3.Checked = true;
+            if (invoiced_4 == -1)
+                chk_invoice_4.Checked = true;
+            if (invoiced_5 == -1)
+                chk_invoice_5.Checked = true;
+            if (invoiced_6 == -1)
+                chk_invoice_6.Checked = true;
+            if (invoiced_7 == -1)
+                chk_invoice_7.Checked = true;
+            if (invoiced_8 == -1)
+                chk_invoice_8.Checked = true;
+            if (invoiced_9 == -1)
+                chk_invoice_9.Checked = true;
+            if (invoiced_10 == -1)
+                chk_invoice_10.Checked = true;
+            if (invoiced_comp == -1)
                 chk_invoiced.Checked = true;
-            if (retention == -1)
+            //retention
+            if (retention_1 == -1)
+                chk_retention_1.Checked = true;
+            if (retention_2 == -1)
+                chk_retention_2.Checked = true;
+            if (retention_3 == -1)
+                chk_retention_3.Checked = true;
+            if (retention_4 == -1)
+                chk_retention_4.Checked = true;
+
+            if (retention_comp == -1)
                 chk_retention.Checked = true;
 
         }
