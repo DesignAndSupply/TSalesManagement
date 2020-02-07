@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSalesManagement", "TSalesManagement\TSalesManagement.csproj", "{ACA65360-3B34-435E-B162-9748AA35FFDF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupClass", "S:\Design and Supply CSharp\Class Libraries\General\StartupClass.csproj", "{C0721D32-EE8C-4891-8FBE-76F975B2D944}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SalesManagement", "SalesManagement", "{0283A485-D9DB-4B60-915C-AC9F4161B2E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartupClass", "S:\Design and Supply CSharp\Class Libraries\General\StartupClass.csproj", "{C0721D32-EE8C-4891-8FBE-76F975B2D944}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

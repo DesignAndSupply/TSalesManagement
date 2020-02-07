@@ -149,5 +149,42 @@ namespace TSalesManagement
             frmNewTask nt = new frmNewTask(null,null,null,null,null);
             nt.ShowDialog();
         }
+
+        private void addNewProjectToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddProject frmAP = new frmAddProject();
+            frmAP.ShowDialog();
+
+            //refresh other form here??
+            int was_it_closed = 0;
+            foreach (Form f in this.MdiChildren) //this works 100%
+            {
+                if (f is frmViewProjects)
+                {
+                    f.Close();
+                    was_it_closed = -1;
+                }
+            }
+            if (was_it_closed == -1)
+                viewProjectsToolStripMenuItem.PerformClick();
+        }
+
+        private void viewProjectsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmViewProjects vp = new frmViewProjects();
+            vp.MdiParent = this;
+            vp.Show();
+        }
+
+        private void frmMainMenu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                if (MessageBox.Show("Are you sure you want to exit?", "Exit!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    Environment.Exit(1);
+                else
+                    e.Cancel = true;
+            }
+        }
     }
 }

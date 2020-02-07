@@ -40,6 +40,9 @@
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewProjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabForms = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +53,8 @@
             this.customersToolStripMenuItem,
             this.salesDataToolStripMenuItem,
             this.userManagementToolStripMenuItem,
-            this.addTaskToolStripMenuItem});
+            this.addTaskToolStripMenuItem,
+            this.projectsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(989, 24);
@@ -137,9 +141,32 @@
             // addTaskToolStripMenuItem
             // 
             this.addTaskToolStripMenuItem.Name = "addTaskToolStripMenuItem";
-            this.addTaskToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.addTaskToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.addTaskToolStripMenuItem.Text = "Add Task";
             this.addTaskToolStripMenuItem.Click += new System.EventHandler(this.addTaskToolStripMenuItem_Click);
+            // 
+            // projectsToolStripMenuItem
+            // 
+            this.projectsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addNewProjectToolStripMenuItem,
+            this.viewProjectsToolStripMenuItem});
+            this.projectsToolStripMenuItem.Name = "projectsToolStripMenuItem";
+            this.projectsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.projectsToolStripMenuItem.Text = "Projects";
+            // 
+            // addNewProjectToolStripMenuItem
+            // 
+            this.addNewProjectToolStripMenuItem.Name = "addNewProjectToolStripMenuItem";
+            this.addNewProjectToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.addNewProjectToolStripMenuItem.Text = "Add New Project";
+            this.addNewProjectToolStripMenuItem.Click += new System.EventHandler(this.addNewProjectToolStripMenuItem_Click);
+            // 
+            // viewProjectsToolStripMenuItem
+            // 
+            this.viewProjectsToolStripMenuItem.Name = "viewProjectsToolStripMenuItem";
+            this.viewProjectsToolStripMenuItem.Size = new System.Drawing.Size(163, 22);
+            this.viewProjectsToolStripMenuItem.Text = "View Projects";
+            this.viewProjectsToolStripMenuItem.Click += new System.EventHandler(this.viewProjectsToolStripMenuItem_Click);
             // 
             // tabForms
             // 
@@ -161,7 +188,9 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InSight CRM";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMainMenu_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -183,5 +212,8 @@
         private System.Windows.Forms.ToolStripMenuItem nonReturningCustomersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newCustomersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addTaskToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewProjectToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewProjectsToolStripMenuItem;
     }
 }

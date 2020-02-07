@@ -31,7 +31,8 @@ namespace TSalesManagement
 
             if (login.IsLoggedIn(user, pass))
             {
-              
+
+
                 frmMainMenu form = new frmMainMenu();
                 this.Hide();
                 form.ShowDialog();
@@ -47,6 +48,18 @@ namespace TSalesManagement
         private void frmLogin_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtUsername_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                this.ActiveControl = txtPassword;
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnLogin.PerformClick();
         }
     }
 }
