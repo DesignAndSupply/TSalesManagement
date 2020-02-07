@@ -311,6 +311,20 @@ namespace TSalesManagement
             frmProjectEdit frm = new frmProjectEdit(_ID, _customer, _title);
             frm.ShowDialog();
         }
+
+        private void chk_tender_CheckedChanged(object sender, EventArgs e)
+        {
+            string sql = "update dbo.projects SET [tender_complete] = -1 WHERE id = " + _ID;
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
     }
 }
 

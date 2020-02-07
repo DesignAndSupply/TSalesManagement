@@ -31,7 +31,8 @@ namespace TSalesManagement
 
             if (login.IsLoggedIn(user, pass))
             {
-              
+
+
                 frmMainMenu form = new frmMainMenu();
                 this.Hide();
                 form.ShowDialog();

@@ -26,7 +26,7 @@ namespace TSalesManagement
                 "CASE WHEN[completion_complete] = -1 then 'Complete' else ' ' END as completeion_complete," +
                 "CASE WHEN[invoiced_complete] = -1 then 'Complete' else ' ' END as invoice_complete," +
                 "CASE WHEN[retention_complete] = -1 then 'Complete' else ' ' END as retention_complete " +
-                "FROM [order_database].[dbo].[projects]";
+                "FROM [order_database].[dbo].[projects] ORDER BY [id] DESC";
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -66,10 +66,32 @@ namespace TSalesManagement
             dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[11].HeaderText = "Retention";
             dataGridView1.Columns[11].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                if (dataGridView1.Rows[i].Cells[3].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[3].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[4].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[7].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[8].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[8].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[9].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[10].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[10].Style.BackColor = Color.LightSeaGreen;
+                if (dataGridView1.Rows[i].Cells[11].Value.ToString() == "Complete")
+                    dataGridView1.Rows[i].Cells[11].Style.BackColor = Color.LightSeaGreen;
+
+            }
 
             //add some colour
-          
-            
+
+
         }
         private void frmViewProjects_Load(object sender, EventArgs e)
         {
@@ -106,6 +128,39 @@ namespace TSalesManagement
             string customer = row.Cells[2].Value.ToString();
             frmProjectManager PM = new frmProjectManager(ID, title,customer);
             PM.ShowDialog();
+            refreshDGV();
+            format();
+        }
+
+        private void refreshDGV()
+        {
+            dataGridView1.DataSource = null;
+            dataGridView1.Rows.Clear();
+            //onload of this form get info from dbo.project
+            string sql = "SELECT [id],[project_title],[customer_acc_ref]," +
+                "CASE WHEN[tender_complete] = -1 then 'Complete' else ' ' END as tender_complete," +
+                "CASE WHEN[prelet_complete] = -1 then 'Complete' else ' ' END as prelet_complete," +
+                "CASE WHEN[design_complete] = -1 then 'Complete' else ' ' END as design_complete," +
+                "CASE WHEN[order_complete] = -1 then 'Complete'  else ' ' END as order_complete," +
+                "CASE WHEN[survey_complete] = -1 then 'Complete' else ' ' END as survey_complete," +
+                "CASE WHEN[on_site_complete] = -1 then 'Complete' else ' ' END as on_site_complete," +
+                "CASE WHEN[completion_complete] = -1 then 'Complete' else ' ' END as completeion_complete," +
+                "CASE WHEN[invoiced_complete] = -1 then 'Complete' else ' ' END as invoice_complete," +
+                "CASE WHEN[retention_complete] = -1 then 'Complete' else ' ' END as retention_complete " +
+                "FROM [order_database].[dbo].[projects] ORDER BY [id] DESC";
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    DataTable dt = new DataTable();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                }
+            }
+            format();
+
         }
     }
 }
