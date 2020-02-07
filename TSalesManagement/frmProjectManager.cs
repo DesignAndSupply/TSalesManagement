@@ -312,9 +312,9 @@ namespace TSalesManagement
             frm.ShowDialog();
         }
 
-        private void chk_tender_CheckedChanged(object sender, EventArgs e)
+        private void sqlStatement(string section)
         {
-            string sql = "update dbo.projects SET [tender_complete] = -1 WHERE id = " + _ID;
+            string sql = "update dbo.projects SET [" + section + "] = -1 WHERE id = " + _ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -324,6 +324,17 @@ namespace TSalesManagement
                     conn.Close();
                 }
             }
+
+        }
+
+        private void chk_tender_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chk_tender_3.Checked == true)
+            {
+                sqlStatement("tender_complete");
+            }
+            else
+                chk_tender.Checked = false;
         }
     }
 }
