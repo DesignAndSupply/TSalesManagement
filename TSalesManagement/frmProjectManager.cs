@@ -38,6 +38,7 @@ namespace TSalesManagement
             int completion_comp = 0, completion_1 = 0, completion_2 = 0, completion_3 = 0;
             int invoiced_comp = 0, invoiced_1 = 0, invoiced_2 = 0, invoiced_3 = 0, invoiced_4 = 0, invoiced_5 = 0, invoiced_6 = 0, invoiced_7 = 0, invoiced_8 = 0, invoiced_9 = 0, invoiced_10 = 0;
             int retention_comp = 0, retention_1 = 0, retention_2 = 0, retention_3 = 0, retention_4 = 0;
+            string tender_note = "", prelet_note = "", design_note = "", order_note = "", survey_note = "", on_site_note = "", invoice_note = "", complete_note = "", retention_note = "";
             string sql = "SELECT COALESCE(tender_1,0) as [tender_1],COALESCE(tender_2,0)as [tender_2],COALESCE(tender_3,0)as [tender_3],COALESCE(tender_complete,0) as [tender_complete]," +
                 "COALESCE(prelet_1,0) as [prelet_1],COALESCE(prelet_2,0) as [prelet_2],COALESCE(prelet_3,0) as [prelet_3],COALESCE(prelet_4,0) as [prelet_4],COALESCE(prelet_5,0) as [prelet_5],COALESCE(prelet_6,0) as [prelet_6],COALESCE(prelet_complete,0) as [prelet_complete]," +
                 "COALESCE(design_1,0) as [design_1],COALESCE(design_2,0) as [design_2],COALESCE(design_3,0) as [design_3],COALESCE(design_complete,0) as [design_complete]," +
@@ -46,7 +47,8 @@ namespace TSalesManagement
                 "COALESCE(on_site_1,0) as [on_site_1],COALESCE(on_site_2,0) as [on_site_2],COALESCE(on_site_3,0) as [on_site_3],COALESCE(on_site_4,0) as [on_site_4],COALESCE(on_site_5,0) as [on_site_5],COALESCE(on_site_6,0) as [on_site_6],COALESCE(on_site_complete,0) as [on_site_complete]," +
                 "COALESCE(complete_1,0) as [complete_1],COALESCE(complete_2,0) as [complete_2],COALESCE(complete_3,0) as [complete_3],COALESCE(completion_complete,0) as [completion_complete]," +
                 "COALESCE(invoice_1,0) as [invoice_1],COALESCE(invoice_2,0) as [invoice_2],COALESCE(invoice_3,0) as [invoice_3],COALESCE(invoice_4,0) as [invoice_4],COALESCE(invoice_5,0) as [invoice_5],COALESCE(invoice_6,0) as [invoice_6],COALESCE(invoice_7,0) as [invoice_7],COALESCE(invoice_8,0) as [invoice_8],COALESCE(invoice_9,0) as [invoice_9],COALESCE(invoice_10,0) as [invoice_10],COALESCE(invoiced_complete,0) as [invoiced_complete]," +
-                "COALESCE(retention_1,0) as [retention_1],COALESCE(retention_2,0) as [retention_2],COALESCE(retention_3,0) as [retention_3],COALESCE(retention_4,0) as [retention_4],COALESCE(retention_complete ,0) as [retention_complete] FROM dbo.projects WHERE ID = " + _ID;
+                "COALESCE(retention_1,0) as [retention_1],COALESCE(retention_2,0) as [retention_2],COALESCE(retention_3,0) as [retention_3],COALESCE(retention_4,0) as [retention_4],COALESCE(retention_complete ,0) as [retention_complete] ," +
+                "COALESCE(tender_note,'') as [tender_note],COALESCE(prelet_note,'') as [prelet_note],COALESCE(design_note,'') as [design_note],COALESCE(order_note,'') as [order_note],COALESCE(survey_note,'') as [survey_note],COALESCE(on_site_note,'') as [on_site_note],COALESCE(complete_note,'') as [complete_note],COALESCE(invoice_note,'') as [invoice_note],COALESCE(retention_note,'') as [retention_note] FROM dbo.projects WHERE ID = " + _ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -61,6 +63,7 @@ namespace TSalesManagement
                         tender_2 = Convert.ToInt32(dr["tender_2"]);
                         tender_3 = Convert.ToInt32(dr["tender_3"]);
                         tender_comp = Convert.ToInt32(dr["tender_complete"]);
+                        tender_note = Convert.ToString(dr["tender_note"]);
                         //prelet
                         prelet_1 = Convert.ToInt32(dr["prelet_1"]);
                         prelet_2 = Convert.ToInt32(dr["prelet_2"]);
@@ -69,16 +72,19 @@ namespace TSalesManagement
                         prelet_5 = Convert.ToInt32(dr["prelet_5"]);
                         prelet_6 = Convert.ToInt32(dr["prelet_6"]);
                         prelet_comp = Convert.ToInt32(dr["prelet_complete"]);
+                        prelet_note = Convert.ToString(dr["prelet_note"]);
                         //design
                         design_1 = Convert.ToInt32(dr["design_1"]);
                         design_2 = Convert.ToInt32(dr["design_2"]);
                         design_3 = Convert.ToInt32(dr["design_3"]);
                         design_comp = Convert.ToInt32(dr["design_complete"]);
+                        design_note = Convert.ToString(dr["design_note"]);
                         //order
                         order_1 = Convert.ToInt32(dr["order_1"]);
                         order_2 = Convert.ToInt32(dr["order_2"]);
                         order_3 = Convert.ToInt32(dr["order_3"]);
                         order_comp = Convert.ToInt32(dr["order_complete"]);
+                        order_note = Convert.ToString(dr["order_note"]);
                         //survey
                         survey_1 = Convert.ToInt32(dr["survey_1"]);
                         survey_2 = Convert.ToInt32(dr["survey_2"]);
@@ -86,6 +92,7 @@ namespace TSalesManagement
                         survey_4 = Convert.ToInt32(dr["survey_4"]);
                         survey_5 = Convert.ToInt32(dr["survey_5"]);
                         survey_comp = Convert.ToInt32(dr["survey_complete"]);
+                        survey_note = Convert.ToString(dr["Survey_note"]);
                         //on_site
                         on_site_1 = Convert.ToInt32(dr["on_site_1"]);
                         on_site_2 = Convert.ToInt32(dr["on_site_2"]);
@@ -94,11 +101,13 @@ namespace TSalesManagement
                         on_site_5 = Convert.ToInt32(dr["on_site_5"]);
                         on_site_6 = Convert.ToInt32(dr["on_site_6"]);
                         on_site_comp = Convert.ToInt32(dr["on_site_complete"]);
+                        on_site_note = Convert.ToString(dr["on_site_note"]);
                         //comp
                         completion_1 = Convert.ToInt32(dr["complete_1"]);
                         completion_2 = Convert.ToInt32(dr["complete_2"]);
                         completion_3 = Convert.ToInt32(dr["complete_3"]);
                         completion_comp = Convert.ToInt32(dr["completion_complete"]);
+                        complete_note = Convert.ToString(dr["complete_note"]);
                         //invoiced
                         invoiced_1 = Convert.ToInt32(dr["invoice_1"]);
                         invoiced_2 = Convert.ToInt32(dr["invoice_2"]);
@@ -111,12 +120,14 @@ namespace TSalesManagement
                         invoiced_9 = Convert.ToInt32(dr["invoice_9"]);
                         invoiced_10 = Convert.ToInt32(dr["invoice_10"]);
                         invoiced_comp = Convert.ToInt32(dr["invoiced_complete"]);
+                        invoice_note = Convert.ToString(dr["invoice_note"]);
                         //retention
                         retention_1 = Convert.ToInt32(dr["retention_1"]);
                         retention_2 = Convert.ToInt32(dr["retention_2"]);
                         retention_3 = Convert.ToInt32(dr["retention_3"]);
                         retention_4 = Convert.ToInt32(dr["retention_4"]);
                         retention_comp = Convert.ToInt32(dr["retention_complete"]);
+                        retention_note = Convert.ToString(dr["retention_note"]);
                     }
                     conn.Close();
                 }
@@ -234,6 +245,19 @@ namespace TSalesManagement
 
             if (retention_comp == -1)
                 chk_retention.Checked = true;
+
+
+            //set the text boxes to the correct variables
+
+            txtTender.Text = tender_note;
+            txtPrelet.Text = prelet_note;
+            txtDesign.Text = design_note;
+            txtSurvey.Text = survey_note;
+            txtOnSite.Text = on_site_note;
+            txtOrder.Text = order_note;
+            txtCompletion.Text = complete_note;
+            txtInvoice.Text = invoice_note;
+            txtRetention.Text = retention_note;
 
         }
 
@@ -788,9 +812,76 @@ namespace TSalesManagement
                 chk_retention.Checked = false;
         }
 
+        //to save writing the same update statement constantly....
 
+        private void noteUpdate(string location,string txt)
+        {
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                string sql = "UPDATE dbo.projects SET " + location + "_note = '" + txt + "' WHERE ID = " + _ID;
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
 
+        private void btnTenderNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("tender", txtTender.Text);
+            MessageBox.Show("Tender notes has been updated!");
+            //refresh note? or is there no need?
+        }
 
+        private void btnPreletNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("prelet", txtPrelet.Text);
+            MessageBox.Show("Prelet notes have been updated!");
+        }
+
+        private void btnDesignNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("design", txtDesign.Text);
+            MessageBox.Show("Design notes have been updated!");
+        }
+
+        private void btnOrderNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("order", txtOrder.Text);
+            MessageBox.Show("Order notes have been updated");
+        }
+
+        private void btnSurveyNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("survey", txtSurvey.Text);
+            MessageBox.Show("Survey notes have been updated!");
+        }
+
+        private void btnOnSiteNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("on_site", txtOnSite.Text);
+            MessageBox.Show("On site notes have been updated!");
+        }
+
+        private void btnCompletionNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("complete", txtCompletion.Text);
+            MessageBox.Show("Complete notes have been updated!");
+        }
+
+        private void btnInvoicedNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("invoice", txtInvoice.Text);
+            MessageBox.Show("Invoice Notes have been updated!");
+        }
+
+        private void btnRetentionNotes_Click(object sender, EventArgs e)
+        {
+            noteUpdate("retention", txtRetention.Text);
+            MessageBox.Show("Retention notes have been updated!");
+        }
     }
 }
 
