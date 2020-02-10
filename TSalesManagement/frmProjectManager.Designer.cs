@@ -37,7 +37,6 @@
             this.btn_PDF = new System.Windows.Forms.Button();
             this.chk_tender = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.chk_prelet_4 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_3 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_2 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_1 = new System.Windows.Forms.CheckBox();
@@ -69,7 +68,6 @@
             this.chk_Survey = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.chk_on_site_6 = new System.Windows.Forms.CheckBox();
-            this.chk_on_site_5 = new System.Windows.Forms.CheckBox();
             this.chk_on_site_4 = new System.Windows.Forms.CheckBox();
             this.chk_on_site_3 = new System.Windows.Forms.CheckBox();
             this.chk_on_site_2 = new System.Windows.Forms.CheckBox();
@@ -107,6 +105,10 @@
             this.chk_retention = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
+            this.chk_prelet_6 = new System.Windows.Forms.CheckBox();
+            this.chk_prelet_5 = new System.Windows.Forms.CheckBox();
+            this.chk_completion_3 = new System.Windows.Forms.CheckBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -139,6 +141,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.richTextBox1);
             this.tabPage1.Controls.Add(this.chk_tender_3);
             this.tabPage1.Controls.Add(this.chk_tender_2);
             this.tabPage1.Controls.Add(this.chk_tender_1);
@@ -157,7 +160,7 @@
             // 
             this.chk_tender_3.AutoSize = true;
             this.chk_tender_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_tender_3.Location = new System.Drawing.Point(18, 144);
+            this.chk_tender_3.Location = new System.Drawing.Point(6, 119);
             this.chk_tender_3.Name = "chk_tender_3";
             this.chk_tender_3.Size = new System.Drawing.Size(186, 19);
             this.chk_tender_3.TabIndex = 5;
@@ -169,7 +172,7 @@
             // 
             this.chk_tender_2.AutoSize = true;
             this.chk_tender_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_tender_2.Location = new System.Drawing.Point(18, 97);
+            this.chk_tender_2.Location = new System.Drawing.Point(6, 72);
             this.chk_tender_2.Name = "chk_tender_2";
             this.chk_tender_2.Size = new System.Drawing.Size(104, 19);
             this.chk_tender_2.TabIndex = 4;
@@ -181,7 +184,7 @@
             // 
             this.chk_tender_1.AutoSize = true;
             this.chk_tender_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_tender_1.Location = new System.Drawing.Point(18, 55);
+            this.chk_tender_1.Location = new System.Drawing.Point(6, 30);
             this.chk_tender_1.Name = "chk_tender_1";
             this.chk_tender_1.Size = new System.Drawing.Size(180, 19);
             this.chk_tender_1.TabIndex = 3;
@@ -212,7 +215,7 @@
             // chk_tender
             // 
             this.chk_tender.AutoSize = true;
-            this.chk_tender.Location = new System.Drawing.Point(266, 82);
+            this.chk_tender.Location = new System.Drawing.Point(323, 31);
             this.chk_tender.Name = "chk_tender";
             this.chk_tender.Size = new System.Drawing.Size(107, 17);
             this.chk_tender.TabIndex = 0;
@@ -222,7 +225,8 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.chk_prelet_4);
+            this.tabPage2.Controls.Add(this.chk_prelet_6);
+            this.tabPage2.Controls.Add(this.chk_prelet_5);
             this.tabPage2.Controls.Add(this.chk_prelet_3);
             this.tabPage2.Controls.Add(this.chk_prelet_2);
             this.tabPage2.Controls.Add(this.chk_prelet_1);
@@ -237,23 +241,11 @@
             this.tabPage2.Text = "Prelet";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // chk_prelet_4
-            // 
-            this.chk_prelet_4.AutoSize = true;
-            this.chk_prelet_4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_4.Location = new System.Drawing.Point(25, 158);
-            this.chk_prelet_4.Name = "chk_prelet_4";
-            this.chk_prelet_4.Size = new System.Drawing.Size(232, 19);
-            this.chk_prelet_4.TabIndex = 8;
-            this.chk_prelet_4.Text = "Intent/Commitment to Order Recieved";
-            this.chk_prelet_4.UseVisualStyleBackColor = true;
-            this.chk_prelet_4.CheckedChanged += new System.EventHandler(this.chk_prelet_4_CheckedChanged);
-            // 
             // chk_prelet_3
             // 
             this.chk_prelet_3.AutoSize = true;
             this.chk_prelet_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_3.Location = new System.Drawing.Point(25, 115);
+            this.chk_prelet_3.Location = new System.Drawing.Point(6, 106);
             this.chk_prelet_3.Name = "chk_prelet_3";
             this.chk_prelet_3.Size = new System.Drawing.Size(232, 19);
             this.chk_prelet_3.TabIndex = 7;
@@ -265,7 +257,7 @@
             // 
             this.chk_prelet_2.AutoSize = true;
             this.chk_prelet_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_2.Location = new System.Drawing.Point(25, 72);
+            this.chk_prelet_2.Location = new System.Drawing.Point(6, 69);
             this.chk_prelet_2.Name = "chk_prelet_2";
             this.chk_prelet_2.Size = new System.Drawing.Size(127, 19);
             this.chk_prelet_2.TabIndex = 6;
@@ -277,7 +269,7 @@
             // 
             this.chk_prelet_1.AutoSize = true;
             this.chk_prelet_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_1.Location = new System.Drawing.Point(25, 29);
+            this.chk_prelet_1.Location = new System.Drawing.Point(6, 32);
             this.chk_prelet_1.Name = "chk_prelet_1";
             this.chk_prelet_1.Size = new System.Drawing.Size(89, 19);
             this.chk_prelet_1.TabIndex = 5;
@@ -308,7 +300,7 @@
             // chk_prelet
             // 
             this.chk_prelet.AutoSize = true;
-            this.chk_prelet.Location = new System.Drawing.Point(323, 115);
+            this.chk_prelet.Location = new System.Drawing.Point(330, 34);
             this.chk_prelet.Name = "chk_prelet";
             this.chk_prelet.Size = new System.Drawing.Size(100, 17);
             this.chk_prelet.TabIndex = 1;
@@ -336,7 +328,7 @@
             // 
             this.chk_design_3.AutoSize = true;
             this.chk_design_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_design_3.Location = new System.Drawing.Point(18, 153);
+            this.chk_design_3.Location = new System.Drawing.Point(6, 132);
             this.chk_design_3.Name = "chk_design_3";
             this.chk_design_3.Size = new System.Drawing.Size(151, 19);
             this.chk_design_3.TabIndex = 8;
@@ -348,7 +340,7 @@
             // 
             this.chk_design_2.AutoSize = true;
             this.chk_design_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_design_2.Location = new System.Drawing.Point(18, 104);
+            this.chk_design_2.Location = new System.Drawing.Point(6, 83);
             this.chk_design_2.Name = "chk_design_2";
             this.chk_design_2.Size = new System.Drawing.Size(134, 19);
             this.chk_design_2.TabIndex = 7;
@@ -360,7 +352,7 @@
             // 
             this.chk_design_1.AutoSize = true;
             this.chk_design_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_design_1.Location = new System.Drawing.Point(18, 55);
+            this.chk_design_1.Location = new System.Drawing.Point(6, 34);
             this.chk_design_1.Name = "chk_design_1";
             this.chk_design_1.Size = new System.Drawing.Size(117, 19);
             this.chk_design_1.TabIndex = 6;
@@ -391,7 +383,7 @@
             // chk_design
             // 
             this.chk_design.AutoSize = true;
-            this.chk_design.Location = new System.Drawing.Point(276, 104);
+            this.chk_design.Location = new System.Drawing.Point(324, 34);
             this.chk_design.Name = "chk_design";
             this.chk_design.Size = new System.Drawing.Size(106, 17);
             this.chk_design.TabIndex = 1;
@@ -419,7 +411,7 @@
             // 
             this.chk_order_3.AutoSize = true;
             this.chk_order_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_order_3.Location = new System.Drawing.Point(18, 153);
+            this.chk_order_3.Location = new System.Drawing.Point(6, 136);
             this.chk_order_3.Name = "chk_order_3";
             this.chk_order_3.Size = new System.Drawing.Size(173, 19);
             this.chk_order_3.TabIndex = 9;
@@ -431,7 +423,7 @@
             // 
             this.chk_order_2.AutoSize = true;
             this.chk_order_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_order_2.Location = new System.Drawing.Point(18, 102);
+            this.chk_order_2.Location = new System.Drawing.Point(6, 85);
             this.chk_order_2.Name = "chk_order_2";
             this.chk_order_2.Size = new System.Drawing.Size(98, 19);
             this.chk_order_2.TabIndex = 8;
@@ -443,7 +435,7 @@
             // 
             this.chk_order_1.AutoSize = true;
             this.chk_order_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_order_1.Location = new System.Drawing.Point(18, 51);
+            this.chk_order_1.Location = new System.Drawing.Point(6, 34);
             this.chk_order_1.Name = "chk_order_1";
             this.chk_order_1.Size = new System.Drawing.Size(89, 19);
             this.chk_order_1.TabIndex = 7;
@@ -474,7 +466,7 @@
             // chk_Order
             // 
             this.chk_Order.AutoSize = true;
-            this.chk_Order.Location = new System.Drawing.Point(305, 93);
+            this.chk_Order.Location = new System.Drawing.Point(331, 34);
             this.chk_Order.Name = "chk_Order";
             this.chk_Order.Size = new System.Drawing.Size(99, 17);
             this.chk_Order.TabIndex = 1;
@@ -504,7 +496,7 @@
             // 
             this.chk_survey_5.AutoSize = true;
             this.chk_survey_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_survey_5.Location = new System.Drawing.Point(30, 179);
+            this.chk_survey_5.Location = new System.Drawing.Point(3, 186);
             this.chk_survey_5.Name = "chk_survey_5";
             this.chk_survey_5.Size = new System.Drawing.Size(158, 19);
             this.chk_survey_5.TabIndex = 12;
@@ -516,7 +508,7 @@
             // 
             this.chk_survey_4.AutoSize = true;
             this.chk_survey_4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_survey_4.Location = new System.Drawing.Point(30, 141);
+            this.chk_survey_4.Location = new System.Drawing.Point(3, 148);
             this.chk_survey_4.Name = "chk_survey_4";
             this.chk_survey_4.Size = new System.Drawing.Size(238, 19);
             this.chk_survey_4.TabIndex = 11;
@@ -528,7 +520,7 @@
             // 
             this.chk_survey_3.AutoSize = true;
             this.chk_survey_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_survey_3.Location = new System.Drawing.Point(30, 103);
+            this.chk_survey_3.Location = new System.Drawing.Point(3, 110);
             this.chk_survey_3.Name = "chk_survey_3";
             this.chk_survey_3.Size = new System.Drawing.Size(116, 19);
             this.chk_survey_3.TabIndex = 10;
@@ -540,7 +532,7 @@
             // 
             this.chk_survey_2.AutoSize = true;
             this.chk_survey_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_survey_2.Location = new System.Drawing.Point(30, 65);
+            this.chk_survey_2.Location = new System.Drawing.Point(3, 72);
             this.chk_survey_2.Name = "chk_survey_2";
             this.chk_survey_2.Size = new System.Drawing.Size(110, 19);
             this.chk_survey_2.TabIndex = 9;
@@ -552,7 +544,7 @@
             // 
             this.chk_survey_1.AutoSize = true;
             this.chk_survey_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_survey_1.Location = new System.Drawing.Point(30, 27);
+            this.chk_survey_1.Location = new System.Drawing.Point(3, 34);
             this.chk_survey_1.Name = "chk_survey_1";
             this.chk_survey_1.Size = new System.Drawing.Size(119, 19);
             this.chk_survey_1.TabIndex = 8;
@@ -583,7 +575,7 @@
             // chk_Survey
             // 
             this.chk_Survey.AutoSize = true;
-            this.chk_Survey.Location = new System.Drawing.Point(326, 111);
+            this.chk_Survey.Location = new System.Drawing.Point(324, 34);
             this.chk_Survey.Name = "chk_Survey";
             this.chk_Survey.Size = new System.Drawing.Size(106, 17);
             this.chk_Survey.TabIndex = 1;
@@ -594,7 +586,6 @@
             // tabPage6
             // 
             this.tabPage6.Controls.Add(this.chk_on_site_6);
-            this.tabPage6.Controls.Add(this.chk_on_site_5);
             this.tabPage6.Controls.Add(this.chk_on_site_4);
             this.tabPage6.Controls.Add(this.chk_on_site_3);
             this.tabPage6.Controls.Add(this.chk_on_site_2);
@@ -614,7 +605,7 @@
             // 
             this.chk_on_site_6.AutoSize = true;
             this.chk_on_site_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_on_site_6.Location = new System.Drawing.Point(33, 182);
+            this.chk_on_site_6.Location = new System.Drawing.Point(6, 169);
             this.chk_on_site_6.Name = "chk_on_site_6";
             this.chk_on_site_6.Size = new System.Drawing.Size(88, 19);
             this.chk_on_site_6.TabIndex = 17;
@@ -622,23 +613,11 @@
             this.chk_on_site_6.UseVisualStyleBackColor = true;
             this.chk_on_site_6.CheckedChanged += new System.EventHandler(this.chk_on_site_6_CheckedChanged);
             // 
-            // chk_on_site_5
-            // 
-            this.chk_on_site_5.AutoSize = true;
-            this.chk_on_site_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_on_site_5.Location = new System.Drawing.Point(33, 150);
-            this.chk_on_site_5.Name = "chk_on_site_5";
-            this.chk_on_site_5.Size = new System.Drawing.Size(238, 19);
-            this.chk_on_site_5.TabIndex = 16;
-            this.chk_on_site_5.Text = "Quotes/Drawings Amended if Required";
-            this.chk_on_site_5.UseVisualStyleBackColor = true;
-            this.chk_on_site_5.CheckedChanged += new System.EventHandler(this.chk_on_site_5_CheckedChanged);
-            // 
             // chk_on_site_4
             // 
             this.chk_on_site_4.AutoSize = true;
             this.chk_on_site_4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_on_site_4.Location = new System.Drawing.Point(33, 118);
+            this.chk_on_site_4.Location = new System.Drawing.Point(6, 136);
             this.chk_on_site_4.Name = "chk_on_site_4";
             this.chk_on_site_4.Size = new System.Drawing.Size(120, 19);
             this.chk_on_site_4.TabIndex = 15;
@@ -650,7 +629,7 @@
             // 
             this.chk_on_site_3.AutoSize = true;
             this.chk_on_site_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_on_site_3.Location = new System.Drawing.Point(33, 86);
+            this.chk_on_site_3.Location = new System.Drawing.Point(6, 103);
             this.chk_on_site_3.Name = "chk_on_site_3";
             this.chk_on_site_3.Size = new System.Drawing.Size(116, 19);
             this.chk_on_site_3.TabIndex = 14;
@@ -662,7 +641,7 @@
             // 
             this.chk_on_site_2.AutoSize = true;
             this.chk_on_site_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_on_site_2.Location = new System.Drawing.Point(33, 54);
+            this.chk_on_site_2.Location = new System.Drawing.Point(6, 70);
             this.chk_on_site_2.Name = "chk_on_site_2";
             this.chk_on_site_2.Size = new System.Drawing.Size(98, 19);
             this.chk_on_site_2.TabIndex = 13;
@@ -675,7 +654,7 @@
             this.chk_on_site_1.AutoSize = true;
             this.chk_on_site_1.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.chk_on_site_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_on_site_1.Location = new System.Drawing.Point(33, 22);
+            this.chk_on_site_1.Location = new System.Drawing.Point(6, 36);
             this.chk_on_site_1.Name = "chk_on_site_1";
             this.chk_on_site_1.Size = new System.Drawing.Size(111, 20);
             this.chk_on_site_1.TabIndex = 12;
@@ -706,7 +685,7 @@
             // chk_onSite
             // 
             this.chk_onSite.AutoSize = true;
-            this.chk_onSite.Location = new System.Drawing.Point(329, 124);
+            this.chk_onSite.Location = new System.Drawing.Point(322, 36);
             this.chk_onSite.Name = "chk_onSite";
             this.chk_onSite.Size = new System.Drawing.Size(108, 17);
             this.chk_onSite.TabIndex = 1;
@@ -716,6 +695,7 @@
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.chk_completion_3);
             this.tabPage7.Controls.Add(this.chk_completion_2);
             this.tabPage7.Controls.Add(this.chk_completion_1);
             this.tabPage7.Controls.Add(this.btnCompOF);
@@ -733,7 +713,7 @@
             // 
             this.chk_completion_2.AutoSize = true;
             this.chk_completion_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_completion_2.Location = new System.Drawing.Point(31, 97);
+            this.chk_completion_2.Location = new System.Drawing.Point(3, 73);
             this.chk_completion_2.Name = "chk_completion_2";
             this.chk_completion_2.Size = new System.Drawing.Size(137, 19);
             this.chk_completion_2.TabIndex = 21;
@@ -745,7 +725,7 @@
             // 
             this.chk_completion_1.AutoSize = true;
             this.chk_completion_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_completion_1.Location = new System.Drawing.Point(31, 58);
+            this.chk_completion_1.Location = new System.Drawing.Point(3, 34);
             this.chk_completion_1.Name = "chk_completion_1";
             this.chk_completion_1.Size = new System.Drawing.Size(133, 19);
             this.chk_completion_1.TabIndex = 20;
@@ -776,7 +756,7 @@
             // chk_completion
             // 
             this.chk_completion.AutoSize = true;
-            this.chk_completion.Location = new System.Drawing.Point(291, 77);
+            this.chk_completion.Location = new System.Drawing.Point(300, 34);
             this.chk_completion.Name = "chk_completion";
             this.chk_completion.Size = new System.Drawing.Size(130, 17);
             this.chk_completion.TabIndex = 2;
@@ -811,7 +791,7 @@
             // 
             this.chk_invoice_10.AutoSize = true;
             this.chk_invoice_10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_10.Location = new System.Drawing.Point(128, 169);
+            this.chk_invoice_10.Location = new System.Drawing.Point(100, 166);
             this.chk_invoice_10.Name = "chk_invoice_10";
             this.chk_invoice_10.Size = new System.Drawing.Size(56, 19);
             this.chk_invoice_10.TabIndex = 29;
@@ -823,7 +803,7 @@
             // 
             this.chk_invoice_7.AutoSize = true;
             this.chk_invoice_7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_7.Location = new System.Drawing.Point(128, 70);
+            this.chk_invoice_7.Location = new System.Drawing.Point(100, 67);
             this.chk_invoice_7.Name = "chk_invoice_7";
             this.chk_invoice_7.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_7.TabIndex = 28;
@@ -835,7 +815,7 @@
             // 
             this.chk_invoice_6.AutoSize = true;
             this.chk_invoice_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_6.Location = new System.Drawing.Point(128, 37);
+            this.chk_invoice_6.Location = new System.Drawing.Point(100, 34);
             this.chk_invoice_6.Name = "chk_invoice_6";
             this.chk_invoice_6.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_6.TabIndex = 27;
@@ -847,7 +827,7 @@
             // 
             this.chk_invoice_8.AutoSize = true;
             this.chk_invoice_8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_8.Location = new System.Drawing.Point(128, 103);
+            this.chk_invoice_8.Location = new System.Drawing.Point(100, 100);
             this.chk_invoice_8.Name = "chk_invoice_8";
             this.chk_invoice_8.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_8.TabIndex = 26;
@@ -859,7 +839,7 @@
             // 
             this.chk_invoice_9.AutoSize = true;
             this.chk_invoice_9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_9.Location = new System.Drawing.Point(128, 136);
+            this.chk_invoice_9.Location = new System.Drawing.Point(100, 133);
             this.chk_invoice_9.Name = "chk_invoice_9";
             this.chk_invoice_9.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_9.TabIndex = 25;
@@ -871,7 +851,7 @@
             // 
             this.chk_invoice_5.AutoSize = true;
             this.chk_invoice_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_5.Location = new System.Drawing.Point(34, 169);
+            this.chk_invoice_5.Location = new System.Drawing.Point(6, 166);
             this.chk_invoice_5.Name = "chk_invoice_5";
             this.chk_invoice_5.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_5.TabIndex = 24;
@@ -883,7 +863,7 @@
             // 
             this.chk_invoice_4.AutoSize = true;
             this.chk_invoice_4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_4.Location = new System.Drawing.Point(34, 136);
+            this.chk_invoice_4.Location = new System.Drawing.Point(6, 133);
             this.chk_invoice_4.Name = "chk_invoice_4";
             this.chk_invoice_4.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_4.TabIndex = 23;
@@ -895,7 +875,7 @@
             // 
             this.chk_invoice_3.AutoSize = true;
             this.chk_invoice_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_3.Location = new System.Drawing.Point(34, 103);
+            this.chk_invoice_3.Location = new System.Drawing.Point(6, 100);
             this.chk_invoice_3.Name = "chk_invoice_3";
             this.chk_invoice_3.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_3.TabIndex = 22;
@@ -907,7 +887,7 @@
             // 
             this.chk_invoice_2.AutoSize = true;
             this.chk_invoice_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_2.Location = new System.Drawing.Point(34, 70);
+            this.chk_invoice_2.Location = new System.Drawing.Point(6, 67);
             this.chk_invoice_2.Name = "chk_invoice_2";
             this.chk_invoice_2.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_2.TabIndex = 21;
@@ -919,7 +899,7 @@
             // 
             this.chk_invoice_1.AutoSize = true;
             this.chk_invoice_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_1.Location = new System.Drawing.Point(34, 37);
+            this.chk_invoice_1.Location = new System.Drawing.Point(6, 34);
             this.chk_invoice_1.Name = "chk_invoice_1";
             this.chk_invoice_1.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_1.TabIndex = 20;
@@ -950,7 +930,7 @@
             // chk_invoiced
             // 
             this.chk_invoiced.AutoSize = true;
-            this.chk_invoiced.Location = new System.Drawing.Point(279, 122);
+            this.chk_invoiced.Location = new System.Drawing.Point(311, 34);
             this.chk_invoiced.Name = "chk_invoiced";
             this.chk_invoiced.Size = new System.Drawing.Size(119, 17);
             this.chk_invoiced.TabIndex = 2;
@@ -979,7 +959,7 @@
             // 
             this.chk_retention_4.AutoSize = true;
             this.chk_retention_4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_retention_4.Location = new System.Drawing.Point(33, 148);
+            this.chk_retention_4.Location = new System.Drawing.Point(6, 145);
             this.chk_retention_4.Name = "chk_retention_4";
             this.chk_retention_4.Size = new System.Drawing.Size(191, 19);
             this.chk_retention_4.TabIndex = 24;
@@ -991,7 +971,7 @@
             // 
             this.chk_retention_3.AutoSize = true;
             this.chk_retention_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_retention_3.Location = new System.Drawing.Point(33, 111);
+            this.chk_retention_3.Location = new System.Drawing.Point(6, 108);
             this.chk_retention_3.Name = "chk_retention_3";
             this.chk_retention_3.Size = new System.Drawing.Size(190, 19);
             this.chk_retention_3.TabIndex = 23;
@@ -1003,7 +983,7 @@
             // 
             this.chk_retention_2.AutoSize = true;
             this.chk_retention_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_retention_2.Location = new System.Drawing.Point(33, 74);
+            this.chk_retention_2.Location = new System.Drawing.Point(6, 71);
             this.chk_retention_2.Name = "chk_retention_2";
             this.chk_retention_2.Size = new System.Drawing.Size(167, 19);
             this.chk_retention_2.TabIndex = 22;
@@ -1015,7 +995,7 @@
             // 
             this.chk_retention_1.AutoSize = true;
             this.chk_retention_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_retention_1.Location = new System.Drawing.Point(33, 37);
+            this.chk_retention_1.Location = new System.Drawing.Point(6, 34);
             this.chk_retention_1.Name = "chk_retention_1";
             this.chk_retention_1.Size = new System.Drawing.Size(159, 19);
             this.chk_retention_1.TabIndex = 21;
@@ -1046,7 +1026,7 @@
             // chk_retention
             // 
             this.chk_retention.AutoSize = true;
-            this.chk_retention.Location = new System.Drawing.Point(287, 113);
+            this.chk_retention.Location = new System.Drawing.Point(311, 34);
             this.chk_retention.Name = "chk_retention";
             this.chk_retention.Size = new System.Drawing.Size(119, 17);
             this.chk_retention.TabIndex = 2;
@@ -1073,6 +1053,50 @@
             this.btnEdit.Text = "Edit Customer Details";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // chk_prelet_6
+            // 
+            this.chk_prelet_6.AutoSize = true;
+            this.chk_prelet_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_prelet_6.Location = new System.Drawing.Point(6, 180);
+            this.chk_prelet_6.Name = "chk_prelet_6";
+            this.chk_prelet_6.Size = new System.Drawing.Size(177, 19);
+            this.chk_prelet_6.TabIndex = 21;
+            this.chk_prelet_6.Text = "Insurance Check Compelted";
+            this.chk_prelet_6.UseVisualStyleBackColor = true;
+            this.chk_prelet_6.CheckedChanged += new System.EventHandler(this.chk_prelet_6_CheckedChanged);
+            // 
+            // chk_prelet_5
+            // 
+            this.chk_prelet_5.AutoSize = true;
+            this.chk_prelet_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_prelet_5.Location = new System.Drawing.Point(6, 143);
+            this.chk_prelet_5.Name = "chk_prelet_5";
+            this.chk_prelet_5.Size = new System.Drawing.Size(181, 19);
+            this.chk_prelet_5.TabIndex = 20;
+            this.chk_prelet_5.Text = "PQQ Completed (if required)";
+            this.chk_prelet_5.UseVisualStyleBackColor = true;
+            this.chk_prelet_5.CheckedChanged += new System.EventHandler(this.chk_prelet_5_CheckedChanged);
+            // 
+            // chk_completion_3
+            // 
+            this.chk_completion_3.AutoSize = true;
+            this.chk_completion_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_completion_3.Location = new System.Drawing.Point(3, 108);
+            this.chk_completion_3.Name = "chk_completion_3";
+            this.chk_completion_3.Size = new System.Drawing.Size(147, 19);
+            this.chk_completion_3.TabIndex = 22;
+            this.chk_completion_3.Text = "CE Issued (if required)";
+            this.chk_completion_3.UseVisualStyleBackColor = true;
+            this.chk_completion_3.CheckedChanged += new System.EventHandler(this.chk_completion_3_CheckedChanged);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(233, 71);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(183, 130);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
             // 
             // frmProjectManager
             // 
@@ -1154,7 +1178,6 @@
         private System.Windows.Forms.CheckBox chk_tender_3;
         private System.Windows.Forms.CheckBox chk_tender_2;
         private System.Windows.Forms.CheckBox chk_tender_1;
-        private System.Windows.Forms.CheckBox chk_prelet_4;
         private System.Windows.Forms.CheckBox chk_prelet_3;
         private System.Windows.Forms.CheckBox chk_prelet_2;
         private System.Windows.Forms.CheckBox chk_prelet_1;
@@ -1170,7 +1193,6 @@
         private System.Windows.Forms.CheckBox chk_survey_2;
         private System.Windows.Forms.CheckBox chk_survey_1;
         private System.Windows.Forms.CheckBox chk_on_site_6;
-        private System.Windows.Forms.CheckBox chk_on_site_5;
         private System.Windows.Forms.CheckBox chk_on_site_4;
         private System.Windows.Forms.CheckBox chk_on_site_3;
         private System.Windows.Forms.CheckBox chk_on_site_2;
@@ -1192,5 +1214,9 @@
         private System.Windows.Forms.CheckBox chk_retention_2;
         private System.Windows.Forms.CheckBox chk_retention_1;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.CheckBox chk_prelet_6;
+        private System.Windows.Forms.CheckBox chk_prelet_5;
+        private System.Windows.Forms.CheckBox chk_completion_3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
