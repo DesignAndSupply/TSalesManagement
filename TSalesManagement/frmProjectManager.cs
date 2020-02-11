@@ -16,6 +16,16 @@ namespace TSalesManagement
         public int _ID { get; set; }
         public string _title { get; set; }
         public string _customer { get; set; }
+        public int tender_email_sent { get; set; }
+        public int prelet_email_sent { get; set; }
+        public int design_email_sent { get; set; }
+        public int order_email_sent { get; set; }
+        public int survey_email_sent { get; set; }
+        public int on_site_email_sent { get; set; }
+        public int complete_email_sent { get; set; }
+        public int invoice__email_sent { get; set; }
+        public int retention_email_sent { get; set; }
+
         public frmProjectManager(int ID, string title, string customer)
         {
             InitializeComponent();
@@ -141,7 +151,10 @@ namespace TSalesManagement
             if (tender_3 == -1)
                 chk_tender_3.Checked = true;
             if (tender_comp == -1)
+            {
+                tender_email_sent = -1;
                 chk_tender.Checked = true;
+            }
             //prelet
             if (prelet_1 == -1)
                 chk_prelet_1.Checked = true;
@@ -156,7 +169,10 @@ namespace TSalesManagement
             if (prelet_6 == -1)
                 chk_prelet_6.Checked = true;
             if (prelet_comp == -1)
+            {
+                prelet_email_sent = -1;
                 chk_prelet.Checked = true;
+            }
             //design
             if (design_1 == -1)
                 chk_design_1.Checked = true;
@@ -165,7 +181,10 @@ namespace TSalesManagement
             if (design_3 == -1)
                 chk_design_3.Checked = true;
             if (design_comp == -1)
+            {
+                design_email_sent = -1;
                 chk_design.Checked = true;
+            }
             //order
             if (order_1 == -1)
                 chk_order_1.Checked = true;
@@ -174,7 +193,10 @@ namespace TSalesManagement
             if (order_3 == -1)
                 chk_order_3.Checked = true;
             if (order_comp == -1)
+            {
+                order_email_sent = -1;
                 chk_Order.Checked = true;
+            }
             //survey
             if (survey_1 == -1)
                 chk_survey_1.Checked = true;
@@ -187,7 +209,10 @@ namespace TSalesManagement
             if (survey_5 == -1)
                 chk_survey_5.Checked = true;
             if (survey_comp == -1)
+            {
+                survey_email_sent = -1;
                 chk_Survey.Checked = true;
+            }
             //on_site
             if (on_site_1 == -1)
                 chk_on_site_1.Checked = true;
@@ -200,7 +225,10 @@ namespace TSalesManagement
             if (on_site_6 == -1)
                 chk_on_site_6.Checked = true;
             if (on_site_comp == -1)
+            {
+                on_site_email_sent = -1;
                 chk_onSite.Checked = true;
+            }
             //comp
             if (completion_1 == -1)
                 chk_completion_1.Checked = true;
@@ -209,7 +237,10 @@ namespace TSalesManagement
             if (completion_3 == -1)
                 chk_completion_3.Checked = true;
             if (completion_comp == -1)
+            {
+                complete_email_sent = -1;
                 chk_completion.Checked = true;
+            }
             //invoiced
             if (invoiced_1 == -1)
                 chk_invoice_1.Checked = true;
@@ -232,7 +263,10 @@ namespace TSalesManagement
             if (invoiced_10 == -1)
                 chk_invoice_10.Checked = true;
             if (invoiced_comp == -1)
+            {
+                invoice__email_sent = -1;
                 chk_invoiced.Checked = true;
+            }
             //retention
             if (retention_1 == -1)
                 chk_retention_1.Checked = true;
@@ -244,8 +278,10 @@ namespace TSalesManagement
                 chk_retention_4.Checked = true;
 
             if (retention_comp == -1)
+            {
+                retention_email_sent = -1;
                 chk_retention.Checked = true;
-
+            }
 
             //set the text boxes to the correct variables
 
@@ -279,15 +315,15 @@ namespace TSalesManagement
 
         private void create_folders()
         { //this is universal so it will make all folders for each operation
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced");
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" +_ID + "_" + _title + @"\Tender");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Prelet");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Design");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Order");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Survey");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\On_site");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Completion");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Invoiced");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Retention");
 
 
         }
@@ -295,7 +331,7 @@ namespace TSalesManagement
         private void button1_Click(object sender, EventArgs e) //tender openfolder
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_tender"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\tender"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void txtCommercialName_Leave(object sender, EventArgs e)
@@ -306,55 +342,55 @@ namespace TSalesManagement
         private void btnPreletOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Prelet"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnDesignOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Design"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnOrderOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Order"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnSurveyOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Survey"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnOnSiteOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\On_site"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnCompOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Completion"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnInvoiceOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Invoiced"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnRetentionOF_Click(object sender, EventArgs e)
         {
             create_folders();
-            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention"); //open the root folder for /this/ project @ /current/ stage
+            System.Diagnostics.Process.Start(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Retention"); //open the root folder for /this/ project @ /current/ stage
         }
 
         private void btnPreletPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_prelet"; //open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Prelet"; //open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -362,7 +398,7 @@ namespace TSalesManagement
         private void btnDesignPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_design";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Design";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -370,7 +406,7 @@ namespace TSalesManagement
         private void btnOrderPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_order";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Order";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -378,7 +414,7 @@ namespace TSalesManagement
         private void btnSurveyPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_survey";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Survey";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -386,7 +422,7 @@ namespace TSalesManagement
         private void btnOnSitePDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_on_site";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\On_site";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -394,7 +430,7 @@ namespace TSalesManagement
         private void btnCompPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_completion";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Completion";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -402,7 +438,7 @@ namespace TSalesManagement
         private void btnInvoicePDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_invoiced";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Invoiced";//open PDF form and pass over the correct folder
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -410,7 +446,8 @@ namespace TSalesManagement
         private void btnRetentionPDF_Click(object sender, EventArgs e)
         {
             create_folders();
-            string folder = @"\\designsvr1\dropbox\Projects\" + _title + @"\" + _ID + @"_retention";//open PDF form and pass over the correct folder
+            string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Retention";//open PDF form and pass over the correct folder
+            
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -424,7 +461,7 @@ namespace TSalesManagement
         private void sqlStatement(string section)
         {//if string does not include "complete" then set compelte of that section to 1 instead of minus 1
             string sql = "";
-            if (section.Contains("complete") == true)
+            if (section.Contains("_complete") == true)
                 sql = "update dbo.projects SET [" + section + "] = -1 WHERE id = " + _ID;
             else
             { //format for every single one....
@@ -440,7 +477,7 @@ namespace TSalesManagement
                     sql = "update dbo.projects SET[" + section + "] = -1, [survey_complete] = 1 WHERE id = " + _ID;
                 if (section.Contains("on_site") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [on_site_complete] = 1 WHERE id = " + _ID;
-                if (section.Contains("complete") == true)
+                if (section.Contains("complete_") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [completion_complete] = 1 WHERE id = " + _ID;
                 if (section.Contains("invoice") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [invoiced_complete] = 1 WHERE id = " + _ID;
@@ -467,6 +504,12 @@ namespace TSalesManagement
             {
                 sqlStatement("tender_complete");
                 chk_tender.Enabled = false;
+                //shoot an email to PM
+                if (tender_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Tender");
+
             }
             else
                 chk_tender.Checked = false;
@@ -531,6 +574,11 @@ namespace TSalesManagement
             {
                 sqlStatement("prelet_complete");
                 chk_prelet.Enabled = false;
+                //shoot an email to PM
+                if (prelet_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Prelet");
             }
             else
                 chk_prelet.Checked = false;
@@ -560,6 +608,11 @@ namespace TSalesManagement
             {
                 sqlStatement("design_complete");
                 chk_design.Enabled = false;
+                //shoot an email to PM
+                if (design_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Design");
             }
             else
                 chk_design.Checked = false;
@@ -589,6 +642,11 @@ namespace TSalesManagement
             {
                 sqlStatement("order_complete");
                 chk_Order.Enabled = false;
+                //shoot an email to PM
+                if (order_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Order");
             }
             else
                 chk_Order.Checked = false;
@@ -630,6 +688,11 @@ namespace TSalesManagement
             {
                 sqlStatement("survey_complete");
                 chk_Survey.Enabled = false;
+                //shoot an email to PM
+                if (survey_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Survey");
             }
             else
                 chk_Survey.Checked = false;
@@ -672,6 +735,11 @@ namespace TSalesManagement
             {
                 sqlStatement("on_site_complete");
                 chk_onSite.Enabled = false;
+                //shoot an email to PM
+                if (on_site_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("On Site");
             }
             else
                 chk_onSite.Checked = false;
@@ -701,6 +769,11 @@ namespace TSalesManagement
             {
                 sqlStatement("completion_complete");
                 chk_completion.Enabled = false;
+                //shoot an email to PM
+                if (complete_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Completion");
             }
             else
                 chk_completion.Checked = false;
@@ -772,6 +845,11 @@ namespace TSalesManagement
             {
                 sqlStatement("invoiced_complete");
                 chk_invoiced.Enabled = false;
+                //shoot an email to PM
+                if (invoice__email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Invoice");
             }
             else
                 chk_invoiced.Checked = false;
@@ -807,6 +885,11 @@ namespace TSalesManagement
             {
                 sqlStatement("retention_complete");
                 chk_retention.Enabled = false;
+                //shoot an email to PM
+                if (retention_email_sent == -1)
+                    ;    //do nothing
+                else
+                    email("Retention");
             }
             else
                 chk_retention.Checked = false;
@@ -814,7 +897,7 @@ namespace TSalesManagement
 
         //to save writing the same update statement constantly....
 
-        private void noteUpdate(string location,string txt)
+        private void noteUpdate(string location, string txt)
         {
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
@@ -881,6 +964,27 @@ namespace TSalesManagement
         {
             noteUpdate("retention", txtRetention.Text);
             MessageBox.Show("Retention notes have been updated!");
+        }
+
+
+        private void email(string location)
+        {
+            //fire email with ID and location and have the procedure do all the work C:
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                string sql = "usp_email_project_manager";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@location", SqlDbType.VarChar).Value = location;
+                    cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = _ID;
+
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+
         }
     }
 }

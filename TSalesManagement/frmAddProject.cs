@@ -31,7 +31,7 @@ namespace TSalesManagement
                     }
                     conn.Close();
                 }
-                sql = "SELECT forename + ' ' + surname as [name] FROM [user_info].[dbo].[user] WHERE grouping = 5";
+                sql = "SELECT forename + ' ' + surname as [name] FROM [user_info].[dbo].[user] WHERE projectManager = -1 ORDER BY [name]";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     conn.Open();
