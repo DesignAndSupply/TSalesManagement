@@ -30,6 +30,8 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnTenderNotes = new System.Windows.Forms.Button();
+            this.txtTender = new System.Windows.Forms.RichTextBox();
             this.chk_tender_3 = new System.Windows.Forms.CheckBox();
             this.chk_tender_2 = new System.Windows.Forms.CheckBox();
             this.chk_tender_1 = new System.Windows.Forms.CheckBox();
@@ -37,6 +39,10 @@
             this.btn_PDF = new System.Windows.Forms.Button();
             this.chk_tender = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnPreletNotes = new System.Windows.Forms.Button();
+            this.txtPrelet = new System.Windows.Forms.RichTextBox();
+            this.chk_prelet_6 = new System.Windows.Forms.CheckBox();
+            this.chk_prelet_5 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_3 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_2 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_1 = new System.Windows.Forms.CheckBox();
@@ -44,6 +50,8 @@
             this.btnPreletPDF = new System.Windows.Forms.Button();
             this.chk_prelet = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnDesignNotes = new System.Windows.Forms.Button();
+            this.txtDesign = new System.Windows.Forms.RichTextBox();
             this.chk_design_3 = new System.Windows.Forms.CheckBox();
             this.chk_design_2 = new System.Windows.Forms.CheckBox();
             this.chk_design_1 = new System.Windows.Forms.CheckBox();
@@ -51,6 +59,8 @@
             this.btnDesignPDF = new System.Windows.Forms.Button();
             this.chk_design = new System.Windows.Forms.CheckBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.btnOrderNotes = new System.Windows.Forms.Button();
+            this.txtOrder = new System.Windows.Forms.RichTextBox();
             this.chk_order_3 = new System.Windows.Forms.CheckBox();
             this.chk_order_2 = new System.Windows.Forms.CheckBox();
             this.chk_order_1 = new System.Windows.Forms.CheckBox();
@@ -58,6 +68,8 @@
             this.btnOrderPDF = new System.Windows.Forms.Button();
             this.chk_Order = new System.Windows.Forms.CheckBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.btnSurveyNotes = new System.Windows.Forms.Button();
+            this.txtSurvey = new System.Windows.Forms.RichTextBox();
             this.chk_survey_5 = new System.Windows.Forms.CheckBox();
             this.chk_survey_4 = new System.Windows.Forms.CheckBox();
             this.chk_survey_3 = new System.Windows.Forms.CheckBox();
@@ -67,6 +79,8 @@
             this.btnSurveyPDF = new System.Windows.Forms.Button();
             this.chk_Survey = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.btnOnSiteNotes = new System.Windows.Forms.Button();
+            this.txtOnSite = new System.Windows.Forms.RichTextBox();
             this.chk_on_site_6 = new System.Windows.Forms.CheckBox();
             this.chk_on_site_4 = new System.Windows.Forms.CheckBox();
             this.chk_on_site_3 = new System.Windows.Forms.CheckBox();
@@ -76,12 +90,17 @@
             this.btnOnSitePDF = new System.Windows.Forms.Button();
             this.chk_onSite = new System.Windows.Forms.CheckBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.btnCompletionNotes = new System.Windows.Forms.Button();
+            this.txtCompletion = new System.Windows.Forms.RichTextBox();
+            this.chk_completion_3 = new System.Windows.Forms.CheckBox();
             this.chk_completion_2 = new System.Windows.Forms.CheckBox();
             this.chk_completion_1 = new System.Windows.Forms.CheckBox();
             this.btnCompOF = new System.Windows.Forms.Button();
             this.btnCompPDF = new System.Windows.Forms.Button();
             this.chk_completion = new System.Windows.Forms.CheckBox();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.btnInvoicedNotes = new System.Windows.Forms.Button();
+            this.txtInvoice = new System.Windows.Forms.RichTextBox();
             this.chk_invoice_10 = new System.Windows.Forms.CheckBox();
             this.chk_invoice_7 = new System.Windows.Forms.CheckBox();
             this.chk_invoice_6 = new System.Windows.Forms.CheckBox();
@@ -96,6 +115,8 @@
             this.btnInvoicePDF = new System.Windows.Forms.Button();
             this.chk_invoiced = new System.Windows.Forms.CheckBox();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.btnRetentionNotes = new System.Windows.Forms.Button();
+            this.txtRetention = new System.Windows.Forms.RichTextBox();
             this.chk_retention_4 = new System.Windows.Forms.CheckBox();
             this.chk_retention_3 = new System.Windows.Forms.CheckBox();
             this.chk_retention_2 = new System.Windows.Forms.CheckBox();
@@ -105,27 +126,10 @@
             this.chk_retention = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.chk_prelet_6 = new System.Windows.Forms.CheckBox();
-            this.chk_prelet_5 = new System.Windows.Forms.CheckBox();
-            this.chk_completion_3 = new System.Windows.Forms.CheckBox();
-            this.txtInvoice = new System.Windows.Forms.RichTextBox();
-            this.txtTender = new System.Windows.Forms.RichTextBox();
-            this.txtPrelet = new System.Windows.Forms.RichTextBox();
-            this.txtDesign = new System.Windows.Forms.RichTextBox();
-            this.txtOrder = new System.Windows.Forms.RichTextBox();
-            this.txtSurvey = new System.Windows.Forms.RichTextBox();
-            this.txtOnSite = new System.Windows.Forms.RichTextBox();
-            this.txtCompletion = new System.Windows.Forms.RichTextBox();
-            this.txtRetention = new System.Windows.Forms.RichTextBox();
-            this.btnTenderNotes = new System.Windows.Forms.Button();
-            this.btnPreletNotes = new System.Windows.Forms.Button();
-            this.btnDesignNotes = new System.Windows.Forms.Button();
-            this.btnOrderNotes = new System.Windows.Forms.Button();
-            this.btnSurveyNotes = new System.Windows.Forms.Button();
-            this.btnOnSiteNotes = new System.Windows.Forms.Button();
-            this.btnCompletionNotes = new System.Windows.Forms.Button();
-            this.btnInvoicedNotes = new System.Windows.Forms.Button();
-            this.btnRetentionNotes = new System.Windows.Forms.Button();
+            this.txtOrderNumber = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnLinkOrder = new System.Windows.Forms.Button();
+            this.btnRelink = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -152,7 +156,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 31);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(444, 382);
+            this.tabControl1.Size = new System.Drawing.Size(449, 382);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
@@ -173,6 +177,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tender";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnTenderNotes
+            // 
+            this.btnTenderNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnTenderNotes.Name = "btnTenderNotes";
+            this.btnTenderNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnTenderNotes.TabIndex = 32;
+            this.btnTenderNotes.Text = "Update Notes";
+            this.btnTenderNotes.UseVisualStyleBackColor = true;
+            this.btnTenderNotes.Click += new System.EventHandler(this.btnTenderNotes_Click);
+            // 
+            // txtTender
+            // 
+            this.txtTender.Location = new System.Drawing.Point(6, 208);
+            this.txtTender.Name = "txtTender";
+            this.txtTender.Size = new System.Drawing.Size(424, 116);
+            this.txtTender.TabIndex = 31;
+            this.txtTender.Text = "";
             // 
             // chk_tender_3
             // 
@@ -261,6 +283,48 @@
             this.tabPage2.Text = "Prelet";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // btnPreletNotes
+            // 
+            this.btnPreletNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnPreletNotes.Name = "btnPreletNotes";
+            this.btnPreletNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnPreletNotes.TabIndex = 33;
+            this.btnPreletNotes.Text = "Update Notes";
+            this.btnPreletNotes.UseVisualStyleBackColor = true;
+            this.btnPreletNotes.Click += new System.EventHandler(this.btnPreletNotes_Click);
+            // 
+            // txtPrelet
+            // 
+            this.txtPrelet.Location = new System.Drawing.Point(6, 208);
+            this.txtPrelet.Name = "txtPrelet";
+            this.txtPrelet.Size = new System.Drawing.Size(424, 116);
+            this.txtPrelet.TabIndex = 31;
+            this.txtPrelet.Text = "";
+            // 
+            // chk_prelet_6
+            // 
+            this.chk_prelet_6.AutoSize = true;
+            this.chk_prelet_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_prelet_6.Location = new System.Drawing.Point(6, 184);
+            this.chk_prelet_6.Name = "chk_prelet_6";
+            this.chk_prelet_6.Size = new System.Drawing.Size(177, 19);
+            this.chk_prelet_6.TabIndex = 21;
+            this.chk_prelet_6.Text = "Insurance Check Compelted";
+            this.chk_prelet_6.UseVisualStyleBackColor = true;
+            this.chk_prelet_6.CheckedChanged += new System.EventHandler(this.chk_prelet_6_CheckedChanged);
+            // 
+            // chk_prelet_5
+            // 
+            this.chk_prelet_5.AutoSize = true;
+            this.chk_prelet_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_prelet_5.Location = new System.Drawing.Point(6, 146);
+            this.chk_prelet_5.Name = "chk_prelet_5";
+            this.chk_prelet_5.Size = new System.Drawing.Size(181, 19);
+            this.chk_prelet_5.TabIndex = 20;
+            this.chk_prelet_5.Text = "PQQ Completed (if required)";
+            this.chk_prelet_5.UseVisualStyleBackColor = true;
+            this.chk_prelet_5.CheckedChanged += new System.EventHandler(this.chk_prelet_5_CheckedChanged);
+            // 
             // chk_prelet_3
             // 
             this.chk_prelet_3.AutoSize = true;
@@ -346,6 +410,24 @@
             this.tabPage3.Text = "Design";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // btnDesignNotes
+            // 
+            this.btnDesignNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnDesignNotes.Name = "btnDesignNotes";
+            this.btnDesignNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnDesignNotes.TabIndex = 33;
+            this.btnDesignNotes.Text = "Update Notes";
+            this.btnDesignNotes.UseVisualStyleBackColor = true;
+            this.btnDesignNotes.Click += new System.EventHandler(this.btnDesignNotes_Click);
+            // 
+            // txtDesign
+            // 
+            this.txtDesign.Location = new System.Drawing.Point(6, 208);
+            this.txtDesign.Name = "txtDesign";
+            this.txtDesign.Size = new System.Drawing.Size(424, 116);
+            this.txtDesign.TabIndex = 31;
+            this.txtDesign.Text = "";
+            // 
             // chk_design_3
             // 
             this.chk_design_3.AutoSize = true;
@@ -415,6 +497,10 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.btnRelink);
+            this.tabPage4.Controls.Add(this.btnLinkOrder);
+            this.tabPage4.Controls.Add(this.label2);
+            this.tabPage4.Controls.Add(this.txtOrderNumber);
             this.tabPage4.Controls.Add(this.btnOrderNotes);
             this.tabPage4.Controls.Add(this.txtOrder);
             this.tabPage4.Controls.Add(this.chk_order_3);
@@ -426,10 +512,28 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(436, 356);
+            this.tabPage4.Size = new System.Drawing.Size(441, 356);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Order";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // btnOrderNotes
+            // 
+            this.btnOrderNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnOrderNotes.Name = "btnOrderNotes";
+            this.btnOrderNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnOrderNotes.TabIndex = 33;
+            this.btnOrderNotes.Text = "Update Notes";
+            this.btnOrderNotes.UseVisualStyleBackColor = true;
+            this.btnOrderNotes.Click += new System.EventHandler(this.btnOrderNotes_Click);
+            // 
+            // txtOrder
+            // 
+            this.txtOrder.Location = new System.Drawing.Point(6, 208);
+            this.txtOrder.Name = "txtOrder";
+            this.txtOrder.Size = new System.Drawing.Size(424, 116);
+            this.txtOrder.TabIndex = 31;
+            this.txtOrder.Text = "";
             // 
             // chk_order_3
             // 
@@ -517,6 +621,24 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Survey";
             this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // btnSurveyNotes
+            // 
+            this.btnSurveyNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnSurveyNotes.Name = "btnSurveyNotes";
+            this.btnSurveyNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnSurveyNotes.TabIndex = 33;
+            this.btnSurveyNotes.Text = "Update Notes";
+            this.btnSurveyNotes.UseVisualStyleBackColor = true;
+            this.btnSurveyNotes.Click += new System.EventHandler(this.btnSurveyNotes_Click);
+            // 
+            // txtSurvey
+            // 
+            this.txtSurvey.Location = new System.Drawing.Point(6, 208);
+            this.txtSurvey.Name = "txtSurvey";
+            this.txtSurvey.Size = new System.Drawing.Size(424, 116);
+            this.txtSurvey.TabIndex = 31;
+            this.txtSurvey.Text = "";
             // 
             // chk_survey_5
             // 
@@ -629,6 +751,24 @@
             this.tabPage6.Text = "On Site";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // btnOnSiteNotes
+            // 
+            this.btnOnSiteNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnOnSiteNotes.Name = "btnOnSiteNotes";
+            this.btnOnSiteNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnOnSiteNotes.TabIndex = 33;
+            this.btnOnSiteNotes.Text = "Update Notes";
+            this.btnOnSiteNotes.UseVisualStyleBackColor = true;
+            this.btnOnSiteNotes.Click += new System.EventHandler(this.btnOnSiteNotes_Click);
+            // 
+            // txtOnSite
+            // 
+            this.txtOnSite.Location = new System.Drawing.Point(6, 208);
+            this.txtOnSite.Name = "txtOnSite";
+            this.txtOnSite.Size = new System.Drawing.Size(424, 116);
+            this.txtOnSite.TabIndex = 31;
+            this.txtOnSite.Text = "";
+            // 
             // chk_on_site_6
             // 
             this.chk_on_site_6.AutoSize = true;
@@ -739,6 +879,36 @@
             this.tabPage7.Text = "Completion";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // btnCompletionNotes
+            // 
+            this.btnCompletionNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnCompletionNotes.Name = "btnCompletionNotes";
+            this.btnCompletionNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnCompletionNotes.TabIndex = 33;
+            this.btnCompletionNotes.Text = "Update Notes";
+            this.btnCompletionNotes.UseVisualStyleBackColor = true;
+            this.btnCompletionNotes.Click += new System.EventHandler(this.btnCompletionNotes_Click);
+            // 
+            // txtCompletion
+            // 
+            this.txtCompletion.Location = new System.Drawing.Point(6, 208);
+            this.txtCompletion.Name = "txtCompletion";
+            this.txtCompletion.Size = new System.Drawing.Size(424, 116);
+            this.txtCompletion.TabIndex = 31;
+            this.txtCompletion.Text = "";
+            // 
+            // chk_completion_3
+            // 
+            this.chk_completion_3.AutoSize = true;
+            this.chk_completion_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_completion_3.Location = new System.Drawing.Point(3, 126);
+            this.chk_completion_3.Name = "chk_completion_3";
+            this.chk_completion_3.Size = new System.Drawing.Size(147, 19);
+            this.chk_completion_3.TabIndex = 22;
+            this.chk_completion_3.Text = "CE Issued (if required)";
+            this.chk_completion_3.UseVisualStyleBackColor = true;
+            this.chk_completion_3.CheckedChanged += new System.EventHandler(this.chk_completion_3_CheckedChanged);
+            // 
             // chk_completion_2
             // 
             this.chk_completion_2.AutoSize = true;
@@ -814,16 +984,34 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(436, 356);
+            this.tabPage8.Size = new System.Drawing.Size(441, 356);
             this.tabPage8.TabIndex = 7;
-            this.tabPage8.Text = "invoiced";
+            this.tabPage8.Text = "Invoiced";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // btnInvoicedNotes
+            // 
+            this.btnInvoicedNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnInvoicedNotes.Name = "btnInvoicedNotes";
+            this.btnInvoicedNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnInvoicedNotes.TabIndex = 33;
+            this.btnInvoicedNotes.Text = "Update Notes";
+            this.btnInvoicedNotes.UseVisualStyleBackColor = true;
+            this.btnInvoicedNotes.Click += new System.EventHandler(this.btnInvoicedNotes_Click);
+            // 
+            // txtInvoice
+            // 
+            this.txtInvoice.Location = new System.Drawing.Point(6, 208);
+            this.txtInvoice.Name = "txtInvoice";
+            this.txtInvoice.Size = new System.Drawing.Size(424, 116);
+            this.txtInvoice.TabIndex = 30;
+            this.txtInvoice.Text = "";
             // 
             // chk_invoice_10
             // 
             this.chk_invoice_10.AutoSize = true;
             this.chk_invoice_10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_10.Location = new System.Drawing.Point(100, 182);
+            this.chk_invoice_10.Location = new System.Drawing.Point(336, 181);
             this.chk_invoice_10.Name = "chk_invoice_10";
             this.chk_invoice_10.Size = new System.Drawing.Size(56, 19);
             this.chk_invoice_10.TabIndex = 29;
@@ -835,7 +1023,7 @@
             // 
             this.chk_invoice_7.AutoSize = true;
             this.chk_invoice_7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_7.Location = new System.Drawing.Point(100, 71);
+            this.chk_invoice_7.Location = new System.Drawing.Point(336, 118);
             this.chk_invoice_7.Name = "chk_invoice_7";
             this.chk_invoice_7.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_7.TabIndex = 28;
@@ -847,7 +1035,7 @@
             // 
             this.chk_invoice_6.AutoSize = true;
             this.chk_invoice_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_6.Location = new System.Drawing.Point(100, 34);
+            this.chk_invoice_6.Location = new System.Drawing.Point(336, 97);
             this.chk_invoice_6.Name = "chk_invoice_6";
             this.chk_invoice_6.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_6.TabIndex = 27;
@@ -859,7 +1047,7 @@
             // 
             this.chk_invoice_8.AutoSize = true;
             this.chk_invoice_8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_8.Location = new System.Drawing.Point(100, 108);
+            this.chk_invoice_8.Location = new System.Drawing.Point(336, 139);
             this.chk_invoice_8.Name = "chk_invoice_8";
             this.chk_invoice_8.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_8.TabIndex = 26;
@@ -871,7 +1059,7 @@
             // 
             this.chk_invoice_9.AutoSize = true;
             this.chk_invoice_9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_9.Location = new System.Drawing.Point(100, 145);
+            this.chk_invoice_9.Location = new System.Drawing.Point(336, 160);
             this.chk_invoice_9.Name = "chk_invoice_9";
             this.chk_invoice_9.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_9.TabIndex = 25;
@@ -883,7 +1071,7 @@
             // 
             this.chk_invoice_5.AutoSize = true;
             this.chk_invoice_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_5.Location = new System.Drawing.Point(6, 182);
+            this.chk_invoice_5.Location = new System.Drawing.Point(281, 181);
             this.chk_invoice_5.Name = "chk_invoice_5";
             this.chk_invoice_5.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_5.TabIndex = 24;
@@ -895,7 +1083,7 @@
             // 
             this.chk_invoice_4.AutoSize = true;
             this.chk_invoice_4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_4.Location = new System.Drawing.Point(6, 145);
+            this.chk_invoice_4.Location = new System.Drawing.Point(281, 160);
             this.chk_invoice_4.Name = "chk_invoice_4";
             this.chk_invoice_4.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_4.TabIndex = 23;
@@ -907,7 +1095,7 @@
             // 
             this.chk_invoice_3.AutoSize = true;
             this.chk_invoice_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_3.Location = new System.Drawing.Point(6, 108);
+            this.chk_invoice_3.Location = new System.Drawing.Point(281, 139);
             this.chk_invoice_3.Name = "chk_invoice_3";
             this.chk_invoice_3.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_3.TabIndex = 22;
@@ -919,7 +1107,7 @@
             // 
             this.chk_invoice_2.AutoSize = true;
             this.chk_invoice_2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_2.Location = new System.Drawing.Point(6, 71);
+            this.chk_invoice_2.Location = new System.Drawing.Point(281, 118);
             this.chk_invoice_2.Name = "chk_invoice_2";
             this.chk_invoice_2.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_2.TabIndex = 21;
@@ -931,7 +1119,7 @@
             // 
             this.chk_invoice_1.AutoSize = true;
             this.chk_invoice_1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_invoice_1.Location = new System.Drawing.Point(6, 34);
+            this.chk_invoice_1.Location = new System.Drawing.Point(281, 97);
             this.chk_invoice_1.Name = "chk_invoice_1";
             this.chk_invoice_1.Size = new System.Drawing.Size(49, 19);
             this.chk_invoice_1.TabIndex = 20;
@@ -988,6 +1176,24 @@
             this.tabPage9.TabIndex = 8;
             this.tabPage9.Text = "Retention";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // btnRetentionNotes
+            // 
+            this.btnRetentionNotes.Location = new System.Drawing.Point(175, 327);
+            this.btnRetentionNotes.Name = "btnRetentionNotes";
+            this.btnRetentionNotes.Size = new System.Drawing.Size(87, 23);
+            this.btnRetentionNotes.TabIndex = 33;
+            this.btnRetentionNotes.Text = "Update Notes";
+            this.btnRetentionNotes.UseVisualStyleBackColor = true;
+            this.btnRetentionNotes.Click += new System.EventHandler(this.btnRetentionNotes_Click);
+            // 
+            // txtRetention
+            // 
+            this.txtRetention.Location = new System.Drawing.Point(6, 208);
+            this.txtRetention.Name = "txtRetention";
+            this.txtRetention.Size = new System.Drawing.Size(424, 116);
+            this.txtRetention.TabIndex = 31;
+            this.txtRetention.Text = "";
             // 
             // chk_retention_4
             // 
@@ -1088,209 +1294,47 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // chk_prelet_6
+            // txtOrderNumber
             // 
-            this.chk_prelet_6.AutoSize = true;
-            this.chk_prelet_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_6.Location = new System.Drawing.Point(6, 184);
-            this.chk_prelet_6.Name = "chk_prelet_6";
-            this.chk_prelet_6.Size = new System.Drawing.Size(177, 19);
-            this.chk_prelet_6.TabIndex = 21;
-            this.chk_prelet_6.Text = "Insurance Check Compelted";
-            this.chk_prelet_6.UseVisualStyleBackColor = true;
-            this.chk_prelet_6.CheckedChanged += new System.EventHandler(this.chk_prelet_6_CheckedChanged);
+            this.txtOrderNumber.Location = new System.Drawing.Point(264, 112);
+            this.txtOrderNumber.Name = "txtOrderNumber";
+            this.txtOrderNumber.Size = new System.Drawing.Size(116, 20);
+            this.txtOrderNumber.TabIndex = 34;
             // 
-            // chk_prelet_5
+            // label2
             // 
-            this.chk_prelet_5.AutoSize = true;
-            this.chk_prelet_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_5.Location = new System.Drawing.Point(6, 146);
-            this.chk_prelet_5.Name = "chk_prelet_5";
-            this.chk_prelet_5.Size = new System.Drawing.Size(181, 19);
-            this.chk_prelet_5.TabIndex = 20;
-            this.chk_prelet_5.Text = "PQQ Completed (if required)";
-            this.chk_prelet_5.UseVisualStyleBackColor = true;
-            this.chk_prelet_5.CheckedChanged += new System.EventHandler(this.chk_prelet_5_CheckedChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(286, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 35;
+            this.label2.Text = "Order Number";
             // 
-            // chk_completion_3
+            // btnLinkOrder
             // 
-            this.chk_completion_3.AutoSize = true;
-            this.chk_completion_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_completion_3.Location = new System.Drawing.Point(3, 126);
-            this.chk_completion_3.Name = "chk_completion_3";
-            this.chk_completion_3.Size = new System.Drawing.Size(147, 19);
-            this.chk_completion_3.TabIndex = 22;
-            this.chk_completion_3.Text = "CE Issued (if required)";
-            this.chk_completion_3.UseVisualStyleBackColor = true;
-            this.chk_completion_3.CheckedChanged += new System.EventHandler(this.chk_completion_3_CheckedChanged);
+            this.btnLinkOrder.Location = new System.Drawing.Point(285, 138);
+            this.btnLinkOrder.Name = "btnLinkOrder";
+            this.btnLinkOrder.Size = new System.Drawing.Size(75, 23);
+            this.btnLinkOrder.TabIndex = 36;
+            this.btnLinkOrder.Text = "Link Order";
+            this.btnLinkOrder.UseVisualStyleBackColor = true;
+            this.btnLinkOrder.Click += new System.EventHandler(this.btnLinkOrder_Click);
             // 
-            // txtInvoice
+            // btnRelink
             // 
-            this.txtInvoice.Location = new System.Drawing.Point(6, 208);
-            this.txtInvoice.Name = "txtInvoice";
-            this.txtInvoice.Size = new System.Drawing.Size(424, 116);
-            this.txtInvoice.TabIndex = 30;
-            this.txtInvoice.Text = "";
-            // 
-            // txtTender
-            // 
-            this.txtTender.Location = new System.Drawing.Point(6, 208);
-            this.txtTender.Name = "txtTender";
-            this.txtTender.Size = new System.Drawing.Size(424, 116);
-            this.txtTender.TabIndex = 31;
-            this.txtTender.Text = "";
-            // 
-            // txtPrelet
-            // 
-            this.txtPrelet.Location = new System.Drawing.Point(6, 208);
-            this.txtPrelet.Name = "txtPrelet";
-            this.txtPrelet.Size = new System.Drawing.Size(424, 116);
-            this.txtPrelet.TabIndex = 31;
-            this.txtPrelet.Text = "";
-            // 
-            // txtDesign
-            // 
-            this.txtDesign.Location = new System.Drawing.Point(6, 208);
-            this.txtDesign.Name = "txtDesign";
-            this.txtDesign.Size = new System.Drawing.Size(424, 116);
-            this.txtDesign.TabIndex = 31;
-            this.txtDesign.Text = "";
-            // 
-            // txtOrder
-            // 
-            this.txtOrder.Location = new System.Drawing.Point(6, 208);
-            this.txtOrder.Name = "txtOrder";
-            this.txtOrder.Size = new System.Drawing.Size(424, 116);
-            this.txtOrder.TabIndex = 31;
-            this.txtOrder.Text = "";
-            // 
-            // txtSurvey
-            // 
-            this.txtSurvey.Location = new System.Drawing.Point(6, 208);
-            this.txtSurvey.Name = "txtSurvey";
-            this.txtSurvey.Size = new System.Drawing.Size(424, 116);
-            this.txtSurvey.TabIndex = 31;
-            this.txtSurvey.Text = "";
-            // 
-            // txtOnSite
-            // 
-            this.txtOnSite.Location = new System.Drawing.Point(6, 208);
-            this.txtOnSite.Name = "txtOnSite";
-            this.txtOnSite.Size = new System.Drawing.Size(424, 116);
-            this.txtOnSite.TabIndex = 31;
-            this.txtOnSite.Text = "";
-            // 
-            // txtCompletion
-            // 
-            this.txtCompletion.Location = new System.Drawing.Point(6, 208);
-            this.txtCompletion.Name = "txtCompletion";
-            this.txtCompletion.Size = new System.Drawing.Size(424, 116);
-            this.txtCompletion.TabIndex = 31;
-            this.txtCompletion.Text = "";
-            // 
-            // txtRetention
-            // 
-            this.txtRetention.Location = new System.Drawing.Point(6, 208);
-            this.txtRetention.Name = "txtRetention";
-            this.txtRetention.Size = new System.Drawing.Size(424, 116);
-            this.txtRetention.TabIndex = 31;
-            this.txtRetention.Text = "";
-            // 
-            // btnTenderNotes
-            // 
-            this.btnTenderNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnTenderNotes.Name = "btnTenderNotes";
-            this.btnTenderNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnTenderNotes.TabIndex = 32;
-            this.btnTenderNotes.Text = "Update Notes";
-            this.btnTenderNotes.UseVisualStyleBackColor = true;
-            this.btnTenderNotes.Click += new System.EventHandler(this.btnTenderNotes_Click);
-            // 
-            // btnPreletNotes
-            // 
-            this.btnPreletNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnPreletNotes.Name = "btnPreletNotes";
-            this.btnPreletNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnPreletNotes.TabIndex = 33;
-            this.btnPreletNotes.Text = "Update Notes";
-            this.btnPreletNotes.UseVisualStyleBackColor = true;
-            this.btnPreletNotes.Click += new System.EventHandler(this.btnPreletNotes_Click);
-            // 
-            // btnDesignNotes
-            // 
-            this.btnDesignNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnDesignNotes.Name = "btnDesignNotes";
-            this.btnDesignNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnDesignNotes.TabIndex = 33;
-            this.btnDesignNotes.Text = "Update Notes";
-            this.btnDesignNotes.UseVisualStyleBackColor = true;
-            this.btnDesignNotes.Click += new System.EventHandler(this.btnDesignNotes_Click);
-            // 
-            // btnOrderNotes
-            // 
-            this.btnOrderNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnOrderNotes.Name = "btnOrderNotes";
-            this.btnOrderNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnOrderNotes.TabIndex = 33;
-            this.btnOrderNotes.Text = "Update Notes";
-            this.btnOrderNotes.UseVisualStyleBackColor = true;
-            this.btnOrderNotes.Click += new System.EventHandler(this.btnOrderNotes_Click);
-            // 
-            // btnSurveyNotes
-            // 
-            this.btnSurveyNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnSurveyNotes.Name = "btnSurveyNotes";
-            this.btnSurveyNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnSurveyNotes.TabIndex = 33;
-            this.btnSurveyNotes.Text = "Update Notes";
-            this.btnSurveyNotes.UseVisualStyleBackColor = true;
-            this.btnSurveyNotes.Click += new System.EventHandler(this.btnSurveyNotes_Click);
-            // 
-            // btnOnSiteNotes
-            // 
-            this.btnOnSiteNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnOnSiteNotes.Name = "btnOnSiteNotes";
-            this.btnOnSiteNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnOnSiteNotes.TabIndex = 33;
-            this.btnOnSiteNotes.Text = "Update Notes";
-            this.btnOnSiteNotes.UseVisualStyleBackColor = true;
-            this.btnOnSiteNotes.Click += new System.EventHandler(this.btnOnSiteNotes_Click);
-            // 
-            // btnCompletionNotes
-            // 
-            this.btnCompletionNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnCompletionNotes.Name = "btnCompletionNotes";
-            this.btnCompletionNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnCompletionNotes.TabIndex = 33;
-            this.btnCompletionNotes.Text = "Update Notes";
-            this.btnCompletionNotes.UseVisualStyleBackColor = true;
-            this.btnCompletionNotes.Click += new System.EventHandler(this.btnCompletionNotes_Click);
-            // 
-            // btnInvoicedNotes
-            // 
-            this.btnInvoicedNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnInvoicedNotes.Name = "btnInvoicedNotes";
-            this.btnInvoicedNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnInvoicedNotes.TabIndex = 33;
-            this.btnInvoicedNotes.Text = "Update Notes";
-            this.btnInvoicedNotes.UseVisualStyleBackColor = true;
-            this.btnInvoicedNotes.Click += new System.EventHandler(this.btnInvoicedNotes_Click);
-            // 
-            // btnRetentionNotes
-            // 
-            this.btnRetentionNotes.Location = new System.Drawing.Point(175, 327);
-            this.btnRetentionNotes.Name = "btnRetentionNotes";
-            this.btnRetentionNotes.Size = new System.Drawing.Size(87, 23);
-            this.btnRetentionNotes.TabIndex = 33;
-            this.btnRetentionNotes.Text = "Update Notes";
-            this.btnRetentionNotes.UseVisualStyleBackColor = true;
-            this.btnRetentionNotes.Click += new System.EventHandler(this.btnRetentionNotes_Click);
+            this.btnRelink.Location = new System.Drawing.Point(305, 179);
+            this.btnRelink.Name = "btnRelink";
+            this.btnRelink.Size = new System.Drawing.Size(125, 23);
+            this.btnRelink.TabIndex = 37;
+            this.btnRelink.Text = "Remove Linked Order";
+            this.btnRelink.UseVisualStyleBackColor = true;
+            this.btnRelink.Visible = false;
             // 
             // frmProjectManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 416);
+            this.ClientSize = new System.Drawing.Size(463, 416);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
@@ -1423,5 +1467,9 @@
         private System.Windows.Forms.Button btnCompletionNotes;
         private System.Windows.Forms.Button btnInvoicedNotes;
         private System.Windows.Forms.Button btnRetentionNotes;
+        private System.Windows.Forms.Button btnRelink;
+        private System.Windows.Forms.Button btnLinkOrder;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtOrderNumber;
     }
 }
