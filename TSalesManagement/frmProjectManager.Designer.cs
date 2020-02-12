@@ -130,6 +130,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLinkOrder = new System.Windows.Forms.Button();
             this.btnRelink = new System.Windows.Forms.Button();
+            this.txtOrderAmount = new System.Windows.Forms.TextBox();
+            this.lblAmount = new System.Windows.Forms.Label();
+            this.lblID = new System.Windows.Forms.Label();
+            this.txtinvoiceID = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -405,7 +411,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(436, 356);
+            this.tabPage3.Size = new System.Drawing.Size(441, 356);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Design";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -604,6 +610,8 @@
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.lblAmount);
+            this.tabPage5.Controls.Add(this.txtOrderAmount);
             this.tabPage5.Controls.Add(this.btnSurveyNotes);
             this.tabPage5.Controls.Add(this.txtSurvey);
             this.tabPage5.Controls.Add(this.chk_survey_5);
@@ -617,7 +625,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(436, 356);
+            this.tabPage5.Size = new System.Drawing.Size(441, 356);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Survey";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -966,6 +974,10 @@
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.label3);
+            this.tabPage8.Controls.Add(this.textBox1);
+            this.tabPage8.Controls.Add(this.lblID);
+            this.tabPage8.Controls.Add(this.txtinvoiceID);
             this.tabPage8.Controls.Add(this.btnInvoicedNotes);
             this.tabPage8.Controls.Add(this.txtInvoice);
             this.tabPage8.Controls.Add(this.chk_invoice_10);
@@ -1329,6 +1341,57 @@
             this.btnRelink.Text = "Remove Linked Order";
             this.btnRelink.UseVisualStyleBackColor = true;
             this.btnRelink.Visible = false;
+            this.btnRelink.Click += new System.EventHandler(this.btnRelink_Click);
+            // 
+            // txtOrderAmount
+            // 
+            this.txtOrderAmount.Location = new System.Drawing.Point(271, 97);
+            this.txtOrderAmount.Name = "txtOrderAmount";
+            this.txtOrderAmount.ReadOnly = true;
+            this.txtOrderAmount.Size = new System.Drawing.Size(136, 20);
+            this.txtOrderAmount.TabIndex = 34;
+            // 
+            // lblAmount
+            // 
+            this.lblAmount.AutoSize = true;
+            this.lblAmount.Location = new System.Drawing.Point(303, 81);
+            this.lblAmount.Name = "lblAmount";
+            this.lblAmount.Size = new System.Drawing.Size(72, 13);
+            this.lblAmount.TabIndex = 36;
+            this.lblAmount.Text = "Order Amount";
+            // 
+            // lblID
+            // 
+            this.lblID.AutoSize = true;
+            this.lblID.Location = new System.Drawing.Point(46, 15);
+            this.lblID.Name = "lblID";
+            this.lblID.Size = new System.Drawing.Size(56, 13);
+            this.lblID.TabIndex = 37;
+            this.lblID.Text = "Invoice ID";
+            // 
+            // txtinvoiceID
+            // 
+            this.txtinvoiceID.Location = new System.Drawing.Point(16, 31);
+            this.txtinvoiceID.Name = "txtinvoiceID";
+            this.txtinvoiceID.ReadOnly = true;
+            this.txtinvoiceID.Size = new System.Drawing.Size(116, 20);
+            this.txtinvoiceID.TabIndex = 36;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(18, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.TabIndex = 39;
+            this.label3.Text = "Payment Recieved (£)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 83);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(116, 20);
+            this.textBox1.TabIndex = 38;
             // 
             // frmProjectManager
             // 
@@ -1471,5 +1534,11 @@
         private System.Windows.Forms.Button btnLinkOrder;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtOrderNumber;
+        private System.Windows.Forms.Label lblAmount;
+        private System.Windows.Forms.TextBox txtOrderAmount;
+        private System.Windows.Forms.Label lblID;
+        private System.Windows.Forms.TextBox txtinvoiceID;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

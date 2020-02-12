@@ -291,8 +291,8 @@ namespace TSalesManagement
                 linkOrderLock(0); //0 = not linked
             else
             {
-                linkOrderLock(1); //1 = linked
                 txtOrderNumber.Text = order_number;
+                linkOrderLock(1); //1 = linked
             }
 
             //set the text boxes to the correct variables
@@ -1031,6 +1031,12 @@ namespace TSalesManagement
                 btnLinkOrder.Visible = false;
                 btnRelink.Visible = true;
                 txtOrderNumber.Enabled = false;
+                lblAmount.Visible = true;
+                txtOrderAmount.Visible = true;
+                //while we are here fill out the txtOrderAmount with the LINE TOTAL for that order (    IF IT HAS ONE)
+                getOrderAmount();
+                getInvoiceID();
+                
             }
             else
             {
@@ -1038,13 +1044,77 @@ namespace TSalesManagement
                 btnRelink.Visible = false;
                 txtOrderNumber.Enabled = true;
                 txtOrderNumber.Text = "";
+                lblAmount.Visible = false;
+                txtOrderAmount.Visible = false;
+                lblID.Visible = false;
+                //txtinvoiceID.Visible = false;
             }
-            
+        }
+        private void getInvoiceID()
+        {
+            string sql = "select COALESCE(MAX(e.invoice_id),0) from dbo.projects a " +
+                "LEFT JOIN dbo.door_container b on a.order_number = b.order_id " +
+                "LEFT JOIN dbo.door c ON c.order_id = b.order_id " +
+                "LEFT JOIN dbo.view_door_value d ON c.id = d.id " +
+                "LEFT JOIN dbo.invoice_door e ON c.id = e.door_id " +
+                "WHERE a.id = " + _ID;
 
-            
-
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    string data = Convert.ToString(cmd.ExecuteScalar());
+                    conn.Close();
+                    if (Convert.ToInt32(data) > 0)
+                    {
+                        txtinvoiceID.Text = data;
+                        lblID.Visible = true;
+                        txtinvoiceID.Visible = true;
+                    }
+                    else
+                    {
+                        lblID.Visible = false;
+                        txtinvoiceID.Visible = false;
+                    }
+                }
+            }
         }
 
+        private void getOrderAmount()
+        {
+            string sql = "select SUM(d.line_total) from dbo.projects a " +
+                "LEFT JOIN dbo.door_container b on a.order_number = b.order_id " +
+                "LEFT JOIN dbo.door c ON c.order_id = b.order_id " +
+                "LEFT JOIN dbo.view_door_value d ON c.id = d.id " +
+                "WHERE b.order_id = " + txtOrderNumber.Text +" AND a.id = " + _ID;
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql,conn))
+                {
+                    conn.Open();
+                    string data = Convert.ToString(cmd.ExecuteScalar());
+                    conn.Close();
+                    txtOrderAmount.Text = "£" + data;
+                }
+            }
+            
+        }
+
+        private void btnRelink_Click(object sender, EventArgs e)
+        {
+            string sql = "UPDATE dbo.projects SET order_number = NULL WHERE id = " + _ID;
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+            linkOrderLock(0);
+        }
     }
 }
 
