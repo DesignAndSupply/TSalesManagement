@@ -48,6 +48,7 @@
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.dgTask = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
+            this.btnEmail = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -135,13 +136,14 @@
             this.dgActivity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgActivity.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgActivity.Location = new System.Drawing.Point(248, 30);
+            this.dgActivity.Location = new System.Drawing.Point(247, 79);
             this.dgActivity.MultiSelect = false;
             this.dgActivity.Name = "dgActivity";
             this.dgActivity.RowHeadersVisible = false;
             this.dgActivity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgActivity.Size = new System.Drawing.Size(968, 159);
             this.dgActivity.TabIndex = 3;
+            this.dgActivity.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgActivity_CellContentClick);
             this.dgActivity.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgActivity_CellDoubleClick);
             // 
             // dgPipeline
@@ -157,6 +159,7 @@
             this.dgPipeline.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgPipeline.Size = new System.Drawing.Size(968, 221);
             this.dgPipeline.TabIndex = 4;
+            this.dgPipeline.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgPipeline_CellContentClick);
             this.dgPipeline.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgPipeline_CellDoubleClick);
             // 
             // label3
@@ -172,7 +175,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(248, 13);
+            this.label4.Location = new System.Drawing.Point(248, 57);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 13);
             this.label4.TabIndex = 6;
@@ -247,28 +250,41 @@
             this.dgTask.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgTask.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgTask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgTask.Location = new System.Drawing.Point(248, 217);
+            this.dgTask.Location = new System.Drawing.Point(248, 257);
             this.dgTask.MultiSelect = false;
             this.dgTask.Name = "dgTask";
             this.dgTask.RowHeadersVisible = false;
             this.dgTask.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgTask.Size = new System.Drawing.Size(968, 137);
+            this.dgTask.Size = new System.Drawing.Size(968, 97);
             this.dgTask.TabIndex = 13;
+            this.dgTask.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTask_CellContentClick);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(247, 201);
+            this.label7.Location = new System.Drawing.Point(247, 241);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "User ToDo\'s:";
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEmail.Location = new System.Drawing.Point(1094, 47);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(122, 23);
+            this.btnEmail.TabIndex = 15;
+            this.btnEmail.Text = "Email Selected Items:";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.BtnEmail_Click);
             // 
             // frmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1228, 632);
+            this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgTask);
             this.Controls.Add(this.btnClearSearch);
@@ -319,5 +335,6 @@
         private System.Windows.Forms.Button btnClearSearch;
         private System.Windows.Forms.DataGridView dgTask;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnEmail;
     }
 }

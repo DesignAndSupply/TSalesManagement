@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.chk_tender_3 = new System.Windows.Forms.CheckBox();
             this.chk_tender_2 = new System.Windows.Forms.CheckBox();
             this.chk_tender_1 = new System.Windows.Forms.CheckBox();
@@ -37,6 +38,8 @@
             this.btn_PDF = new System.Windows.Forms.Button();
             this.chk_tender = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.chk_prelet_6 = new System.Windows.Forms.CheckBox();
+            this.chk_prelet_5 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_3 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_2 = new System.Windows.Forms.CheckBox();
             this.chk_prelet_1 = new System.Windows.Forms.CheckBox();
@@ -76,6 +79,7 @@
             this.btnOnSitePDF = new System.Windows.Forms.Button();
             this.chk_onSite = new System.Windows.Forms.CheckBox();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.chk_completion_3 = new System.Windows.Forms.CheckBox();
             this.chk_completion_2 = new System.Windows.Forms.CheckBox();
             this.chk_completion_1 = new System.Windows.Forms.CheckBox();
             this.btnCompOF = new System.Windows.Forms.Button();
@@ -105,10 +109,6 @@
             this.chk_retention = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.chk_prelet_6 = new System.Windows.Forms.CheckBox();
-            this.chk_prelet_5 = new System.Windows.Forms.CheckBox();
-            this.chk_completion_3 = new System.Windows.Forms.CheckBox();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -155,6 +155,14 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Tender";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(233, 71);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(183, 130);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
             // 
             // chk_tender_3
             // 
@@ -240,6 +248,30 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Prelet";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // chk_prelet_6
+            // 
+            this.chk_prelet_6.AutoSize = true;
+            this.chk_prelet_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_prelet_6.Location = new System.Drawing.Point(6, 180);
+            this.chk_prelet_6.Name = "chk_prelet_6";
+            this.chk_prelet_6.Size = new System.Drawing.Size(177, 19);
+            this.chk_prelet_6.TabIndex = 21;
+            this.chk_prelet_6.Text = "Insurance Check Compelted";
+            this.chk_prelet_6.UseVisualStyleBackColor = true;
+            this.chk_prelet_6.CheckedChanged += new System.EventHandler(this.chk_prelet_6_CheckedChanged);
+            // 
+            // chk_prelet_5
+            // 
+            this.chk_prelet_5.AutoSize = true;
+            this.chk_prelet_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_prelet_5.Location = new System.Drawing.Point(6, 143);
+            this.chk_prelet_5.Name = "chk_prelet_5";
+            this.chk_prelet_5.Size = new System.Drawing.Size(181, 19);
+            this.chk_prelet_5.TabIndex = 20;
+            this.chk_prelet_5.Text = "PQQ Completed (if required)";
+            this.chk_prelet_5.UseVisualStyleBackColor = true;
+            this.chk_prelet_5.CheckedChanged += new System.EventHandler(this.chk_prelet_5_CheckedChanged);
             // 
             // chk_prelet_3
             // 
@@ -709,6 +741,18 @@
             this.tabPage7.Text = "Completion";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // chk_completion_3
+            // 
+            this.chk_completion_3.AutoSize = true;
+            this.chk_completion_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_completion_3.Location = new System.Drawing.Point(3, 108);
+            this.chk_completion_3.Name = "chk_completion_3";
+            this.chk_completion_3.Size = new System.Drawing.Size(147, 19);
+            this.chk_completion_3.TabIndex = 22;
+            this.chk_completion_3.Text = "CE Issued (if required)";
+            this.chk_completion_3.UseVisualStyleBackColor = true;
+            this.chk_completion_3.CheckedChanged += new System.EventHandler(this.chk_completion_3_CheckedChanged);
+            // 
             // chk_completion_2
             // 
             this.chk_completion_2.AutoSize = true;
@@ -1054,50 +1098,6 @@
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // chk_prelet_6
-            // 
-            this.chk_prelet_6.AutoSize = true;
-            this.chk_prelet_6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_6.Location = new System.Drawing.Point(6, 180);
-            this.chk_prelet_6.Name = "chk_prelet_6";
-            this.chk_prelet_6.Size = new System.Drawing.Size(177, 19);
-            this.chk_prelet_6.TabIndex = 21;
-            this.chk_prelet_6.Text = "Insurance Check Compelted";
-            this.chk_prelet_6.UseVisualStyleBackColor = true;
-            this.chk_prelet_6.CheckedChanged += new System.EventHandler(this.chk_prelet_6_CheckedChanged);
-            // 
-            // chk_prelet_5
-            // 
-            this.chk_prelet_5.AutoSize = true;
-            this.chk_prelet_5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_prelet_5.Location = new System.Drawing.Point(6, 143);
-            this.chk_prelet_5.Name = "chk_prelet_5";
-            this.chk_prelet_5.Size = new System.Drawing.Size(181, 19);
-            this.chk_prelet_5.TabIndex = 20;
-            this.chk_prelet_5.Text = "PQQ Completed (if required)";
-            this.chk_prelet_5.UseVisualStyleBackColor = true;
-            this.chk_prelet_5.CheckedChanged += new System.EventHandler(this.chk_prelet_5_CheckedChanged);
-            // 
-            // chk_completion_3
-            // 
-            this.chk_completion_3.AutoSize = true;
-            this.chk_completion_3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chk_completion_3.Location = new System.Drawing.Point(3, 108);
-            this.chk_completion_3.Name = "chk_completion_3";
-            this.chk_completion_3.Size = new System.Drawing.Size(147, 19);
-            this.chk_completion_3.TabIndex = 22;
-            this.chk_completion_3.Text = "CE Issued (if required)";
-            this.chk_completion_3.UseVisualStyleBackColor = true;
-            this.chk_completion_3.CheckedChanged += new System.EventHandler(this.chk_completion_3_CheckedChanged);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(233, 71);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(183, 130);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
-            // 
             // frmProjectManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1111,6 +1111,7 @@
             this.Name = "frmProjectManager";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.FrmProjectManager_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

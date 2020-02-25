@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>50</ApplicationRevision>
+    <ApplicationRevision>52</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -53,16 +53,16 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>476C5CEE7EE7827D1A5C2E197B03F7B88614DEEB</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>B9F7C558968815B189C388B686F11EE9D099A307</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TSalesManagement_7_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>TSalesManagement_4_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>false</SignManifests>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>logo_4rq_icon.ico</ApplicationIcon>
@@ -177,6 +177,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmailUserManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmailUserManagement.Designer.cs">
+      <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPDF.cs">
       <SubType>Form</SubType>
@@ -354,6 +360,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEmailUserManagement.resx">
+      <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPDF.resx">
       <DependentUpon>frmPDF.cs</DependentUpon>
     </EmbeddedResource>
@@ -464,6 +473,7 @@
     <None Include="TSalesManagement_1_TemporaryKey.pfx" />
     <None Include="TSalesManagement_2_TemporaryKey.pfx" />
     <None Include="TSalesManagement_3_TemporaryKey.pfx" />
+    <None Include="TSalesManagement_4_TemporaryKey.pfx" />
     <None Include="TSalesManagement_7_TemporaryKey.pfx" />
     <None Include="TSalesManagement_TemporaryKey.pfx" />
     <None Include="user_infoDataSet.xsc">

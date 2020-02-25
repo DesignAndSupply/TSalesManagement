@@ -400,7 +400,7 @@ namespace TSalesManagement
         private void sqlStatement(string section)
         {//if string does not include "complete" then set compelte of that section to 1 instead of minus 1
             string sql = "";
-            if (section.Contains("complete") == true)
+            if (section.Contains("_complete") == true)
                 sql = "update dbo.projects SET [" + section + "] = -1 WHERE id = " + _ID;
             else
             { //format for every single one....
@@ -416,7 +416,7 @@ namespace TSalesManagement
                     sql = "update dbo.projects SET[" + section + "] = -1, [survey_complete] = 1 WHERE id = " + _ID;
                 if (section.Contains("on_site") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [on_site_complete] = 1 WHERE id = " + _ID;
-                if (section.Contains("complete") == true)
+                if (section.Contains("complete_") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [completion_complete] = 1 WHERE id = " + _ID;
                 if (section.Contains("invoice") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [invoiced_complete] = 1 WHERE id = " + _ID;
@@ -788,9 +788,10 @@ namespace TSalesManagement
                 chk_retention.Checked = false;
         }
 
+        private void FrmProjectManager_Load(object sender, EventArgs e)
+        {
 
-
-
+        }
     }
 }
 
