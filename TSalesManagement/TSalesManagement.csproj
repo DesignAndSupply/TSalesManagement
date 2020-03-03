@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>52</ApplicationRevision>
+    <ApplicationRevision>54</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -177,6 +177,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAmendToDo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAmendToDo.Designer.cs">
+      <DependentUpon>frmAmendToDo.cs</DependentUpon>
     </Compile>
     <Compile Include="frmEmailUserManagement.cs">
       <SubType>Form</SubType>
@@ -359,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAmendToDo.resx">
+      <DependentUpon>frmAmendToDo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmailUserManagement.resx">
       <DependentUpon>frmEmailUserManagement.cs</DependentUpon>

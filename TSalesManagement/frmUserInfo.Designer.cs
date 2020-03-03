@@ -258,6 +258,7 @@
             this.dgTask.Size = new System.Drawing.Size(968, 97);
             this.dgTask.TabIndex = 13;
             this.dgTask.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTask_CellContentClick);
+            this.dgTask.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgTask_CellDoubleClick);
             // 
             // label7
             // 

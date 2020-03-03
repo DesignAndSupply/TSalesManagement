@@ -373,7 +373,7 @@ namespace TSalesManagement
                 frmAmendPipeline frmAP = new frmAmendPipeline(pID);
                 frmAP.ShowDialog();
 
-                fillGrid();
+                //fillGrid();
 
 
             }
@@ -395,7 +395,7 @@ namespace TSalesManagement
                 frmAmendActivity frmAA = new frmAmendActivity(aID);
                 frmAA.ShowDialog();
 
-                fillActivityGrid();
+                //fillActivityGrid();
 
 
             }
@@ -757,6 +757,26 @@ namespace TSalesManagement
             dgTask.ClearSelection();
 
 
+        }
+
+        private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int pID;
+            if (dgTask.SelectedCells.Count > 0)
+            {
+                int selectedrowindex = dgTask.SelectedCells[0].RowIndex;
+
+                DataGridViewRow selectedRow = dgTask.Rows[selectedrowindex];
+
+                pID = Convert.ToInt32(selectedRow.Cells["Task ID"].Value);
+
+                frmAmendToDo frmATD = new frmAmendToDo(pID);
+                frmATD.ShowDialog();
+
+                //fillGrid();
+
+
+            }
         }
     }
 }
