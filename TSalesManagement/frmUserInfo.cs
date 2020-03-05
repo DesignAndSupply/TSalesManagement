@@ -734,8 +734,8 @@ namespace TSalesManagement
             //fire todo insert email here that doesnt shoot an email
             using (SqlConnection connectionToDo = new SqlConnection(SqlStatements.ConnectionStringToDo))
             {
+                //activity
                 for (int i = 0; i < dgActivity.Rows.Count; i++)
-
                 {
                     //if colour is HOT PINK
                     if (dgActivity.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
@@ -751,14 +751,26 @@ namespace TSalesManagement
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
-                            //   @setByID int,
-                            //   @setForId int,
-                            //   @dueDate datetime = NULL,
-                            //@activityID int = NULL,
-                            //   @createdDate datetime,
-                            //@priorityLevel nvarchar(10),
-                            //@taskDetail nvarchar(1000),
-                            //@taskSubject nvarchar(200),
+                        }
+                    }
+                }
+                //pipeline
+                for (int i = 0; i < dgPipeline.Rows.Count; i++)
+                {
+                    //if colour is HOT PINK
+                    if (dgPipeline.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        {
+                            cmdToDo.CommandType = CommandType.StoredProcedure;
+                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "PIPELINE DATA:" + Convert.ToString(dgPipeline.Rows[i].Cells[3].Value); //this feels so odd and is probably gonna get changed
+                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgPipeline.Rows[i].Cells[1].Value);
+                            connectionToDo.Open();
+                            cmdToDo.ExecuteNonQuery();
+                            connectionToDo.Close();
                         }
                     }
                 }

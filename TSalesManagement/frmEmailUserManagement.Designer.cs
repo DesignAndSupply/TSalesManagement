@@ -135,6 +135,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmEmailUserManagement";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Email Tasks to:";
             this.Load += new System.EventHandler(this.FrmEmailUserManagement_Load);
             ((System.ComponentModel.ISupportInitialize)(this.viewcurrentuserswithemailBindingSource)).EndInit();
