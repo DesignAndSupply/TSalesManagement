@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using StartUpClass;
 
 namespace TSalesManagement
 {
@@ -29,7 +30,9 @@ namespace TSalesManagement
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = cmbUser.SelectedValue;
             cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = txtBody.Text;
-
+            Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
+            Login.dueDate = dateTimePicker1.Value;
+            
             cmd.ExecuteNonQuery();
             conn.Close();
 

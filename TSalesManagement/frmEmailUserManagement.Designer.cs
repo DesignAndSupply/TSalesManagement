@@ -30,15 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.cmbUser = new System.Windows.Forms.ComboBox();
+            this.viewcurrentuserswithemailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.user_infoDataSet1 = new TSalesManagement.user_infoDataSet1();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBody = new System.Windows.Forms.TextBox();
             this.btnSend = new System.Windows.Forms.Button();
-            this.user_infoDataSet1 = new TSalesManagement.user_infoDataSet1();
-            this.viewcurrentuserswithemailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.view_current_users_with_emailTableAdapter = new TSalesManagement.user_infoDataSet1TableAdapters.view_current_users_with_emailTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).BeginInit();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.viewcurrentuserswithemailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbUser
@@ -48,9 +50,19 @@
             this.cmbUser.FormattingEnabled = true;
             this.cmbUser.Location = new System.Drawing.Point(21, 28);
             this.cmbUser.Name = "cmbUser";
-            this.cmbUser.Size = new System.Drawing.Size(292, 21);
+            this.cmbUser.Size = new System.Drawing.Size(220, 21);
             this.cmbUser.TabIndex = 0;
             this.cmbUser.ValueMember = "id";
+            // 
+            // viewcurrentuserswithemailBindingSource
+            // 
+            this.viewcurrentuserswithemailBindingSource.DataMember = "view_current_users_with_email";
+            this.viewcurrentuserswithemailBindingSource.DataSource = this.user_infoDataSet1;
+            // 
+            // user_infoDataSet1
+            // 
+            this.user_infoDataSet1.DataSetName = "user_infoDataSet1";
+            this.user_infoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -88,25 +100,33 @@
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.BtnSend_Click);
             // 
-            // user_infoDataSet1
-            // 
-            this.user_infoDataSet1.DataSetName = "user_infoDataSet1";
-            this.user_infoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // viewcurrentuserswithemailBindingSource
-            // 
-            this.viewcurrentuserswithemailBindingSource.DataMember = "view_current_users_with_email";
-            this.viewcurrentuserswithemailBindingSource.DataSource = this.user_infoDataSet1;
-            // 
             // view_current_users_with_emailTableAdapter
             // 
             this.view_current_users_with_emailTableAdapter.ClearBeforeFill = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(312, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Due Date:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(315, 29);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(233, 20);
+            this.dateTimePicker1.TabIndex = 6;
             // 
             // frmEmailUserManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(560, 305);
+            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.txtBody);
             this.Controls.Add(this.label2);
@@ -117,8 +137,8 @@
             this.Name = "frmEmailUserManagement";
             this.Text = "Email Tasks to:";
             this.Load += new System.EventHandler(this.FrmEmailUserManagement_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewcurrentuserswithemailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +154,7 @@
         private user_infoDataSet1 user_infoDataSet1;
         private System.Windows.Forms.BindingSource viewcurrentuserswithemailBindingSource;
         private user_infoDataSet1TableAdapters.view_current_users_with_emailTableAdapter view_current_users_with_emailTableAdapter;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

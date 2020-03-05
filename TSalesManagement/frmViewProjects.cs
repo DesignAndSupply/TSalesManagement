@@ -94,13 +94,13 @@ namespace TSalesManagement
                 if (dataGridView1.Rows[i].Cells[4].Value.ToString() == "Part Complete")
                     dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.GreenYellow;
+                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.LightYellow;
+                    dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[7].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[7].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[8].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[8].Style.BackColor = Color.YellowGreen;
+                    dataGridView1.Rows[i].Cells[8].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "Part Complete")
                     dataGridView1.Rows[i].Cells[9].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[10].Value.ToString() == "Part Complete")

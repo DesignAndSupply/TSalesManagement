@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using StartUpClass;
 
 namespace TSalesManagement
 {
@@ -130,7 +131,7 @@ namespace TSalesManagement
                     }
 
 
-                 
+
 
 
 
@@ -219,7 +220,7 @@ namespace TSalesManagement
                     }
 
 
-                   
+
 
 
 
@@ -666,16 +667,16 @@ namespace TSalesManagement
             foreach (DataGridViewRow row in dgPipeline.Rows)
             {
 
-                    if(row.DefaultCellStyle.BackColor == Color.HotPink)
-                    {
-                        currentID = Convert.ToDouble(row.Cells[0].Value);
-                        cmd.CommandText = "UPDATE dbo.sales_pipeline set currently_selected= -1 where id = @id";
-                        cmd.Connection = conn;
-                        cmd.Parameters.AddWithValue("@id", currentID);
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                    }
-              
+                if (row.DefaultCellStyle.BackColor == Color.HotPink)
+                {
+                    currentID = Convert.ToDouble(row.Cells[0].Value);
+                    cmd.CommandText = "UPDATE dbo.sales_pipeline set currently_selected= -1 where id = @id";
+                    cmd.Connection = conn;
+                    cmd.Parameters.AddWithValue("@id", currentID);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+                }
+
             }
 
 
@@ -729,7 +730,38 @@ namespace TSalesManagement
             frmeum.ShowDialog();
 
 
+            //this here is the optimal point to fire the email to people
+            //fire todo insert email here that doesnt shoot an email
+            using (SqlConnection connectionToDo = new SqlConnection())
+            {
+                for (int i = 0; i < dgActivity.Rows.Count; i++)
 
+                {
+                    //if colour is HOT PINK
+                    if (dgActivity.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        {
+                            cmdToDo.CommandType = CommandType.StoredProcedure;
+                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[6].Value);
+                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[1].Value);
+                            connectionToDo.Open();
+                            cmdToDo.ExecuteNonQuery();
+                            //   @setByID int,
+                            //   @setForId int,
+                            //   @dueDate datetime = NULL,
+                            //@activityID int = NULL,
+                            //   @createdDate datetime,
+                            //@priorityLevel nvarchar(10),
+                            //@taskDetail nvarchar(1000),
+                            //@taskSubject nvarchar(200),
+                        }
+                    }
+                }
+            }
 
             foreach (DataGridViewRow row in dgPipeline.Rows)
             {
