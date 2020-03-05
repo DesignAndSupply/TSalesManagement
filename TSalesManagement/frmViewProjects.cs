@@ -92,23 +92,23 @@ namespace TSalesManagement
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
                 if (dataGridView1.Rows[i].Cells[4].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[4].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[5].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[5].Style.BackColor = Color.GreenYellow;
                 if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[6].Style.BackColor = Color.LightYellow;
                 if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "Part Complete")
                     dataGridView1.Rows[i].Cells[7].Style.BackColor = Color.LightGoldenrodYellow;
                 if (dataGridView1.Rows[i].Cells[8].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[8].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[8].Style.BackColor = Color.YellowGreen;
                 if (dataGridView1.Rows[i].Cells[9].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[9].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[9].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[10].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[10].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[10].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[11].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[11].Style.BackColor = Color.LightGoldenrodYellow;
-                if (dataGridView1.Rows[i].Cells[12].Value.ToString() == "Part Complete")
-                    dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.LightGoldenrodYellow;
+                    dataGridView1.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
+                if (dataGridView1.Rows[i].Cells[12].Value.ToString() == "Part Yellow")
+                    dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
 
             }
 
