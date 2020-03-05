@@ -732,7 +732,7 @@ namespace TSalesManagement
 
             //this here is the optimal point to fire the email to people
             //fire todo insert email here that doesnt shoot an email
-            using (SqlConnection connectionToDo = new SqlConnection())
+            using (SqlConnection connectionToDo = new SqlConnection(SqlStatements.ConnectionStringToDo))
             {
                 for (int i = 0; i < dgActivity.Rows.Count; i++)
 
@@ -750,6 +750,7 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[1].Value);
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();
+                            connectionToDo.Close();
                             //   @setByID int,
                             //   @setForId int,
                             //   @dueDate datetime = NULL,
