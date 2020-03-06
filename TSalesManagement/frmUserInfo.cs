@@ -15,6 +15,10 @@ namespace TSalesManagement
     public partial class frmUserInfo : Form
     {
         public string customer { get; set; }
+        public int[] activityID { get; set; }
+        public string[] customerAccRef { get; set; }
+        public int[] piplineID { get; set; }
+        public int[] taskID { get; set; }
         public frmUserInfo()
         {
             InitializeComponent();
