@@ -32,6 +32,7 @@ namespace TSalesManagement
             cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = txtBody.Text;
             Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
             Login.dueDate = dateTimePicker1.Value;
+            Login.customerText = txtBody.Text;
             
             cmd.ExecuteNonQuery();
             conn.Close();

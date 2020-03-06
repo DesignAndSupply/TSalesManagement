@@ -294,6 +294,7 @@
             this.txtCustomerSearch.Size = new System.Drawing.Size(229, 20);
             this.txtCustomerSearch.TabIndex = 18;
             this.txtCustomerSearch.Visible = false;
+            this.txtCustomerSearch.TextChanged += new System.EventHandler(this.txtCustomerSearch_TextChanged_1);
             this.txtCustomerSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerSearch_KeyPress_1);
             // 
             // dgCustomer
@@ -315,6 +316,8 @@
             this.dgCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgCustomer.Size = new System.Drawing.Size(1034, 98);
             this.dgCustomer.TabIndex = 19;
+            this.dgCustomer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomer_CellContentClick);
+            this.dgCustomer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgCustomer_CellDoubleClick);
             // 
             // label6
             // 
