@@ -111,6 +111,9 @@ namespace TSalesManagement
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
+            dgCustomer.ClearSelection();
+
+            fillCustomer();
         }
 
         private void paintActivityGrid()
@@ -307,6 +310,7 @@ namespace TSalesManagement
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
+            dgCustomer.ClearSelection();
 
         }
 
@@ -319,11 +323,13 @@ namespace TSalesManagement
             fillGrid();
             fillActivityGrid();
             fillTaskGrid();
+            fillCustomer();
             addButtons();
 
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
+            dgCustomer.ClearSelection();
 
             //after all this is done show the customer txtbox
             lblCustomer.Visible = true;
@@ -363,6 +369,15 @@ namespace TSalesManagement
             if (dgPipeline.Columns["Select"] == null)
             {
                 dgPipeline.Columns.Insert(columnIndexPipeline, selectButtonPipeline);
+            }
+            DataGridViewButtonColumn selectButtonCustomer = new DataGridViewButtonColumn();
+            selectButtonCustomer.Name = "Select";
+            selectButtonCustomer.Text = "Select";
+            selectButtonCustomer.UseColumnTextForButtonValue = true;
+            int columnIndexCustomer = 3;
+            if (dgCustomer.Columns["Select"] == null)
+            {
+                dgCustomer.Columns.Insert(columnIndexCustomer, selectButtonCustomer);
             }
         }
 
@@ -806,6 +821,7 @@ namespace TSalesManagement
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
+            dgCustomer.ClearSelection();
 
 
         }
@@ -840,6 +856,32 @@ namespace TSalesManagement
             fillGrid();
             fillActivityGrid();
             fillTaskGrid();
+            fillCustomer();
+        }
+
+        private void fillCustomer()
+        {
+            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = "Select [Customer Name],Telephone,[Account Status] From dbo.c_sales_view_customer_data where [Customer Name] like @custName order by [Customer Name] ASC";
+            cmd.Parameters.AddWithValue("@custName", "%" + txtCustomerSearch.Text + "%");
+            SqlDataAdapter adap = new SqlDataAdapter(cmd);
+
+
+            try
+            {
+
+                DataTable dt = new DataTable();
+                adap.Fill(dt);
+                dgCustomer.DataSource = dt;
+
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }
