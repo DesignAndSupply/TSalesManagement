@@ -43,12 +43,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cmbSearchStatus = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCustomerSearch = new System.Windows.Forms.TextBox();
+            this.txtCustomerSearch222 = new System.Windows.Forms.TextBox();
             this.btnClearSearch = new System.Windows.Forms.Button();
             this.dgTask = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.btnEmail = new System.Windows.Forms.Button();
+            this.lblCustomer = new System.Windows.Forms.Label();
+            this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -205,26 +206,15 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Order Status:";
             // 
-            // label6
+            // txtCustomerSearch222
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(621, 369);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Customer:";
-            this.label6.Visible = false;
-            // 
-            // txtCustomerSearch
-            // 
-            this.txtCustomerSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCustomerSearch.Location = new System.Drawing.Point(681, 366);
-            this.txtCustomerSearch.Name = "txtCustomerSearch";
-            this.txtCustomerSearch.Size = new System.Drawing.Size(205, 20);
-            this.txtCustomerSearch.TabIndex = 11;
-            this.txtCustomerSearch.Visible = false;
-            this.txtCustomerSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerSearch_KeyPress);
+            this.txtCustomerSearch222.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCustomerSearch222.Location = new System.Drawing.Point(838, 30);
+            this.txtCustomerSearch222.Name = "txtCustomerSearch222";
+            this.txtCustomerSearch222.Size = new System.Drawing.Size(205, 20);
+            this.txtCustomerSearch222.TabIndex = 11;
+            this.txtCustomerSearch222.TextChanged += new System.EventHandler(this.txtCustomerSearch_TextChanged);
+            this.txtCustomerSearch222.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerSearch_KeyPress);
             // 
             // btnClearSearch
             // 
@@ -280,17 +270,37 @@
             this.btnEmail.UseVisualStyleBackColor = true;
             this.btnEmail.Click += new System.EventHandler(this.BtnEmail_Click);
             // 
+            // lblCustomer
+            // 
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(256, 14);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(87, 13);
+            this.lblCustomer.TabIndex = 17;
+            this.lblCustomer.Text = "Select Customer:";
+            this.lblCustomer.Visible = false;
+            // 
+            // txtCustomerSearch
+            // 
+            this.txtCustomerSearch.Location = new System.Drawing.Point(259, 30);
+            this.txtCustomerSearch.Name = "txtCustomerSearch";
+            this.txtCustomerSearch.Size = new System.Drawing.Size(229, 20);
+            this.txtCustomerSearch.TabIndex = 18;
+            this.txtCustomerSearch.Visible = false;
+            this.txtCustomerSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCustomerSearch_KeyPress_1);
+            // 
             // frmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1228, 632);
+            this.Controls.Add(this.txtCustomerSearch);
+            this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.btnEmail);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dgTask);
             this.Controls.Add(this.btnClearSearch);
-            this.Controls.Add(this.txtCustomerSearch);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtCustomerSearch222);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbSearchStatus);
             this.Controls.Add(this.label4);
@@ -331,11 +341,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbSearchStatus;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCustomerSearch;
+        private System.Windows.Forms.TextBox txtCustomerSearch222;
         private System.Windows.Forms.Button btnClearSearch;
         private System.Windows.Forms.DataGridView dgTask;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnEmail;
+        private System.Windows.Forms.Label lblCustomer;
+        private System.Windows.Forms.TextBox txtCustomerSearch;
     }
 }

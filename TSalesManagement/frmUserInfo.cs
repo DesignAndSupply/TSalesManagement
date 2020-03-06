@@ -55,7 +55,7 @@ namespace TSalesManagement
             }
             else
             {
-                sb.Append(" AND [Customer Name] = @cust ");
+                sb.Append(" AND [Customer Name] LIKE @cust ");
             }
 
             test = sb.ToString();
@@ -246,9 +246,10 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT id,[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By],[Selected] from dbo.c_sales_view_activity_list where [Logged By] = @sender order by  [Activity Date] desc";
+            cmd.CommandText = "SELECT id,[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By],[Selected] from dbo.c_sales_view_activity_list where [Logged By] = @sender AND [Customer Name] LIKE @cust order by  [Activity Date] desc";
 
             cmd.Parameters.AddWithValue("@sender", cmbStaff.Text);
+            cmd.Parameters.AddWithValue("@cust", "%" + txtCustomerSearch.Text + "%");
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
@@ -281,9 +282,10 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT * from c_view_task_list_crm where SetFor = @sender order by dueDate desc";
+            cmd.CommandText = "SELECT * from c_view_task_list_crm where SetFor = @sender AND subject LIKE @cust order by dueDate desc";
 
             cmd.Parameters.AddWithValue("@sender", cmbStaff.Text);
+            cmd.Parameters.AddWithValue("@cust", "%" + txtCustomerSearch.Text + "%");
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
@@ -323,6 +325,10 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
 
+            //after all this is done show the customer txtbox
+            lblCustomer.Visible = true;
+            txtCustomerSearch.Visible = true;
+            txtCustomerSearch.Text = "";
 
         }
 
@@ -767,7 +773,7 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
                             cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
                             cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "PIPELINE DATA:" + Convert.ToString(dgPipeline.Rows[i].Cells[3].Value); //this feels so odd and is probably gonna get changed
-                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgPipeline.Rows[i].Cells[1].Value);
+                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgPipeline.Rows[i].Cells[1].Value);//customer reference again, this matches the other table so its gotta be right! :D
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
@@ -822,6 +828,18 @@ namespace TSalesManagement
 
 
             }
+        }
+
+        private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCustomerSearch_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            fillGrid();
+            fillActivityGrid();
+            fillTaskGrid();
         }
     }
 }
