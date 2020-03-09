@@ -15,10 +15,10 @@ namespace TSalesManagement
     public partial class frmUserInfo : Form
     {
         public string customer { get; set; }
-        public int[] activityID { get; set; }
-        public string[] customerAccRef { get; set; }
-        public int[] piplineID { get; set; }
-        public int[] taskID { get; set; }
+        public List<int> activityID = new List<int>();
+        public List<string> customerAccRef = new List<string>();
+        public List<int> piplineID = new List<int>();
+        public List<int> taskID = new List<int>();
         public frmUserInfo()
         {
             InitializeComponent();
@@ -457,12 +457,14 @@ namespace TSalesManagement
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgActivity.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
+                    activityID.Remove(Convert.ToInt32(dgActivity.CurrentRow.Cells[0].Value));
                 }
                 else
                 {
 
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgActivity.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                    activityID.Add(Convert.ToInt32(dgActivity.CurrentRow.Cells[0].Value));
                 }
                 //int id;
                 //int currentSelected = 0;
@@ -534,11 +536,13 @@ namespace TSalesManagement
                     dgTask.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgTask.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgTask.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
+                    taskID.Remove(Convert.ToInt32(dgTask.CurrentRow.Cells[0].Value));
                 }
                 else
                 {
                     dgTask.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgTask.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                    taskID.Add(Convert.ToInt32(dgTask.CurrentRow.Cells[0].Value));
                 }
 
 
@@ -609,11 +613,13 @@ namespace TSalesManagement
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgPipeline.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
+                    piplineID.Remove(Convert.ToInt32(dgPipeline.CurrentRow.Cells[0].Value));
                 }
                 else
                 {
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgPipeline.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                    piplineID.Add(Convert.ToInt32(dgPipeline.CurrentRow.Cells[0].Value));
                 }
 
 
@@ -941,12 +947,16 @@ namespace TSalesManagement
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgCustomer.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
+                    customerAccRef.Remove(dgCustomer.CurrentRow.Cells[0].Value.ToString());
                 }
                 else
                 {
 
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgCustomer.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                    //add to the array here
+                    customerAccRef.Add(dgCustomer.CurrentRow.Cells[0].Value.ToString());
+
                 }
             }
         }
@@ -981,6 +991,72 @@ namespace TSalesManagement
             fillTaskGrid();
             fillCustomer();
             addButtons();
+            addPink();
+        }
+
+        private void addPink()
+        {
+            //for each DGV, loop through the records and if any match the list for that table make it pink again
+            //customer 
+            for (int i = 0; i < dgCustomer.Rows.Count; i++)
+            {
+                if (customerAccRef.Contains(dgCustomer.Rows[i].Cells[0].Value.ToString()))
+                {
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink; //if its the top row then it sekects it as pink and not the awful blue color 
+                    dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                }
+                else
+                {
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black; //this stops the awful /blue/ highlight from appearing 
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                    dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
+                }
+            }
+            //User Activity  
+            for (int i = 0; i < dgActivity.Rows.Count; i++)
+            {
+                if (activityID.Contains(Convert.ToInt32(dgActivity.Rows[i].Cells[0].Value)))
+                {
+                    dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink; 
+                    dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                }
+                else
+                {
+                    dgActivity.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black; 
+                    dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                    dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
+                }
+            }
+            //Task to do system   
+            for (int i = 0; i < dgTask.Rows.Count; i++)
+            {
+                if (taskID.Contains(Convert.ToInt32(dgTask.Rows[i].Cells[0].Value)))
+                {
+                    dgTask.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink;
+                    dgTask.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                }
+                else
+                {
+                    dgTask.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black;
+                    dgTask.Rows[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                    dgTask.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
+                }
+            }
+            //last of all the Pipline data    
+            for (int i = 0; i < dgPipeline.Rows.Count; i++)
+            {
+                if (piplineID.Contains(Convert.ToInt32(dgPipeline.Rows[i].Cells[0].Value)))
+                {
+                    dgPipeline.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink;
+                    dgPipeline.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                }
+                else
+                {
+                    dgPipeline.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black;
+                    dgPipeline.Rows[i].DefaultCellStyle.SelectionBackColor = Color.White;
+                    dgPipeline.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
+                }
+            }
         }
 
         private void nulldgvs()
