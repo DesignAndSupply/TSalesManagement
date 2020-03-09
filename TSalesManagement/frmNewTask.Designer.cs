@@ -36,6 +36,8 @@
             this.txtSubject = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.cmbSetForID = new System.Windows.Forms.ComboBox();
+            this.viewcurrentuserswithemailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.user_infoDataSet1 = new TSalesManagement.user_infoDataSet1();
             this.dteDueDate = new System.Windows.Forms.DateTimePicker();
             this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.txtDetail = new System.Windows.Forms.TextBox();
@@ -43,13 +45,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblDueDate = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.user_infoDataSet1 = new TSalesManagement.user_infoDataSet1();
-            this.viewcurrentuserswithemailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.view_current_users_with_emailTableAdapter = new TSalesManagement.user_infoDataSet1TableAdapters.view_current_users_with_emailTableAdapter();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewcurrentuserswithemailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,6 +105,16 @@
             this.cmbSetForID.Size = new System.Drawing.Size(200, 21);
             this.cmbSetForID.TabIndex = 24;
             this.cmbSetForID.ValueMember = "id";
+            // 
+            // viewcurrentuserswithemailBindingSource
+            // 
+            this.viewcurrentuserswithemailBindingSource.DataMember = "view_current_users_with_email";
+            this.viewcurrentuserswithemailBindingSource.DataSource = this.user_infoDataSet1;
+            // 
+            // user_infoDataSet1
+            // 
+            this.user_infoDataSet1.DataSetName = "user_infoDataSet1";
+            this.user_infoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dteDueDate
             // 
@@ -169,16 +179,6 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Task For:";
             // 
-            // user_infoDataSet1
-            // 
-            this.user_infoDataSet1.DataSetName = "user_infoDataSet1";
-            this.user_infoDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // viewcurrentuserswithemailBindingSource
-            // 
-            this.viewcurrentuserswithemailBindingSource.DataMember = "view_current_users_with_email";
-            this.viewcurrentuserswithemailBindingSource.DataSource = this.user_infoDataSet1;
-            // 
             // view_current_users_with_emailTableAdapter
             // 
             this.view_current_users_with_emailTableAdapter.ClearBeforeFill = true;
@@ -225,10 +225,11 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmNewTask";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Task";
             this.Load += new System.EventHandler(this.frmNewTask_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewcurrentuserswithemailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

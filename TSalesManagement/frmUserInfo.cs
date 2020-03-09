@@ -774,7 +774,7 @@ namespace TSalesManagement
 
         private void BtnEmail_Click(object sender, EventArgs e)
         {
-
+            txtCustomerSearch.Text = "";
             updateSelected();
             frmEmailUserManagement frmeum = new frmEmailUserManagement();
             frmeum.ShowDialog();
@@ -867,12 +867,19 @@ namespace TSalesManagement
 
             }
 
+            foreach (DataGridViewRow row in dgCustomer.Rows)
+                row.DefaultCellStyle.BackColor = Color.Empty;
+
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
 
-
+            //wipe the lists here 
+            customerAccRef.Clear();
+            activityID.Clear();
+            taskID.Clear();
+            piplineID.Clear();
         }
 
         private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
