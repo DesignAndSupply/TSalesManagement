@@ -20,6 +20,28 @@ namespace TSalesManagement
             InitializeComponent();
             _taskID = tID;
             fillData();
+            fillGrid();
+        }
+
+        private void fillGrid()
+        {
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionStringToDo))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select [Note ID], [Note Date],[Note By],Detail FROM dbo.view_task_notes where [Task ID] = @taskID order by [Note Date] desc", conn))
+                {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@taskID", _taskID);
+
+                    SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    ad.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    conn.Close();
+
+                }
+            }
+            //some formatting heree
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
 
         private void fillData()
