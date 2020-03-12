@@ -19,6 +19,7 @@ namespace TSalesManagement
         public List<string> customerAccRef = new List<string>();
         public List<int> piplineID = new List<int>();
         public List<int> taskID = new List<int>();
+        public string cmbName { get; set; }
         public frmUserInfo()
         {
             InitializeComponent();
@@ -325,6 +326,9 @@ namespace TSalesManagement
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            //gather the selected person here and store it into a variable so that it can be referenced on the other form 
+            cmbName = cmbStaff.Text;
             fillGrid();
             fillActivityGrid();
             fillTaskGrid();
@@ -340,7 +344,7 @@ namespace TSalesManagement
             lblCustomer.Visible = true;
             txtCustomerSearch.Visible = true;
             txtCustomerSearch.Text = "";
-
+         //   MessageBox.Show(cmbName);
         }
 
 
@@ -776,7 +780,7 @@ namespace TSalesManagement
         {
             txtCustomerSearch.Text = "";
             updateSelected();
-            frmEmailUserManagement frmeum = new frmEmailUserManagement();
+            frmEmailUserManagement frmeum = new frmEmailUserManagement(cmbName);
             frmeum.ShowDialog();
 
 
