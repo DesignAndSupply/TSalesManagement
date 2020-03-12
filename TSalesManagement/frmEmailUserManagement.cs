@@ -14,9 +14,12 @@ namespace TSalesManagement
 {
     public partial class frmEmailUserManagement : Form
     {
-        public frmEmailUserManagement()
+        public string cmbName { get; set; }
+
+        public frmEmailUserManagement(string passedCmbName)
         {
             InitializeComponent();
+            cmbName = passedCmbName;
         }
 
         private void BtnSend_Click(object sender, EventArgs e)
@@ -46,6 +49,9 @@ namespace TSalesManagement
             // TODO: This line of code loads data into the 'user_infoDataSet1.view_current_users_with_email' table. You can move, or remove it, as needed.
             this.view_current_users_with_emailTableAdapter.Fill(this.user_infoDataSet1.view_current_users_with_email);
 
+            //here we set the current cmbbox to what was passed over c:
+            int index = cmbUser.FindString(cmbName);
+            cmbUser.SelectedIndex = index;
         }
     }
 }
