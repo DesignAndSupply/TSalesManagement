@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace TSalesManagement.Class
 {
-    class Customer
+    internal class Customer
     {
-
         public string _custAccRef { get; set; }
         public string _add1 { get; set; }
         public string _add2 { get; set; }
@@ -19,7 +13,6 @@ namespace TSalesManagement.Class
         public string _tel1 { get; set; }
         public string _tel2 { get; set; }
         public string _fax { get; set; }
-
 
         public string _customerName
         {
@@ -32,12 +25,8 @@ namespace TSalesManagement.Class
 
                 cmd.Parameters.AddWithValue("@accRef", _custAccRef);
                 return cmd.ExecuteScalar().ToString();
-
-
             }
         }
-
-
 
         public Customer(string accRef)
         {
@@ -51,10 +40,10 @@ namespace TSalesManagement.Class
             conn.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
-            cmd.CommandText ="Select Address_1,Address_2,Address_3,Address_4,Address_5, telephone, [telephone 2] , fax from c_sales_view_customer_data where [Account Ref] = @accRef;";
+            cmd.CommandText = "Select Address_1,Address_2,Address_3,Address_4,Address_5, telephone, [telephone 2] , fax from c_sales_view_customer_data where [Account Ref] = @accRef;";
             cmd.Parameters.AddWithValue("@accRef", _custAccRef);
 
-            SqlDataReader rdr = cmd.ExecuteReader(); 
+            SqlDataReader rdr = cmd.ExecuteReader();
 
             if (rdr.Read())
             {
@@ -69,13 +58,9 @@ namespace TSalesManagement.Class
             }
             else
             {
-                
             }
 
             conn.Close();
-
         }
-
-
     }
 }

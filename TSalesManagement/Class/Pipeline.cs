@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace TSalesManagement.Class
 {
-    class Pipeline
+    internal class Pipeline
     {
-
         public string _status { get; set; }
 
         public double _janSales { get; set; }
@@ -25,7 +20,6 @@ namespace TSalesManagement.Class
         public double _novemberSales { get; set; }
         public double _decemberSales { get; set; }
 
-
         public double _SjanSales { get; set; }
         public double _SfebSales { get; set; }
         public double _SmarchSales { get; set; }
@@ -39,12 +33,9 @@ namespace TSalesManagement.Class
         public double _SnovemberSales { get; set; }
         public double _SdecemberSales { get; set; }
 
-
         public Pipeline()
         {
-           
         }
-
 
         public void addPipelineData()
         {
@@ -52,7 +43,6 @@ namespace TSalesManagement.Class
             conn.Open();
 
             string loopMonth;
-
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
@@ -63,119 +53,123 @@ namespace TSalesManagement.Class
 
             SqlDataReader rdr = cmd.ExecuteReader();
 
-
             while (rdr.Read())
             {
                 loopMonth = Convert.ToDateTime(rdr["estimated_order_date"]).ToString("MMMM");
 
-                if ( rdr["door_style"].ToString() == "Traditional")
+                if (rdr["door_style"].ToString() == "Traditional")
                 {
                     switch (loopMonth)
                     {
                         case "January":
                             _janSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "February":
                             _febSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "March":
                             _marchSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "April":
                             _aprilSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "May":
                             _maySales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "June":
                             _juneSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "July":
                             _julySales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "August":
                             _augustSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "September":
                             _septemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "October":
                             _octoberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "November":
                             _novemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "December":
                             _decemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         default:
                             break;
                     }
-
-
                 }
                 else
                 {
-
                     switch (loopMonth)
                     {
                         case "January":
                             _SjanSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "February":
                             _SfebSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "March":
                             _SmarchSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "April":
                             _SaprilSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "May":
                             _SmaySales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "June":
                             _SjuneSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "July":
                             _SjulySales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "August":
                             _SaugustSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "September":
                             _SseptemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "October":
                             _SoctoberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "November":
                             _SnovemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         case "December":
                             _SdecemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
+
                         default:
                             break;
                     }
-
-
                 }
             }
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
-
     }
 }

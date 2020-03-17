@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace TSalesManagement.Class
 {
-    class Visualisations
+    internal class Visualisations
     {
+        public string _custAccRef { get; set; }
 
-        public string _custAccRef  { get; set; }
-
-
-
-        public double conversionRate {
+        public double conversionRate
+        {
             get
             {
                 SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
@@ -25,7 +19,6 @@ namespace TSalesManagement.Class
                 cmd.Connection = conn;
                 cmd.CommandText = "SELECT * FROM c_view_customer_conversion_rate where crm_acc_ref = @accRef";
                 cmd.Parameters.AddWithValue("@accRef", _custAccRef);
-
 
                 SqlDataReader rdr = cmd.ExecuteReader();
 
@@ -39,27 +32,19 @@ namespace TSalesManagement.Class
                     {
                         convRate = 0;
                     }
-                    
-
                 }
                 else
                 {
                     convRate = 0;
-                    
                 }
                 conn.Close();
                 return convRate;
-                
             }
         }
-
 
         public Visualisations(string custAccRef)
         {
             _custAccRef = custAccRef;
-
         }
-
-
     }
 }

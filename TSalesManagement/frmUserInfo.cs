@@ -1,14 +1,11 @@
-﻿using System;
+﻿using StartUpClass;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using StartUpClass;
+using System.Drawing;
+using System.Text;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -19,7 +16,9 @@ namespace TSalesManagement
         public List<string> customerAccRef = new List<string>();
         public List<int> piplineID = new List<int>();
         public List<int> taskID = new List<int>();
+        public List<string> custAccRefList = new List<string>();
         public string cmbName { get; set; }
+
         public frmUserInfo()
         {
             InitializeComponent();
@@ -30,6 +29,7 @@ namespace TSalesManagement
             // TODO: This line of code loads data into the 'user_infoDataSet.c_view_sales_program_users' table. You can move, or remove it, as needed.
             this.c_view_sales_program_usersTableAdapter.Fill(this.user_infoDataSet.c_view_sales_program_users);
             //cmbStaff.SelectedIndex = -1;
+           //cmbStaff.Items.Add("Corey Jones");
         }
 
         private void fillGrid()
@@ -46,18 +46,15 @@ namespace TSalesManagement
             //If filter on order status is selected
             if (string.IsNullOrWhiteSpace(cmbSearchStatus.Text))
             {
-
             }
             else
             {
                 sb.Append(" AND order_status = @oStatus ");
             }
 
-
             //If filter on customer is selected
             if (string.IsNullOrWhiteSpace(customer))
             {
-
             }
             else
             {
@@ -69,8 +66,6 @@ namespace TSalesManagement
 
             sb.Append(" order by date_added DESC");
 
-
-
             //-------------
             cmd.CommandText = sb.ToString();
             cmd.Parameters.AddWithValue("@user", cmbStaff.Text);
@@ -80,7 +75,6 @@ namespace TSalesManagement
 
             if (string.IsNullOrWhiteSpace(cmbSearchStatus.Text))
             {
-
             }
             else
             {
@@ -89,13 +83,11 @@ namespace TSalesManagement
             //If filter on customer is selected
             if (string.IsNullOrWhiteSpace(customer))
             {
-
             }
             else
             {
                 cmd.Parameters.AddWithValue("@cust", "%" + customer + "%");
             }
-
 
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
@@ -109,7 +101,6 @@ namespace TSalesManagement
             //}
             //catch (Exception)
             //{
-
             //}
 
             //paintGrid();
@@ -118,133 +109,68 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
-
             fillCustomer();
+            colourCustomerWithTaskAssigned();
         }
 
         private void paintActivityGrid()
         {
             foreach (DataGridViewRow row in dgActivity.Rows)
             {
-
-
                 try
                 {
-
                     if (Convert.ToInt32(row.Cells["Selected"].Value) == -1)
                     {
-
-
                         row.DefaultCellStyle.BackColor = Color.HotPink;
-
                     }
-
-
-
-
-
-
-
-
-
-
-
-
                 }
                 catch
                 {
-
                 }
             }
         }
+
         private void paintTaskGrid()
         {
             foreach (DataGridViewRow row in dgTask.Rows)
             {
-
-
                 try
                 {
-
                     if (Convert.ToInt32(row.Cells["Selected"].Value) == -1)
                     {
-
-
                         row.DefaultCellStyle.BackColor = Color.HotPink;
-
                     }
-
-
-
-
-
-
-
-
-
-
-
-
                 }
                 catch
                 {
-
                 }
             }
         }
 
         private void paintGrid()
         {
-
-
             foreach (DataGridViewRow row in dgPipeline.Rows)
             {
-
-
                 try
                 {
-
                     if (Convert.ToInt32(row.Cells["Selected"].Value) == -1)
                     {
-
-
                         row.DefaultCellStyle.BackColor = Color.HotPink;
-
                     }
-
 
                     if (row.Cells["Status"].Value.ToString() == "Ordered")
                     {
-
                         row.DefaultCellStyle.BackColor = Color.LawnGreen;
-
                     }
                     else if (row.Cells["Status"].Value.ToString() == "Lost")
                     {
-
                         row.DefaultCellStyle.BackColor = Color.PaleVioletRed;
-
-
-
                     }
-
-
-
-
-
-
-
-
-
                 }
                 catch
                 {
-
                 }
-
             }
-
-
         }
 
         private void fillActivityGrid()
@@ -268,11 +194,9 @@ namespace TSalesManagement
             adap.Fill(dt);
             dgActivity.DataSource = dt;
 
-
             //}
             // catch (Exception)
             //{
-
             //}
 
             //paintActivityGrid();
@@ -280,7 +204,6 @@ namespace TSalesManagement
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
-
         }
 
         private void fillTaskGrid()
@@ -291,7 +214,7 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT [Task ID],[Date Created],dueDate,[Priority],Detail,[Status],SetBy,SetFor from c_view_task_list_crm where SetFor = @sender AND subject LIKE @cust order by dueDate desc";
+            cmd.CommandText = "SELECT [Task ID],[Date Created],dueDate,[Priority],Detail,[Status],SetBy,SetFor,crmActive,crmCustAccRef from c_view_task_list_crm where SetFor = @sender AND subject LIKE @cust order by dueDate desc";
 
             cmd.Parameters.AddWithValue("@sender", cmbStaff.Text);
             cmd.Parameters.AddWithValue("@cust", "%" + customer + "%");
@@ -304,11 +227,12 @@ namespace TSalesManagement
             adap.Fill(dt);
             dgTask.DataSource = dt;
 
+            dgTask.Columns["crmActive"].Visible = false;
+            dgTask.Columns["crmCustAccRef"].Visible = false;
 
             //}
             // catch (Exception)
             //{
-
             //}
 
             //paintTaskGrid();V
@@ -317,23 +241,42 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
-
         }
 
-
-
-
+        private void colourCustomerWithTaskAssigned()
+        {
+            string custAccRef = "";
+            for (int i = 0; i < dgTask.Rows.Count; i++)
+            {
+                if (Convert.ToString(dgTask.Rows[i].Cells[8].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[5].Value) != "Complete")
+                {
+                    custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
+                    for (int z = 0; z < dgCustomer.Rows.Count; z++)
+                    {
+                        if (dgCustomer.Rows[z].Cells[0].Value.ToString() == custAccRef)
+                        {
+                            dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.OrangeRed;
+                            //also add this to the list
+                            custAccRefList.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
+                        }
+                    }
+                }
+            }
+        }
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            //gather the selected person here and store it into a variable so that it can be referenced on the other form 
+            //gather the selected person here and store it into a variable so that it can be referenced on the other form
             cmbName = cmbStaff.Text;
             fillGrid();
             fillActivityGrid();
             fillTaskGrid();
             fillCustomer();
             addButtons();
+
+            //colour based on if there is a task for that customer
+            //if crmActive = -1 then make it red etc
+            colourCustomerWithTaskAssigned();
 
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
@@ -344,9 +287,8 @@ namespace TSalesManagement
             lblCustomer.Visible = true;
             txtCustomerSearch.Visible = true;
             txtCustomerSearch.Text = "";
-         //   MessageBox.Show(cmbName);
+            //   MessageBox.Show(cmbName);
         }
-
 
         private void addButtons()
         {
@@ -364,7 +306,7 @@ namespace TSalesManagement
             selectButtonTask.Name = "Select";
             selectButtonTask.Text = "Select";
             selectButtonTask.UseColumnTextForButtonValue = true;
-            int columnIndexTask = 8;
+            int columnIndexTask = 10;
             if (dgTask.Columns["Select"] == null)
             {
                 dgTask.Columns.Insert(columnIndexTask, selectButtonTask);
@@ -405,15 +347,12 @@ namespace TSalesManagement
                 frmAP.ShowDialog();
 
                 //fillGrid();
-
-
             }
         }
 
         private void dgActivity_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int aID;
-
 
             if (dgActivity.SelectedCells.Count > 0)
             {
@@ -427,8 +366,6 @@ namespace TSalesManagement
                 frmAA.ShowDialog();
 
                 //fillActivityGrid();
-
-
             }
         }
 
@@ -455,7 +392,6 @@ namespace TSalesManagement
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-
                 if (dgActivity.CurrentRow.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -465,7 +401,6 @@ namespace TSalesManagement
                 }
                 else
                 {
-
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgActivity.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                     activityID.Add(Convert.ToInt32(dgActivity.CurrentRow.Cells[0].Value));
@@ -483,7 +418,6 @@ namespace TSalesManagement
 
                 //SqlCommand cmdRead = new SqlCommand("SELECT currently_selected from dbo.crm_activity where id = @id", conn);
 
-
                 //cmdRead.Parameters.AddWithValue("@id", id);
 
                 //SqlDataReader rdr = cmdRead.ExecuteReader();
@@ -499,7 +433,6 @@ namespace TSalesManagement
                 //        readerValue = 0;
                 //    }
 
-
                 //    if (readerValue == -1)
                 //    {
                 //        currentSelected = 0;
@@ -508,9 +441,6 @@ namespace TSalesManagement
                 //    {
                 //        currentSelected = -1;
                 //    }
-
-
-
 
                 //}
 
@@ -534,7 +464,6 @@ namespace TSalesManagement
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-
                 if (dgTask.CurrentRow.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     dgTask.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -548,8 +477,6 @@ namespace TSalesManagement
                     dgTask.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                     taskID.Add(Convert.ToInt32(dgTask.CurrentRow.Cells[0].Value));
                 }
-
-
 
                 //int id;
                 //int currentSelected = 0;
@@ -579,7 +506,6 @@ namespace TSalesManagement
                 //        readerValue = 0;
                 //    }
 
-
                 //    if (readerValue == -1)
                 //    {
                 //        currentSelected = 0;
@@ -593,7 +519,6 @@ namespace TSalesManagement
 
                 //conn.Close();
                 //conn.Open();
-
 
                 //SqlCommand cmd = new SqlCommand("UPDATE dbo.task set currently_selected= @status where id = @id", conn);
                 //cmd.Parameters.AddWithValue("@id", id);
@@ -611,7 +536,6 @@ namespace TSalesManagement
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-
                 if (dgPipeline.CurrentRow.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -625,8 +549,6 @@ namespace TSalesManagement
                     dgPipeline.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                     piplineID.Add(Convert.ToInt32(dgPipeline.CurrentRow.Cells[0].Value));
                 }
-
-
 
                 //int id;
                 //int currentSelected = 0;
@@ -656,7 +578,6 @@ namespace TSalesManagement
                 //        readerValue = 0;
                 //    }
 
-
                 //    if (readerValue == -1)
                 //    {
                 //        currentSelected = 0;
@@ -666,15 +587,10 @@ namespace TSalesManagement
                 //        currentSelected = -1;
                 //    }
 
-
                 //}
 
                 //conn.Close();
                 //conn.Open();
-
-
-
-
 
                 //SqlCommand cmd = new SqlCommand("UPDATE dbo.sales_pipeline set currently_selected= @status where id = @id", conn);
                 //cmd.Parameters.AddWithValue("@id", id);
@@ -685,13 +601,10 @@ namespace TSalesManagement
             }
         }
 
-
         private void updateSelected()
         {
-
             SqlConnection connToDo = new SqlConnection(SqlStatements.ConnectionStringToDo);
             connToDo.Open();
-
 
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
@@ -702,7 +615,6 @@ namespace TSalesManagement
 
             foreach (DataGridViewRow row in dgPipeline.Rows)
             {
-
                 if (row.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     currentID = Convert.ToDouble(row.Cells[0].Value);
@@ -712,13 +624,10 @@ namespace TSalesManagement
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                 }
-
             }
-
 
             foreach (DataGridViewRow row in dgActivity.Rows)
             {
-
                 if (row.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     currentID = Convert.ToDouble(row.Cells[0].Value);
@@ -728,12 +637,10 @@ namespace TSalesManagement
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                 }
-
             }
 
             foreach (DataGridViewRow row in dgTask.Rows)
             {
-
                 if (row.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     currentID = Convert.ToDouble(row.Cells[0].Value);
@@ -743,7 +650,6 @@ namespace TSalesManagement
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                 }
-
             }
 
             //wipe old data
@@ -762,19 +668,11 @@ namespace TSalesManagement
                     cmd.CommandText = "INSERT INTO dbo.crm_customer_temp_table (CustACC) VALUES('" + custAcc + "')";
                     cmd.Connection = conn;
                     cmd.ExecuteNonQuery();
-
-
                 }
             }
             conn.Close();
             connToDo.Close();
-
-
-
-
-
         }
-
 
         private void BtnEmail_Click(object sender, EventArgs e)
         {
@@ -782,7 +680,6 @@ namespace TSalesManagement
             updateSelected();
             frmEmailUserManagement frmeum = new frmEmailUserManagement(cmbName);
             frmeum.ShowDialog();
-
 
             //this here is the optimal point to fire the email to people
             //fire todo insert email here that doesnt shoot an email
@@ -802,6 +699,7 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
                             cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[6].Value);
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[1].Value);
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
@@ -822,6 +720,7 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
                             cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "PIPELINE DATA:" + Convert.ToString(dgPipeline.Rows[i].Cells[3].Value); //this feels so odd and is probably gonna get changed
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgPipeline.Rows[i].Cells[1].Value);//customer reference again, this matches the other table so its gotta be right! :D
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
@@ -839,51 +738,53 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
                             cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
                             cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
-                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dgCustomer.Rows[i].Cells[2].Value); //this feels so odd and is probably gonna get changed
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dgCustomer.Rows[i].Cells[1].Value); //this feels so odd and is probably gonna get changed
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText;//customer reference again, this matches the other table so its gotta be right! :D
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = Convert.ToString(dgCustomer.Rows[i].Cells[0].Value);
+                            custAccRefList.Add(dgCustomer.Rows[i].Cells[0].Value.ToString());
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
                         }
                     }
                 }
-                //customer 
+                //customer
             }
 
             foreach (DataGridViewRow row in dgPipeline.Rows)
             {
-
                 row.DefaultCellStyle.BackColor = Color.Empty;
-
             }
 
             foreach (DataGridViewRow row in dgActivity.Rows)
             {
-
                 row.DefaultCellStyle.BackColor = Color.Empty;
-
             }
 
             foreach (DataGridViewRow row in dgTask.Rows)
             {
-
                 row.DefaultCellStyle.BackColor = Color.Empty;
-
             }
 
             foreach (DataGridViewRow row in dgCustomer.Rows)
-                row.DefaultCellStyle.BackColor = Color.Empty;
-
+            {
+                if (custAccRefList.Contains(row.Cells[0].Value.ToString()))
+                    row.DefaultCellStyle.BackColor = Color.OrangeRed;
+                else
+                    row.DefaultCellStyle.BackColor = Color.Empty;
+            }
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
-
-            //wipe the lists here 
+            //wipe the lists here
             customerAccRef.Clear();
             activityID.Clear();
             taskID.Clear();
             piplineID.Clear();
+            //nulldgvs();
+            //fillGrid();
+            //refresh all the grids (I had no success with manually doing it so I'm gonna remove the text in the cmbbox and re add it
         }
 
         private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -901,14 +802,11 @@ namespace TSalesManagement
                 frmATD.ShowDialog();
 
                 //fillGrid();
-
-
             }
         }
 
         private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void txtCustomerSearch_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -930,18 +828,14 @@ namespace TSalesManagement
             cmd.Parameters.AddWithValue("@custName", "%" + customer + "%");
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
 
-
             try
             {
-
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
                 dgCustomer.DataSource = dt;
-
             }
             catch (Exception)
             {
-
             }
         }
 
@@ -952,8 +846,11 @@ namespace TSalesManagement
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-
-                if (dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.HotPink)
+                if(dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.OrangeRed)
+                {
+                    MessageBox.Show("This customer is already assigned as a task!"); //ryucxdddd
+                }
+                else if (dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
@@ -962,12 +859,10 @@ namespace TSalesManagement
                 }
                 else
                 {
-
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgCustomer.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                     //add to the array here
                     customerAccRef.Add(dgCustomer.CurrentRow.Cells[0].Value.ToString());
-
                 }
             }
         }
@@ -983,12 +878,9 @@ namespace TSalesManagement
                 string custAccRef = selectedRow.Cells["Account Ref"].Value.ToString();
                 string custName = selectedRow.Cells["Customer Name"].Value.ToString();
 
-
                 frmCustomerInformation frmCI = new frmCustomerInformation(custAccRef, custName);
                 frmCI.ShowDialog();
                 //fillGrid();
-
-
             }
         }
 
@@ -1008,37 +900,42 @@ namespace TSalesManagement
         private void addPink()
         {
             //for each DGV, loop through the records and if any match the list for that table make it pink again
-            //customer 
+            //customer
             for (int i = 0; i < dgCustomer.Rows.Count; i++)
             {
                 if (customerAccRef.Contains(dgCustomer.Rows[i].Cells[0].Value.ToString()))
                 {
-                    dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink; //if its the top row then it sekects it as pink and not the awful blue color 
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink; //if its the top row then it sekects it as pink and not the awful blue color
                     dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                }
+                if (custAccRefList.Contains(dgCustomer.Rows[i].Cells[0].Value.ToString()))
+                {
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.OrangeRed; //if its the top row then it sekects it as pink and not the awful blue color
+                    dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
                 }
                 else
                 {
-                    dgCustomer.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black; //this stops the awful /blue/ highlight from appearing 
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black; //this stops the awful /blue/ highlight from appearing
                     dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.White;
                     dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
                 }
             }
-            //User Activity  
+            //User Activity
             for (int i = 0; i < dgActivity.Rows.Count; i++)
             {
                 if (activityID.Contains(Convert.ToInt32(dgActivity.Rows[i].Cells[0].Value)))
                 {
-                    dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink; 
+                    dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
                 }
                 else
                 {
-                    dgActivity.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black; 
+                    dgActivity.Rows[i].DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.White;
                     dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
                 }
             }
-            //Task to do system   
+            //Task to do system
             for (int i = 0; i < dgTask.Rows.Count; i++)
             {
                 if (taskID.Contains(Convert.ToInt32(dgTask.Rows[i].Cells[0].Value)))
@@ -1053,7 +950,7 @@ namespace TSalesManagement
                     dgTask.Rows[i].DefaultCellStyle.BackColor = Color.Empty;
                 }
             }
-            //last of all the Pipline data    
+            //last of all the Pipline data
             for (int i = 0; i < dgPipeline.Rows.Count; i++)
             {
                 if (piplineID.Contains(Convert.ToInt32(dgPipeline.Rows[i].Cells[0].Value)))
@@ -1085,6 +982,9 @@ namespace TSalesManagement
             dgPipeline.Rows.Clear();
             dgPipeline.Columns.Clear();
         }
+
+        private void cviewsalesprogramusersBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+        }
     }
 }
-

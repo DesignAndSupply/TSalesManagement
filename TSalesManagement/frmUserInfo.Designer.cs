@@ -77,6 +77,7 @@
             // 
             this.cviewsalesprogramusersBindingSource.DataMember = "c_view_sales_program_users";
             this.cviewsalesprogramusersBindingSource.DataSource = this.user_infoDataSet;
+            this.cviewsalesprogramusersBindingSource.CurrentChanged += new System.EventHandler(this.cviewsalesprogramusersBindingSource_CurrentChanged);
             // 
             // user_infoDataSet
             // 

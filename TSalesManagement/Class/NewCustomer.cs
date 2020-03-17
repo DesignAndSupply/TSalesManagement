@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace TSalesManagement.Class
 {
-    class NewCustomer
+    internal class NewCustomer
     {
-
         public string _accRef { get; set; }
         public string _custName { get; set; }
         public string _add1 { get; set; }
@@ -21,8 +15,7 @@ namespace TSalesManagement.Class
         public string _tel2 { get; set; }
         public string _fax { get; set; }
 
-
-        public NewCustomer(string accRef, string custName, string add1, string add2, string add3, string add4, string add5, string tel1,string tel2,string fax)
+        public NewCustomer(string accRef, string custName, string add1, string add2, string add3, string add4, string add5, string tel1, string tel2, string fax)
         {
             _accRef = accRef;
             _custName = custName;
@@ -34,13 +27,10 @@ namespace TSalesManagement.Class
             _tel1 = tel1;
             _tel2 = tel2;
             _fax = fax;
-
         }
 
         public void addCustomer()
         {
-
-
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand();
@@ -49,7 +39,6 @@ namespace TSalesManagement.Class
 
             cmd.CommandText = "INSERT INTO dbo.sales_ledger_prospect (account_ref, name, address_1, address_2, address_3, address_4, address_5, telephone, telephone_2, fax) " +
                               "VALUES(@accRef,@custName,@add1,@add2,@add3,@add4,@add5,@tel1,@tel2,@fax);";
-
 
             cmd.Parameters.AddWithValue("@accRef", _accRef);
             cmd.Parameters.AddWithValue("@custName", _custName);
@@ -65,7 +54,6 @@ namespace TSalesManagement.Class
             cmd.ExecuteNonQuery();
 
             conn.Close();
-
         }
 
         public bool validateAccRef()
@@ -89,11 +77,6 @@ namespace TSalesManagement.Class
             {
                 return false;
             }
-
         }
-
-
-
-
     }
 }
