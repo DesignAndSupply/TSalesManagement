@@ -24,7 +24,7 @@ namespace TSalesManagement
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
-
+            Login.emailButtonClicked = 1;
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
 
             conn.Open();

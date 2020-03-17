@@ -17,6 +17,7 @@ namespace TSalesManagement
         public List<int> piplineID = new List<int>();
         public List<int> taskID = new List<int>();
         public List<string> custAccRefList = new List<string>();
+        public List<string> completedWithinWeek = new List<string>();
         public string cmbName { get; set; }
 
         public frmUserInfo()
@@ -676,115 +677,121 @@ namespace TSalesManagement
 
         private void BtnEmail_Click(object sender, EventArgs e)
         {
+            Login.emailButtonClicked = 0;
             txtCustomerSearch.Text = "";
             updateSelected();
             frmEmailUserManagement frmeum = new frmEmailUserManagement(cmbName);
             frmeum.ShowDialog();
 
-            //this here is the optimal point to fire the email to people
-            //fire todo insert email here that doesnt shoot an email
-            using (SqlConnection connectionToDo = new SqlConnection(SqlStatements.ConnectionStringToDo))
+            //check if email button was pressed
+            if (Login.emailButtonClicked == 1)
             {
-                //activity
-                for (int i = 0; i < dgActivity.Rows.Count; i++)
+                //this here is the optimal point to fire the email to people
+                //fire todo insert email here that doesnt shoot an email
+                using (SqlConnection connectionToDo = new SqlConnection(SqlStatements.ConnectionStringToDo))
                 {
-                    //if colour is HOT PINK
-                    if (dgActivity.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    //activity
+                    for (int i = 0; i < dgActivity.Rows.Count; i++)
                     {
-                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        //if colour is HOT PINK
+                        if (dgActivity.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
                         {
-                            cmdToDo.CommandType = CommandType.StoredProcedure;
-                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
-                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
-                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
-                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[6].Value);
-                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[1].Value);
-                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
-                            connectionToDo.Open();
-                            cmdToDo.ExecuteNonQuery();
-                            connectionToDo.Close();
+                            using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                            {
+                                cmdToDo.CommandType = CommandType.StoredProcedure;
+                                cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                                cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                                cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                                cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[6].Value);
+                                cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgActivity.Rows[i].Cells[1].Value);
+                                cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
+                                connectionToDo.Open();
+                                cmdToDo.ExecuteNonQuery();
+                                connectionToDo.Close();
+                            }
                         }
                     }
-                }
-                //pipeline
-                for (int i = 0; i < dgPipeline.Rows.Count; i++)
-                {
-                    //if colour is HOT PINK
-                    if (dgPipeline.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    //pipeline
+                    for (int i = 0; i < dgPipeline.Rows.Count; i++)
                     {
-                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        //if colour is HOT PINK
+                        if (dgPipeline.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
                         {
-                            cmdToDo.CommandType = CommandType.StoredProcedure;
-                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
-                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
-                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
-                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "PIPELINE DATA:" + Convert.ToString(dgPipeline.Rows[i].Cells[3].Value); //this feels so odd and is probably gonna get changed
-                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgPipeline.Rows[i].Cells[1].Value);//customer reference again, this matches the other table so its gotta be right! :D
-                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
-                            connectionToDo.Open();
-                            cmdToDo.ExecuteNonQuery();
-                            connectionToDo.Close();
+                            using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                            {
+                                cmdToDo.CommandType = CommandType.StoredProcedure;
+                                cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                                cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                                cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                                cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "PIPELINE DATA:" + Convert.ToString(dgPipeline.Rows[i].Cells[3].Value); //this feels so odd and is probably gonna get changed
+                                cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dgPipeline.Rows[i].Cells[1].Value);//customer reference again, this matches the other table so its gotta be right! :D
+                                cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
+                                connectionToDo.Open();
+                                cmdToDo.ExecuteNonQuery();
+                                connectionToDo.Close();
+                            }
                         }
                     }
-                }
-                for (int i = 0; i < dgCustomer.Rows.Count; i++)
-                {
-                    //if colour is HOT PINK
-                    if (dgCustomer.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    for (int i = 0; i < dgCustomer.Rows.Count; i++)
                     {
-                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        //if colour is HOT PINK
+                        if (dgCustomer.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
                         {
-                            cmdToDo.CommandType = CommandType.StoredProcedure;
-                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
-                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
-                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
-                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dgCustomer.Rows[i].Cells[1].Value); //this feels so odd and is probably gonna get changed
-                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText;//customer reference again, this matches the other table so its gotta be right! :D
-                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = Convert.ToString(dgCustomer.Rows[i].Cells[0].Value);
-                            custAccRefList.Add(dgCustomer.Rows[i].Cells[0].Value.ToString());
-                            connectionToDo.Open();
-                            cmdToDo.ExecuteNonQuery();
-                            connectionToDo.Close();
+                            using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                            {
+                                cmdToDo.CommandType = CommandType.StoredProcedure;
+                                cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                                cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                                cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                                cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dgCustomer.Rows[i].Cells[1].Value); //this feels so odd and is probably gonna get changed
+                                cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText;//customer reference again, this matches the other table so its gotta be right! :D
+                                cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = Convert.ToString(dgCustomer.Rows[i].Cells[0].Value);
+                                custAccRefList.Add(dgCustomer.Rows[i].Cells[0].Value.ToString());
+                                connectionToDo.Open();
+                                cmdToDo.ExecuteNonQuery();
+                                connectionToDo.Close();
+                            }
                         }
                     }
+                    //customer
                 }
-                //customer
-            }
 
-            foreach (DataGridViewRow row in dgPipeline.Rows)
-            {
-                row.DefaultCellStyle.BackColor = Color.Empty;
-            }
-
-            foreach (DataGridViewRow row in dgActivity.Rows)
-            {
-                row.DefaultCellStyle.BackColor = Color.Empty;
-            }
-
-            foreach (DataGridViewRow row in dgTask.Rows)
-            {
-                row.DefaultCellStyle.BackColor = Color.Empty;
-            }
-
-            foreach (DataGridViewRow row in dgCustomer.Rows)
-            {
-                if (custAccRefList.Contains(row.Cells[0].Value.ToString()))
-                    row.DefaultCellStyle.BackColor = Color.OrangeRed;
-                else
+                foreach (DataGridViewRow row in dgPipeline.Rows)
+                {
                     row.DefaultCellStyle.BackColor = Color.Empty;
+                }
+
+                foreach (DataGridViewRow row in dgActivity.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Empty;
+                }
+
+                foreach (DataGridViewRow row in dgTask.Rows)
+                {
+                    row.DefaultCellStyle.BackColor = Color.Empty;
+                }
+
+                foreach (DataGridViewRow row in dgCustomer.Rows)
+                {
+                    if (custAccRefList.Contains(row.Cells[0].Value.ToString()))
+                        row.DefaultCellStyle.BackColor = Color.OrangeRed;
+                    else
+                        row.DefaultCellStyle.BackColor = Color.Empty;
+                }
+                dgActivity.ClearSelection();
+                dgPipeline.ClearSelection();
+                dgTask.ClearSelection();
+                dgCustomer.ClearSelection();
+                //wipe the lists here
+                customerAccRef.Clear();
+                activityID.Clear();
+                taskID.Clear();
+                piplineID.Clear();
+                //nulldgvs();
+                //fillGrid();
+                //refresh all the grids (I had no success with manually doing it so I'm gonna remove the text in the cmbbox and re add it
             }
-            dgActivity.ClearSelection();
-            dgPipeline.ClearSelection();
-            dgTask.ClearSelection();
-            dgCustomer.ClearSelection();
-            //wipe the lists here
-            customerAccRef.Clear();
-            activityID.Clear();
-            taskID.Clear();
-            piplineID.Clear();
-            //nulldgvs();
-            //fillGrid();
-            //refresh all the grids (I had no success with manually doing it so I'm gonna remove the text in the cmbbox and re add it
+            
         }
 
         private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
