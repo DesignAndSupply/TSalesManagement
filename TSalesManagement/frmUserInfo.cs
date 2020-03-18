@@ -30,7 +30,7 @@ namespace TSalesManagement
             // TODO: This line of code loads data into the 'user_infoDataSet.c_view_sales_program_users' table. You can move, or remove it, as needed.
             this.c_view_sales_program_usersTableAdapter.Fill(this.user_infoDataSet.c_view_sales_program_users);
             //cmbStaff.SelectedIndex = -1;
-           //cmbStaff.Items.Add("Corey Jones");
+            //cmbStaff.Items.Add("Corey Jones");
         }
 
         private void fillGrid()
@@ -215,7 +215,7 @@ namespace TSalesManagement
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT [Task ID],[Date Created],dueDate,[Priority],Detail,[Status],SetBy,SetFor,crmActive,crmCustAccRef from c_view_task_list_crm where SetFor = @sender AND subject LIKE @cust order by dueDate desc";
+            cmd.CommandText = "SELECT [Task ID],[Date Created],dueDate,[Priority],Detail,[Status],SetBy,SetFor,crmActive,crmCustAccRef, CASE WHEN completeDateAddDays is null THEN DATEADD(day,-2,GETDATE()) ELSE completeDateAddDays END as [completeDateAddDays] from c_view_task_list_crm  where SetFor = @sender AND subject LIKE @cust order by dueDate desc";
 
             cmd.Parameters.AddWithValue("@sender", cmbStaff.Text);
             cmd.Parameters.AddWithValue("@cust", "%" + customer + "%");
@@ -230,6 +230,7 @@ namespace TSalesManagement
 
             dgTask.Columns["crmActive"].Visible = false;
             dgTask.Columns["crmCustAccRef"].Visible = false;
+            //dgTask.Columns["completeDateAddDays"].Visible = false;
 
             //}
             // catch (Exception)
@@ -242,6 +243,7 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
+            colourCustomerWithTaskAssigned();
         }
 
         private void colourCustomerWithTaskAssigned()
@@ -249,6 +251,7 @@ namespace TSalesManagement
             string custAccRef = "";
             for (int i = 0; i < dgTask.Rows.Count; i++)
             {
+                //check for tasks already assigned 
                 if (Convert.ToString(dgTask.Rows[i].Cells[8].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[5].Value) != "Complete")
                 {
                     custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
@@ -262,12 +265,35 @@ namespace TSalesManagement
                         }
                     }
                 }
+                //check for the complete date here
+                //if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[i].Cells[10].Value)))
+                //{
+                //    custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
+                //    for (int z = 0; z < dgCustomer.Rows.Count; z++)
+                //    {
+                //        if (dgCustomer.Rows[z].Cells[0].Value.ToString() == custAccRef)
+                //        {
+                //            //change colour to blue (has been completed within the last 7 days)
+                //            dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                //            //also add it to the <within 7 days list>
+                //            completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
+                //        }
+                //    }
+                //}
             }
         }
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
             //gather the selected person here and store it into a variable so that it can be referenced on the other form
+            //wipe lists
+            customerAccRef.Clear();
+            activityID.Clear();
+            taskID.Clear();
+            piplineID.Clear();
+            completedWithinWeek.Clear();
+            custAccRefList.Clear();
+
             cmbName = cmbStaff.Text;
             fillGrid();
             fillActivityGrid();
@@ -277,18 +303,19 @@ namespace TSalesManagement
 
             //colour based on if there is a task for that customer
             //if crmActive = -1 then make it red etc
-            colourCustomerWithTaskAssigned();
 
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
 
+            colourCustomerWithTaskAssigned();
+
             //after all this is done show the customer txtbox
             lblCustomer.Visible = true;
             txtCustomerSearch.Visible = true;
             txtCustomerSearch.Text = "";
-            //   MessageBox.Show(cmbName);
+            // MessageBox.Show(cmbName);
         }
 
         private void addButtons()
@@ -307,7 +334,7 @@ namespace TSalesManagement
             selectButtonTask.Name = "Select";
             selectButtonTask.Text = "Select";
             selectButtonTask.UseColumnTextForButtonValue = true;
-            int columnIndexTask = 10;
+            int columnIndexTask = 11;
             if (dgTask.Columns["Select"] == null)
             {
                 dgTask.Columns.Insert(columnIndexTask, selectButtonTask);
@@ -775,6 +802,8 @@ namespace TSalesManagement
                 {
                     if (custAccRefList.Contains(row.Cells[0].Value.ToString()))
                         row.DefaultCellStyle.BackColor = Color.OrangeRed;
+                    else if (completedWithinWeek.Contains(row.Cells[0].Value.ToString()))
+                        row.DefaultCellStyle.BackColor = Color.CornflowerBlue;
                     else
                         row.DefaultCellStyle.BackColor = Color.Empty;
                 }
@@ -787,11 +816,12 @@ namespace TSalesManagement
                 activityID.Clear();
                 taskID.Clear();
                 piplineID.Clear();
+
                 //nulldgvs();
                 //fillGrid();
                 //refresh all the grids (I had no success with manually doing it so I'm gonna remove the text in the cmbbox and re add it
             }
-            
+
         }
 
         private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -853,9 +883,13 @@ namespace TSalesManagement
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
-                if(dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.OrangeRed)
+                if (dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.OrangeRed)
                 {
                     MessageBox.Show("This customer is already assigned as a task!"); //ryucxdddd
+                }
+                else if (dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.CornflowerBlue)
+                {
+                    MessageBox.Show("This customer has already been chased within the last 7 working days!");
                 }
                 else if (dgCustomer.CurrentRow.DefaultCellStyle.BackColor == Color.HotPink)
                 {
@@ -915,10 +949,15 @@ namespace TSalesManagement
                     dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.HotPink; //if its the top row then it sekects it as pink and not the awful blue color
                     dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
                 }
-                if (custAccRefList.Contains(dgCustomer.Rows[i].Cells[0].Value.ToString()))
+                else if (custAccRefList.Contains(dgCustomer.Rows[i].Cells[0].Value.ToString()))
                 {
                     dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.OrangeRed; //if its the top row then it sekects it as pink and not the awful blue color
                     dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                }
+                else if (completedWithinWeek.Contains(dgCustomer.Rows[i].Cells[0].Value.ToString()))
+                {
+                    dgCustomer.Rows[i].DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue; //if its the top row then it sekects it as pink and not the awful blue color
+                    dgCustomer.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
                 }
                 else
                 {
