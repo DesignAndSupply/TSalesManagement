@@ -228,9 +228,9 @@ namespace TSalesManagement
             adap.Fill(dt);
             dgTask.DataSource = dt;
 
-            //dgTask.Columns["crmActive"].Visible = false;
-            //dgTask.Columns["crmCustAccRef"].Visible = false;
-            //dgTask.Columns["completeDateAddDays"].Visible = false;
+            dgTask.Columns["crmActive"].Visible = false;
+            dgTask.Columns["crmCustAccRef"].Visible = false;
+            dgTask.Columns["completeDateAddDays"].Visible = false;
 
             //}
             // catch (Exception)
@@ -260,7 +260,7 @@ namespace TSalesManagement
             {
               //  MessageBox.Show(dgTask.Rows[i].Cells[taskStatusIndex].Value.ToString());
                 //check for tasks already assigned 
-                if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == " - 1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete")
+                if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete")
                 {
                     custAccRef = dgTask.Rows[i].Cells[custAccRefIndex].Value.ToString();
                     for (int z = 0; z < dgCustomer.Rows.Count; z++)
@@ -274,24 +274,25 @@ namespace TSalesManagement
 
                     }
                 }
-//here
+                //here
+                //check for the complete date here
+                if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[i].Cells[10].Value)))
+                    {
+                        custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
+                        for (int z = 0; z < dgCustomer.Rows.Count; z++)
+                        {
+                            if (dgCustomer.Rows[z].Cells[0].Value.ToString() == custAccRef)
+                            {
+                                //change colour to blue (has been completed within the last 7 days)
+                                dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                                //also add it to the <within 7 days list>
+                                completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
+                            }
+                        }
+                    }
             }
         }
-        //check for the complete date here
-        //if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[i].Cells[10].Value)))
-        //{
-        //    custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
-        //    for (int z = 0; z < dgCustomer.Rows.Count; z++)
-        //    {
-        //        if (dgCustomer.Rows[z].Cells[0].Value.ToString() == custAccRef)
-        //        {
-        //            //change colour to blue (has been completed within the last 7 days)
-        //            dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
-        //            //also add it to the <within 7 days list>
-        //            completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
-        //        }
-        //    }
-        //}
+
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -303,6 +304,8 @@ namespace TSalesManagement
             piplineID.Clear();
             completedWithinWeek.Clear();
             custAccRefList.Clear();
+
+            nulldgvs();
 
             cmbName = cmbStaff.Text;
             fillGrid();
@@ -318,7 +321,7 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
-
+          
             colourCustomerWithTaskAssigned();
 
             //after all this is done show the customer txtbox
