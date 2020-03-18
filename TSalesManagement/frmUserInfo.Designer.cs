@@ -52,6 +52,9 @@
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.dgCustomer = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
+            this.lblPink = new System.Windows.Forms.Label();
+            this.lblRed = new System.Windows.Forms.Label();
+            this.lblBlue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -329,11 +332,47 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Customers:";
             // 
+            // lblPink
+            // 
+            this.lblPink.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPink.AutoSize = true;
+            this.lblPink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPink.Location = new System.Drawing.Point(887, 10);
+            this.lblPink.Name = "lblPink";
+            this.lblPink.Size = new System.Drawing.Size(92, 15);
+            this.lblPink.TabIndex = 21;
+            this.lblPink.Text = "Pink = Selected";
+            // 
+            // lblRed
+            // 
+            this.lblRed.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRed.AutoSize = true;
+            this.lblRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRed.Location = new System.Drawing.Point(887, 50);
+            this.lblRed.Name = "lblRed";
+            this.lblRed.Size = new System.Drawing.Size(144, 15);
+            this.lblRed.TabIndex = 22;
+            this.lblRed.Text = "Red = Currently assigned";
+            // 
+            // lblBlue
+            // 
+            this.lblBlue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBlue.AutoSize = true;
+            this.lblBlue.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBlue.Location = new System.Drawing.Point(887, 30);
+            this.lblBlue.Name = "lblBlue";
+            this.lblBlue.Size = new System.Drawing.Size(266, 15);
+            this.lblBlue.TabIndex = 23;
+            this.lblBlue.Text = "Blue = Completed within the last 7 working days";
+            // 
             // frmUserInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1294, 619);
+            this.Controls.Add(this.lblBlue);
+            this.Controls.Add(this.lblRed);
+            this.Controls.Add(this.lblPink);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dgCustomer);
             this.Controls.Add(this.dgActivity);
@@ -393,5 +432,8 @@
         private System.Windows.Forms.TextBox txtCustomerSearch;
         private System.Windows.Forms.DataGridView dgCustomer;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblPink;
+        private System.Windows.Forms.Label lblRed;
+        private System.Windows.Forms.Label lblBlue;
     }
 }

@@ -31,6 +31,11 @@ namespace TSalesManagement
             this.c_view_sales_program_usersTableAdapter.Fill(this.user_infoDataSet.c_view_sales_program_users);
             //cmbStaff.SelectedIndex = -1;
             //cmbStaff.Items.Add("Corey Jones");
+
+            //colour the legend
+            lblPink.BackColor = Color.HotPink;
+            lblRed.BackColor = Color.OrangeRed;
+            lblBlue.BackColor = Color.CornflowerBlue;
         }
 
         private void fillGrid()
