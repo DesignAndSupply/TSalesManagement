@@ -110,6 +110,8 @@ namespace TSalesManagement
             //}
 
             //paintGrid();
+            foreach (DataGridViewColumn column in dgPipeline.Columns)
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
 
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
@@ -210,6 +212,8 @@ namespace TSalesManagement
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
+            foreach (DataGridViewColumn column in dgActivity.Columns)
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
 
         private void fillTaskGrid()
@@ -243,6 +247,8 @@ namespace TSalesManagement
             //}
 
             //paintTaskGrid();V
+            foreach (DataGridViewColumn column in dgTask.Columns)
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
 
             dgActivity.ClearSelection();
             dgPipeline.ClearSelection();
@@ -892,6 +898,12 @@ namespace TSalesManagement
             catch (Exception)
             {
             }
+
+
+            //remove the sorting by columns (sorting by a column removes the painted aspect of the grid
+            foreach (DataGridViewColumn column in dgCustomer.Columns)
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+
         }
 
         private void dgCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
