@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Nager.Date;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-
-using System.Windows.Forms.DataVisualization.Charting;
-using Nager.Date;
+using System.Drawing;
 using System.Drawing.Printing;
+using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TSalesManagement
 {
     public partial class form1 : Form
     {
-
-        DateTime firstDayOfMonth;
-        DateTime lastDayOfMonth;
-        Bitmap memoryImage;
-
+        private DateTime firstDayOfMonth;
+        private DateTime lastDayOfMonth;
+        private Bitmap memoryImage;
 
         public double _slimlineSales { get; set; }
         public double _traditionalSales { get; set; }
@@ -38,12 +30,10 @@ namespace TSalesManagement
             memoryGraphics.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, s);
         }
 
-
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, e.PageBounds);
         }
-
 
         public form1()
         {
@@ -51,14 +41,10 @@ namespace TSalesManagement
             cmbMonth.SelectedItem = DateTime.Now.ToString("MMMM");
             cmbYear.SelectedItem = DateTime.Now.Year.ToString();
             calculateData();
-
         }
 
-
-
-        void calculateData()
+        private void calculateData()
         {
-
             TimeConversion tc = new TimeConversion();
             firstDayOfMonth = tc.GetDate(cmbMonth.SelectedItem.ToString(), cmbYear.SelectedItem.ToString());
 
@@ -75,9 +61,8 @@ namespace TSalesManagement
             SlimlineDrawSalesChart();
             FillMeetingData();
 
-
             lblOverView.Text = "AS A COMPANY OUR POSSIBLE SALES OUTPUT FOR THIS MONTH WAS : £" + (_slimlinePotential + _traditionalPotential) + " WE ACHEIVED : £" + (_slimlineSales + _traditionalSales);
-            if((_slimlinePotential + _traditionalPotential) > _slimlineSales + _traditionalSales)
+            if ((_slimlinePotential + _traditionalPotential) > _slimlineSales + _traditionalSales)
             {
                 lblOverView.ForeColor = Color.Red;
             }
@@ -85,15 +70,14 @@ namespace TSalesManagement
             {
                 lblOverView.ForeColor = Color.Green;
             }
-
         }
+
         private void btnView_Click(object sender, EventArgs e)
         {
             calculateData();
-
         }
 
-        void FillInvoiceGridView()
+        private void FillInvoiceGridView()
         {
             SqlConnection sqlconn = new SqlConnection(SqlStatements.ConnectionString);
             if (sqlconn.State == System.Data.ConnectionState.Closed)
@@ -107,11 +91,10 @@ namespace TSalesManagement
                 sqlda.Fill(dt);
                 sqlconn.Close();
                 dgInvoice.DataSource = dt;
-
             }
-
         }
-        void SlimlineDrawSalesChart()
+
+        private void SlimlineDrawSalesChart()
         {
             //CLEARS ALL EXISTING SERIES
             while (chrtSlimline.Series.Count > 0) { chrtSlimline.Series.RemoveAt(0); }
@@ -123,21 +106,19 @@ namespace TSalesManagement
             string dateWeekendCheck;
             DateTime weekendCheck;
 
-
             SqlStatements sqlst = new SqlStatements();
 
             var tuple = sqlst.GetSalesTarget(cmbMonth.Text, cmbYear.Text);
 
             int monthlyTarget = tuple.Item2;
             double dailyTarget = monthlyTarget / 20;
-            string dailyTargetWording = Math.Round((dailyTarget / 1000),2).ToString() + "k";
+            string dailyTargetWording = Math.Round((dailyTarget / 1000), 2).ToString() + "k";
 
             //ADDS SALES FIGURE SERIES
             var series = new Series("Slimline Sales");
             var seriesTarget = new Series("Slimline Target");
             var potentialSales = new Series(dailyTargetWording + " Per Day Target Line");
-            var currentPotentialSeries = new Series(dailyTargetWording+ " Per Day from today onwards");
-
+            var currentPotentialSeries = new Series(dailyTargetWording + " Per Day from today onwards");
 
             SqlConnection SqlCon = new SqlConnection(SqlStatements.ConnectionString);
 
@@ -156,13 +137,10 @@ namespace TSalesManagement
             cumulativePotential = 0;
             currentPotential = 0;
 
-
-            
             foreach (DataRow row in dt.Rows)
             {
-
-               progressBar1.Value = progressBar1.Value +1;
-               progressBar1.Update();
+                progressBar1.Value = progressBar1.Value + 1;
+                progressBar1.Update();
 
                 cumulativeSalesFigure = cumulativeSalesFigure + Convert.ToDouble(row["door_value"].ToString());
 
@@ -173,7 +151,6 @@ namespace TSalesManagement
                 {
                     currentPotential = currentPotential + Convert.ToDouble(row["door_value"].ToString());
                 }
-
                 else
                 {
                     if (DateSystem.IsPublicHoliday(weekendCheck, CountryCode.GB) || weekendCheck.DayOfWeek == DayOfWeek.Saturday || weekendCheck.DayOfWeek == DayOfWeek.Sunday)
@@ -185,7 +162,6 @@ namespace TSalesManagement
                         currentPotential = currentPotential + dailyTarget;
                     }
                 }
-
 
                 //ONLY ADD THE CUMULATIVE POTENTIAL IF WEEKDAY ISNT WEEKEND
                 if (DateSystem.IsPublicHoliday(weekendCheck, CountryCode.GB) || weekendCheck.DayOfWeek == DayOfWeek.Saturday || weekendCheck.DayOfWeek == DayOfWeek.Sunday)
@@ -226,20 +202,17 @@ namespace TSalesManagement
             chrtSlimline.Series.Add(currentPotentialSeries);
             chrtSlimline.Series[dailyTargetWording + " Per Day from today onwards"].ChartType = SeriesChartType.Line;
 
-
-
             chrtSlimline.Series["Slimline Target"].BorderWidth = 2;
             chrtSlimline.Series["Slimline Sales"].BorderWidth = 2;
-            chrtSlimline.Series[dailyTargetWording +" Per Day from today onwards"].BorderWidth = 2;
-            chrtSlimline.Series[dailyTargetWording+ " Per Day Target Line"].BorderWidth = 2;
-
+            chrtSlimline.Series[dailyTargetWording + " Per Day from today onwards"].BorderWidth = 2;
+            chrtSlimline.Series[dailyTargetWording + " Per Day Target Line"].BorderWidth = 2;
 
             chrtSlimline.ChartAreas["ChartArea1"].AxisX.Interval = 1;
             chrtSlimline.ChartAreas["ChartArea1"].AxisY.Interval = 50000;
             chrtSlimline.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-
         }
-        void DrawSalesChart()
+
+        private void DrawSalesChart()
         {
             //CLEARS ALL EXISTING SERIES
             while (chart1.Series.Count > 0) { chart1.Series.RemoveAt(0); }
@@ -261,7 +234,7 @@ namespace TSalesManagement
             string dailyTargetWording = Math.Round((dailyTarget / 1000), 2).ToString() + "k";
 
             int monthlyTargetWithAdditionalDays = monthlyTarget;
-            
+
             string dateWeekendCheck;
             DateTime weekendCheck;
 
@@ -295,7 +268,6 @@ namespace TSalesManagement
             progressBar1.Maximum = dt.Rows.Count * 2;
             foreach (DataRow row in dt.Rows)
             {
-                
                 progressBar1.Value = progressBar1.Value + 1;
                 progressBar1.Update();
                 dateWeekendCheck = row["date_completion"].ToString();
@@ -304,11 +276,10 @@ namespace TSalesManagement
                 //Totals up the sales figure
                 cumulativeSalesFigure = cumulativeSalesFigure + Convert.ToDouble(row["door_value"].ToString());
 
-                if(Convert.ToDateTime(row["date_completion"])<=DateTime.Today)
+                if (Convert.ToDateTime(row["date_completion"]) <= DateTime.Today)
                 {
                     currentPotential = currentPotential + Convert.ToDouble(row["door_value"].ToString());
                 }
-
                 else
                 {
                     if (DateSystem.IsPublicHoliday(weekendCheck, CountryCode.GB) || weekendCheck.DayOfWeek == DayOfWeek.Saturday || weekendCheck.DayOfWeek == DayOfWeek.Sunday)
@@ -319,12 +290,11 @@ namespace TSalesManagement
                     {
                         currentPotential = currentPotential + dailyTarget;
                         workingDaysRemaining += 1;
-
                     }
                 }
 
                 //ONLY ADD THE CUMULATIVE POTENTIAL IF WEEKDAY ISNT WEEKEND
-                if(DateSystem.IsPublicHoliday(weekendCheck,CountryCode.GB) || weekendCheck.DayOfWeek == DayOfWeek.Saturday || weekendCheck.DayOfWeek == DayOfWeek.Sunday)
+                if (DateSystem.IsPublicHoliday(weekendCheck, CountryCode.GB) || weekendCheck.DayOfWeek == DayOfWeek.Saturday || weekendCheck.DayOfWeek == DayOfWeek.Sunday)
                 {
                     cumulativePotential = cumulativePotential + 0;
                 }
@@ -332,23 +302,16 @@ namespace TSalesManagement
                 {
                     cumulativePotential = cumulativePotential + dailyTarget;
                     workingDaysInMonth += 1;
-
                 }
-
 
                 potentialSales.Points.AddXY(row["date_completion"], cumulativePotential);
                 series.Points.AddXY(row["date_completion"], cumulativeSalesFigure);
                 currentPotentialSeries.Points.AddXY(row["date_completion"], currentPotential);
 
                 //NEED DYNAMIC GOALS
-               
+
                 seriesTarget.Points.AddXY(row["date_completion"], monthlyTarget);
-                
             }
-
-
-
-
 
             //FILL TRADITIONAL TEXTBOXES
 
@@ -360,9 +323,6 @@ namespace TSalesManagement
             txtDailyTargetHitFromNow.Text = "£" + currentPotential.ToString();
             txtWorkingDays.Text = workingDaysInMonth.ToString();
             //txtRemainingWorkingDays.Text = workingDaysRemaining.ToString();
-
-            
-
 
             //PLOTS THE 10 AND 15 DAY BOOKING IN CUT OFF POINTS.
             DataTable dt2 = new DataTable();
@@ -377,7 +337,6 @@ namespace TSalesManagement
             {
                 if (DateSystem.IsPublicHoliday(date, CountryCode.GB) || date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
                 {
-
                 }
                 else
                 {
@@ -385,27 +344,19 @@ namespace TSalesManagement
                 }
             }
 
-
-
-
             foreach (DataRow row in dt2.Rows)
             {
                 dateWeekendCheck = row["date_completion"].ToString();
                 weekendCheck = Convert.ToDateTime(dateWeekendCheck);
                 if (DateSystem.IsPublicHoliday(weekendCheck, CountryCode.GB) || weekendCheck.DayOfWeek == DayOfWeek.Saturday || weekendCheck.DayOfWeek == DayOfWeek.Sunday)
                 {
-                   
                 }
                 else
                 {
-
-
-
                     if (DateTime.Today <= weekendCheck)
                     {
                         daysToTenDayCutOff += 1;
                     }
-
 
                     workingDayCounter = workingDayCounter - 1;
                     switch (workingDayCounter)
@@ -415,14 +366,12 @@ namespace TSalesManagement
                             //SETS THE AMOUNT OF DAYS REMAINING UNTIL THE 10 DAY CUT OFF
                             txtRemainingWorkingDays.Text = daysToTenDayCutOff.ToString();
                             break;
+
                         case 15:
                             fifteenDayCutOff.Points.AddXY(row["date_completion"], monthlyTarget);
                             break;
                     }
-
                 }
-
-               
             }
 
             //SETS THE BIG GOAL --- EVERYTHING WE CURRENTLY HAVE BOOKED IN + DAILY GOAL * BY THE AMOUNT OF DAYS TO THE TEN DAY CUT OFF
@@ -450,9 +399,6 @@ namespace TSalesManagement
             chart1.Series.Add(fifteenDayCutOff);
             chart1.Series["15 Day Cut Off"].ChartType = SeriesChartType.Stock;
 
-
-
-
             //Adds the series thicknesses and the axis intervals
             chart1.Series["Traditional Sales"].BorderWidth = 2;
             chart1.Series["Traditional Target"].BorderWidth = 2;
@@ -465,44 +411,33 @@ namespace TSalesManagement
             chart1.ChartAreas["ChartArea1"].AxisX.Interval = 1;
             chart1.ChartAreas["ChartArea1"].AxisY.Interval = 50000;
             chart1.ChartAreas[0].AxisX.MajorGrid.LineWidth = 0;
-
-
         }
 
-        void FillMeetingData()
+        private void FillMeetingData()
         {
-         
-                //GETS DOOR DATA
-                //UPDATES OPERATIONS DATAGRID
-                SqlConnection con = new SqlConnection(SqlStatements.ConnectionString);
-                SqlCommand sqlMeetingData = new SqlCommand();
-                sqlMeetingData.Connection = con;
-                sqlMeetingData.CommandType = CommandType.Text;
-                sqlMeetingData.CommandText = "Select * FROM dbo.SALES_meeting_notes where meetingMonth = @firstDayOfMonth";
-                sqlMeetingData.Parameters.AddWithValue("@firstDayOfMonth", firstDayOfMonth);
-
-
+            //GETS DOOR DATA
+            //UPDATES OPERATIONS DATAGRID
+            SqlConnection con = new SqlConnection(SqlStatements.ConnectionString);
+            SqlCommand sqlMeetingData = new SqlCommand();
+            sqlMeetingData.Connection = con;
+            sqlMeetingData.CommandType = CommandType.Text;
+            sqlMeetingData.CommandText = "Select * FROM dbo.SALES_meeting_notes where meetingMonth = @firstDayOfMonth";
+            sqlMeetingData.Parameters.AddWithValue("@firstDayOfMonth", firstDayOfMonth);
 
             SqlDataAdapter sqlDoorDataAdap = new SqlDataAdapter(sqlMeetingData);
 
-                DataTable dtDoorData = new DataTable();
-                sqlDoorDataAdap.Fill(dtDoorData);
+            DataTable dtDoorData = new DataTable();
+            sqlDoorDataAdap.Fill(dtDoorData);
             try
             {
                 richTextBox1.Text = dtDoorData.Rows[0]["meetingNotes"].ToString();
-
-
             }
             catch
             {
-
             }
-
-           
         }
 
-
-        void FillForecastGridView()
+        private void FillForecastGridView()
         {
             SqlConnection sqlconn = new SqlConnection(SqlStatements.ConnectionString);
             if (sqlconn.State == System.Data.ConnectionState.Closed)
@@ -518,24 +453,20 @@ namespace TSalesManagement
                 sqlda.Fill(dt);
                 sqlconn.Close();
                 dgForeCast.DataSource = dt;
-
             }
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void btnExplainForecast_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This Grid displays all doors with a completion date in this month, that are Active/Query/Complete and either have no invoice or have been invoiced this month. Also factored into the totals are doors complete before the start of the current month but invoiced after the start of the current month. These parameters exclude proformas printed in other months.", "Help",  MessageBoxButtons.OK ,MessageBoxIcon.Question);
+            MessageBox.Show("This Grid displays all doors with a completion date in this month, that are Active/Query/Complete and either have no invoice or have been invoiced this month. Also factored into the totals are doors complete before the start of the current month but invoiced after the start of the current month. These parameters exclude proformas printed in other months.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Question);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -545,26 +476,22 @@ namespace TSalesManagement
 
         private void dgForeCast_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void btnForecastDetails_Click(object sender, EventArgs e)
         {
-            DetailView dv = new DetailView(firstDayOfMonth,lastDayOfMonth);
+            DetailView dv = new DetailView(firstDayOfMonth, lastDayOfMonth);
             dv.ShowDialog();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             SqlStatements sqlst = new SqlStatements();
             sqlst.UpdateRecord(this.richTextBox1.Text, firstDayOfMonth);
-
         }
 
         private void btnViewInvoice_Click(object sender, EventArgs e)
@@ -575,17 +502,15 @@ namespace TSalesManagement
         private void btnPrintScreen_Click(object sender, EventArgs e)
         {
             CaptureScreen();
-            
+
             printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
             printDocument1.DefaultPageSettings.Landscape = true;
-            
+
             printDocument1.Print();
-            
         }
 
         private void chart1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void btnPipeLine_Click(object sender, EventArgs e)

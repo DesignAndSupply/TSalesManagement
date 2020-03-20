@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace TSalesManagement
 {
-    class SqlStatements
+    internal class SqlStatements
     {
-
         public const string ConnectionString = "user id=sa;" +
                                "password=Dodid1;Network Address=192.168.0.150\\sqlexpress;" +
                                "Trusted_Connection=no;" +
@@ -23,13 +18,8 @@ namespace TSalesManagement
              "database=ToDo; " +
              "connection timeout=30";
 
-
-
-
-
-        public Tuple<Int32,Int32> GetSalesTarget(string monthName, string yearName)
+        public Tuple<Int32, Int32> GetSalesTarget(string monthName, string yearName)
         {
-
             SqlConnection SqlCon = new SqlConnection(SqlStatements.ConnectionString);
 
             SqlCommand getSalesTargetSQL = new SqlCommand();
@@ -42,14 +32,11 @@ namespace TSalesManagement
             DataTable dt = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter(getSalesTargetSQL);
             adapter.Fill(dt);
-            
 
             if (dt != null)
             {
-
                 foreach (DataRow row in dt.Rows)
                 {
-
                     //return Convert.ToInt16(row["target_value"]);
                     return Tuple.Create(Convert.ToInt32(row["target_value"]), Convert.ToInt32(row["slimline_target_value"]));
                 }
@@ -59,10 +46,8 @@ namespace TSalesManagement
                 return Tuple.Create(Convert.ToInt32(0), Convert.ToInt32(0));
             }
 
-
             return Tuple.Create(Convert.ToInt32(0), Convert.ToInt32(0));
         }
-
 
         public void UpdateRecord(string meetingNote, DateTime firstDayOfMonth)
         {
@@ -70,12 +55,11 @@ namespace TSalesManagement
             sqlconn.Open();
             //try
             //{
-
-                SqlCommand sqlcmd = new SqlCommand("UPDATE dbo.SALES_meeting_notes SET meetingNotes = @note WHERE meetingMonth = @firstDayOfMonth ", sqlconn);
-                sqlcmd.Parameters.AddWithValue("@note", meetingNote);
-                sqlcmd.Parameters.AddWithValue("@firstDayOfMonth", firstDayOfMonth);
-                sqlcmd.ExecuteNonQuery();
-                sqlconn.Close();
+            SqlCommand sqlcmd = new SqlCommand("UPDATE dbo.SALES_meeting_notes SET meetingNotes = @note WHERE meetingMonth = @firstDayOfMonth ", sqlconn);
+            sqlcmd.Parameters.AddWithValue("@note", meetingNote);
+            sqlcmd.Parameters.AddWithValue("@firstDayOfMonth", firstDayOfMonth);
+            sqlcmd.ExecuteNonQuery();
+            sqlconn.Close();
             //}
             //catch
             //{
@@ -85,8 +69,6 @@ namespace TSalesManagement
             //    sqlcmd.ExecuteNonQuery();
             //    sqlconn.Close();
             //}
-
         }
-
     }
 }

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -24,7 +17,7 @@ namespace TSalesManagement
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     conn.Open();
-                    SqlDataReader DR = cmd.ExecuteReader(); //get customer details 
+                    SqlDataReader DR = cmd.ExecuteReader(); //get customer details
                     while (DR.Read())
                     {
                         cmbCustomer.Items.Add(DR[0]);
@@ -71,7 +64,7 @@ namespace TSalesManagement
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            //work out which boxes can be null etc 
+            //work out which boxes can be null etc
             char[] charsToTrim = { ' ' };
             string customerName = cmbCustomer.Text.ToString();
             customerName.Trim(charsToTrim);
@@ -82,7 +75,7 @@ namespace TSalesManagement
                 ") VALUES ('" + txtProjectTitle.Text + "','" + cmb_person_in_charge.Text + "','" + customerName + "'," +
                 "'" + txtCommercialName.Text + "','" + txtCommercialNumber.Text + "','" + txtCommercialEmail.Text + "','" + txtCommercialPosition.Text + "'," +
                 "'" + txtOnSiteName.Text + "','" + txtOnSiteNumber.Text + "','" + txtOnSiteEmail.Text + "','" + txtOnSitePosition.Text + "'," +
-                "'" + txtAccountsName.Text + "','" + txtAccountsNumber.Text + "','" + txtAccountsEmail.Text + "','" + txtAccountsEmail.Text + "')"; 
+                "'" + txtAccountsName.Text + "','" + txtAccountsNumber.Text + "','" + txtAccountsEmail.Text + "','" + txtAccountsEmail.Text + "')";
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -104,8 +97,6 @@ namespace TSalesManagement
         private void frmAddProject_FormClosing(object sender, FormClosingEventArgs e)
         {
             //refresh my form
-
-                
         }
     }
 }

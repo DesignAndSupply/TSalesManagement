@@ -1,24 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-using StartUpClass;
+﻿using StartUpClass;
+using System;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace TSalesManagement
 {
-    class Tasks
+    internal class Tasks
     {
-
-
         public void createTask(int setForID, DateTime? dueDate, string priorityLevel, string taskDetail, string taskSubject, bool logOnBehalf, int logOnBehalfOF, double? activityiD)
         {
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionStringToDo);
 
             int currentUserID = Login.globalUserID;
-
 
             string command = "usp_add_task";
 
@@ -46,14 +39,7 @@ namespace TSalesManagement
                 cmd.ExecuteNonQuery();
 
                 conn.Close();
-
             }
         }
-
-
     }
-
-
 }
-
-   

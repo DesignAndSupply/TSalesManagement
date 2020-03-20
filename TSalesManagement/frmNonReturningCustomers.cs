@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using StartUpClass;
+using System.Drawing;
+using System.Windows.Forms;
 using TSalesManagement.Class;
 
 namespace TSalesManagement
@@ -19,7 +13,6 @@ namespace TSalesManagement
         {
             InitializeComponent();
         }
-
 
         private void populateLostCustomers()
         {
@@ -36,7 +29,6 @@ namespace TSalesManagement
 
             SqlCommand cmd = new SqlCommand("usp_lost_customer_view", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-
 
             SqlParameter param = new SqlParameter();
             param = cmd.Parameters.Add("@start_Date", SqlDbType.DateTime);
@@ -65,20 +57,16 @@ namespace TSalesManagement
                     this.dgvCustomer.Columns.Add(button);
                 }
             }
-
         }
-
 
         private void clearGrid()
         {
             try
             {
                 dgvCustomer.Columns.Remove("Button1");
-
             }
             catch
             {
-
             }
         }
 
@@ -86,14 +74,9 @@ namespace TSalesManagement
         {
             foreach (DataGridViewRow row in dgvCustomer.Rows)
             {
-
                 string rowNotes = row.Cells["Notes"].Value.ToString();
 
-                
-
-
-
-                if(string.IsNullOrWhiteSpace(rowNotes) == false)
+                if (string.IsNullOrWhiteSpace(rowNotes) == false)
                 {
                     row.Cells["FirstAndLast"].Style.BackColor = Color.LawnGreen;
                     row.Cells["FirstAndLast"].Style.ForeColor = Color.LawnGreen;
@@ -124,7 +107,6 @@ namespace TSalesManagement
                     else
                     if (Convert.ToInt32(row.Cells["FirstAndLast"].Value) == -1)
                     {
-
                         row.Cells["FirstAndLast"].Style.BackColor = Color.PaleVioletRed;
                         row.Cells["FirstAndLast"].Style.ForeColor = Color.PaleVioletRed;
                         row.Cells["Last Time Ordered"].Style.BackColor = Color.PaleVioletRed;
@@ -135,8 +117,6 @@ namespace TSalesManagement
                         row.Cells["AccRef"].Style.BackColor = Color.PaleVioletRed;
                         row.Cells["Contact?"].Style.BackColor = Color.PaleVioletRed;
                         row.Cells["Notes"].Style.BackColor = Color.PaleVioletRed;
-
-
                     }
                     else
                     {
@@ -146,11 +126,9 @@ namespace TSalesManagement
                         row.Cells["FirstAndLast"].Style.ForeColor = Color.White;
                     }
                 }
-
- 
-
             }
         }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             populateLostCustomers();
@@ -172,7 +150,6 @@ namespace TSalesManagement
 
                     frmNonReturningCustomerNotes frmNRCN = new frmNonReturningCustomerNotes(accRef);
                     frmNRCN.ShowDialog();
-
 
                     populateLostCustomers();
                 }

@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using StartUpClass;
+using System.Drawing;
+using System.Windows.Forms;
 using TSalesManagement.Class;
 
 namespace TSalesManagement
@@ -19,7 +13,6 @@ namespace TSalesManagement
         {
             InitializeComponent();
         }
-
 
         private void populateLostCustomers()
         {
@@ -36,7 +29,6 @@ namespace TSalesManagement
 
             SqlCommand cmd = new SqlCommand("usp_new_customer_view", conn);
             cmd.CommandType = CommandType.StoredProcedure;
-
 
             SqlParameter param = new SqlParameter();
             param = cmd.Parameters.Add("@start_Date", SqlDbType.DateTime);
@@ -65,20 +57,16 @@ namespace TSalesManagement
                     this.dgvCustomer.Columns.Add(button);
                 }
             }
-
         }
-
 
         private void clearGrid()
         {
             try
             {
                 dgvCustomer.Columns.Remove("Button1");
-
             }
             catch
             {
-
             }
         }
 
@@ -86,31 +74,23 @@ namespace TSalesManagement
         {
             foreach (DataGridViewRow row in dgvCustomer.Rows)
             {
-
                 string rowNotes = row.Cells["Notes"].Value.ToString();
 
-                
-
-
-
-                if(string.IsNullOrWhiteSpace(rowNotes) == false)
+                if (string.IsNullOrWhiteSpace(rowNotes) == false)
                 {
                     row.Cells["First Door"].Style.BackColor = Color.LawnGreen;
                     row.Cells["Order Date"].Style.BackColor = Color.LawnGreen;
-                 
+
                     row.Cells["Customer"].Style.BackColor = Color.LawnGreen;
                     row.Cells["AccRef"].Style.BackColor = Color.LawnGreen;
                     row.Cells["Notes"].Style.BackColor = Color.LawnGreen;
                 }
                 else
                 {
-                    
                 }
-
- 
-
             }
         }
+
         private void btnGenerate_Click(object sender, EventArgs e)
         {
             populateLostCustomers();
@@ -132,7 +112,6 @@ namespace TSalesManagement
 
                     frmNewCustomerNotes frmNRCN = new frmNewCustomerNotes(accRef);
                     frmNRCN.ShowDialog();
-
 
                     populateLostCustomers();
                 }

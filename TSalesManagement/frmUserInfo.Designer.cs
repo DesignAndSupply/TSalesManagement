@@ -164,7 +164,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgActivity.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgActivity.Location = new System.Drawing.Point(249, 200);
@@ -202,7 +202,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgPipeline.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgPipeline.Location = new System.Drawing.Point(249, 461);
@@ -306,7 +306,7 @@
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgTask.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgTask.Location = new System.Drawing.Point(250, 414);
@@ -345,11 +345,11 @@
             // lblCustomer
             // 
             this.lblCustomer.AutoSize = true;
-            this.lblCustomer.Location = new System.Drawing.Point(256, 14);
+            this.lblCustomer.Location = new System.Drawing.Point(312, 14);
             this.lblCustomer.Name = "lblCustomer";
-            this.lblCustomer.Size = new System.Drawing.Size(87, 13);
+            this.lblCustomer.Size = new System.Drawing.Size(122, 13);
             this.lblCustomer.TabIndex = 17;
-            this.lblCustomer.Text = "Select Customer:";
+            this.lblCustomer.Text = "Search Customer Name:";
             this.lblCustomer.Visible = false;
             // 
             // txtCustomerSearch
@@ -386,7 +386,7 @@
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgCustomer.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgCustomer.Location = new System.Drawing.Point(247, 72);

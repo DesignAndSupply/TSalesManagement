@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -25,36 +19,28 @@ namespace TSalesManagement
 
         private void frmCustomerList_Load(object sender, EventArgs e)
         {
-
         }
-
 
         private void fillGrid()
         {
             SqlConnection con = new SqlConnection(SqlStatements.ConnectionString);
-
- 
 
             //UPDATES THE PAINT TO DOOR DATAGRID
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
             cmd.CommandType = CommandType.Text;
             cmd.CommandText = "Select * From dbo.c_sales_view_customer_data where [Customer Name] like @custName";
-            cmd.Parameters.AddWithValue("@custName","%" + txtCustName.Text + "%");
+            cmd.Parameters.AddWithValue("@custName", "%" + txtCustName.Text + "%");
             SqlDataAdapter adap = new SqlDataAdapter(cmd);
-
 
             try
             {
-
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
                 dgvCustomer.DataSource = dt;
-
             }
             catch (Exception)
             {
-               
             }
         }
 
@@ -77,18 +63,13 @@ namespace TSalesManagement
 
                 DataGridViewRow selectedRow = dgvCustomer.Rows[selectedrowindex];
 
-                custAccRef= selectedRow.Cells["Account Ref"].Value.ToString();
+                custAccRef = selectedRow.Cells["Account Ref"].Value.ToString();
                 custName = selectedRow.Cells["Customer Name"].Value.ToString();
-
 
                 frmCustomerInformation frmCI = new frmCustomerInformation(custAccRef, custName);
                 frmCI.ShowDialog();
                 //fillGrid();
-
-
             }
-
-
         }
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
@@ -100,7 +81,6 @@ namespace TSalesManagement
 
         private void dgvCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void txtCustName_TextChanged(object sender, EventArgs e)

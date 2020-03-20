@@ -1,38 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
+
 namespace TSalesManagement
 {
     public partial class DetailView : Form
     {
-
         private DateTime firstDayOfMonth;
         private DateTime lastDayOfMonth;
+
         public DetailView(DateTime fd, DateTime ld)
         {
             InitializeComponent();
             firstDayOfMonth = fd;
             lastDayOfMonth = ld;
-
         }
 
-
-
-
-     
         private void DetailView_Load(object sender, EventArgs e)
         {
             FillDetailView();
-
         }
-        void FillDetailView()
+
+        private void FillDetailView()
         {
             SqlConnection sqlconn = new SqlConnection(SqlStatements.ConnectionString);
             if (sqlconn.State == System.Data.ConnectionState.Closed)
@@ -48,11 +38,7 @@ namespace TSalesManagement
                 sqlda.Fill(dt);
                 sqlconn.Close();
                 dgDetail.DataSource = dt;
-
             }
-
         }
-
-
     }
 }

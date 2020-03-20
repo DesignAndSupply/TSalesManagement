@@ -1,6 +1,6 @@
-﻿using System.ComponentModel;
-using LiveCharts;
+﻿using LiveCharts;
 using LiveCharts.Wpf;
+using System.ComponentModel;
 
 namespace Wpf.CartesianChart.CustomTooltipAndLegend
 {

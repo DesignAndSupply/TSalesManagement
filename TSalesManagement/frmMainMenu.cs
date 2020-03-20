@@ -1,25 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StartUpClass;
+using System;
 using System.Windows.Forms;
-using StartUpClass;
-using Microsoft.IdentityModel.Clients.ActiveDirectory;
-using Microsoft.PowerBI.Api.V2;
-using Microsoft.PowerBI.Api.V2.Models;
-
-
 
 namespace TSalesManagement
 {
     public partial class frmMainMenu : Form
     {
-
-
         public frmMainMenu()
         {
             InitializeComponent();
@@ -29,11 +15,8 @@ namespace TSalesManagement
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
             MessageBox.Show(Login.globalUserName + " " + Login.globalAdmin + " " + Login.globalSuperUser);
         }
-
-
 
         private void activityLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -55,27 +38,24 @@ namespace TSalesManagement
             frmP.Show();
         }
 
-
-
         private void FrmMainMenu_MdiChildActivate(object sender,
                                     EventArgs e)
         {
-
             if (this.ActiveMdiChild == null)
                 tabForms.Visible = false;
-            // If no any child form, hide tabControl 
+            // If no any child form, hide tabControl
             else
             {
                 this.ActiveMdiChild.WindowState =
                 FormWindowState.Maximized;
-                // Child form always maximized 
+                // Child form always maximized
 
-                // If child form is new and no has tabPage, 
-                // create new tabPage 
+                // If child form is new and no has tabPage,
+                // create new tabPage
                 if (this.ActiveMdiChild.Tag == null)
                 {
-                    // Add a tabPage to tabControl with child 
-                    // form caption 
+                    // Add a tabPage to tabControl with child
+                    // form caption
                     TabPage tp = new TabPage(this.ActiveMdiChild
                                              .Text);
                     tp.Tag = this.ActiveMdiChild;
@@ -89,7 +69,6 @@ namespace TSalesManagement
                 }
 
                 if (!tabForms.Visible) tabForms.Visible = true;
-
             }
         }
 
@@ -98,8 +77,6 @@ namespace TSalesManagement
         {
             ((sender as Form).Tag as TabPage).Dispose();
         }
-
-
 
         private void TabForms_SelectedIndexChanged(object sender,
                                            EventArgs e)
@@ -147,7 +124,7 @@ namespace TSalesManagement
 
         private void addTaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmNewTask nt = new frmNewTask(null,null,null,null,null);
+            frmNewTask nt = new frmNewTask(null, null, null, null, null);
             nt.ShowDialog();
         }
 

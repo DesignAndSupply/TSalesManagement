@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -109,15 +105,11 @@ namespace TSalesManagement
                     dataGridView1.Rows[i].Cells[11].Style.BackColor = Color.Yellow;
                 if (dataGridView1.Rows[i].Cells[12].Value.ToString() == "Part Yellow")
                     dataGridView1.Rows[i].Cells[12].Style.BackColor = Color.Yellow;
-
             }
 
-
-
             //add some colour
-
-
         }
+
         private void frmViewProjects_Load(object sender, EventArgs e)
         {
             format();
@@ -130,7 +122,7 @@ namespace TSalesManagement
             int ID = Convert.ToInt32(row.Cells["ID"].Value.ToString());
             string title = row.Cells[1].Value.ToString();
             string customer = row.Cells[2].Value.ToString();
-            frmProjectManager PM = new frmProjectManager(ID, title,customer);
+            frmProjectManager PM = new frmProjectManager(ID, title, customer);
             PM.ShowDialog();
             refreshDGV();
             format();
@@ -164,7 +156,6 @@ namespace TSalesManagement
                 }
             }
             format();
-
         }
     }
 }

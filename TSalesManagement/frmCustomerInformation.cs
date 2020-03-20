@@ -1,43 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Windows.Forms;
-
-using TSalesManagement.Class;
 using System.Data.SqlClient;
-
-
-
-
-using System.Windows.Media;
 using System.Windows;
-
-
-
-
+using System.Windows.Forms;
+using System.Windows.Media;
+using TSalesManagement.Class;
 
 namespace TSalesManagement
 {
     public partial class frmCustomerInformation : Form
     {
-
         private string _custAccRef { get; set; }
         private string _custName { get; set; }
-
 
         public frmCustomerInformation(string custAccRef, string custName)
         {
             InitializeComponent();
-            
+
             _custAccRef = custAccRef;
             _custName = custName;
-
 
             lblAccRef.Text = "Account Ref: " + _custAccRef;
             lblCName.Text = _custName;
@@ -57,9 +38,6 @@ namespace TSalesManagement
             fillActivityGrid();
             fillContactsGrid();
             addConversionGauge();
-
-            
-
         }
 
         private void frmCustomerInformation_Load(object sender, EventArgs e)
@@ -69,15 +47,13 @@ namespace TSalesManagement
 
         public static void masterFillPipelineGrid()
         {
-            
         }
 
         private void addConversionGauge()
         {
-
             //custom fill
             Visualisations v = new Visualisations(_custAccRef);
-            
+
             solidGauge5.From = 0;
             solidGauge5.To = 100;
             solidGauge5.Value = v.conversionRate;
@@ -92,10 +68,7 @@ namespace TSalesManagement
                     new GradientStop(Colors.Red, 1)
                 }
             };
-
-
         }
-
 
         private void fillPipelineGrid()
         {
@@ -121,9 +94,7 @@ namespace TSalesManagement
             }
             catch (Exception)
             {
-
             }
-
         }
 
         private void fillContactsGrid()
@@ -145,13 +116,10 @@ namespace TSalesManagement
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
                 dgContacts.DataSource = dt;
-
             }
             catch (Exception)
             {
-
             }
-
         }
 
         private void fillActivityGrid()
@@ -173,22 +141,15 @@ namespace TSalesManagement
                 DataTable dt = new DataTable();
                 adap.Fill(dt);
                 dgvActivity.DataSource = dt;
-
-               
             }
             catch (Exception)
             {
-
             }
-
         }
-
 
         private void fillActiviyGrid()
         {
-
         }
-
 
         private void lblPipeline_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -202,7 +163,6 @@ namespace TSalesManagement
             frmLinkEstimating frmLE = new frmLinkEstimating(_custName, _custAccRef);
             frmLE.ShowDialog();
             addConversionGauge();
-
         }
 
         private void dgvPipeline_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -225,7 +185,6 @@ namespace TSalesManagement
 
         private void dgvPipeline_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void lblActivity_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -238,17 +197,14 @@ namespace TSalesManagement
 
         private void lblAddContact_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
             frmNewContact frmNC = new frmNewContact(_custAccRef);
             frmNC.ShowDialog();
             fillContactsGrid();
-
         }
 
         private void dgvActivity_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int aID;
-
 
             if (dgvActivity.SelectedCells.Count > 0)
             {
@@ -262,15 +218,11 @@ namespace TSalesManagement
                 frmAA.ShowDialog();
 
                 fillActivityGrid();
-
-
             }
         }
 
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-           
-
         }
     }
 }

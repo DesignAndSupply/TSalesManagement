@@ -1,13 +1,6 @@
 ﻿using StartUpClass;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace TSalesManagement
@@ -24,42 +17,34 @@ namespace TSalesManagement
             dueDateVisibility();
             if (activityID is null)
             {
-
             }
             else
             {
-                populateFromActivity(contact,reference,details,customer);
+                populateFromActivity(contact, reference, details, customer);
             }
-            
         }
 
-        private void populateFromActivity(string contact, string reference, string details,string customer)
+        private void populateFromActivity(string contact, string reference, string details, string customer)
         {
-            
             cmbPriority.Text = "High";
-            txtSubject.Text = Regex.Replace(customer,"  ","") +  '-' + contact + '-' + reference;
+            txtSubject.Text = Regex.Replace(customer, "  ", "") + '-' + contact + '-' + reference;
             txtDetail.Text = details;
         }
-
-
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             int logOnBehalfOf = Login.globalUserID;
-
 
             //NON URGENT TASKS CAN BE ADDED TO THE SYSTEM WITH NO DUE DATE
             Tasks t = new Tasks();
             if (chkDueDateRequired.Checked == true)
             {
                 //TODO ALLOW TIME PICKING NOT JUST DATE
-                t.createTask(Convert.ToInt32(cmbSetForID.SelectedValue), Convert.ToDateTime(dteDueDate.Text), cmbPriority.Text, txtDetail.Text, txtSubject.Text, false, logOnBehalfOf,_activityID);
-
+                t.createTask(Convert.ToInt32(cmbSetForID.SelectedValue), Convert.ToDateTime(dteDueDate.Text), cmbPriority.Text, txtDetail.Text, txtSubject.Text, false, logOnBehalfOf, _activityID);
             }
             else
             {
-
-                t.createTask(Convert.ToInt32(cmbSetForID.SelectedValue), null, cmbPriority.Text, txtDetail.Text, txtSubject.Text, false, logOnBehalfOf,_activityID);
+                t.createTask(Convert.ToInt32(cmbSetForID.SelectedValue), null, cmbPriority.Text, txtDetail.Text, txtSubject.Text, false, logOnBehalfOf, _activityID);
             }
 
             this.Close();
@@ -89,7 +74,6 @@ namespace TSalesManagement
                 dteDueDate.Visible = false;
                 lblDueDate.Visible = false;
             }
-
         }
     }
 }

@@ -1,35 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using StartUpClass;
+using System;
 using System.Data.SqlClient;
-using StartUpClass;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
     public partial class frmNewPipeline : Form
     {
-
         public string _accRef { get; set; }
         public int _activityID { get; set; }
-
 
         public frmNewPipeline(string custAccRef, int activityID)
         {
             InitializeComponent();
             _accRef = custAccRef;
             _activityID = activityID;
-            
         }
 
         private void frmNewPipeline_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -59,20 +48,15 @@ namespace TSalesManagement
                 cmd.Parameters.AddWithValue("@status", cmbStatus.Text);
                 cmd.Parameters.AddWithValue("@activityID", _activityID);
 
-
                 cmd.ExecuteNonQuery();
-
-                
 
                 conn.Close();
                 this.Close();
             }
-            
         }
 
         private void txtOrderDate_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

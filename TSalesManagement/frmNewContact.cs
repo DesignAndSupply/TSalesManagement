@@ -1,22 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using TSalesManagement.Class;
 
 namespace TSalesManagement
 {
     public partial class frmNewContact : Form
     {
-
         public string _custAccRef { get; set; }
-
 
         public frmNewContact(string custAccRef)
         {
@@ -30,15 +21,12 @@ namespace TSalesManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            if(string.IsNullOrWhiteSpace(txtForename.Text) || string.IsNullOrWhiteSpace(txtSurname.Text) || string.IsNullOrWhiteSpace(txtEmailAddress.Text) || string.IsNullOrWhiteSpace(txtJobTitle.Text) || string.IsNullOrWhiteSpace(txtTelephone.Text))
+            if (string.IsNullOrWhiteSpace(txtForename.Text) || string.IsNullOrWhiteSpace(txtSurname.Text) || string.IsNullOrWhiteSpace(txtEmailAddress.Text) || string.IsNullOrWhiteSpace(txtJobTitle.Text) || string.IsNullOrWhiteSpace(txtTelephone.Text))
             {
                 MessageBox.Show("All fields are mandatory and must be filled in to continue!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
             else
             {
-
                 SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
                 conn.Open();
 
@@ -55,21 +43,15 @@ namespace TSalesManagement
                 cmd.Parameters.AddWithValue("@forename", txtForename.Text);
                 cmd.Parameters.AddWithValue("@surname", txtSurname.Text);
 
-
                 cmd.ExecuteNonQuery();
                 conn.Close();
                 this.Close();
             }
-
-
-
         }
 
         private void frmNewContact_Load(object sender, EventArgs e)
         {
-            
         }
-
 
         private void populateContactName()
         {

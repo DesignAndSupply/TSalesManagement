@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StartUpClass;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using TSalesManagement.Class;
-using System.Data.SqlClient;
-using StartUpClass;
 
 namespace TSalesManagement
 {
     public partial class frmNewActivity : Form
     {
-
         public string _custAccRef { get; set; }
 
         public frmNewActivity(string custAccRef)
@@ -25,19 +18,13 @@ namespace TSalesManagement
 
             Customer c = new Customer(_custAccRef);
 
-            lblCustomer.Text =  c._customerName;
+            lblCustomer.Text = c._customerName;
             populateContacts();
-
-
         }
 
         private void frmNewActivity_Load(object sender, EventArgs e)
         {
-
         }
-
-
-
 
         private void populateContacts()
         {
@@ -58,12 +45,10 @@ namespace TSalesManagement
             cmbRecipient.DisplayMember = "contact_name";
             cmbRecipient.DataSource = dt;
             conn.Close();
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
 
@@ -80,7 +65,6 @@ namespace TSalesManagement
             cmd.Parameters.AddWithValue("@ref", txtReference.Text);
             cmd.Parameters.AddWithValue("@recipient", cmbRecipient.SelectedValue);
             cmd.Parameters.AddWithValue("@sender", Login.globalUserID);
-
 
             cmd.ExecuteNonQuery();
 
@@ -106,21 +90,12 @@ namespace TSalesManagement
                 {
                     maxID = 0;
                 }
-                
-                frmNewTask nt = new frmNewTask(maxID, cmbRecipient.Text, txtReference.Text,txtDetails.Text, lblCustomer.Text);
+
+                frmNewTask nt = new frmNewTask(maxID, cmbRecipient.Text, txtReference.Text, txtDetails.Text, lblCustomer.Text);
                 nt.ShowDialog();
             }
 
-
-
-
-
-
-
             this.Close();
-
-
-
         }
     }
 }

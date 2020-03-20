@@ -1,28 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Data.SqlClient;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using Nager.Date;
-using System.Data.SqlClient;
-using System.Text.RegularExpressions;
 
 namespace TSalesManagement
 {
     public partial class frmPipeLine : Form
     {
+        private string toolTipMonth;
+        private string toolTipStyle;
+        private string toolTipValue;
 
-
-        string toolTipMonth;
-        string toolTipStyle;
-        string toolTipValue;
-
-       
         public frmPipeLine()
         {
             InitializeComponent();
@@ -41,39 +32,33 @@ namespace TSalesManagement
             this.sALES_LEDGERTableAdapter.Fill(this.order_databaseDataSet.SALES_LEDGER);
             // TODO: This line of code loads data into the 'order_databaseDataSet.sales_pipeline' table. You can move, or remove it, as needed.
             this.sales_pipelineTableAdapter.Fill(this.order_databaseDataSet.sales_pipeline);
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
         }
 
         private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
-            
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             //try
             //{
-
-                sales_pipelineTableAdapter.Update(order_databaseDataSet);
-                MessageBox.Show("Pipeline data has been successfully added. Do you wish to replot the chart?", "Success!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                DrawPipelineChart();
-                FillPipeLineDetails();
+            sales_pipelineTableAdapter.Update(order_databaseDataSet);
+            MessageBox.Show("Pipeline data has been successfully added. Do you wish to replot the chart?", "Success!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DrawPipelineChart();
+            FillPipeLineDetails();
             //}
             //catch
             //{
-                //MessageBox.Show("Update of table has failed. If this error persists please contact IT","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            //MessageBox.Show("Update of table has failed. If this error persists please contact IT","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             //}
         }
 
-
-        void FillPipeLineDetails()
+        private void FillPipeLineDetails()
         {
-
             string salesManName = "";
             string salesManNameCurrentRow = "";
             string salesEstimatedMonth = "";
@@ -92,8 +77,6 @@ namespace TSalesManagement
                 sqlcmd.Parameters.AddWithValue("@status", cmbFilterStatus.Text);
 
                 this.txtPipelineData.Text = "Please hover over a bar on the chart to see breakdown information";
-
-
             }
             else
             {
@@ -102,7 +85,7 @@ namespace TSalesManagement
                 sqlcmd.Parameters.AddWithValue("@estDate", DateTime.Parse(toolTipMonth));
 
                 //SETS THE DOOR STYLE FILTER
-                if (toolTipStyle =="Traditional Pipeline ")
+                if (toolTipStyle == "Traditional Pipeline ")
                 {
                     sqlcmd.Parameters.AddWithValue("@doorStyle", "Traditional");
                 }
@@ -147,7 +130,6 @@ namespace TSalesManagement
                             sb.Append(@" \line \b " + row["Customer Name"].ToString() + @" \b0 " + row["order_ref"].ToString() + " £" + row["estimated_order_value"].ToString() + @"  //" + row["description_of_doors_on_order"] + @" \line ");
                         }
                         salesEstimatedMonth = salesEstimatedMonthCurrentRow;
-
                     }
                     else
                     {
@@ -163,8 +145,6 @@ namespace TSalesManagement
                         }
                         salesEstimatedMonth = salesEstimatedMonthCurrentRow;
                     }
-
-
                 }
 
                 sb.Append("}");
@@ -177,57 +157,42 @@ namespace TSalesManagement
                 {
                     this.txtPipelineData.Rtf = sb.ToString();
                 }
-
-
-
-
-
-
-
             }
-
-
-
         }
 
-        void DrawPipelineChart()
+        private void DrawPipelineChart()
+        {
+            //CLEARS ALL EXISTING SERIES
+            while (chrtPipeline.Series.Count > 0) { chrtPipeline.Series.RemoveAt(0); }
+
+            //ADDS SALES FIGURE SERIES
+            var traditionalSeries = new Series("Traditional Pipeline");
+            var slimlineSeries = new Series("Slimline Pipeline");
+
+            SqlConnection SqlCon = new SqlConnection(SqlStatements.ConnectionString);
+
+            SqlCommand getPipeLineData = new SqlCommand();
+            getPipeLineData.Connection = SqlCon;
+            getPipeLineData.CommandType = CommandType.Text;
+
+            getPipeLineData.CommandText = "Select * from c_view_pipeline_chart  WHERE order_status=@status order by estimated_order_date";
+            getPipeLineData.Parameters.AddWithValue("@status", cmbFilterStatus.Text);
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter adapter = new SqlDataAdapter(getPipeLineData);
+            adapter.Fill(dt);
+
+            foreach (DataRow row in dt.Rows)
             {
-                //CLEARS ALL EXISTING SERIES
-                while (chrtPipeline.Series.Count > 0) { chrtPipeline.Series.RemoveAt(0); }
-
-
-
-                //ADDS SALES FIGURE SERIES
-                var traditionalSeries = new Series("Traditional Pipeline");
-                var slimlineSeries = new Series("Slimline Pipeline");
-
-
-                SqlConnection SqlCon = new SqlConnection(SqlStatements.ConnectionString);
-
-                SqlCommand getPipeLineData = new SqlCommand();
-                getPipeLineData.Connection = SqlCon;
-                getPipeLineData.CommandType = CommandType.Text;
-
-                getPipeLineData.CommandText = "Select * from c_view_pipeline_chart  WHERE order_status=@status order by estimated_order_date";
-                getPipeLineData.Parameters.AddWithValue("@status", cmbFilterStatus.Text);
-
-                DataTable dt = new DataTable();
-                SqlDataAdapter adapter = new SqlDataAdapter(getPipeLineData);
-                adapter.Fill(dt);
-
-                foreach (DataRow row in dt.Rows)
+                if (row["door_style"].ToString() == "Traditional")
                 {
-
-                    if (row["door_style"].ToString() == "Traditional")
-                    {
-                        traditionalSeries.Points.AddXY(row["estimated_order_date"], row["estimated_order_value"]);
-                    }
-                    else
-                    {
-                        slimlineSeries.Points.AddXY(row["estimated_order_date"], row["estimated_order_value"]);
-                    }
-
+                    traditionalSeries.Points.AddXY(row["estimated_order_date"], row["estimated_order_value"]);
                 }
+                else
+                {
+                    slimlineSeries.Points.AddXY(row["estimated_order_date"], row["estimated_order_value"]);
+                }
+            }
 
             ///////////////////////
 
@@ -249,12 +214,10 @@ namespace TSalesManagement
             chrtPipeline.ChartAreas[0].AxisX.LabelStyle.Format = "MMM yyyy";
             chrtPipeline.ChartAreas["ChartArea1"].AxisX.Interval = 1;
             chrtPipeline.ChartAreas["ChartArea1"].AxisY.Interval = 50000;
-
         }
 
         private void salespipelineBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-
         }
 
         private void fillByToolStripButton_Click(object sender, EventArgs e)
@@ -267,7 +230,6 @@ namespace TSalesManagement
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -276,20 +238,18 @@ namespace TSalesManagement
             FillPipeLineDetails();
         }
 
-
         //ToolTip tooltip = new ToolTip();
         //Point? clickPosition = null;
-        void chrtPipeline_GetToolTipText(object sender, ToolTipEventArgs e)
+        private void chrtPipeline_GetToolTipText(object sender, ToolTipEventArgs e)
         {
             try
             {
                 toolTipMonth = e.Text.Substring(e.Text.LastIndexOf(')') + 1); //WORKING
                 toolTipStyle = e.Text.Substring(0, e.Text.IndexOf("(")); //WORKING
                 toolTipValue = Regex.Match(e.Text, @"\(([^)]*)\)").Groups[1].Value.ToString();
-                txtDate.Text = DateTime.Parse(toolTipMonth).ToString("MMMM") ;
+                txtDate.Text = DateTime.Parse(toolTipMonth).ToString("MMMM");
                 txtDept.Text = toolTipStyle;
                 txtValue.Text = toolTipValue;
-               
             }
             catch
             {
@@ -297,22 +257,16 @@ namespace TSalesManagement
                 //txtDept.Text = "Showing All " + cmbFilterStatus.Text;
                 txtDept.Text = "";
                 txtValue.Text = "";
-
             }
             FillPipeLineDetails();
-
         }
-
-
 
         private void chrtPipeline_Click(object sender, EventArgs e)
         {
-           
         }
 
         private void cviewsalesprogramusersBindingSource_CurrentChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

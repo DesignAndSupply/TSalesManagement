@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using StartUpClass;
+using System;
 using System.Data.SqlClient;
-using TSalesManagement.Class;
-using StartUpClass;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -22,13 +14,10 @@ namespace TSalesManagement
             populateNotes();
         }
 
-
         public string _accRef { get; set; }
-
 
         private void frmNonReturningCustomerNotes_Load(object sender, EventArgs e)
         {
-
         }
 
         private void populateNotes()
@@ -38,7 +27,7 @@ namespace TSalesManagement
                 SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("select notes_of_conversation from dbo.crm_do_not_contact where customer_acc_ref = @accRef",conn);
+                SqlCommand cmd = new SqlCommand("select notes_of_conversation from dbo.crm_do_not_contact where customer_acc_ref = @accRef", conn);
                 cmd.Parameters.AddWithValue("@accRef", _accRef);
 
                 SqlDataReader rdr = cmd.ExecuteReader();
@@ -54,7 +43,6 @@ namespace TSalesManagement
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
 
@@ -70,7 +58,7 @@ namespace TSalesManagement
             }
             else
             {
-                SqlCommand cmd = new SqlCommand("INSERT INTO dbo.crm_do_not_contact (notes_of_conversation,contacted_by, contacted_date,customer_acc_ref) VALUES(@notes,@contactBy,@date,@accRef);" , conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO dbo.crm_do_not_contact (notes_of_conversation,contacted_by, contacted_date,customer_acc_ref) VALUES(@notes,@contactBy,@date,@accRef);", conn);
 
                 cmd.Parameters.AddWithValue("@accRef", _accRef);
                 cmd.Parameters.AddWithValue("@date", DateTime.Now);
@@ -91,7 +79,6 @@ namespace TSalesManagement
             }
         }
 
-
         private void updateActivity()
         {
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
@@ -110,10 +97,6 @@ namespace TSalesManagement
             cmd.ExecuteNonQuery();
 
             conn.Close();
-
-
-
-
         }
 
         private bool checkRecordExists()
@@ -135,7 +118,6 @@ namespace TSalesManagement
             {
                 return false;
             }
-
         }
     }
 }

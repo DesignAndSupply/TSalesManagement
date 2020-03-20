@@ -1,20 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
     public partial class frmAmendToDo : Form
     {
-
         public int _taskID { get; set; }
+
         public frmAmendToDo(int tID)
         {
             InitializeComponent();
@@ -37,7 +31,6 @@ namespace TSalesManagement
                     ad.Fill(dt);
                     dataGridView1.DataSource = dt;
                     conn.Close();
-
                 }
             }
             //some formatting heree
@@ -54,16 +47,11 @@ namespace TSalesManagement
             cmd.CommandText = "SELECT taskDetail from dbo.task where id=@id";
             cmd.Parameters.AddWithValue("@id", _taskID);
 
-
             SqlDataReader rdr = cmd.ExecuteReader();
-
 
             if (rdr.Read())
             {
                 txtDetail.Text = rdr["taskDetail"].ToString();
-
-
-
             }
 
             rdr.Close();
@@ -72,7 +60,6 @@ namespace TSalesManagement
 
         private void FrmAmendToDo_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

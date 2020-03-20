@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using LiveCharts;
+﻿using LiveCharts;
 using LiveCharts.Wpf;
+using System;
+using System.Windows.Forms;
 using TSalesManagement.Class;
-using Wpf.CartesianChart.CustomTooltipAndLegend;
 
 namespace TSalesManagement
 {
@@ -20,7 +12,6 @@ namespace TSalesManagement
         {
             InitializeComponent();
             drawPipelineChart();
-
         }
 
         public void drawPipelineChart()
@@ -28,9 +19,7 @@ namespace TSalesManagement
             Pipeline p = new Pipeline();
             p._status = cmbFilterStatus.Text;
 
-
             p.addPipelineData();
-
 
             //cartesianChart1.Series.Clear();
 
@@ -45,7 +34,6 @@ namespace TSalesManagement
                     StackMode = StackMode.Values, // this is not necessary, values is the default stack mode
                     DataLabels = true,
                     Title = "Traditional"
-
                 },
                 new StackedColumnSeries
                 {
@@ -55,8 +43,6 @@ namespace TSalesManagement
                     Title = "Slimline"
                 }
             };
-
-
 
             ////adding values also updates and animates
             cartesianChart1.Series[1].Values.Add(4d);
@@ -77,13 +63,11 @@ namespace TSalesManagement
                 LabelFormatter = value => value + ""
             });
 
-
             //cartesianChart1.DataTooltip = new CustomersTooltip();
         }
 
         private void frmPipelineLive_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)

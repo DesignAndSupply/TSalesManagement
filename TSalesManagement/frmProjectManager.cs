@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -64,7 +58,7 @@ namespace TSalesManagement
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
-                    //reader in here 
+                    //reader in here
                     conn.Open();
                     SqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
@@ -306,17 +300,10 @@ namespace TSalesManagement
             txtCompletion.Text = complete_note;
             txtInvoice.Text = invoice_note;
             txtRetention.Text = retention_note;
-
-
-
         }
-
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-
-
         }
 
         private void btn_PDF_Click(object sender, EventArgs e)
@@ -329,7 +316,7 @@ namespace TSalesManagement
 
         private void create_folders()
         { //this is universal so it will make all folders for each operation
-            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" +_ID + "_" + _title + @"\Tender");
+            System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Tender");
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Prelet");
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Design");
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Order");
@@ -338,8 +325,6 @@ namespace TSalesManagement
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Completion");
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Invoiced");
             System.IO.Directory.CreateDirectory(@"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Retention");
-
-
         }
 
         private void button1_Click(object sender, EventArgs e) //tender openfolder
@@ -351,7 +336,6 @@ namespace TSalesManagement
         private void txtCommercialName_Leave(object sender, EventArgs e)
         {
         }
-
 
         private void btnPreletOF_Click(object sender, EventArgs e)
         {
@@ -461,7 +445,7 @@ namespace TSalesManagement
         {
             create_folders();
             string folder = @"\\designsvr1\dropbox\Projects\" + _ID + "_" + _title + @"\Retention";//open PDF form and pass over the correct folder
-            
+
             frmPDF pdf = new frmPDF(folder);
             pdf.ShowDialog();
         }
@@ -497,7 +481,6 @@ namespace TSalesManagement
                     sql = "update dbo.projects SET[" + section + "] = -1, [invoiced_complete] = 1 WHERE id = " + _ID;
                 if (section.Contains("retention") == true)
                     sql = "update dbo.projects SET[" + section + "] = -1, [retention_complete] = 1 WHERE id = " + _ID;
-
             }
 
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
@@ -509,7 +492,6 @@ namespace TSalesManagement
                     conn.Close();
                 }
             }
-
         }
 
         private void chk_tender_CheckedChanged(object sender, EventArgs e)
@@ -523,7 +505,6 @@ namespace TSalesManagement
                     ;    //do nothing
                 else
                     email("Tender");
-
             }
             else
                 chk_tender.Checked = false;
@@ -545,7 +526,6 @@ namespace TSalesManagement
         {
             sqlStatement("tender_3");
             chk_tender_3.Enabled = false;
-
         }
 
         private void chk_prelet_1_CheckedChanged(object sender, EventArgs e)
@@ -576,6 +556,7 @@ namespace TSalesManagement
             sqlStatement("prelet_5");
             chk_prelet_5.Enabled = false;
         }
+
         private void chk_prelet_6_CheckedChanged(object sender, EventArgs e)
         {
             sqlStatement("prelet_6");
@@ -736,7 +717,6 @@ namespace TSalesManagement
             chk_on_site_4.Enabled = false;
         }
 
-
         private void chk_on_site_6_CheckedChanged(object sender, EventArgs e)
         {
             sqlStatement("on_site_6");
@@ -770,11 +750,11 @@ namespace TSalesManagement
             sqlStatement("complete_2");
             chk_completion_2.Enabled = false;
         }
+
         private void chk_completion_3_CheckedChanged(object sender, EventArgs e)
         {
             sqlStatement("complete_3");
             chk_completion_3.Enabled = false;
-
         }
 
         private void chk_completion_CheckedChanged(object sender, EventArgs e)
@@ -980,7 +960,6 @@ namespace TSalesManagement
             MessageBox.Show("Retention notes have been updated!");
         }
 
-
         private void email(string location)
         {
             //fire email with ID and location and have the procedure do all the work C:
@@ -998,12 +977,11 @@ namespace TSalesManagement
                     conn.Close();
                 }
             }
-
         }
 
         private void btnLinkOrder_Click(object sender, EventArgs e)
         {
-            //link ORDER number to this table to we can reference it 
+            //link ORDER number to this table to we can reference it
             string sql = "";
             if (txtOrderNumber.Text.Length > 0)
             {
@@ -1021,7 +999,7 @@ namespace TSalesManagement
                 }
             }
             else
-                MessageBox.Show("Please add the relevant information before trying to link this project to an order number!","ERROR",MessageBoxButtons.OK);
+                MessageBox.Show("Please add the relevant information before trying to link this project to an order number!", "ERROR", MessageBoxButtons.OK);
         }
 
         private void linkOrderLock(int locking) //1 = is linked
@@ -1036,7 +1014,6 @@ namespace TSalesManagement
                 //while we are here fill out the txtOrderAmount with the LINE TOTAL for that order (    IF IT HAS ONE)
                 getOrderAmount();
                 getInvoiceID();
-                
             }
             else
             {
@@ -1050,6 +1027,7 @@ namespace TSalesManagement
                 //txtinvoiceID.Visible = false;
             }
         }
+
         private void getInvoiceID()
         {
             string sql = "select COALESCE(MAX(e.invoice_id),0) from dbo.projects a " +
@@ -1087,10 +1065,10 @@ namespace TSalesManagement
                 "LEFT JOIN dbo.door_container b on a.order_number = b.order_id " +
                 "LEFT JOIN dbo.door c ON c.order_id = b.order_id " +
                 "LEFT JOIN dbo.view_door_value d ON c.id = d.id " +
-                "WHERE b.order_id = " + txtOrderNumber.Text +" AND a.id = " + _ID;
+                "WHERE b.order_id = " + txtOrderNumber.Text + " AND a.id = " + _ID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
-                using (SqlCommand cmd = new SqlCommand(sql,conn))
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     conn.Open();
                     string data = Convert.ToString(cmd.ExecuteScalar());
@@ -1098,7 +1076,6 @@ namespace TSalesManagement
                     txtOrderAmount.Text = "£" + data;
                 }
             }
-            
         }
 
         private void btnRelink_Click(object sender, EventArgs e)
@@ -1117,4 +1094,3 @@ namespace TSalesManagement
         }
     }
 }
-

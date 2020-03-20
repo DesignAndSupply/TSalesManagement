@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using StartUpClass;
+using System;
 using System.Windows.Forms;
-using StartUpClass;
 
 namespace TSalesManagement
 {
@@ -23,16 +16,13 @@ namespace TSalesManagement
             string userName = txtUsername.Text;
             string passWord = txtPassword.Text;
 
-            Login login = new Login("","");
+            Login login = new Login("", "");
 
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
 
-
             if (login.IsLoggedIn(user, pass))
             {
-
-
                 frmMainMenu form = new frmMainMenu();
                 this.Hide();
                 form.ShowDialog();
@@ -41,13 +31,10 @@ namespace TSalesManagement
             {
                 MessageBox.Show("Log in failed please try again!");
             }
-
-
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-
         }
 
         private void txtUsername_KeyDown(object sender, KeyEventArgs e)

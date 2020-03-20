@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StartUpClass;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using StartUpClass;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -36,7 +30,7 @@ namespace TSalesManagement
             Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
             Login.dueDate = dateTimePicker1.Value;
             Login.customerText = txtBody.Text;
-            
+
             cmd.ExecuteNonQuery();
             conn.Close();
 
