@@ -270,7 +270,7 @@ namespace TSalesManagement
             for (int i = 0; i < dgTask.Rows.Count; i++)
             {
                 //  MessageBox.Show(dgTask.Rows[i].Cells[taskStatusIndex].Value.ToString());
-                //check for tasks already assigned 
+                //check for tasks already assigned
                 if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete")
                 {
                     custAccRef = dgTask.Rows[i].Cells[custAccRefIndex].Value.ToString();
@@ -282,7 +282,6 @@ namespace TSalesManagement
                             //also add this to the list
                             custAccRefList.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
                         }
-
                     }
                 }
                 //here
@@ -303,7 +302,6 @@ namespace TSalesManagement
                 }
             }
         }
-
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -729,7 +727,7 @@ namespace TSalesManagement
         private void BtnEmail_Click(object sender, EventArgs e)
         {
             //validation for the scenario when
-            //email button is clicked and nothing has been selected 
+            //email button is clicked and nothing has been selected
             //loop through each table and as long as there is /ONE/ pink skip and carry on to the email
             int isPink = 0;
             if (isPink != 1) //customer
@@ -897,7 +895,6 @@ namespace TSalesManagement
                 //fillGrid();
                 //refresh all the grids (I had no success with manually doing it so I'm gonna remove the text in the cmbbox and re add it
             }
-
         }
 
         private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -951,11 +948,9 @@ namespace TSalesManagement
             {
             }
 
-
             //remove the sorting by columns (sorting by a column removes the painted aspect of the grid
             foreach (DataGridViewColumn column in dgCustomer.Columns)
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
-
         }
 
         private void dgCustomer_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -1,21 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StartUpClass;
+using System;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
-using StartUpClass;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
     public partial class frmAmendActivity : Form
     {
-
-
         public int _aID { get; set; }
         private string _custAccRef { get; set; }
 
@@ -26,10 +18,7 @@ namespace TSalesManagement
 
             fillData();
             populateContacts();
-
         }
-
-
 
         private void fillData()
         {
@@ -41,9 +30,7 @@ namespace TSalesManagement
             cmd.CommandText = "SELECT * from dbo.crm_activity where id=@id";
             cmd.Parameters.AddWithValue("@id", _aID);
 
-
             SqlDataReader rdr = cmd.ExecuteReader();
-
 
             if (rdr.Read())
             {
@@ -52,20 +39,14 @@ namespace TSalesManagement
                 cmbType.Text = rdr["correspondance_type"].ToString();
                 txtDetails.Text = rdr["details_of"].ToString();
                 txtReference.Text = rdr["reference"].ToString();
-
-
             }
 
             rdr.Close();
             conn.Close();
-
         }
-
-
 
         private void frmAmendActivity_Load(object sender, EventArgs e)
         {
-
         }
 
         private void populateContacts()
@@ -87,15 +68,12 @@ namespace TSalesManagement
             cmbRecipient.DisplayMember = "contact_name";
             cmbRecipient.DataSource = dt;
             conn.Close();
-
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
-
 
             string nameWithCapital = Login.globalUserName;
             nameWithCapital = char.ToUpper(nameWithCapital[0]) + nameWithCapital.Substring(1);
@@ -105,13 +83,11 @@ namespace TSalesManagement
             cmd.Parameters.AddWithValue("@custAccRef", _custAccRef);
             cmd.Parameters.AddWithValue("@date", DateTime.Now);
             cmd.Parameters.AddWithValue("@type", cmbType.Text); //time stamp the users who just added this
-            cmd.Parameters.AddWithValue("@details", txtDetails.Text + " || " + nameWithCapital + " " + DateTime.Now.ToString() + " || ");
+            cmd.Parameters.AddWithValue("@details", txtDetails.Text + " || " + nameWithCapital + " - " + DateTime.Now.ToString() + " || ");
             cmd.Parameters.AddWithValue("@ref", txtReference.Text);
             cmd.Parameters.AddWithValue("@recipient", cmbRecipient.SelectedValue);
             cmd.Parameters.AddWithValue("@id", _aID);
             cmd.ExecuteNonQuery();
-
-
 
             //get the sender ID for this task
             string sql = "SELECT COALESCE(sender_id,0) FROM dbo.crm_activity WHERE id = " + _aID;
@@ -133,11 +109,11 @@ namespace TSalesManagement
                 //now check if the sender_id is the same as the person logged in
                 if (Login.globalUserID == sender_id)
                 {
-                    //they are the same 
+                    //they are the same
                     //check if cc is 0
                     if (cc != 0 && cc != sender_id)
                     {
-                        //there is someone in the CC field and its not the same as the sender id 
+                        //there is someone in the CC field and its not the same as the sender id
                         //lets fire this bad boy and email the person who is cc'd
                         using (SqlCommand command = new SqlCommand("usp_crm_activity_cc_or_sender_email", conn))
                         {
@@ -145,7 +121,6 @@ namespace TSalesManagement
                             command.Parameters.Add("@email_id", SqlDbType.Int).Value = cc;
                             command.Parameters.Add("@activity_id", SqlDbType.Int).Value = _aID;
                             command.ExecuteNonQuery();
-
                         }
                     }
                     else
@@ -165,7 +140,7 @@ namespace TSalesManagement
                             command.ExecuteScalar();
                         }
                     }
-                    //at this point cc already existed or has now been added so we can fire the email to the original sender 
+                    //at this point cc already existed or has now been added so we can fire the email to the original sender
 
                     using (SqlCommand command = new SqlCommand("usp_crm_activity_cc_or_sender_email", conn))
                     {
@@ -176,13 +151,6 @@ namespace TSalesManagement
                     }
                 }
             }
-
-
-
-
-
-
-
             conn.Close();
             this.Close();
         }
@@ -192,7 +160,6 @@ namespace TSalesManagement
             frmNewPipeline frmNP = new frmNewPipeline(_custAccRef, _aID);
             frmNP.ShowDialog();
             this.Close();
-
         }
     }
 }
