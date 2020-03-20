@@ -269,7 +269,7 @@ namespace TSalesManagement
                 custAccRefIndex = dgTask.Columns["crmCustAccRef"].Index;
             for (int i = 0; i < dgTask.Rows.Count; i++)
             {
-              //  MessageBox.Show(dgTask.Rows[i].Cells[taskStatusIndex].Value.ToString());
+                //  MessageBox.Show(dgTask.Rows[i].Cells[taskStatusIndex].Value.ToString());
                 //check for tasks already assigned 
                 if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete")
                 {
@@ -288,19 +288,19 @@ namespace TSalesManagement
                 //here
                 //check for the complete date here
                 if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[i].Cells[10].Value)))
+                {
+                    custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
+                    for (int z = 0; z < dgCustomer.Rows.Count; z++)
                     {
-                        custAccRef = dgTask.Rows[i].Cells[9].Value.ToString();
-                        for (int z = 0; z < dgCustomer.Rows.Count; z++)
+                        if (dgCustomer.Rows[z].Cells[0].Value.ToString() == custAccRef)
                         {
-                            if (dgCustomer.Rows[z].Cells[0].Value.ToString() == custAccRef)
-                            {
-                                //change colour to blue (has been completed within the last 7 days)
-                                dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
-                                //also add it to the <within 7 days list>
-                                completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
-                            }
+                            //change colour to blue (has been completed within the last 7 days)
+                            dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                            //also add it to the <within 7 days list>
+                            completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
                         }
                     }
+                }
             }
         }
 
@@ -332,7 +332,7 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
-          
+
             colourCustomerWithTaskAssigned();
 
             //after all this is done show the customer txtbox
@@ -728,6 +728,58 @@ namespace TSalesManagement
 
         private void BtnEmail_Click(object sender, EventArgs e)
         {
+            //validation for the scenario when
+            //email button is clicked and nothing has been selected 
+            //loop through each table and as long as there is /ONE/ pink skip and carry on to the email
+            int isPink = 0;
+            if (isPink != 1) //customer
+            {
+                for (int i = 0; i < dgCustomer.Rows.Count; i++)
+                {
+                    if (dgCustomer.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        isPink = 1;
+                        i = dgCustomer.Rows.Count; //because one pink is found skip looking through more
+                    }
+                }
+            }
+            if (isPink != 1) //activity this time
+            {
+                for (int i = 0; i < dgActivity.Rows.Count; i++)
+                {
+                    if (dgActivity.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        isPink = 1;
+                        i = dgActivity.Rows.Count; //because one pink is found skip looking through more
+                    }
+                }
+            }
+            if (isPink != 1) //toDo
+            {
+                for (int i = 0; i < dgTask.Rows.Count; i++)
+                {
+                    if (dgTask.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        isPink = 1;
+                        i = dgTask.Rows.Count; //because one pink is found skip looking through more
+                    }
+                }
+            }
+            if (isPink != 1) //finally pipeline
+            {
+                for (int i = 0; i < dgPipeline.Rows.Count; i++)
+                {
+                    if (dgPipeline.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        isPink = 1;
+                        i = dgPipeline.Rows.Count; //because one pink is found skip looking through more
+                    }
+                }
+            }
+
+            if (isPink == 0)
+                return;
+
             Login.emailButtonClicked = 0;
             txtCustomerSearch.Text = "";
             updateSelected();
