@@ -354,6 +354,7 @@ namespace TSalesManagement
             txtCustomerSearch.Visible = true;
             txtCustomerSearch.Text = "";
             // MessageBox.Show(cmbName);
+            txtCustomerSearch.Focus();
         }
 
         private void colourCustomerWithTaskAssigned()
