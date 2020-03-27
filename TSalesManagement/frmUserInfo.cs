@@ -411,7 +411,7 @@ namespace TSalesManagement
             for (int i = 0; i < dgTask.Rows.Count; i++)
             {
                 
-                if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete")
+                if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete") //THIS LOOPS ONCE?
                 {
                     customerName = dgTask.Rows[i].Cells[9].Value.ToString();
                     for (int row = 0; row < dgCustomer.Rows.Count; row++)
