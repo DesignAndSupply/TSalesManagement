@@ -103,7 +103,7 @@ namespace TSalesManagement
         private void userActivityToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            frmUserInfo frmUI = new frmUserInfo();
+            frmUserInfoRyucxd frmUI = new frmUserInfoRyucxd();
             frmUI.MdiParent = this;
             frmUI.Show();
         }
