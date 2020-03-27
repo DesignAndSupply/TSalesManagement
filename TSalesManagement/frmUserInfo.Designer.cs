@@ -1,7 +1,7 @@
 ﻿namespace TSalesManagement
 {
     partial class frmUserInfo
-    {
+    { 
         /// <summary>
         /// Required designer variable.
         /// </summary>
