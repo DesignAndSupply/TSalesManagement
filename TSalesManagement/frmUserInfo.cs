@@ -13,7 +13,9 @@ namespace TSalesManagement
     {
         public List<int> activityID = new List<int>();
         public List<string> completedWithinWeek = new List<string>();
+        public List<string> completedWithinWeekCustomerName = new List<string>();
         public List<string> custAccRefList = new List<string>();
+        public List<string> orangeButForActivity = new List<string>();
         public List<string> customerAccRef = new List<string>();
         public List<int> piplineID = new List<int>();
         public List<int> taskID = new List<int>();
@@ -36,15 +38,15 @@ namespace TSalesManagement
                 dgActivity.Columns.Insert(columnIndex, selectButton);
             }
 
-            DataGridViewButtonColumn selectButtonTask = new DataGridViewButtonColumn();
-            selectButtonTask.Name = "Select";
-            selectButtonTask.Text = "Select";
-            selectButtonTask.UseColumnTextForButtonValue = true;
-            int columnIndexTask = 11;
-            if (dgTask.Columns["Select"] == null)
-            {
-                dgTask.Columns.Insert(columnIndexTask, selectButtonTask);
-            }
+            //DataGridViewButtonColumn selectButtonTask = new DataGridViewButtonColumn();
+            //selectButtonTask.Name = "Select";
+            //selectButtonTask.Text = "Select";
+            //selectButtonTask.UseColumnTextForButtonValue = true;
+            //int columnIndexTask = 11;
+            //if (dgTask.Columns["Select"] == null)
+            //{
+            //    dgTask.Columns.Insert(columnIndexTask, selectButtonTask);
+            //}
 
             DataGridViewButtonColumn selectButtonPipeline = new DataGridViewButtonColumn();
             selectButtonPipeline.Name = "Select";
@@ -381,6 +383,7 @@ namespace TSalesManagement
                             dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.OrangeRed;
                             //also add this to the list so we can keep track of each coloured row
                             custAccRefList.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
+                            //orangeButForActivity.Add(Convert.ToString(dgCustomer.Rows[z].Cells[1].Value));
                         }
                     }
                 }
@@ -397,10 +400,101 @@ namespace TSalesManagement
                             dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
                             //also add it to the <within 7 days list> (has been competed within the last 7 working days)
                             completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
+                           // completedWithinWeekCustomerName.Add(Convert.ToString(dgCustomer.Rows[i].Cells[1].Value));
                         }
                     }
                 }
             }
+            //also goint to add colours to the other datagridviews here
+            //activity
+            string customerName;
+            for (int i = 0; i < dgTask.Rows.Count; i++)
+            {
+                
+                if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete")
+                {
+                    customerName = dgTask.Rows[i].Cells[9].Value.ToString();
+                    for (int row = 0; row < dgCustomer.Rows.Count; row++)
+                    {
+                        if (dgCustomer.Rows[row].Cells[0].Value.ToString() == customerName)
+                        {
+                            customerName = dgCustomer.Rows[row].Cells[1].Value.ToString();
+                            row += dgCustomer.Rows.Count;
+                        }
+                    }
+                    for( int z = 0; z < dgActivity.Rows.Count; z++)
+                    {
+                        //this is orange
+                        if (dgActivity.Rows[z].Cells[1].Value.ToString() == customerName)
+                        {
+                            dgActivity.Rows[z].DefaultCellStyle.BackColor = Color.OrangeRed;
+                            orangeButForActivity.Add(Convert.ToString(dgActivity.Rows[z].Cells[1].Value));
+                        }
+                    }
+                }
+                //NOW blue rows
+                for ( i = 0; i < dgTask.Rows.Count; i++)
+                {
+
+                    if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[i].Cells[10].Value)))
+                    {
+                        customerName = dgTask.Rows[i].Cells[9].Value.ToString();
+                        for (int row = 0; row < dgCustomer.Rows.Count; row++)
+                        {
+                            if (dgCustomer.Rows[row].Cells[0].Value.ToString() == customerName)
+                            {
+                                customerName = dgCustomer.Rows[row].Cells[1].Value.ToString();
+                                row += dgCustomer.Rows.Count;
+                            }
+                        }
+                        for (int z = 0; z < dgActivity.Rows.Count; z++)
+                        {
+                            //this is orange
+                            if (dgActivity.Rows[z].Cells[1].Value.ToString() == customerName)
+                            {
+                                dgActivity.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                                completedWithinWeekCustomerName.Add(Convert.ToString(dgActivity.Rows[z].Cells[1].Value));
+                            }
+                        }
+                    }
+                }
+
+
+
+
+
+
+
+
+                    //if (orangeButForActivity.Contains(Convert.ToString(dgActivity.Rows[i].Cells[1].Value)))
+                    //{
+                    //    try
+                    //    {
+                    //       // dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                    //        dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
+                    //        dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                    //    }
+                    //    catch
+                    //    {
+                    //        MessageBox.Show("error");
+                    //    }
+                    //}
+
+                    //if (completedWithinWeekCustomerName.Contains(Convert.ToString(dgActivity.Rows[i].Cells[1].Value)))
+                    //{
+                    //    try
+                    //    {
+                    //        //dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue; old code
+                    //        dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue; 
+                    //        dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                    //    }
+                    //    catch
+                    //    {
+                    //        MessageBox.Show("error");
+                    //    }
+                    //}
+
+                }
         }
 
         private void cviewsalesprogramusersBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -411,6 +505,11 @@ namespace TSalesManagement
         {
             var senderGrid = (DataGridView)sender;
 
+            int activityIdIndex = 0; //code @ line 364 explains this
+            if (dgActivity.Columns.Contains("id"))
+                activityIdIndex = dgActivity.Columns["id"].Index;
+
+
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
@@ -419,7 +518,7 @@ namespace TSalesManagement
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgActivity.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
-                    activityID.Remove(Convert.ToInt32(dgActivity.CurrentRow.Cells[0].Value));
+                    activityID.Remove(Convert.ToInt32(dgActivity.CurrentRow.Cells[activityIdIndex].Value));
                 }
                 else
                 {
@@ -428,11 +527,14 @@ namespace TSalesManagement
 
                     dgActivity.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgActivity.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
-                    activityID.Add(Convert.ToInt32(dgActivity.CurrentRow.Cells[0].Value));
+                    activityID.Add(Convert.ToInt32(dgActivity.CurrentRow.Cells[activityIdIndex].Value));
                 }
                 // put all the commented out code onto one line (afaik that code is now retired but i best not delete it
                 //int id; //int currentSelected = 0; //int readerValue = 0;  //int selectedrowindex = dgActivity.SelectedCells[0].RowIndex; //DataGridViewRow selectedRow = dgActivity.Rows[selectedrowindex]; //id = Convert.ToInt32(selectedRow.Cells["id"].Value);  //SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString); //conn.Open();  //SqlCommand cmdRead = new SqlCommand("SELECT currently_selected from dbo.crm_activity where id = @id", conn);  //cmdRead.Parameters.AddWithValue("@id", id);  //SqlDataReader rdr = cmdRead.ExecuteReader();  //while (rdr.Read()) //{ //    try //    { //        readerValue = Convert.ToInt32(rdr["currently_selected"]); //    } //    catch //    { //        readerValue = 0; //    }  //    if (readerValue == -1) //    { //        currentSelected = 0; //    } //    else //    { //        currentSelected = -1; //    }  //}  //conn.Close(); //conn.Open();  //SqlCommand cmd = new SqlCommand("UPDATE dbo.crm_activity set currently_selected= @status where id = @id", conn); //cmd.Parameters.AddWithValue("@id", id); //cmd.Parameters.AddWithValue("@status", currentSelected); //cmd.ExecuteNonQuery(); //conn.Close();  //fillActivityGrid();
             }
+
+            updateListBox();
+
         }
 
         private void dgActivity_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -458,6 +560,10 @@ namespace TSalesManagement
         {
             var senderGrid = (DataGridView)sender;
 
+            int accountRefIndex = 0; //code @ line 364 explains this
+            if (dgCustomer.Columns.Contains("account ref"))
+                accountRefIndex = dgCustomer.Columns["account ref"].Index;
+
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
@@ -474,16 +580,18 @@ namespace TSalesManagement
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgCustomer.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
-                    customerAccRef.Remove(dgCustomer.CurrentRow.Cells[0].Value.ToString());
+                    customerAccRef.Remove(dgCustomer.CurrentRow.Cells[accountRefIndex].Value.ToString());
                 }
                 else
                 {
                     dgCustomer.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgCustomer.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                     //add to the array here
-                    customerAccRef.Add(dgCustomer.CurrentRow.Cells[0].Value.ToString());
+                    customerAccRef.Add(dgCustomer.CurrentRow.Cells[accountRefIndex].Value.ToString());
                 }
             }
+            updateListBox();
+
         }
 
         private void dgCustomer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -506,6 +614,9 @@ namespace TSalesManagement
         private void DgPipeline_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
+            int piplineIndex = 0;
+            if (dgPipeline.Columns.Contains("Pipeline ID"))
+                piplineIndex = dgPipeline.Columns["Pipeline ID"].Index;
 
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
@@ -515,16 +626,17 @@ namespace TSalesManagement
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgPipeline.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
-                    piplineID.Remove(Convert.ToInt32(dgPipeline.CurrentRow.Cells[0].Value));
+                    piplineID.Remove(Convert.ToInt32(dgPipeline.CurrentRow.Cells[piplineIndex].Value));
                 }
                 else
                 {
                     dgPipeline.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgPipeline.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
-                    piplineID.Add(Convert.ToInt32(dgPipeline.CurrentRow.Cells[0].Value));
+                    piplineID.Add(Convert.ToInt32(dgPipeline.CurrentRow.Cells[piplineIndex].Value));
                 }
                 //all of the previous code that was commented out is now all on one line to save a LOT of space when im debugging - ryucxd  17/03/2020
                 //int id; //int currentSelected = 0; //int readerValue = 0;  //int selectedrowindex = dgPipeline.SelectedCells[0].RowIndex; //DataGridViewRow selectedRow = dgPipeline.Rows[selectedrowindex]; //id = Convert.ToInt32(selectedRow.Cells["Pipeline ID"].Value);  //SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString); //conn.Open();  //SqlCommand cmdRead = new SqlCommand("SELECT currently_selected from dbo.sales_pipeline where id = @id", conn);  //cmdRead.Parameters.AddWithValue("@id", id);  //SqlDataReader rdr = cmdRead.ExecuteReader();  //while (rdr.Read()) //{ //    try //    { //        readerValue = Convert.ToInt32(rdr["currently_selected"]); //    } //    catch //    { //        readerValue = 0; //    }  // if (readerValue == -1) { currentSelected = 0; } else { currentSelected = -1; }  //}  //conn.Close(); //conn.Open();  //SqlCommand cmd = new SqlCommand("UPDATE dbo.sales_pipeline set currently_selected= @status where id = @id", conn); //cmd.Parameters.AddWithValue("@id", id); //cmd.Parameters.AddWithValue("@status", currentSelected); //cmd.ExecuteNonQuery(); //conn.Close(); //fillGrid();
+                updateListBox();
             }
         }
 
@@ -549,7 +661,9 @@ namespace TSalesManagement
         private void DgTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
-
+            int taskIndex = 0;
+            if (dgTask.Columns.Contains("Task ID"))
+                taskIndex = dgTask.Columns["Task ID"].Index;
             if (senderGrid.Columns[e.ColumnIndex] is DataGridViewButtonColumn &&
                 e.RowIndex >= 0)
             {
@@ -558,13 +672,13 @@ namespace TSalesManagement
                     dgTask.CurrentRow.DefaultCellStyle.SelectionForeColor = Color.Black;
                     dgTask.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.White;
                     dgTask.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
-                    taskID.Remove(Convert.ToInt32(dgTask.CurrentRow.Cells[0].Value));
+                    taskID.Remove(Convert.ToInt32(dgTask.CurrentRow.Cells[taskIndex].Value));
                 }
                 else
                 {
                     dgTask.CurrentRow.DefaultCellStyle.SelectionBackColor = Color.HotPink;
                     dgTask.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
-                    taskID.Add(Convert.ToInt32(dgTask.CurrentRow.Cells[0].Value));
+                    taskID.Add(Convert.ToInt32(dgTask.CurrentRow.Cells[taskIndex].Value));
                 }
 
                 //int id;
@@ -616,6 +730,7 @@ namespace TSalesManagement
                 //conn.Close();
                 //fillTaskGrid();
             }
+            updateListBox();
         }
 
         private void DgTask_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -776,6 +891,7 @@ namespace TSalesManagement
             dgTask.ClearSelection();
             dgCustomer.ClearSelection();
             fillCustomer();
+
             colourCustomerWithTaskAssigned();
         }
 
@@ -1000,6 +1116,57 @@ namespace TSalesManagement
             }
             conn.Close();
             connToDo.Close();
+        }
+
+        private void updateListBox()
+        {
+            //wipe the current listbox (if its not null)
+            //and then re add everything 
+
+            int activityIdIndex = 0, customerIndex = 0, pipelineIndex = 0; //code @ line 364 explains this
+            if (dgActivity.Columns.Contains("Customer Name"))
+                activityIdIndex = dgActivity.Columns["Customer Name"].Index;
+            if (dgCustomer.Columns.Contains("Customer Name"))
+                customerIndex = dgCustomer.Columns["Customer Name"].Index;
+            if (dgActivity.Columns.Contains("Customer Name"))
+                pipelineIndex = dgActivity.Columns["Customer Name"].Index;
+
+            selectedListBox.Items.Clear();
+            foreach (DataGridViewRow row in dgCustomer.Rows)
+            {
+                if (row.DefaultCellStyle.BackColor == Color.HotPink)
+                {
+                    selectedListBox.Items.Add(Convert.ToString(row.Cells[customerIndex].Value));
+                }
+            }
+
+            foreach (DataGridViewRow row in dgActivity.Rows)
+            {
+                if (row.DefaultCellStyle.BackColor == Color.HotPink)
+                {
+                    selectedListBox.Items.Add(Convert.ToString(row.Cells[activityIdIndex].Value));
+                }
+            }
+
+            foreach (DataGridViewRow row in dgPipeline.Rows)
+            {
+                if (row.DefaultCellStyle.BackColor == Color.HotPink)
+                {
+                    selectedListBox.Items.Add(Convert.ToString(row.Cells[pipelineIndex].Value));
+                }
+            }
+
+            selectedGroupBox.Text = "Currently Selected " + selectedListBox.Items.Count + " Rows.";
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            string s = String.Join("-- , --", orangeButForActivity);
+            MessageBox.Show(s);
+            s = String.Join(",", completedWithinWeekCustomerName);
+            MessageBox.Show(s);
         }
     }
 }
