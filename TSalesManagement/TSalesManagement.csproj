@@ -334,6 +334,12 @@
     <Compile Include="frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUserInfoRyucxd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserInfoRyucxd.Designer.cs">
+      <DependentUpon>frmUserInfoRyucxd.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmViewProjects.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -443,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserInfoRyucxd.resx">
+      <DependentUpon>frmUserInfoRyucxd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmViewProjects.resx">
       <DependentUpon>frmViewProjects.cs</DependentUpon>
