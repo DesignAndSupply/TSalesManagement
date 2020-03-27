@@ -383,7 +383,7 @@ namespace TSalesManagement
                             dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.OrangeRed;
                             //also add this to the list so we can keep track of each coloured row
                             custAccRefList.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
-                            //orangeButForActivity.Add(Convert.ToString(dgCustomer.Rows[z].Cells[1].Value));
+                            orangeButForActivity.Add(Convert.ToString(dgCustomer.Rows[z].Cells[1].Value));
                         }
                     }
                 }
@@ -400,101 +400,110 @@ namespace TSalesManagement
                             dgCustomer.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
                             //also add it to the <within 7 days list> (has been competed within the last 7 working days)
                             completedWithinWeek.Add(Convert.ToString(dgTask.Rows[i].Cells[9].Value));
-                           // completedWithinWeekCustomerName.Add(Convert.ToString(dgCustomer.Rows[i].Cells[1].Value));
+                            completedWithinWeekCustomerName.Add(Convert.ToString(dgCustomer.Rows[i].Cells[1].Value));
                         }
                     }
                 }
+
+                if (orangeButForActivity.Contains(Convert.ToString(dgActivity.Rows[i].Cells[dgActivity.Columns["Customer Name"].Index])))
+                {
+                    try //doesnt seem to catch an error so it must be painting the grid fine (except it doesnt paint the grid at all???)
+                    {
+                        dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;  //right now theres an error for the row[i], this seems to only apply when selecting toms name tho? nick is fine
+                        //dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
+                        //dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("error"); //never seen this pop
+                    }
+                }
+
+                if (completedWithinWeekCustomerName.Contains(Convert.ToString(dgActivity.Rows[i].Cells[1].Value)))
+                {
+                    try
+                    {
+                        dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue; //old code
+                        //dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue;
+                        //dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("error");
+                    }
+                }
+
             }
+
+            //this is the new code i tried but had very little success with (seems to work logically but it refuses to actually paint the grids
+
             //also goint to add colours to the other datagridviews here
-            //activity
-            string customerName;
-            for (int i = 0; i < dgTask.Rows.Count; i++)
-            {
-                
-                if (Convert.ToString(dgTask.Rows[i].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[i].Cells[taskStatusIndex].Value) != "Complete") //THIS LOOPS ONCE?
-                {
-                    customerName = dgTask.Rows[i].Cells[9].Value.ToString();
-                    for (int row = 0; row < dgCustomer.Rows.Count; row++)
-                    {
-                        if (dgCustomer.Rows[row].Cells[0].Value.ToString() == customerName)
-                        {
-                            customerName = dgCustomer.Rows[row].Cells[1].Value.ToString();
-                            row += dgCustomer.Rows.Count;
-                        }
-                    }
-                    for( int z = 0; z < dgActivity.Rows.Count; z++)
-                    {
-                        //this is orange
-                        if (dgActivity.Rows[z].Cells[1].Value.ToString() == customerName)
-                        {
-                            dgActivity.Rows[z].DefaultCellStyle.BackColor = Color.OrangeRed;
-                            orangeButForActivity.Add(Convert.ToString(dgActivity.Rows[z].Cells[1].Value));
-                        }
-                    }
-                }
-                //NOW blue rows
-                for ( i = 0; i < dgTask.Rows.Count; i++)
-                {
+            ////activity
+            //string customerName;
+            //MessageBox.Show("dgTask count: " + dgTask.Rows.Count.ToString());
+            //for (int x = 0; x < dgTask.Rows.Count; x++) //the first iteration of this has the dgTask row count as 0 //which is why it skips the first iteration
+            //{
+            ////    MessageBox.Show("x = " + x.ToString());
+            //    //if (Convert.ToString(dgTask.Rows[x].Cells[crmActiveIndex].Value) == "-1" && Convert.ToString(dgTask.Rows[x].Cells[taskStatusIndex].Value) != "Complete") //THIS LOOPS ONCE?
+            //    //{                                                                                                                                       //this is the issue -- it tends to only loop once and not many times :))))) //above code explains this
+            //    //    customerName = dgTask.Rows[x].Cells[9].Value.ToString();
+            //    //    for (int row = 0; row < dgCustomer.Rows.Count; row++)
+            //    //    {
+            //    //      //  MessageBox.Show("row: " + row.ToString());
+            //    //        if (dgCustomer.Rows[row].Cells[0].Value.ToString() == customerName)
+            //    //        {
+            //    //            customerName = dgCustomer.Rows[row].Cells[1].Value.ToString();
+            //    //            row += dgCustomer.Rows.Count;
+            //    //        }
+            //    //    }
+            //    //    for( int c = 0; c < dgActivity.Rows.Count; c++)
+            //    //    {
+            //    //        //this is orange
+            //    //        if (dgActivity.Rows[c].Cells[1].Value.ToString() == customerName)
+            //    //        {
+            //    //            dgActivity.Rows[c].DefaultCellStyle.BackColor = Color.OrangeRed;
+            //    //            orangeButForActivity.Add(Convert.ToString(dgActivity.Rows[c].Cells[1].Value));
+            //    //        }
+            //    //    }
+            //    //}
+               
+            //    //NOW blue rows
+            //    for (int y = 0; y < dgTask.Rows.Count; y++)
+            //    {
 
-                    if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[i].Cells[10].Value)))
-                    {
-                        customerName = dgTask.Rows[i].Cells[9].Value.ToString();
-                        for (int row = 0; row < dgCustomer.Rows.Count; row++)
-                        {
-                            if (dgCustomer.Rows[row].Cells[0].Value.ToString() == customerName)
-                            {
-                                customerName = dgCustomer.Rows[row].Cells[1].Value.ToString();
-                                row += dgCustomer.Rows.Count;
-                            }
-                        }
-                        for (int z = 0; z < dgActivity.Rows.Count; z++)
-                        {
-                            //this is orange
-                            if (dgActivity.Rows[z].Cells[1].Value.ToString() == customerName)
-                            {
-                                dgActivity.Rows[z].DefaultCellStyle.BackColor = Color.CornflowerBlue;
-                                completedWithinWeekCustomerName.Add(Convert.ToString(dgActivity.Rows[z].Cells[1].Value));
-                            }
-                        }
-                    }
-                }
-
-
-
-
-
-
+            //        if (DateTime.Now < (Convert.ToDateTime(dgTask.Rows[y].Cells[10].Value)))
+            //        {
+            //            customerName = dgTask.Rows[y].Cells[9].Value.ToString();
+            //            for (int row = 0; row < dgCustomer.Rows.Count; row++) //I think that blue is fine 
+            //            {
+            //                if (dgCustomer.Rows[row].Cells[0].Value.ToString() == customerName)
+            //                {
+            //                    customerName = dgCustomer.Rows[row].Cells[1].Value.ToString();
+            //                    row += dgCustomer.Rows.Count;
+            //                }
+            //            }
+            //            for (int u = 0; u < dgActivity.Rows.Count; u++)
+            //            {
+            //                //this is orange
+            //                if (dgActivity.Rows[u].Cells[1].Value.ToString() == customerName)
+            //                {
+            //                    dgActivity.Rows[u].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+            //                    completedWithinWeekCustomerName.Add(Convert.ToString(dgActivity.Rows[u].Cells[1].Value));
+            //                }
+            //            }
+            //        }
+            //    }
+            //    dgActivity.Invalidate();
 
 
-                    //if (orangeButForActivity.Contains(Convert.ToString(dgActivity.Rows[i].Cells[1].Value)))
-                    //{
-                    //    try
-                    //    {
-                    //       // dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
-                    //        dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.OrangeRed;
-                    //        dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
-                    //    }
-                    //    catch
-                    //    {
-                    //        MessageBox.Show("error");
-                    //    }
-                    //}
 
-                    //if (completedWithinWeekCustomerName.Contains(Convert.ToString(dgActivity.Rows[i].Cells[1].Value)))
-                    //{
-                    //    try
-                    //    {
-                    //        //dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue; old code
-                    //        dgActivity.Rows[i].DefaultCellStyle.SelectionBackColor = Color.CornflowerBlue; 
-                    //        dgActivity.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
-                    //    }
-                    //    catch
-                    //    {
-                    //        MessageBox.Show("error");
-                    //    }
-                    //}
 
-                }
+
+
+
+             
+
+            
         }
 
         private void cviewsalesprogramusersBindingSource_CurrentChanged(object sender, EventArgs e)
@@ -533,7 +542,7 @@ namespace TSalesManagement
                 //int id; //int currentSelected = 0; //int readerValue = 0;  //int selectedrowindex = dgActivity.SelectedCells[0].RowIndex; //DataGridViewRow selectedRow = dgActivity.Rows[selectedrowindex]; //id = Convert.ToInt32(selectedRow.Cells["id"].Value);  //SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString); //conn.Open();  //SqlCommand cmdRead = new SqlCommand("SELECT currently_selected from dbo.crm_activity where id = @id", conn);  //cmdRead.Parameters.AddWithValue("@id", id);  //SqlDataReader rdr = cmdRead.ExecuteReader();  //while (rdr.Read()) //{ //    try //    { //        readerValue = Convert.ToInt32(rdr["currently_selected"]); //    } //    catch //    { //        readerValue = 0; //    }  //    if (readerValue == -1) //    { //        currentSelected = 0; //    } //    else //    { //        currentSelected = -1; //    }  //}  //conn.Close(); //conn.Open();  //SqlCommand cmd = new SqlCommand("UPDATE dbo.crm_activity set currently_selected= @status where id = @id", conn); //cmd.Parameters.AddWithValue("@id", id); //cmd.Parameters.AddWithValue("@status", currentSelected); //cmd.ExecuteNonQuery(); //conn.Close();  //fillActivityGrid();
             }
 
-            updateListBox();
+            updateListBox();  //this works perfectly, having an entry with the name /blank/ looks like its not doing anything but it is 
 
         }
 
@@ -783,7 +792,7 @@ namespace TSalesManagement
             dgPipeline.ClearSelection();
             dgTask.ClearSelection();
             foreach (DataGridViewColumn column in dgActivity.Columns)
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;   //this stops the user from sorting the columns (sorting the columns results in the dgv becoming unpainted)
         }
 
         private void fillCustomer()
@@ -1163,7 +1172,7 @@ namespace TSalesManagement
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string s = String.Join("-- , --", orangeButForActivity);
+            string s = String.Join(" -- , -- ", orangeButForActivity);
             MessageBox.Show(s);
             s = String.Join(",", completedWithinWeekCustomerName);
             MessageBox.Show(s);
