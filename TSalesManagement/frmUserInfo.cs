@@ -1168,5 +1168,10 @@ namespace TSalesManagement
             s = String.Join(",", completedWithinWeekCustomerName);
             MessageBox.Show(s);
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
