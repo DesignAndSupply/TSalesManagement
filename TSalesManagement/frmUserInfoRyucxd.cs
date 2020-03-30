@@ -119,7 +119,7 @@ namespace TSalesManagement
 
             if (tabControl1.SelectedIndex == 0) //customer list
             {
-                sql = "SELECT [account ref],[Customer Name],Telephone,[Address_1],address_2,address_3,Address_4,[Account Status],[Customer Type] FROM dbo.c_sales_view_customer_data WHERE [Customer Name] LIKE @custName ORDER BY [Customer Name] DESC";
+                sql = "SELECT [account ref],[Customer Name],Telephone,[Address_1],address_2,address_3,Address_4,[Account Status],[Customer Type] FROM dbo.c_sales_view_customer_data WHERE [Customer Name] LIKE @custName ORDER BY [Customer Name] ASC";
             }
             else if (tabControl1.SelectedIndex == 1) //user activity
             {
@@ -373,7 +373,6 @@ namespace TSalesManagement
             //back to home screen
             skipPaintWithList = 0;
             tabControl1.SelectedIndex = 0;
-            paintDataGridWithListData();
         }
         private void paintDataGridWithListData() //this iteration of painting only loops through tables to paint and nothing else making it more efficent after the user has been loaded once
         {
@@ -491,6 +490,8 @@ namespace TSalesManagement
             paintDataGridWithListData();
         }
 
+
+        //this one is hard to read, all the logic for making rows pink and overriding red/blue and also returning them to red/blue
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             var senderGrid = (DataGridView)sender;
@@ -614,6 +615,6 @@ namespace TSalesManagement
                     dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                 }
             }
-        }  //this one is hard to read, all the logic for making rows pink and overriding red/blue and also returning them to red/blue
+        } 
     }
 }
