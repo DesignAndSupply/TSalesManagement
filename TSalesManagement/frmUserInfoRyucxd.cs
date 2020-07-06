@@ -42,9 +42,11 @@ namespace TSalesManagement
 
         //override lists (used to identify which items were blue/red prior to selecting
         public List<int> overrideBlueActivity = new List<int>(); //use the IDs here so we can easily identify which were selected
-        public List<int> overrideBluePipeline = new List<int>();//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        public List<int> overrideBluePipeline = new List<int>(); //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         public List<int> overrideRedActivity = new List<int>();
         public List<int> overrideRedPipeline = new List<int>();
+
+
 
         public string comboName { get; set; } //whats currently in the cmbStaff box
         public string sql { get; set; } //sql for the tables (updated in whichTab()
@@ -54,10 +56,10 @@ namespace TSalesManagement
         public frmUserInfoRyucxd()
         {
             InitializeComponent();
-            cmbStaff.Items.Add("ryucxd"); //hello tom, its me, corey but from the past!
-            cmbStaff.Items.Add("Corey Jones"); //you're gonna wanna remove these and add the datasource like you did last time
-            cmbStaff.Items.Add("Tomas Grother");//hope you're having fun in isolation
-            cmbStaff.Items.Add("Nicholas Thomas");//miss u terribly
+            //cmbStaff.Items.Add("ryucxd"); //hello tom, its me, corey but from the past!
+            //cmbStaff.Items.Add("Corey Jones"); //you're gonna wanna remove these and add the datasource like you did last time
+            //cmbStaff.Items.Add("Tomas Grother");//hope you're having fun in isolation
+            //cmbStaff.Items.Add("Nicholas Thomas");//miss u terribly
         }
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,6 +95,8 @@ namespace TSalesManagement
                     da.Fill(dt);
                     conn.Close();
                     dataGridView1.DataSource = dt;
+
+
                 }
             }
             //now that the data is loaded, its probably a good idea to add buttons and paint the DGV here
@@ -105,7 +109,7 @@ namespace TSalesManagement
         {
 
             //get the userID
-            int userID = 0; //this is only used in pipline
+            int userID = 0; //this is only used in pipeline
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand("SELECT id FROM [user_info].dbo.[user] WHERE forename + ' ' + surname = '" + comboName + "' ", conn))
@@ -127,13 +131,11 @@ namespace TSalesManagement
             }
             else if (tabControl1.SelectedIndex == 2) //tasks
             {
-                sql = "SELECT [Task ID],[Date Created],dueDate,[Priority],Detail,[Status],SetBy,SetFor,crmActive,crmCustAccRef, CASE WHEN completeDateAddDays is null THEN DATEADD(day,-2,GETDATE()) ELSE completeDateAddDays END as [completeDateAddDays] FROM [ToDo].dbo.c_view_task_list_crm  WHERE SetFor = '" + comboName + "' AND subject LIKE @custName ORDER BY dueDate DESC";
-
+                sql = "SELECT [Task ID],[Date Created],dueDate,[Priority],[NAME] as 'Customer',Detail,[Status],SetBy,SetFor,crmActive,crmCustAccRef, CASE WHEN completeDateAddDays is null THEN DATEADD(day,-2,GETDATE()) ELSE completeDateAddDays END as [completeDateAddDays] FROM [ToDo].dbo.c_view_task_list_crm  WHERE SetFor = '" + comboName + "' AND subject LIKE @custName ORDER BY dueDate DESC";
             }
             else //only option left is pipeline
             {
                 //also need userID    --    im guessing this is the ID of the person selected so im gonna grab that id here and build it into the string manually
-
                 sql = "SELECT id as 'Pipeline ID',[Customer Name], door_style as 'Door Style', order_ref as 'Order Reference', estimated_order_date as 'Estimated date of order', added_by_id as 'Added by', date_added as 'Added on', estimated_order_value as 'Estimated Value', order_status as 'Status' FROM c_view_sales_pipeline_text where added_by_id =  '" + comboName + "' AND order_status LIKE '%" + comboPipeLine.Text + "%'";
             }
         }
@@ -212,10 +214,11 @@ namespace TSalesManagement
                 dataGridView1.Columns[1].HeaderText = "Date Created";
                 dataGridView1.Columns[2].HeaderText = "Due Date";
                 dataGridView1.Columns[3].HeaderText = "Priority";
-                dataGridView1.Columns[4].HeaderText = "Detail";
-                dataGridView1.Columns[5].HeaderText = "Status";
-                dataGridView1.Columns[6].HeaderText = "Set By";
-                dataGridView1.Columns[7].HeaderText = "Set For";
+                dataGridView1.Columns[4].HeaderText = "Customer";
+                dataGridView1.Columns[5].HeaderText = "Detail";
+                dataGridView1.Columns[6].HeaderText = "Status";
+                dataGridView1.Columns[7].HeaderText = "Set By";
+                dataGridView1.Columns[8].HeaderText = "Set For";
                 //column size stuff
                 dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -241,6 +244,9 @@ namespace TSalesManagement
                 dataGridView1.Columns[7].HeaderText = "Estimated Value";
                 dataGridView1.Columns[8].HeaderText = "Status";
                 //column size stuff
+
+
+
                 dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -389,14 +395,23 @@ namespace TSalesManagement
                     for (int i = 0; i < dataGridView1.Columns.Count; i++)
                     {
                         //check red
-                        if (alreadyAssignedCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[customerAccRefIndex].Value)))
+
+                        try
                         {
-                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                            if (alreadyAssignedCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[customerAccRefIndex].Value)))
+                            {
+                                dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
+                            }
+                            //check blue
+                            if (alreadyCompleteCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[customerAccRefIndex].Value)))
+                            {
+                                dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+                            }
                         }
-                        //check blue
-                        if (alreadyCompleteCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[customerAccRefIndex].Value)))
+
+                        catch
                         {
-                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
+
                         }
                     }
                 }
@@ -446,6 +461,7 @@ namespace TSalesManagement
         private void nullDataGrids()  //grid(s) because im planning on having hidden dgvs 
         {
             dataGridView1.DataSource = null; dataGridView1.Rows.Clear(); dataGridView1.Columns.Clear(); //alll on one row looks CLEAN
+
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -489,6 +505,8 @@ namespace TSalesManagement
             loadData();
             paintDataGridWithListData();
         }
+
+
 
 
         //this one is hard to read, all the logic for making rows pink and overriding red/blue and also returning them to red/blue
@@ -615,6 +633,115 @@ namespace TSalesManagement
                     dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
                 }
             }
-        } 
+        }
+
+        private void FrmUserInfoRyucxd_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'user_infoDataSet.c_view_sales_program_users' table. You can move, or remove it, as needed.
+            this.c_view_sales_program_usersTableAdapter.Fill(this.user_infoDataSet.c_view_sales_program_users);
+
+        }
+
+        private void DataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                string aID;
+                string custName;
+
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+
+                    DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+
+                    aID = selectedRow.Cells["Account Ref"].Value.ToString();
+                    custName = selectedRow.Cells["Customer Name"].Value.ToString();
+                    frmCustomerInformation frmAA = new frmCustomerInformation(aID, custName);
+                    frmAA.ShowDialog();
+
+                    //fillActivityGrid();
+                }
+
+
+            }
+
+            if (tabControl1.SelectedIndex == 1)
+            {
+                int aID;
+            
+
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+
+                    DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+
+                    aID = Convert.ToInt32(selectedRow.Cells[0].Value);
+                    
+                    frmAmendActivity frmAA = new frmAmendActivity(aID);
+                    frmAA.ShowDialog();
+
+                    //fillActivityGrid();
+                }
+            }
+
+
+            if (tabControl1.SelectedIndex == 2)
+            {
+                int aID;
+
+
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+
+                    DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+
+                    aID = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+                    frmAmendToDo frmAA = new frmAmendToDo(aID);
+                    frmAA.ShowDialog();
+
+                    //fillActivityGrid();
+                }
+            }
+
+            if (tabControl1.SelectedIndex == 3)
+            {
+                int aID;
+
+
+                if (dataGridView1.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+
+                    DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
+
+                    aID = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+                    frmAmendPipeline frmAA = new frmAmendPipeline(aID);
+                    frmAA.ShowDialog();
+
+                    //fillActivityGrid();
+                }
+            }
+
+
+
+
+
+        }
+
+        private void BtnEmail_Click(object sender, EventArgs e)
+        {
+           
+            }
+
+        private void BtnEmail_Click_1(object sender, EventArgs e)
+        {
+            frmEmailUserManagement frmEUM = new frmEmailUserManagement(cmbStaff.Text);
+            frmEUM.ShowDialog();
+        }
     }
 }

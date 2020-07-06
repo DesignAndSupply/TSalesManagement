@@ -28,11 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.selectedGroupBox = new System.Windows.Forms.GroupBox();
             this.selectedListBox = new System.Windows.Forms.ListBox();
             this.cmbStaff = new System.Windows.Forms.ComboBox();
+            this.cviewsalesprogramusersBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.user_infoDataSet = new TSalesManagement.user_infoDataSet();
             this.txtCustomerSearch = new System.Windows.Forms.TextBox();
             this.lblCustomer = new System.Windows.Forms.Label();
             this.btnEmail = new System.Windows.Forms.Button();
@@ -48,7 +51,10 @@
             this.comboPipeLine = new System.Windows.Forms.ComboBox();
             this.buttonPipeline = new System.Windows.Forms.Button();
             this.lblPipeline = new System.Windows.Forms.Label();
+            this.c_view_sales_program_usersTableAdapter = new TSalesManagement.user_infoDataSetTableAdapters.c_view_sales_program_usersTableAdapter();
             this.selectedGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -87,6 +93,7 @@
             // 
             // cmbStaff
             // 
+            this.cmbStaff.DataSource = this.cviewsalesprogramusersBindingSource;
             this.cmbStaff.DisplayMember = "fullname";
             this.cmbStaff.FormattingEnabled = true;
             this.cmbStaff.Location = new System.Drawing.Point(12, 25);
@@ -95,6 +102,16 @@
             this.cmbStaff.TabIndex = 3;
             this.cmbStaff.ValueMember = "id";
             this.cmbStaff.SelectedIndexChanged += new System.EventHandler(this.cmbStaff_SelectedIndexChanged);
+            // 
+            // cviewsalesprogramusersBindingSource
+            // 
+            this.cviewsalesprogramusersBindingSource.DataMember = "c_view_sales_program_users";
+            this.cviewsalesprogramusersBindingSource.DataSource = this.user_infoDataSet;
+            // 
+            // user_infoDataSet
+            // 
+            this.user_infoDataSet.DataSetName = "user_infoDataSet";
+            this.user_infoDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtCustomerSearch
             // 
@@ -124,6 +141,7 @@
             this.btnEmail.TabIndex = 21;
             this.btnEmail.Text = "Email Selected Items:";
             this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.BtnEmail_Click_1);
             // 
             // label6
             // 
@@ -232,9 +250,11 @@
             this.dataGridView1.Location = new System.Drawing.Point(249, 66);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(909, 483);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentDoubleClick);
             // 
             // comboPipeLine
             // 
@@ -274,6 +294,10 @@
             this.lblPipeline.Text = "Order Status:";
             this.lblPipeline.Visible = false;
             // 
+            // c_view_sales_program_usersTableAdapter
+            // 
+            this.c_view_sales_program_usersTableAdapter.ClearBeforeFill = true;
+            // 
             // frmUserInfoRyucxd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -296,7 +320,10 @@
             this.Name = "frmUserInfoRyucxd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUserInfoRyucxd";
+            this.Load += new System.EventHandler(this.FrmUserInfoRyucxd_Load);
             this.selectedGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -325,5 +352,8 @@
         private System.Windows.Forms.ComboBox comboPipeLine;
         private System.Windows.Forms.Button buttonPipeline;
         private System.Windows.Forms.Label lblPipeline;
+        private user_infoDataSet user_infoDataSet;
+        private System.Windows.Forms.BindingSource cviewsalesprogramusersBindingSource;
+        private user_infoDataSetTableAdapters.c_view_sales_program_usersTableAdapter c_view_sales_program_usersTableAdapter;
     }
 }
