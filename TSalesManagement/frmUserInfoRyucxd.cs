@@ -13,6 +13,9 @@ namespace TSalesManagement
 {
     public partial class frmUserInfoRyucxd : Form
     {
+
+
+        //this is where the problem is -- needs to have the list filled on selection ... although istg i did this
         //these are all the lists for retaining the selcted rows     -- pink --
         public List<string> selectedCustomer = new List<string>();  //this uses [account ref] to identify which are selected
         public List<int> selectedActivity = new List<int>();  //this uses the [id] column to identify which are selected
@@ -261,7 +264,7 @@ namespace TSalesManagement
             //center all the columns
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                //column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
@@ -742,6 +745,12 @@ namespace TSalesManagement
         {
             frmEmailUserManagement frmEUM = new frmEmailUserManagement(cmbStaff.Text);
             frmEUM.ShowDialog();
+        }
+
+        private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            //on the column sort reapply the colours as they get lost after sorting
+            paintDataGridWithListData();
         }
     }
 }
