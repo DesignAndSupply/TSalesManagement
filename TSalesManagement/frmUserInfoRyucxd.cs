@@ -846,14 +846,15 @@ namespace TSalesManagement
                         if (tabControl1.SelectedIndex == 2)
                         {
                             int taskColumnIndex = 0;
-                            if (dataGridView1.Columns.Contains("ID")) //I AM WORKING HERE!!!!!!"
+                            if (dataGridView1.Columns.Contains("ID")) //I AM WORKING HERE!!!!!!" // need to tidy this area up and test it
                             {
                                 taskColumnIndex = dataGridView1.Columns["ID"].Index;
 
                                 if (selectedTask.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value)))
                                 {
                                     //it is in the list already so here we need to make it empty and move on
-                                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //herehere
+                                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;  //herehere
+                                    //also need to add this to a list aswell --- selectedTask :))))))
                                 }
 
                             }
