@@ -52,6 +52,7 @@
             this.buttonPipeline = new System.Windows.Forms.Button();
             this.lblPipeline = new System.Windows.Forms.Label();
             this.c_view_sales_program_usersTableAdapter = new TSalesManagement.user_infoDataSetTableAdapters.c_view_sales_program_usersTableAdapter();
+            this.ryucxd = new System.Windows.Forms.Button();
             this.selectedGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
@@ -147,6 +148,7 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.CornflowerBlue;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(766, 26);
             this.label6.Name = "label6";
@@ -158,6 +160,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.OrangeRed;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(766, 46);
             this.label4.Name = "label4";
@@ -169,6 +172,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.HotPink;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(766, 6);
             this.label3.Name = "label3";
@@ -243,7 +247,7 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MintCream;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
@@ -299,11 +303,22 @@
             // 
             this.c_view_sales_program_usersTableAdapter.ClearBeforeFill = true;
             // 
+            // ryucxd
+            // 
+            this.ryucxd.Location = new System.Drawing.Point(484, 3);
+            this.ryucxd.Name = "ryucxd";
+            this.ryucxd.Size = new System.Drawing.Size(75, 23);
+            this.ryucxd.TabIndex = 32;
+            this.ryucxd.Text = "ryucxd";
+            this.ryucxd.UseVisualStyleBackColor = true;
+            this.ryucxd.Click += new System.EventHandler(this.ryucxd_Click);
+            // 
             // frmUserInfoRyucxd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 561);
+            this.Controls.Add(this.ryucxd);
             this.Controls.Add(this.comboPipeLine);
             this.Controls.Add(this.buttonPipeline);
             this.Controls.Add(this.lblPipeline);
@@ -356,5 +371,6 @@
         private user_infoDataSet user_infoDataSet;
         private System.Windows.Forms.BindingSource cviewsalesprogramusersBindingSource;
         private user_infoDataSetTableAdapters.c_view_sales_program_usersTableAdapter c_view_sales_program_usersTableAdapter;
+        private System.Windows.Forms.Button ryucxd;
     }
 }

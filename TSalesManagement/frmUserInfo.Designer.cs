@@ -155,6 +155,7 @@
             this.selectedListBox.Name = "selectedListBox";
             this.selectedListBox.Size = new System.Drawing.Size(217, 524);
             this.selectedListBox.TabIndex = 0;
+            this.selectedListBox.SelectedIndexChanged += new System.EventHandler(this.selectedListBox_SelectedIndexChanged);
             // 
             // label1
             // 

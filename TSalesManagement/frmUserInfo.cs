@@ -1173,5 +1173,10 @@ namespace TSalesManagement
         {
 
         }
+
+        private void selectedListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

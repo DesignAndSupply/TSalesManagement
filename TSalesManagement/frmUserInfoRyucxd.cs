@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Microsoft.PowerBI.Api.V1.Models;
 
 namespace TSalesManagement
 {
@@ -20,6 +21,7 @@ namespace TSalesManagement
         public List<string> selectedCustomer = new List<string>();  //this uses [account ref] to identify which are selected
         public List<int> selectedActivity = new List<int>();  //this uses the [id] column to identify which are selected
         public List<int> selectedPipeline = new List<int>(); //this uses [pipeline id]
+        public List<int> selectedTask = new List<int>(); //this uses [id] of the task -- dont think this one needs any other lists because i cant see it being useful :)
 
         //these are used for adding the selected items to the listbox on the left of the screen
         public List<string> selectedCustomerName = new List<string>();
@@ -37,6 +39,7 @@ namespace TSalesManagement
         public List<string> alreadyAssignedCustomer = new List<string>(); //likely to use  [Customer Name] from the customer list
         public List<int> alreadyAssignedActivity = new List<int>(); //when going through the tasks (matching up acc ref to acc ref
         public List<int> alreadyAssignedPipeline = new List<int>();//collect the customer name into these two lists
+
 
         //these are used for highlighting everything that has been COMPLETE in the last 7 days -- blue --
         public List<string> alreadyCompleteCustomer = new List<string>();
@@ -59,6 +62,7 @@ namespace TSalesManagement
         public frmUserInfoRyucxd()
         {
             InitializeComponent();
+            updateListBox();
             //cmbStaff.Items.Add("ryucxd"); //hello tom, its me, corey but from the past!
             //cmbStaff.Items.Add("Corey Jones"); //you're gonna wanna remove these and add the datasource like you did last time
             //cmbStaff.Items.Add("Tomas Grother");//hope you're having fun in isolation
@@ -104,8 +108,9 @@ namespace TSalesManagement
             }
             //now that the data is loaded, its probably a good idea to add buttons and paint the DGV here
             formatDataGrid();
-            if (tabControl1.SelectedIndex != 2)
-                addButtons();
+            //if (tabControl1.SelectedIndex != 2)
+            addButtons();
+            dataGridView1.ClearSelection();
         }
 
         private void whichTab()
@@ -146,23 +151,23 @@ namespace TSalesManagement
         private void addButtons()
         {
             //adding buttons to one grid will mean i need to count the current columns and place it at the MAX column to allow for different columns having different numbers
-            if (tabControl1.SelectedIndex != 2) //anything OTHER than tasks
+            //if (tabControl1.SelectedIndex != 2) // removing this because chris wants to be able to select a task 13/07/2020
+            //{
+            DataGridViewButtonColumn selectButton = new DataGridViewButtonColumn();
+            selectButton.Name = "Select";
+            selectButton.Text = "Select";
+            selectButton.UseColumnTextForButtonValue = true;
+            int columnIndex = (dataGridView1.Columns.Count);
+            if (dataGridView1.Columns["Select"] == null)
             {
-                DataGridViewButtonColumn selectButton = new DataGridViewButtonColumn();
-                selectButton.Name = "Select";
-                selectButton.Text = "Select";
-                selectButton.UseColumnTextForButtonValue = true;
-                int columnIndex = (dataGridView1.Columns.Count);
-                if (dataGridView1.Columns["Select"] == null)
-                {
-                    dataGridView1.Columns.Insert(columnIndex, selectButton);
-                }
-                if (dataGridView1.Columns.Contains("Select"))
-                {
-                    int index = dataGridView1.Columns["Select"].Index;
-                    dataGridView1.Columns[index].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //allign the header cell because this is done AFTER format();
-                }
+                dataGridView1.Columns.Insert(columnIndex, selectButton);
             }
+            if (dataGridView1.Columns.Contains("Select"))
+            {
+                int index = dataGridView1.Columns["Select"].Index;
+                dataGridView1.Columns[index].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //allign the header cell because this is done AFTER format();
+            }
+            //}
         }
 
         private void formatDataGrid()
@@ -339,8 +344,16 @@ namespace TSalesManagement
             //now that customer is handled, swap tabs to activity and pipline and grab the ID's where the customer name matches
             tabControl1.SelectedIndex = 1; //activity
             int idIndex = 0, activityCustomerName = 0;
-            if (dataGridView1.Columns.Contains("id"))
-                idIndex = dataGridView1.Columns["id"].Index;
+            string columnName = "ID";
+            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            {
+                if (dataGridView1.Columns[i].HeaderText == columnName)
+                {
+                    idIndex = i;
+                }
+            }
+            //if (dataGridView1.Columns.Contains("ACTIVITY ID"))
+            //  idIndex = dataGridView1.Columns["ACTIVITY ID"].Index;
             if (dataGridView1.Columns.Contains("Customer Name"))
                 activityCustomerName = dataGridView1.Columns["Customer Name"].Index;
             for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -367,14 +380,14 @@ namespace TSalesManagement
             if (dataGridView1.Columns.Contains("Customer Name"))
                 pipelineCustomerName = dataGridView1.Columns["Customer Name"].Index;
 
-            for (int i = 0; i < dataGridView1.Rows.Count;i++)
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
             {
-             if (redLink.Contains(dataGridView1.Rows[i].Cells[pipelineCustomerName].Value.ToString()))
+                if (redLink.Contains(dataGridView1.Rows[i].Cells[pipelineCustomerName].Value.ToString()))
                 {
                     //is a match
                     alreadyAssignedPipeline.Add(Convert.ToInt32(dataGridView1.Rows[i].Cells[pipelineIdIndex].Value));
                 }
-             if (blueLink.Contains(dataGridView1.Rows[i].Cells[pipelineCustomerName].Value.ToString()))
+                if (blueLink.Contains(dataGridView1.Rows[i].Cells[pipelineCustomerName].Value.ToString()))
                 {
                     alreadyCompletePipeline.Add(Convert.ToInt32(dataGridView1.Rows[i].Cells[pipelineIdIndex].Value));
                 }
@@ -385,7 +398,7 @@ namespace TSalesManagement
         }
         private void paintDataGridWithListData() //this iteration of painting only loops through tables to paint and nothing else making it more efficent after the user has been loaded once
         {
-            int customerAccRefIndex = 0, ActivityIDIndex = 0,pipelineIDIndex = 0;
+            int customerAccRefIndex = 0, ActivityIDIndex = 0, pipelineIDIndex = 0;
             //paint the current tab
             if (tabControl1.SelectedIndex == 0)
             {
@@ -410,6 +423,11 @@ namespace TSalesManagement
                             {
                                 dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
                             }
+                            //check pink (in the case that the user has selected one item and then swapped tabs (or has clicked sort on a column)
+                            if (selectedCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[customerAccRefIndex].Value)))
+                            {
+                                dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                            }
                         }
 
                         catch
@@ -421,12 +439,26 @@ namespace TSalesManagement
             }
             if (tabControl1.SelectedIndex == 1)
             {
-                if (dataGridView1.Columns.Contains("id"))
+                //this is the section where it does not notice ID --
+                string columnName;
+                columnName = "ID";
+                int passloop = 0;
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
-                    ActivityIDIndex = dataGridView1.Columns["id"].Index;
-                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    if (dataGridView1.Columns[i].HeaderText == columnName)
+                    {
+                        ActivityIDIndex = i;
+                        passloop = 1;
+                    }
+                }
+                // MessageBox.Show(dataGridView1.Columns[i].HeaderText.ToString());
+                if (passloop == 1) //old code  if (dataGridView1.Columns.Contains(columnName))
+                {
+                    //ActivityIDIndex = dataGridView1.Columns[columnName].Index;
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         //check red
+                        //  MessageBox.Show(dataGridView1.Columns[i].HeaderText.ToString());
                         if (alreadyAssignedCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[ActivityIDIndex].Value)))
                         {
                             dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.OrangeRed;
@@ -436,9 +468,33 @@ namespace TSalesManagement
                         {
                             dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
                         }
+                        //check pink
+                        if (selectedActivity.Contains(Convert.ToInt32(dataGridView1.Rows[i].Cells[ActivityIDIndex].Value)))
+                        {
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                        }
                     }
                 }
             }
+
+            if (tabControl1.SelectedIndex == 2) //TASKS
+            {
+                int taskColumnIndex = 0;
+                //check what tasks are in the list and repaint them to hotpink!
+                if (dataGridView1.Columns.Contains("ID"))
+                {
+                    taskColumnIndex = dataGridView1.Columns["ID"].Index;
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        if (selectedTask.Contains(Convert.ToInt32(dataGridView1.Rows[i].Cells[taskColumnIndex].Value)))
+                        {
+                            //it is in the list already so here we need to make it pink and move on
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
+                        }
+                    }
+                }
+            }
+
             if (tabControl1.SelectedIndex == 3)
             {
                 if (dataGridView1.Columns.Contains("Pipeline ID"))
@@ -456,6 +512,9 @@ namespace TSalesManagement
                         {
                             dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.CornflowerBlue;
                         }
+                        //check pink
+                        if (selectedPipeline.Contains(Convert.ToInt32(dataGridView1.Rows[i].Cells[pipelineIDIndex].Value)))
+                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
                     }
                 }
             }
@@ -530,10 +589,34 @@ namespace TSalesManagement
                     //we need to check if this matches any of the override list and if they do we return it back to that colour instead of .empty
                     //different route for each tab
 
+                    //adding tasks in here 
+                    if (tabControl1.SelectedIndex == 2)
+                    {
+                        int taskColumnIndex = 0;
+                        if (dataGridView1.Columns.Contains("ID"))
+                        {
+                            taskColumnIndex = dataGridView1.Columns["ID"].Index;
+
+                            if (selectedTask.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value)))
+                            {
+                                //it is in the list already so here we need to make it empty and move on
+                                dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //herehere
+                            }
+
+                        }
+                    }
                     if (tabControl1.SelectedIndex == 1) //activity
                     {
-                        if (dataGridView1.Columns.Contains("id"))
-                            clearIndex = dataGridView1.Columns["id"].Index;
+                        string columnName = "ID";
+                        for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                        {
+                            if (dataGridView1.Columns[i].HeaderText == columnName)
+                            {
+                                clearIndex = i;
+                            }
+                        }
+                        //if (dataGridView1.Columns.Contains("ACTIVITY ID"))
+                        //    clearIndex = dataGridView1.Columns["ACTIVITY ID"].Index;
 
                         if (overrideBlueActivity.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[clearIndex].Value)))
                         {
@@ -546,7 +629,34 @@ namespace TSalesManagement
                             overrideRedActivity.Remove(Convert.ToInt32(dataGridView1.CurrentRow.Cells[clearIndex].Value));//also remove the entry into the override list
                         }
                         else
+                        {
+                            int activityRef = 0;
+
+                            string columnName2 = "ID";
+                            for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                            {
+                                if (dataGridView1.Columns[i].HeaderText == columnName)
+                                {
+                                    activityRef = i;
+                                    selectedActivity.Remove(Convert.ToInt32(dataGridView1.CurrentRow.Cells[activityRef].Value));
+                                }
+                            }
+
+
+                            //also need to remove this from the list aswell
+                            int CustomerName = 0; //use this because i have ZERO trust for the columns and their numbering
+                            if (dataGridView1.Columns.Contains("Customer Name"))
+                            {
+                                CustomerName = dataGridView1.Columns["Customer Name"].Index;
+                                selectedActivityName.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerName].Value));
+                            }
                             dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //wasnt in either override so make it empty
+                            updateListBox();
+                        }
+
+                        //if (.Contains(dataGridView1.CurrentRow.Cells)) //find the entry location and look @ the code there 
+
+
                     }
                     else if (tabControl1.SelectedIndex == 3) //pipeline
                     {
@@ -564,11 +674,47 @@ namespace TSalesManagement
                             overrideRedPipeline.Remove(Convert.ToInt32(dataGridView1.CurrentRow.Cells[clearIndex].Value));//also remove the entry into the override list
                         }
                         else
+                        { //also need to remove this entry from the list...
+                            int pipelineRef = 0;
+                            if (dataGridView1.Columns.Contains("Pipeline ID"))
+                            {
+                                pipelineRef = dataGridView1.Columns["Pipeline ID"].Index;
+                                selectedPipeline.Remove(Convert.ToInt32(dataGridView1.CurrentRow.Cells[pipelineRef].Value));
+                            }
+
+                            //also need to remove this from the list aswell
+                            int CustomerName = 0; //use this because i have ZERO trust for the columns and their numbering
+                            if (dataGridView1.Columns.Contains("Customer Name"))
+                            {
+                                CustomerName = dataGridView1.Columns["Customer Name"].Index;
+                                selectedPipelineName.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerName].Value));
+                            }
+
                             dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //wasnt in either override so make it empty
+                            updateListBox();
+                        }
 
                     }
                     else //customer
+                    {
+                        int accountRefIndex = 0;
+                        if (dataGridView1.Columns.Contains("Account Ref"))
+                        {
+                            accountRefIndex = dataGridView1.Columns["Account Ref"].Index;
+                            selectedCustomer.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[accountRefIndex].Value));
+                        }
+
+                        //also need to remove this from the list aswell
                         dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;
+                        int CustomerName = 0; //use this because i have ZERO trust for the columns and their numbering
+                        if (dataGridView1.Columns.Contains("Customer Name"))
+                        {
+                            CustomerName = dataGridView1.Columns["Customer Name"].Index;
+                            selectedCustomerName.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerName].Value));
+                        }
+                        updateListBox();
+
+                    }
                 }
                 else if (dataGridView1.CurrentRow.DefaultCellStyle.BackColor == Color.CornflowerBlue)
                 {
@@ -585,8 +731,16 @@ namespace TSalesManagement
                             if (tabControl1.SelectedIndex == 1) //activity
                             {
                                 //get the index of activity id (im doing this because i dont trust the buttons and sometimes they like to take index 0 and push everything +1 resulting in errors
-                                if (dataGridView1.Columns.Contains("id"))
-                                    overrideIndex = dataGridView1.Columns["id"].Index;
+                                string columnName = "ID";
+                                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                                {
+                                    if (dataGridView1.Columns[i].HeaderText == columnName)
+                                    {
+                                        overrideIndex = i;
+                                    }
+                                }
+                                //if (dataGridView1.Columns.Contains("ACTIVITY ID"))
+                                // overrideIndex = dataGridView1.Columns["ACTIVITY ID"].Index;
                                 //add it to the list
                                 overrideBlueActivity.Add(Convert.ToInt32(dataGridView1.CurrentRow.Cells[overrideIndex].Value)); //need to test that this adds correctly
 
@@ -616,8 +770,16 @@ namespace TSalesManagement
                             if (tabControl1.SelectedIndex == 1) //activity
                             {
                                 //get the index of activity id (im doing this because i dont trust the buttons and sometimes they like to take index 0 and push everything +1 resulting in errors
-                                if (dataGridView1.Columns.Contains("id"))
-                                    overrideIndex = dataGridView1.Columns["id"].Index;
+                                string columnName = "ID";
+                                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                                {
+                                    if (dataGridView1.Columns[i].HeaderText == columnName)
+                                    {
+                                        overrideIndex = i;
+                                    }
+                                }
+                                //if (dataGridView1.Columns.Contains("ACTIVITY ID"))
+                                //  overrideIndex = dataGridView1.Columns["ACTIVITY ID"].Index;
                                 //add it to the list
                                 overrideRedActivity.Add(Convert.ToInt32(dataGridView1.CurrentRow.Cells[overrideIndex].Value)); //need to test that this adds correctly
                             }
@@ -633,9 +795,92 @@ namespace TSalesManagement
                 }
                 else
                 {
-                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                    //i think this is where the pink list needs to be added...
+                    if (tabControl1.SelectedIndex == 0) // customer
+                    {
+                        int CustomerID = 0; //use this because i have ZERO trust for the columns and their numbering
+                        if (dataGridView1.Columns.Contains("Account Ref"))
+                            CustomerID = dataGridView1.Columns["Account Ref"].Index;
+                        dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                        //add it to the list
+                        selectedCustomer.Add(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerID].Value));
+                        //add name for the listbox here
+                        int CustomerName = 0; //use this because i have ZERO trust for the columns and their numbering
+                        if (dataGridView1.Columns.Contains("Customer Name"))
+                        {
+                            CustomerName = dataGridView1.Columns["Customer Name"].Index;
+                            selectedCustomerName.Add(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerName].Value));
+                        }
+                        updateListBox();
+                    }
+                    else if (tabControl1.SelectedIndex == 1) //activity
+                    {
+                        int activityID = 0; //use this because i have ZERO trust for the columns and their numbering
+                        string columnName = "ID";
+                        for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                        {
+                            if (dataGridView1.Columns[i].HeaderText == columnName)
+                            {
+                                activityID = i;
+                            }
+                        }
+
+                        //if (dataGridView1.Columns.Contains("ACTIVITY ID"))
+                        //    activityID = dataGridView1.Columns["ACTIVITY ID"].Index;
+
+                        dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                        //add it to the list
+                        selectedActivity.Add(Convert.ToInt32(dataGridView1.CurrentRow.Cells[activityID].Value)); //ID
+
+                        //list box
+                        int CustomerName = 0; //use this because i have ZERO trust for the columns and their numbering
+                        if (dataGridView1.Columns.Contains("Customer Name"))
+                        {
+                            CustomerName = dataGridView1.Columns["Customer Name"].Index;
+                            selectedActivityName.Add(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerName].Value));
+                        }
+                        updateListBox();
+                    }
+                    else if (tabControl1.SelectedIndex == 2) //THIS IS TASKS BUT ITS NOT ENABLED RIGHT NOW BUT IT NEEDS TO BE ADDED!
+                    {
+                        if (tabControl1.SelectedIndex == 2)
+                        {
+                            int taskColumnIndex = 0;
+                            if (dataGridView1.Columns.Contains("ID")) //I AM WORKING HERE!!!!!!"
+                            {
+                                taskColumnIndex = dataGridView1.Columns["ID"].Index;
+
+                                if (selectedTask.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value)))
+                                {
+                                    //it is in the list already so here we need to make it empty and move on
+                                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //herehere
+                                }
+
+                            }
+                        }
+                    }
+
+                    else if (tabControl1.SelectedIndex == 3) //pipeline
+                    {
+                        int pipelineIndex = 0; //use this because i have ZERO trust for the columns and their numbering
+                        if (dataGridView1.Columns.Contains("Pipeline ID"))
+                            pipelineIndex = dataGridView1.Columns["Pipeline ID"].Index;
+
+                        dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;
+                        selectedPipeline.Add(Convert.ToInt32(dataGridView1.CurrentRow.Cells[pipelineIndex].Value)); //pipline ID
+                                                                                                                    //list box
+                        int CustomerName = 0; //use this because i have ZERO trust for the columns and their numbering
+                        if (dataGridView1.Columns.Contains("Customer Name"))
+                        {
+                            CustomerName = dataGridView1.Columns["Customer Name"].Index;
+                            selectedPipelineName.Add(Convert.ToString(dataGridView1.CurrentRow.Cells[CustomerName].Value));
+                        }
+                        updateListBox();
+                    }
+                    dataGridView1.ClearSelection();
                 }
             }
+            dataGridView1.ClearSelection();
         }
 
         private void FrmUserInfoRyucxd_Load(object sender, EventArgs e)
@@ -672,7 +917,7 @@ namespace TSalesManagement
             if (tabControl1.SelectedIndex == 1)
             {
                 int aID;
-            
+
 
                 if (dataGridView1.SelectedCells.Count > 0)
                 {
@@ -681,7 +926,7 @@ namespace TSalesManagement
                     DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
 
                     aID = Convert.ToInt32(selectedRow.Cells[0].Value);
-                    
+
                     frmAmendActivity frmAA = new frmAmendActivity(aID);
                     frmAA.ShowDialog();
 
@@ -738,8 +983,8 @@ namespace TSalesManagement
 
         private void BtnEmail_Click(object sender, EventArgs e)
         {
-           
-            }
+
+        }
 
         private void BtnEmail_Click_1(object sender, EventArgs e)
         {
@@ -751,6 +996,67 @@ namespace TSalesManagement
         {
             //on the column sort reapply the colours as they get lost after sorting
             paintDataGridWithListData();
+            dataGridView1.ClearSelection();
         }
+
+        private void updateListBox()
+        {
+            //here we add the selected items to the list box
+
+
+            //string.Join(Environment.NewLine, selectedActivity)
+            selectedListBox.Items.Clear();
+            selectedListBox.Items.Add("-- Customer --");
+            for (int i = 0; i < selectedCustomerName.Count; i++)
+                selectedListBox.Items.Add(selectedCustomerName[i]);
+            //selectedListBox.Items.Add(string.Join(Environment.NewLine, selectedCustomerName));
+            selectedListBox.Items.Add(" ");
+            selectedListBox.Items.Add("-- Activities --");
+            // selectedListBox.Items.Add(string.Join(Environment.NewLine, selectedActivityName));
+            for (int i = 0; i < selectedActivityName.Count; i++)
+                selectedListBox.Items.Add(selectedActivityName[i]);
+            selectedListBox.Items.Add(" ");
+            selectedListBox.Items.Add("-- Pipeline --");
+            //selectedListBox.Items.Add(string.Join(Environment.NewLine, selectedPipelineName));
+            for (int i = 0; i < selectedPipelineName.Count; i++)
+                selectedListBox.Items.Add(selectedPipelineName[i]);
+
+
+        }
+
+
+        private void ryucxd_Click(object sender, EventArgs e)
+        {
+            //use this for testing shit
+
+            //int z = 999;
+            //for (int i = 0; i < dataGridView1.Columns.Count; i++)
+            //{
+            //    string test;
+            //    test = "ID";
+
+            //    MessageBox.Show(dataGridView1.Columns[i].HeaderText.ToString());
+            //    if (dataGridView1.Columns[i].HeaderText.Contains(test))
+            //    {
+            //        z = dataGridView1.Columns[i].Index;
+
+            //    }
+            //    MessageBox.Show(z.ToString());
+
+            //}
+
+            //print the lists
+
+            MessageBox.Show("customerlist = " + string.Join(Environment.NewLine, selectedCustomer));
+
+            MessageBox.Show("activity list = " + string.Join(Environment.NewLine, selectedActivity));
+
+            MessageBox.Show("pipeline list = " + string.Join(Environment.NewLine, selectedPipeline));
+
+
+        }
+
+
+
     }
 }
