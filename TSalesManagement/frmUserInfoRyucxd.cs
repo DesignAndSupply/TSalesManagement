@@ -1,4 +1,5 @@
 ﻿using System;
+using StartUpClass;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1160,35 +1161,180 @@ namespace TSalesManagement
 
         private void ryucxd_Click(object sender, EventArgs e)
         {
-            //use this for testing shit
-
-            //int z = 999;
-            //for (int i = 0; i < dataGridView1.Columns.Count; i++)
-            //{
-            //    string test;
-            //    test = "ID";
-
-            //    MessageBox.Show(dataGridView1.Columns[i].HeaderText.ToString());
-            //    if (dataGridView1.Columns[i].HeaderText.Contains(test))
-            //    {
-            //        z = dataGridView1.Columns[i].Index;
-
-            //    }
-            //    MessageBox.Show(z.ToString());
-
-            //}
-
-            //print the lists
-
-            MessageBox.Show("customerlist = " + string.Join(Environment.NewLine, selectedCustomer));
-
-            MessageBox.Show("activity list = " + string.Join(Environment.NewLine, selectedActivity));
-
-            MessageBox.Show("task list = " + string.Join(Environment.NewLine, selectedTask));
-
-            MessageBox.Show("pipeline list = " + string.Join(Environment.NewLine, selectedPipeline));
+            //OK so
+            // my idea here is that i can flick through each tab and scan through the dgv for pink entries and from there send the usp_add_task_no_email 
+            //this procedure needs to fire so that the whole red/blue mechanic works tidy
+            //i could do this from the lists but i feel like that might be 50/50 as each area requires certain data to store and i dont want to have to make 100 more lists to store them
 
 
+            //after some testing and outputting the number of pink lines for each tab im confident this will work :D
+
+
+            // C U S T O M E R
+            tabControl1.SelectedIndex = 0;
+            int accRefColumn = 0, custCustomerColumn = 0; // this is for finding the column index
+            string accRef = "Account Ref", custCustomer = "Customer Name"; //.. this is for finding the column names 
+            for (int z = 0; z < dataGridView1.Columns.Count; z++)
+            {
+                if (dataGridView1.Columns[z].HeaderText == custCustomer)
+                {
+                    custCustomerColumn = z;
+                }
+                if (dataGridView1.Columns[z].HeaderText == accRef)
+                {
+                    accRefColumn = z;
+                }
+            }
+            using (SqlConnection connectionToDo = new SqlConnection(SqlStatements.ConnectionStringToDo))
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        // this is pink so fire email
+                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        {
+                            cmdToDo.CommandType = CommandType.StoredProcedure;
+                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dataGridView1.Rows[i].Cells[1].Value); //this feels so odd and is probably gonna get changed
+                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText;//customer reference again, this matches the other table so its gotta be right! :D
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[0].Value);
+                            //custAccRefList.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());  //i think this line here is used to add the reference to a lsit but i already handled this years ago so i guess its not a problem??
+                            //i think its worth looking into anyway because it could be a problem later on... probably 
+                            connectionToDo.Open();
+                            //cmdToDo.ExecuteNonQuery();  // keep these commented out until i have a better understanding of what im doing ... it has been months afterall xd
+                            connectionToDo.Close();
+
+                            //here here, hello me on monday i was working here last 
+                            //i need to work out what login.customer = ... i cant remember how this works and i need to solve this issue before i can turn off the comments on the cmd.executeNonQuery!
+                            //other than that i need to add tasks too like the above  i think idk tho and after that its just working on collating the emails together
+                        }
+
+                    }
+                }
+
+                //A C T I V I T Y
+                tabControl1.SelectedIndex = 1; 
+                int custColumn = 0, detailsColumn = 0; // this is for finding the column index
+                string details = "Details", cust = "Customer Name"; //.. this is for finding the column names 
+                for (int z = 0; z < dataGridView1.Columns.Count; z++)
+                {
+                    if (dataGridView1.Columns[z].HeaderText == cust)
+                    {
+                        custColumn = z;
+                    }
+                    if (dataGridView1.Columns[z].HeaderText == details)
+                    {
+                        detailsColumn = z;
+                    }
+                }
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+
+
+                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        {
+                            cmdToDo.CommandType = CommandType.StoredProcedure;
+                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[detailsColumn].Value);
+                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[custColumn].Value);
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
+                            connectionToDo.Open();
+                            //cmdToDo.ExecuteNonQuery();
+                            connectionToDo.Close();
+                        }
+                    }
+                }
+
+                //T A S K S 
+                tabControl1.SelectedIndex = 2; //
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+
+                    }
+                }
+
+                //P I P E L I N E
+                tabControl1.SelectedIndex = 3;
+                int orderRefColumn = 0, pipeCustColumn = 0; // this is for finding the column index
+                string orderRef = "Order Reference", pipeCust = "Customer Name"; //.. this is for finding the column names 
+                for (int z = 0; z < dataGridView1.Columns.Count; z++)
+                {
+                    if (dataGridView1.Columns[z].HeaderText == orderRef)
+                    {
+                        orderRefColumn = z;
+                    }
+                    if (dataGridView1.Columns[z].HeaderText == pipeCust)
+                    {
+                        pipeCustColumn = z;
+                    }
+                }
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
+                    {
+                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        {
+                            cmdToDo.CommandType = CommandType.StoredProcedure;
+                            cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
+                            cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
+                            cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "PIPELINE DATA:" + Convert.ToString(dataGridView1.Rows[i].Cells[orderRefColumn].Value); //this feels so odd and is probably gonna get changed
+                            cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[pipeCustColumn].Value);//customer reference again, this matches the other table so its gotta be right! :D
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
+                            connectionToDo.Open();
+//                            cmdToDo.ExecuteNonQuery();
+                            connectionToDo.Close();
+
+                        }
+                    }
+                }
+            }
+            //MessageBox.Show(Custcount.ToString() + " pink customer rows." + Environment.NewLine +
+            //    actCount.ToString() + " pink Activity rows." + Environment.NewLine +
+            //    taskCount.ToString() + " pink Task rows." + Environment.NewLine +
+            //    pipeCount.ToString() + "pink pipeline rows.");
+            //below is just for  hiding the other testing code
+            int skip = 0;
+            if (skip == 999)
+            {
+                //use this for testing shit
+
+                //int z = 999;
+                //for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                //{
+                //    string test;
+                //    test = "ID";
+
+                //    MessageBox.Show(dataGridView1.Columns[i].HeaderText.ToString());
+                //    if (dataGridView1.Columns[i].HeaderText.Contains(test))
+                //    {
+                //        z = dataGridView1.Columns[i].Index;
+
+                //    }
+                //    MessageBox.Show(z.ToString());
+
+                //}
+
+                //print the lists
+
+                //MessageBox.Show("customerlist = " + string.Join(Environment.NewLine, selectedCustomer));
+
+                //MessageBox.Show("activity list = " + string.Join(Environment.NewLine, selectedActivity));
+
+                //MessageBox.Show("task list = " + string.Join(Environment.NewLine, selectedTask));
+
+                //MessageBox.Show("pipeline list = " + string.Join(Environment.NewLine, selectedPipeline));
+
+            }
         }
 
 
