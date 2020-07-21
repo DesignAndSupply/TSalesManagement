@@ -27,6 +27,7 @@ namespace TSalesManagement
         public List<string> selectedCustomerName = new List<string>();
         public List<string> selectedActivityName = new List<string>(); //just add the customer name to this and build it into the list box after every new entry/removed entry
         public List<string> selectedPipelineName = new List<string>();
+        public List<string> selectedTaskID = new List<string>();
 
         //we need a list thats used on the first run of painting the datagridview
         //this will get the account reference from Task and link it to Customer and then 
@@ -236,9 +237,12 @@ namespace TSalesManagement
                 dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these will be hidden at some point
-                dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[8].Visible = false;
+                dataGridView1.Columns[9].Visible = false;
+                dataGridView1.Columns[10].Visible = false;
+                //dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these will be hidden at some point
+                //dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else //only option left is pipeline
             {
@@ -408,7 +412,7 @@ namespace TSalesManagement
                 if (dataGridView1.Columns.Contains("Account Ref"))
                 {
                     customerAccRefIndex = dataGridView1.Columns["Account Ref"].Index;
-                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         //check red
 
@@ -480,19 +484,24 @@ namespace TSalesManagement
             if (tabControl1.SelectedIndex == 2) //TASKS
             {
                 int taskColumnIndex = 0;
-                //check what tasks are in the list and repaint them to hotpink!
-                if (dataGridView1.Columns.Contains("ID"))
+                string columnName = "ID";
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
                 {
-                    taskColumnIndex = dataGridView1.Columns["ID"].Index;
-                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    if (dataGridView1.Columns[i].HeaderText == columnName)
                     {
-                        if (selectedTask.Contains(Convert.ToInt32(dataGridView1.Rows[i].Cells[taskColumnIndex].Value)))
-                        {
-                            //it is in the list already so here we need to make it pink and move on
-                            dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
-                        }
+                        taskColumnIndex = i;
+                    }
+                    //  taskColumnIndex = dataGridView1.Columns["ID"].Index; this line does not work
+                }
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (selectedTask.Contains(Convert.ToInt32(dataGridView1.Rows[i].Cells[taskColumnIndex].Value)))
+                    {
+                        //it is in the list already so here we need to make it pink and move on
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
                     }
                 }
+
             }
 
             if (tabControl1.SelectedIndex == 3)
@@ -500,7 +509,7 @@ namespace TSalesManagement
                 if (dataGridView1.Columns.Contains("Pipeline ID"))
                 {
                     pipelineIDIndex = dataGridView1.Columns["Pipeline ID"].Index;
-                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
                         //check red
                         if (alreadyAssignedCustomer.Contains(Convert.ToString(dataGridView1.Rows[i].Cells[pipelineIDIndex].Value)))
@@ -593,17 +602,27 @@ namespace TSalesManagement
                     if (tabControl1.SelectedIndex == 2)
                     {
                         int taskColumnIndex = 0;
-                        if (dataGridView1.Columns.Contains("ID"))
+                        string columnName = "ID";
+                        for (int i = 0; i < dataGridView1.Columns.Count; i++)
                         {
-                            taskColumnIndex = dataGridView1.Columns["ID"].Index;
-
-                            if (selectedTask.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value)))
+                            if (dataGridView1.Columns[i].HeaderText == columnName)
                             {
-                                //it is in the list already so here we need to make it empty and move on
-                                dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //herehere
+                                taskColumnIndex = i;
                             }
-
+                            //  taskColumnIndex = dataGridView1.Columns["ID"].Index;
                         }
+                        //taskColumnIndex = dataGridView1.Columns["ID"].Index;   dont think this line works because it cant find the header text or something 
+
+                        if (selectedTask.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value)))
+                        {
+                            //it is in the list already so here we need to make it empty and move on
+                            dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.Empty;  //herehere
+                            selectedTask.Remove(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value));
+                            selectedTaskID.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value));
+                            updateListBox();
+                        }
+
+
                     }
                     if (tabControl1.SelectedIndex == 1) //activity
                     {
@@ -841,23 +860,27 @@ namespace TSalesManagement
                         }
                         updateListBox();
                     }
-                    else if (tabControl1.SelectedIndex == 2) //THIS IS TASKS BUT ITS NOT ENABLED RIGHT NOW BUT IT NEEDS TO BE ADDED!
+                    else if (tabControl1.SelectedIndex == 2) //!
                     {
                         if (tabControl1.SelectedIndex == 2)
                         {
                             int taskColumnIndex = 0;
-                            if (dataGridView1.Columns.Contains("ID")) //I AM WORKING HERE!!!!!!" // need to tidy this area up and test it
+                            string columnName = "ID";
+                            for (int i = 0; i < dataGridView1.Columns.Count; i++)
                             {
-                                taskColumnIndex = dataGridView1.Columns["ID"].Index;
-
-                                if (selectedTask.Contains(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value)))
+                                if (dataGridView1.Columns[i].HeaderText == columnName)
                                 {
-                                    //it is in the list already so here we need to make it empty and move on
-                                    dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;  //herehere
-                                    //also need to add this to a list aswell --- selectedTask :))))))
+                                    taskColumnIndex = i;
                                 }
-
+                                //  taskColumnIndex = dataGridView1.Columns["ID"].Index;
                             }
+
+                            dataGridView1.CurrentRow.DefaultCellStyle.BackColor = Color.HotPink;  //herehere
+                            selectedTask.Add(Convert.ToInt32(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value));
+                            selectedTaskID.Add(Convert.ToString(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value));
+                            updateListBox();
+
+
                         }
                     }
 
@@ -989,8 +1012,113 @@ namespace TSalesManagement
 
         private void BtnEmail_Click_1(object sender, EventArgs e)
         {
+            //maybe call another void to handle the meaty stuff
+            uploadListToTempTable();
+            //from here then I will just need to bolt the new procedure onto the email tab
             frmEmailUserManagement frmEUM = new frmEmailUserManagement(cmbStaff.Text);
             frmEUM.ShowDialog();
+        }
+
+        private void uploadListToTempTable()
+        {
+            /*
+             will need toi upload the list here to a table before opening the email form...
+            the email form will then call on this table and it will match up what has been selected and email that to the user
+            something like 
+
+
+            for (int i = 0; i < selectedCustomer; i++)
+            {
+            //upload each line of the list to the  table
+            }
+            then the next list and so on...
+
+            then we can open the form and have the email stuff work almost as normal :D
+            */
+            //usp_tsalesmanager_list_merge_into_temp_table
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                //will need a different command for all 4 (@whichSection demands something unique for each section
+
+                //C U S T O M E R 
+                if (selectedCustomer.Count > 0)
+                {
+                    for (int i = 0; i < selectedCustomer.Count; i++)
+                    {
+                        MessageBox.Show("customer -> " + selectedCustomer[i].ToString());
+                        //shouldnt need any extra validation for the lists because the selected items are stored in a unique list anyway so i should be able to just pull from the list several times instead of checking the DGV
+                        using (SqlCommand cmd = new SqlCommand("usp_tsalesmanager_list_merge_into_temp_table", conn))
+                        {
+
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(0); //0 is for customer
+                            cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString(selectedCustomer[i]);
+                            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = 0;
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
+                }
+
+                //A C T I V I T Y
+                if (selectedActivity.Count > 0)
+                {
+                    for (int i = 0; i < selectedActivity.Count; i++)
+                    {
+                        MessageBox.Show("activity  -> " + selectedActivity[i].ToString());
+                        using (SqlCommand cmd = new SqlCommand("", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(1); //1 is for activity
+                            cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString("ryucxd"); //this acc ref = ignore
+                            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(selectedActivity[i]);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
+                }
+
+                //T A S K S
+                if (selectedTask.Count > 0)
+                {
+                    for (int i = 0; i < selectedTask.Count; i++)
+                    {
+                        MessageBox.Show("activity -> " + selectedTask[i].ToString());
+                        using (SqlCommand cmd = new SqlCommand("", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(2); //2 is for tasks
+                            cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString("ryucxd"); //this acc ref = ignore
+                            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(selectedTask[i]);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
+                }
+
+                //finally P I P E L I N E
+                if (selectedPipeline.Count > 0)
+                {
+                    for (int i = 0; i < selectedPipeline.Count; i++)
+                    {
+                        MessageBox.Show("pipeline -> " + selectedPipeline[i].ToString());
+                        using (SqlCommand cmd = new SqlCommand("", conn))
+                        {
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(3); //3 is for pipeline
+                            cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString("ryucxd"); //this acc ref = ignore
+                            cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(selectedPipeline[i]);
+                            conn.Open();
+                            cmd.ExecuteNonQuery();
+                            conn.Close();
+                        }
+                    }
+                }
+
+            }
         }
 
         private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1016,6 +1144,10 @@ namespace TSalesManagement
             // selectedListBox.Items.Add(string.Join(Environment.NewLine, selectedActivityName));
             for (int i = 0; i < selectedActivityName.Count; i++)
                 selectedListBox.Items.Add(selectedActivityName[i]);
+            selectedListBox.Items.Add(" ");
+            selectedListBox.Items.Add("-- Task ID --");
+            for (int i = 0; i < selectedTaskID.Count; i++)
+                selectedListBox.Items.Add(selectedTaskID[i]);
             selectedListBox.Items.Add(" ");
             selectedListBox.Items.Add("-- Pipeline --");
             //selectedListBox.Items.Add(string.Join(Environment.NewLine, selectedPipelineName));
@@ -1051,6 +1183,8 @@ namespace TSalesManagement
             MessageBox.Show("customerlist = " + string.Join(Environment.NewLine, selectedCustomer));
 
             MessageBox.Show("activity list = " + string.Join(Environment.NewLine, selectedActivity));
+
+            MessageBox.Show("task list = " + string.Join(Environment.NewLine, selectedTask));
 
             MessageBox.Show("pipeline list = " + string.Join(Environment.NewLine, selectedPipeline));
 
