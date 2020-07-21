@@ -1045,7 +1045,7 @@ namespace TSalesManagement
                 {
                     for (int i = 0; i < selectedCustomer.Count; i++)
                     {
-                        MessageBox.Show("customer -> " + selectedCustomer[i].ToString());
+                        //MessageBox.Show("customer -> " + selectedCustomer[i].ToString());
                         //shouldnt need any extra validation for the lists because the selected items are stored in a unique list anyway so i should be able to just pull from the list several times instead of checking the DGV
                         using (SqlCommand cmd = new SqlCommand("usp_tsalesmanager_list_merge_into_temp_table", conn))
                         {
@@ -1066,8 +1066,8 @@ namespace TSalesManagement
                 {
                     for (int i = 0; i < selectedActivity.Count; i++)
                     {
-                        MessageBox.Show("activity  -> " + selectedActivity[i].ToString());
-                        using (SqlCommand cmd = new SqlCommand("", conn))
+                        //MessageBox.Show("activity  -> " + selectedActivity[i].ToString());
+                        using (SqlCommand cmd = new SqlCommand("usp_tsalesmanager_list_merge_into_temp_table", conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(1); //1 is for activity
@@ -1085,8 +1085,8 @@ namespace TSalesManagement
                 {
                     for (int i = 0; i < selectedTask.Count; i++)
                     {
-                        MessageBox.Show("activity -> " + selectedTask[i].ToString());
-                        using (SqlCommand cmd = new SqlCommand("", conn))
+                        //MessageBox.Show("activity -> " + selectedTask[i].ToString());
+                        using (SqlCommand cmd = new SqlCommand("usp_tsalesmanager_list_merge_into_temp_table", conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(2); //2 is for tasks
@@ -1104,8 +1104,8 @@ namespace TSalesManagement
                 {
                     for (int i = 0; i < selectedPipeline.Count; i++)
                     {
-                        MessageBox.Show("pipeline -> " + selectedPipeline[i].ToString());
-                        using (SqlCommand cmd = new SqlCommand("", conn))
+                        //MessageBox.Show("pipeline -> " + selectedPipeline[i].ToString());
+                        using (SqlCommand cmd = new SqlCommand("usp_tsalesmanager_list_merge_into_temp_table", conn))
                         {
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(3); //3 is for pipeline
