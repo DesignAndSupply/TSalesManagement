@@ -1063,6 +1063,13 @@ namespace TSalesManagement
                     conn.Close();
                 }
 
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM dbo.tsalesmanager_temp_for_lists", conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+
 
                 //will need a different command for all 4 (@whichSection demands something unique for each section)
 
@@ -1178,7 +1185,7 @@ namespace TSalesManagement
             }
 
             // at this point everything we needed should have been executed except for the procedure that fires the email to the user recieving the tasks
-            // this needs to be testing --
+            // this needs to be testing --  03/08/2020 14:48  tested this a few times and it seemed to work pretttty well gonna run some more now
             // CURRENTLY SELECTED GETS WIPED IN USP_TSALES_MANAGER_EMAIL 
 
 
@@ -1206,6 +1213,8 @@ namespace TSalesManagement
             //so im going to go with a void that handles this¬!
             cmbStaff.Text = "";
             wipeList();
+            tabControl1.SelectedIndex = 0;
+            nullDataGrids();
         }
 
         private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1279,6 +1288,7 @@ namespace TSalesManagement
             blueLink.Clear();
             redLink.Clear();
 
+            updateListBox();
 
             //this should be enough when the user gets changed or the email is sent
 
