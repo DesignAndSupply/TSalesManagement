@@ -250,7 +250,7 @@ namespace TSalesManagement
                 dataGridView1.Columns[9].Visible = false;
                 dataGridView1.Columns[10].Visible = false;
                 //dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these will be hidden at some point
+                //dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these columns are hidden, i read data from these but dont actually need the user to see them
                 //dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else //only option left is pipeline
@@ -282,7 +282,7 @@ namespace TSalesManagement
             //center all the columns
             foreach (DataGridViewColumn column in dataGridView1.Columns)
             {
-                //column.SortMode = DataGridViewColumnSortMode.NotSortable;
+                //column.SortMode = DataGridViewColumnSortMode.NotSortable;  //chris wanted these to be sortable so I'm taking this out  28/07/2020
                 column.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
@@ -322,7 +322,7 @@ namespace TSalesManagement
 
             //now that we have all of the red/blue customer acc references...
             //time for the absolute wildcard that i have no idea if it will work (plus at this point i havent tested a single thing and its all riding on this)
-            tabControl1.SelectedIndex = 0;
+            tabControl1.SelectedIndex = 0; //it works :D
             //this should load the code for selecting customer
             //im hoping this will be enough to capture the customer acc refs etc
 
@@ -486,7 +486,7 @@ namespace TSalesManagement
                         {
                             dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
                         }
-                    }
+                    }//
                 }
             }
 
@@ -845,7 +845,7 @@ namespace TSalesManagement
                     {
                         int activityID = 0; //use this because i have ZERO trust for the columns and their numbering
                         string columnName = "ID";
-                        for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                        for (int i = 0; i < dataGridView1.Columns.Count; i++) // 
                         {
                             if (dataGridView1.Columns[i].HeaderText == columnName)
                             {
@@ -1064,7 +1064,7 @@ namespace TSalesManagement
                 }
 
 
-                //will need a different command for all 4 (@whichSection demands something unique for each section
+                //will need a different command for all 4 (@whichSection demands something unique for each section)
 
                 //C U S T O M E R 
                 if (selectedCustomer.Count > 0)
@@ -1158,7 +1158,7 @@ namespace TSalesManagement
                             cmd.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText; //this one can be a few things, customer NAME or "CHASE CUSTOMER:" etc or even the txtbody from the email form
                             cmd.Parameters.Add("@customerName", SqlDbType.VarChar).Value = Convert.ToString(selectedPipelineName[i]); //this should pair up with the normal list
                             conn.Open();
-                            cmd.ExecuteNonQuery();
+                            cmd.ExecuteNonQuery(); //uncommenting these for testing and if they work I will leave them uncommented
                             conn.Close();
                         }
                     }
@@ -1294,7 +1294,7 @@ namespace TSalesManagement
 
 
             //OK so
-            // my idea here is that i can flick through each tab and scan through the dgv for pink entries and from there send the usp_add_task_no_email 
+            // my idea here is that i can flick through each tab and scan through the dgv for pink entries and from there send them usp_add_task_no_email 
             //this procedure needs to fire so that the whole red/blue mechanic works tidy
             //i could do this from the lists but i feel like that might be 50/50 as each area requires certain data to store and i dont want to have to make 100 more lists to store them
 
@@ -1330,16 +1330,16 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@setByID", SqlDbType.Int).Value = Convert.ToInt32(Login.globalUserID);
                             cmdToDo.Parameters.Add("@setForId", SqlDbType.Int).Value = Convert.ToInt32(Login.userSelectedForEmail);
                             cmdToDo.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate;
-                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dataGridView1.Rows[i].Cells[1].Value); //this feels so odd and is probably gonna get changed
+                            cmdToDo.Parameters.Add("@taskDetail", SqlDbType.VarChar).Value = "Chase Customer: " + Convert.ToString(dataGridView1.Rows[i].Cells[custCustomerColumn].Value); //this feels so odd and is probably gonna get changed
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText;//customer reference again, this matches the other table so its gotta be right! :D
-                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[0].Value);
-                            //custAccRefList.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());  //i think this line here is used to add the reference to a lsit but i already handled this years ago so i guess its not a problem??
+                            cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[accRefColumn].Value);
+                            //custAccRefList.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());  //i think this line here is used to add the reference to a list but i already handled this years ago so i guess its not a problem??
                             //i think its worth looking into anyway because it could be a problem later on... probably 
                             connectionToDo.Open();
                             cmdToDo.ExecuteNonQuery();  // keep these commented out until i have a better understanding of what im doing ... it has been months afterall xd
                             connectionToDo.Close();
 
-                            //here here, hello me on monday i was working here last 
+                            //hello me on monday i was working here last 
                             //i need to work out what login.customer = ... i cant remember how this works and i need to solve this issue before i can turn off the comments on the cmd.executeNonQuery!
                             //other than that i need to add tasks too like the above  i think idk tho and after that its just working on collating the emails together
                         }
@@ -1436,6 +1436,7 @@ namespace TSalesManagement
 
 
             int skip = 0;
+            int contains = 0;
             if (skip == 999)
             {
                 //MessageBox.Show(Custcount.ToString() + " pink customer rows." + Environment.NewLine +

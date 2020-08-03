@@ -311,6 +311,7 @@
             this.ryucxd.TabIndex = 32;
             this.ryucxd.Text = "ryucxd";
             this.ryucxd.UseVisualStyleBackColor = true;
+            this.ryucxd.Visible = false;
             this.ryucxd.Click += new System.EventHandler(this.ryucxd_Click);
             // 
             // frmUserInfoRyucxd
