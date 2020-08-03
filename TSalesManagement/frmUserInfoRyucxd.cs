@@ -16,6 +16,13 @@ namespace TSalesManagement
     public partial class frmUserInfoRyucxd : Form
     {
 
+        //hello! if this is not me reading this then im probbaly not working here anymore or im dead lmao, sorry in advance - corey
+        //I've commented practically everything here, and that probably doesnt help the readability.
+        //the problem is i commented as i went but i didnt do everything in a start -> finish motion so some comments are useful for code behind it - if that makes sense?
+        // i also took a couple months break during writing this (covid-19) so some of the later code was done after i read through eveything to get an understanding of whats going on
+        //best of luck, this was my magnum opus so please be careful not to break this ;)
+        // orz
+
 
         //this is where the problem is -- needs to have the list filled on selection ... although istg i did this
         //these are all the lists for retaining the selcted rows     -- pink --
@@ -73,6 +80,7 @@ namespace TSalesManagement
 
         private void cmbStaff_SelectedIndexChanged(object sender, EventArgs e)
         {
+            wipeList();
             txtCustomerSearch.Visible = true;
             lblCustomer.Visible = true;
             txtCustomerSearch.Focus();
@@ -1008,20 +1016,28 @@ namespace TSalesManagement
 
         private void BtnEmail_Click(object sender, EventArgs e)
         {
-
+            //lmao?
         }
 
         private void BtnEmail_Click_1(object sender, EventArgs e)
         {
             //maybe call another void to handle the meaty stuff
-            uploadListToTempTable();
+
             //from here then I will just need to bolt the new procedure onto the email tab
             frmEmailUserManagement frmEUM = new frmEmailUserManagement(cmbStaff.Text);
             frmEUM.ShowDialog();
+            // once the email form has grabbed what it needs we can run through the below void :)
+            //because this is now after the email for we're gonna need some validation that the email button was clicked
+            if (Login.emailButtonClicked == 1) //im assuming that 1 is true and 0 is false
+            {
+                uploadListToTempTable();
+            }
+
         }
 
         private void uploadListToTempTable()
         {
+            MessageBox.Show("Please wait a moment while the email is being sent", "Please wait...");
             /*
              will need toi upload the list here to a table before opening the email form...
             the email form will then call on this table and it will match up what has been selected and email that to the user
@@ -1039,6 +1055,15 @@ namespace TSalesManagement
             //usp_tsalesmanager_list_merge_into_temp_table
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
+                //ok so here i am going to wipe the temp table for the CRM link
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM dbo.crm_customer_temp_table", conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery(); //this will wipe what is used for linking customer data to the email etc (i populate this table when you enter the customer section below)
+                    conn.Close();
+                }
+
+
                 //will need a different command for all 4 (@whichSection demands something unique for each section
 
                 //C U S T O M E R 
@@ -1053,8 +1078,13 @@ namespace TSalesManagement
 
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(0); //0 is for customer
-                            cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString(selectedCustomer[i]);
+                            cmd.Parameters.Add("@customerAccRef", SqlDbType.VarChar).Value = Convert.ToString(selectedCustomer[i]);
                             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = 0;
+                            cmd.Parameters.Add("@setByID", SqlDbType.Int).Value = Login.globalUserID; //this will be the logged in user   
+                            cmd.Parameters.Add("@setForID", SqlDbType.Int).Value = Login.selectedUserID; //this will be whoever is selected (ideally this will be run AFTER email is clicked so we can use login.setfor (or whatever it is)
+                            cmd.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate; //this will be login.dueDate (again collected AFTER email is clocked)
+                            cmd.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText; //this one can be a few things, customer NAME or "CHASE CUSTOMER:" etc or even the txtbody from the email form
+                            cmd.Parameters.Add("@customerName", SqlDbType.VarChar).Value = Convert.ToString(selectedCustomerName[i]); //this should pair up with the normal list
                             conn.Open();
                             cmd.ExecuteNonQuery();
                             conn.Close();
@@ -1074,6 +1104,11 @@ namespace TSalesManagement
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(1); //1 is for activity
                             cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString("ryucxd"); //this acc ref = ignore
                             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(selectedActivity[i]);
+                            cmd.Parameters.Add("@setByID", SqlDbType.Int).Value = Login.globalUserID; //this will be the logged in user   
+                            cmd.Parameters.Add("@setForID", SqlDbType.Int).Value = Login.selectedUserID; //this will be whoever is selected (ideally this will be run AFTER email is clicked so we can use login.setfor (or whatever it is)
+                            cmd.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate; //this will be login.dueDate (again collected AFTER email is clocked)
+                            cmd.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText; //this one can be a few things, customer NAME or "CHASE CUSTOMER:" etc or even the txtbody from the email form
+                            cmd.Parameters.Add("@customerName", SqlDbType.VarChar).Value = Convert.ToString(selectedActivityName[i]); //this should pair up with the normal list
                             conn.Open();
                             cmd.ExecuteNonQuery();
                             conn.Close();
@@ -1093,6 +1128,11 @@ namespace TSalesManagement
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(2); //2 is for tasks
                             cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString("ryucxd"); //this acc ref = ignore
                             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(selectedTask[i]);
+                            cmd.Parameters.Add("@setByID", SqlDbType.Int).Value = Login.globalUserID; //this will be the logged in user   
+                            cmd.Parameters.Add("@setForID", SqlDbType.Int).Value = Login.selectedUserID; //this will be whoever is selected (ideally this will be run AFTER email is clicked so we can use login.setfor (or whatever it is)
+                            cmd.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate; //this will be login.dueDate (again collected AFTER email is clocked)
+                            cmd.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText; //this one can be a few things, customer NAME or "CHASE CUSTOMER:" etc or even the txtbody from the email form
+                            cmd.Parameters.Add("@customerName", SqlDbType.VarChar).Value = Convert.ToString(selectedTaskID[i]); //THIS ONE CANT HAVE A NAME SO MAYBE JUST MAKE IT BLANK
                             conn.Open();
                             cmd.ExecuteNonQuery();
                             conn.Close();
@@ -1112,14 +1152,60 @@ namespace TSalesManagement
                             cmd.Parameters.Add("@whichSection", SqlDbType.Int).Value = Convert.ToInt32(3); //3 is for pipeline
                             cmd.Parameters.Add("@customerAccRef", SqlDbType.NVarChar).Value = Convert.ToString("ryucxd"); //this acc ref = ignore
                             cmd.Parameters.Add("@ID", SqlDbType.Int).Value = Convert.ToInt32(selectedPipeline[i]);
+                            cmd.Parameters.Add("@setByID", SqlDbType.Int).Value = Login.globalUserID; //this will be the logged in user   
+                            cmd.Parameters.Add("@setForID", SqlDbType.Int).Value = Login.selectedUserID; //this will be whoever is selected (ideally this will be run AFTER email is clicked so we can use login.setfor (or whatever it is)
+                            cmd.Parameters.Add("@dueDate", SqlDbType.DateTime).Value = Login.dueDate; //this will be login.dueDate (again collected AFTER email is clocked)
+                            cmd.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Login.customerText; //this one can be a few things, customer NAME or "CHASE CUSTOMER:" etc or even the txtbody from the email form
+                            cmd.Parameters.Add("@customerName", SqlDbType.VarChar).Value = Convert.ToString(selectedPipelineName[i]); //this should pair up with the normal list
                             conn.Open();
                             cmd.ExecuteNonQuery();
                             conn.Close();
                         }
                     }
                 }
+            } //end of connection string
 
+            //okay now that the merge is complete i can fire the procedure to add the tasks :x
+            //i think what needs to go here is usp_add_task_no_email
+            using (SqlConnection connToDo = new SqlConnection(SqlStatements.ConnectionStringToDo)) //this procedure is in the  toDo database
+            {
+                using (SqlCommand cmd = new SqlCommand("usp_add_task_no_email", connToDo))
+                {
+                    connToDo.Open();
+                    cmd.ExecuteNonQuery();
+                    connToDo.Close();
+                }
             }
+
+            // at this point everything we needed should have been executed except for the procedure that fires the email to the user recieving the tasks
+            // this needs to be testing --
+            // CURRENTLY SELECTED GETS WIPED IN USP_TSALES_MANAGER_EMAIL 
+
+
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("usp_TSalesManager_Email", conn)) // this fires an email out to the user and wipes the currently selected
+                {
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = Login.selectedUserID;
+                    cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = Login.customerText;
+                    //Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
+                    //Login.dueDate = dateTimePicker1.Value;
+                    //Login.customerText = txtBody.Text;
+
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+
+            MessageBox.Show("Email Sent Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //now that this is superrrr complete i think i need to wipe the lists so more users can be found etc
+            //i think the best way of handling this quickly will be to close the tab and reopen it
+            //this still doesnt solve the issue of the user selecting a new user part way through tho
+            //so im going to go with a void that handles this¬!
+            cmbStaff.Text = "";
+            wipeList();
         }
 
         private void DataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -1158,9 +1244,55 @@ namespace TSalesManagement
 
         }
 
+        private void wipeList()
+        {
+            //in the event that the user changes the name of the combobox then i need to wipe the lists etc to stop the overlapping colours etc 
+            //an example of this is picking tom and then swappin to nick
+
+            //customer
+            selectedCustomerName.Clear(); //for list box
+            selectedCustomer.Clear();
+            alreadyAssignedCustomer.Clear();
+            alreadyCompleteCustomer.Clear();
+
+            //activity
+            selectedActivity.Clear();
+            selectedActivityName.Clear();
+            overrideBlueActivity.Clear();
+            overrideRedActivity.Clear();
+            alreadyAssignedActivity.Clear();
+            alreadyCompleteActivity.Clear();
+
+            //tasks
+            selectedTask.Clear();
+            selectedTaskID.Clear();
+
+            //pipeline
+            selectedPipeline.Clear();
+            selectedPipelineName.Clear();
+            overrideBluePipeline.Clear();
+            overrideRedPipeline.Clear();
+            alreadyAssignedPipeline.Clear();
+            alreadyCompletePipeline.Clear();
+
+            //random
+            blueLink.Clear();
+            redLink.Clear();
+
+
+            //this should be enough when the user gets changed or the email is sent
+
+        }
+
 
         private void ryucxd_Click(object sender, EventArgs e)
         {
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    MessageBox.Show(selectedCustomer[i].ToString() + " + " + selectedCustomerName[i].ToString());
+            //}
+
+
             //OK so
             // my idea here is that i can flick through each tab and scan through the dgv for pink entries and from there send the usp_add_task_no_email 
             //this procedure needs to fire so that the whole red/blue mechanic works tidy
@@ -1204,7 +1336,7 @@ namespace TSalesManagement
                             //custAccRefList.Add(dataGridView1.Rows[i].Cells[0].Value.ToString());  //i think this line here is used to add the reference to a lsit but i already handled this years ago so i guess its not a problem??
                             //i think its worth looking into anyway because it could be a problem later on... probably 
                             connectionToDo.Open();
-                            //cmdToDo.ExecuteNonQuery();  // keep these commented out until i have a better understanding of what im doing ... it has been months afterall xd
+                            cmdToDo.ExecuteNonQuery();  // keep these commented out until i have a better understanding of what im doing ... it has been months afterall xd
                             connectionToDo.Close();
 
                             //here here, hello me on monday i was working here last 
@@ -1216,7 +1348,7 @@ namespace TSalesManagement
                 }
 
                 //A C T I V I T Y
-                tabControl1.SelectedIndex = 1; 
+                tabControl1.SelectedIndex = 1;
                 int custColumn = 0, detailsColumn = 0; // this is for finding the column index
                 string details = "Details", cust = "Customer Name"; //.. this is for finding the column names 
                 for (int z = 0; z < dataGridView1.Columns.Count; z++)
@@ -1246,7 +1378,7 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[custColumn].Value);
                             cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
                             connectionToDo.Open();
-                            //cmdToDo.ExecuteNonQuery();
+                            cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
                         }
                     }
@@ -1258,7 +1390,10 @@ namespace TSalesManagement
                 {
                     if (dataGridView1.Rows[i].DefaultCellStyle.BackColor == Color.HotPink)
                     {
+                        using (SqlCommand cmdToDo = new SqlCommand("usp_add_task_no_email", connectionToDo))
+                        {
 
+                        }
                     }
                 }
 
@@ -1291,21 +1426,24 @@ namespace TSalesManagement
                             cmdToDo.Parameters.Add("@taskSubject", SqlDbType.VarChar).Value = Convert.ToString(dataGridView1.Rows[i].Cells[pipeCustColumn].Value);//customer reference again, this matches the other table so its gotta be right! :D
                             cmdToDo.Parameters.Add("@custAccRef", SqlDbType.VarChar).Value = "ryucxd";
                             connectionToDo.Open();
-//                            cmdToDo.ExecuteNonQuery();
+                            cmdToDo.ExecuteNonQuery();
                             connectionToDo.Close();
 
                         }
                     }
                 }
             }
-            //MessageBox.Show(Custcount.ToString() + " pink customer rows." + Environment.NewLine +
-            //    actCount.ToString() + " pink Activity rows." + Environment.NewLine +
-            //    taskCount.ToString() + " pink Task rows." + Environment.NewLine +
-            //    pipeCount.ToString() + "pink pipeline rows.");
-            //below is just for  hiding the other testing code
+
+
             int skip = 0;
             if (skip == 999)
             {
+                //MessageBox.Show(Custcount.ToString() + " pink customer rows." + Environment.NewLine +
+                //    actCount.ToString() + " pink Activity rows." + Environment.NewLine +
+                //    taskCount.ToString() + " pink Task rows." + Environment.NewLine +
+                //    pipeCount.ToString() + "pink pipeline rows.");
+                //below is just for  hiding the other testing code
+
                 //use this for testing shit
 
                 //int z = 999;

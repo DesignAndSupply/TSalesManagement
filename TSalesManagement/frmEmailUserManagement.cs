@@ -13,28 +13,45 @@ namespace TSalesManagement
         public frmEmailUserManagement(string passedCmbName)
         {
             InitializeComponent();
-            cmbName = passedCmbName;
+            cmbName = passedCmbName; // this is passed over from the other form, whoever is selected (to view their tasks etc)
         }
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
             Login.emailButtonClicked = 1;
-            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+            //ok gonna use this space to  get the user ID 
+            int cmbNameID;
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("Select id from [user_info].dbo.[user] WHERE forename + ' ' + surname = '" + cmbName.ToString() + "'", conn))
+                {
+                    conn.Open();
+                    cmbNameID = Convert.ToInt32(cmd.ExecuteScalar());
+                    conn.Close();
+                    Login.selectedUserID = cmbNameID;
 
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("usp_TSalesManager_Email", conn);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = cmbUser.SelectedValue;
-            cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = txtBody.Text;
-            Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
+                }
+            }
             Login.dueDate = dateTimePicker1.Value;
             Login.customerText = txtBody.Text;
 
-            cmd.ExecuteNonQuery();
-            conn.Close();
 
-            MessageBox.Show("Email Sent Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //need to move this code because its not longer being used here, will need to be after uploadListToTempTable
+            //SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+
+            //conn.Open();
+            //SqlCommand cmd = new SqlCommand("usp_TSalesManager_Email", conn); // i think i need to move this to the form prior
+
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = cmbUser.SelectedValue;
+            //cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = txtBody.Text;
+            //Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
+
+
+            //cmd.ExecuteNonQuery();
+            //conn.Close();
+
+            //MessageBox.Show("Email Sent Successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 
