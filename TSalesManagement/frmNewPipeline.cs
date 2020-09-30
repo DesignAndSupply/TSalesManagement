@@ -19,6 +19,9 @@ namespace TSalesManagement
 
         private void frmNewPipeline_Load(object sender, EventArgs e)
         {
+            cmbOrder.Items.Add("A");
+            cmbOrder.Items.Add("B");
+            cmbOrder.Items.Add("C");
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -35,8 +38,8 @@ namespace TSalesManagement
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
-                cmd.CommandText = "INSERT INTO DBO.sales_pipeline (door_style,customer_acc_ref,order_ref,estimated_order_value, estimated_order_date,added_by_id, date_added,description_of_doors_on_order,order_status,activity_id) " +
-                                  " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status,@activityID)";
+                cmd.CommandText = "INSERT INTO DBO.sales_pipeline (door_style,customer_acc_ref,order_ref,estimated_order_value, estimated_order_date,added_by_id, date_added,description_of_doors_on_order,order_status,activity_id,likelihood_of_order) " +
+                                  " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status,@activityID,@order)";
                 cmd.Parameters.AddWithValue("@doorStyle", cmbDoorStyle.Text);
                 cmd.Parameters.AddWithValue("@custAccRef", _accRef);
                 cmd.Parameters.AddWithValue("@orderRef", txtOrderRef.Text);
@@ -47,6 +50,7 @@ namespace TSalesManagement
                 cmd.Parameters.AddWithValue("@description", txtDetails.Text);
                 cmd.Parameters.AddWithValue("@status", cmbStatus.Text);
                 cmd.Parameters.AddWithValue("@activityID", _activityID);
+                cmd.Parameters.AddWithValue("@order", cmbOrder.Text);
 
                 cmd.ExecuteNonQuery();
 
