@@ -43,6 +43,11 @@
             this.cmbDoorStyle = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtCustomer = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmbOrder = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtOrderDate
@@ -54,7 +59,7 @@
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(372, 387);
+            this.btnSubmit.Location = new System.Drawing.Point(372, 403);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(75, 23);
             this.btnSubmit.TabIndex = 25;
@@ -178,11 +183,64 @@
             this.txtCustomer.Size = new System.Drawing.Size(319, 20);
             this.txtCustomer.TabIndex = 28;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(353, 368);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(53, 13);
+            this.label10.TabIndex = 33;
+            this.label10.Text = "B = Likely";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(353, 387);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(80, 13);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "C = Very Likely ";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(353, 349);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(63, 13);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "A = Unlikely";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(11, 371);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(94, 13);
+            this.label11.TabIndex = 30;
+            this.label11.Text = "Likelihood of order";
+            // 
+            // cmbOrder
+            // 
+            this.cmbOrder.FormattingEnabled = true;
+            this.cmbOrder.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C"});
+            this.cmbOrder.Location = new System.Drawing.Point(128, 368);
+            this.cmbOrder.Name = "cmbOrder";
+            this.cmbOrder.Size = new System.Drawing.Size(121, 21);
+            this.cmbOrder.TabIndex = 29;
+            // 
             // frmAmendPipeline
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 435);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.cmbOrder);
             this.Controls.Add(this.txtCustomer);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtOrderDate);
@@ -226,5 +284,10 @@
         private System.Windows.Forms.ComboBox cmbDoorStyle;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtCustomer;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmbOrder;
     }
 }

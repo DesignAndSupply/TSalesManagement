@@ -282,6 +282,22 @@ namespace TSalesManagement
                     //customer
                 }
 
+                //fire email here
+                using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("usp_TSalesManager_Email", conn); // i think i need to move this to the form prior
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = Login.userSelectedForEmail;
+                    cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = Login.customerText;
+
+
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+                }
+
                 foreach (DataGridViewRow row in dgPipeline.Rows)
                 { row.DefaultCellStyle.BackColor = Color.Empty; }
 

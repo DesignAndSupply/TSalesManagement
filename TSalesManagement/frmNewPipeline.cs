@@ -19,14 +19,12 @@ namespace TSalesManagement
 
         private void frmNewPipeline_Load(object sender, EventArgs e)
         {
-            cmbOrder.Items.Add("A");
-            cmbOrder.Items.Add("B");
-            cmbOrder.Items.Add("C");
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDetails.Text) || string.IsNullOrWhiteSpace(txtOrderDate.Text) || string.IsNullOrWhiteSpace(txtOrderRef.Text) || string.IsNullOrWhiteSpace(txtOrderValue.Text) || string.IsNullOrWhiteSpace(cmbDoorStyle.Text) || string.IsNullOrWhiteSpace(cmbStatus.Text))
+            if (string.IsNullOrWhiteSpace(txtDetails.Text) || string.IsNullOrWhiteSpace(txtOrderDate.Text) || string.IsNullOrWhiteSpace(txtOrderRef.Text) || string.IsNullOrWhiteSpace(txtOrderValue.Text) || string.IsNullOrWhiteSpace(cmbDoorStyle.Text) || string.IsNullOrWhiteSpace(cmbStatus.Text) || string.IsNullOrWhiteSpace(cmbOrder.Text))
             {
                 MessageBox.Show("All fields are mandatory, please complete the form in order to submit the pipeline data!", "Complete form!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

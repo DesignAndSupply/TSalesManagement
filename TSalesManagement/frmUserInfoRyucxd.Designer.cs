@@ -336,7 +336,7 @@
             this.Controls.Add(this.cmbStaff);
             this.Name = "frmUserInfoRyucxd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmUserInfoRyucxd";
+            this.Text = "User Info";
             this.Load += new System.EventHandler(this.FrmUserInfoRyucxd_Load);
             this.selectedGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).EndInit();

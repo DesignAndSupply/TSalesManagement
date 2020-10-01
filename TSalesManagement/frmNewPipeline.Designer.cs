@@ -176,6 +176,10 @@
             // cmbOrder
             // 
             this.cmbOrder.FormattingEnabled = true;
+            this.cmbOrder.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C"});
             this.cmbOrder.Location = new System.Drawing.Point(129, 331);
             this.cmbOrder.Name = "cmbOrder";
             this.cmbOrder.Size = new System.Drawing.Size(121, 21);

@@ -14,6 +14,7 @@ namespace TSalesManagement
         private DateTime _orderDate { get; set; }
         private string _details { get; set; }
         private string _status { get; set; }
+        private string _like { get; set; }
 
         private string _customerName
         {
@@ -57,6 +58,7 @@ namespace TSalesManagement
                 _orderDate = Convert.ToDateTime(rdr["estimated_order_date"]);
                 _details = rdr["description_of_doors_on_order"].ToString();
                 _status = rdr["order_status"].ToString();
+                _like = rdr["likelihood_of_order"].ToString();
             }
 
             rdr.Close();
@@ -69,6 +71,7 @@ namespace TSalesManagement
             txtDetails.Text = _details;
             cmbStatus.Text = _status;
             txtCustomer.Text = _customerName;
+            cmbOrder.Text = _like;
         }
 
         private void frmAmendPipeline_Load(object sender, EventArgs e)
@@ -77,7 +80,7 @@ namespace TSalesManagement
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDetails.Text) || string.IsNullOrWhiteSpace(txtOrderDate.Text) || string.IsNullOrWhiteSpace(txtOrderRef.Text) || string.IsNullOrWhiteSpace(txtOrderValue.Text) || string.IsNullOrWhiteSpace(cmbDoorStyle.Text) || string.IsNullOrWhiteSpace(cmbStatus.Text))
+            if (string.IsNullOrWhiteSpace(txtDetails.Text) || string.IsNullOrWhiteSpace(txtOrderDate.Text) || string.IsNullOrWhiteSpace(txtOrderRef.Text) || string.IsNullOrWhiteSpace(txtOrderValue.Text) || string.IsNullOrWhiteSpace(cmbDoorStyle.Text) || string.IsNullOrWhiteSpace(cmbStatus.Text) || string.IsNullOrWhiteSpace(cmbOrder.Text))
             {
                 MessageBox.Show("All fields are mandatory, please complete the form in order to submit the pipeline data!", "Complete form!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -89,11 +92,11 @@ namespace TSalesManagement
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
 
-                cmd.CommandText = "INSERT INTO DBO.sales_pipeline (door_style,customer_acc_ref,order_ref,estimated_order_value, estimated_order_date,added_by_id, date_added,description_of_doors_on_order,order_status) " +
-                                  " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status)";
+                cmd.CommandText = "INSERT INTO DBO.sales_pipeline (door_style,customer_acc_ref,order_ref,estimated_order_value, estimated_order_date,added_by_id, date_added,description_of_doors_on_order,order_status,likelihood_of_order) " +
+                                  " VALUES (@doorStyle,@custAccRef,@orderRef,@estimatedOrderValue,@estimatedOrderDate,@addedBy,@dateAdded,@description,@status,@order)";
 
                 cmd.CommandText = "UPDATE dbo.sales_pipeline SET door_style = @doorStyle, customer_acc_ref = @custAccRef, order_ref = @orderRef, estimated_order_value = @estimatedOrderValue, estimated_order_date = @estimatedOrderDate ," +
-                                  "  description_of_doors_on_order =@description, order_status = @status WHERE id=@id";
+                                  "  description_of_doors_on_order =@description, order_status = @status, likelihood_of_order = @order WHERE id=@id";
 
                 cmd.Parameters.AddWithValue("@id", _pID);
                 cmd.Parameters.AddWithValue("@doorStyle", cmbDoorStyle.Text);
@@ -104,6 +107,8 @@ namespace TSalesManagement
 
                 cmd.Parameters.AddWithValue("@description", txtDetails.Text);
                 cmd.Parameters.AddWithValue("@status", cmbStatus.Text);
+                cmd.Parameters.AddWithValue("@order", cmbOrder.Text);
+
 
                 cmd.ExecuteNonQuery();
 
