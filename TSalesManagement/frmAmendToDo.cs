@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using StartUpClass;
 
 namespace TSalesManagement
 {
@@ -11,10 +12,13 @@ namespace TSalesManagement
 
         public frmAmendToDo(int tID)
         {
+            Login.activityAdded = 0;
             InitializeComponent();
             _taskID = tID;
             fillData();
             fillGrid();
+
+            
         }
 
         private void fillGrid()
@@ -60,6 +64,55 @@ namespace TSalesManagement
 
         private void FrmAmendToDo_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnAddActivity_Click(object sender, EventArgs e)
+        {
+            //first step we need to go and grab customer details (acc ref)
+            string customerAccRef = txtDetail.Text;
+            customerAccRef = customerAccRef.Substring(customerAccRef.IndexOf(":") + 2);
+            customerAccRef =  customerAccRef.Trim();
+            //MessageBox.Show(customerAccRef);
+
+            string sql = "select ACCOUNT_REF from dbo.view_SALES_LEDGER_AND_PROSPECT WHERE [NAME] = '" + customerAccRef + "'";
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    var getData = Convert.ToString(cmd.ExecuteScalar());
+                    if (getData != null)
+                        customerAccRef = getData;
+                    else
+                        customerAccRef = "ryucxd";
+                    conn.Close();
+                }
+            }
+            //MessageBox.Show(customerAccRef);
+            //this needs to add an activity with a link to the task
+            frmNewActivity frm = new frmNewActivity(customerAccRef,_taskID,-1);
+            frm.ShowDialog();
+            //after making the task prompt user for marking this task as complete
+
+
+            if (Login.activityAdded == -1)
+            {
+                DialogResult result = MessageBox.Show("Would you like to mark this task as complete?", "", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    using (SqlConnection toDoConn = new SqlConnection(SqlStatements.ConnectionStringToDo))
+                    {
+                        sql = "UPDATE dbo.task SET taskStatus = 'Complete', timeComplete = GETDATE() WHERE id = " + _taskID.ToString();
+                        using (SqlCommand cmd = new SqlCommand(sql, toDoConn))
+                        {
+                            toDoConn.Open();
+                            cmd.ExecuteNonQuery();
+                            toDoConn.Close();
+                        }
+                        MessageBox.Show("Task is complete");
+                    }
+                }
+            }
         }
     }
 }

@@ -39,6 +39,7 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.txtReference = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.btnAddContact = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCustomer
@@ -143,11 +144,22 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Reference:";
             // 
+            // btnAddContact
+            // 
+            this.btnAddContact.Location = new System.Drawing.Point(246, 95);
+            this.btnAddContact.Name = "btnAddContact";
+            this.btnAddContact.Size = new System.Drawing.Size(84, 21);
+            this.btnAddContact.TabIndex = 12;
+            this.btnAddContact.Text = "Add Contact";
+            this.btnAddContact.UseVisualStyleBackColor = true;
+            this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
+            // 
             // frmNewActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 596);
+            this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtReference);
             this.Controls.Add(this.btnSave);
@@ -183,5 +195,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox txtReference;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAddContact;
     }
 }

@@ -30,12 +30,13 @@
         {
             this.txtDetail = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnAddActivity = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtDetail
             // 
-            this.txtDetail.Location = new System.Drawing.Point(13, 25);
+            this.txtDetail.Location = new System.Drawing.Point(13, 43);
             this.txtDetail.Multiline = true;
             this.txtDetail.Name = "txtDetail";
             this.txtDetail.Size = new System.Drawing.Size(775, 223);
@@ -48,17 +49,28 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 264);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 275);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(775, 202);
             this.dataGridView1.TabIndex = 1;
             // 
+            // btnAddActivity
+            // 
+            this.btnAddActivity.Location = new System.Drawing.Point(703, 12);
+            this.btnAddActivity.Name = "btnAddActivity";
+            this.btnAddActivity.Size = new System.Drawing.Size(85, 23);
+            this.btnAddActivity.TabIndex = 2;
+            this.btnAddActivity.Text = "Add Activity For this task";
+            this.btnAddActivity.UseVisualStyleBackColor = true;
+            this.btnAddActivity.Click += new System.EventHandler(this.btnAddActivity_Click);
+            // 
             // frmAmendToDo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 478);
+            this.ClientSize = new System.Drawing.Size(800, 491);
+            this.Controls.Add(this.btnAddActivity);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txtDetail);
             this.MaximizeBox = false;
@@ -77,5 +89,6 @@
 
         private System.Windows.Forms.TextBox txtDetail;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnAddActivity;
     }
 }

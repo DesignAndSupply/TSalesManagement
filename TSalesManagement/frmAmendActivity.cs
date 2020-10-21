@@ -18,6 +18,7 @@ namespace TSalesManagement
 
             fillData();
             populateContacts();
+           
         }
 
         private void fillData()
@@ -160,6 +161,43 @@ namespace TSalesManagement
             frmNewPipeline frmNP = new frmNewPipeline(_custAccRef, _aID);
             frmNP.ShowDialog();
             this.Close();
+        }
+
+        private void btnAddNote_Click(object sender, EventArgs e)
+        {
+            //open form for note entry
+            frmActivityNote frm = new frmActivityNote(_aID);
+            frm.ShowDialog();
+            //refresh the DGV so that it now shows the newst note aswell :}
+            fillDGV();
+        }
+
+        private void fillDGV()
+        {
+            //crm_activity_notes
+            string sql = "SELECT detail as [Detail],noteBy as [Note By], noteDate as [Note Date] FROM dbo.crm_activity_notes WHERE activityID = " + _aID + " ORDER BY noteID desc";
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    conn.Close();
+                }
+            }
+            //also do some formatting while we are here :}
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+        }
+
+        private void frmAmendActivity_Shown(object sender, EventArgs e)
+        {
+            fillDGV();
         }
     }
 }

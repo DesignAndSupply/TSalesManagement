@@ -5,21 +5,25 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using TSalesManagement.Class;
 
+
 namespace TSalesManagement
 {
     public partial class frmNewActivity : Form
     {
         public string _custAccRef { get; set; }
-
-        public frmNewActivity(string custAccRef)
+        public int _taskID { get; set; }
+        public int _validation { get; set; }
+        public frmNewActivity(string custAccRef,int taskID,int validation)
         {
             InitializeComponent();
             _custAccRef = custAccRef;
-
+            _taskID = taskID;
+            _validation = validation;
             Customer c = new Customer(_custAccRef);
 
             lblCustomer.Text = c._customerName;
             populateContacts();
+            
         }
 
         private void frmNewActivity_Load(object sender, EventArgs e)
@@ -49,6 +53,11 @@ namespace TSalesManagement
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cmbRecipient.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a Contact before adding the activity!");
+                return;
+            }
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
 
@@ -69,33 +78,43 @@ namespace TSalesManagement
             cmd.ExecuteNonQuery();
 
             conn.Close();
+            Login.activityAdded = -1;
 
-            //Prompts user to add task to ToDo  System
-
-            DialogResult dr = MessageBox.Show("Do you want to create a task from this activity?", "Create Task?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (dr == DialogResult.Yes)
+            if (_validation == 0)  //if its -1 its adding an activity from a task
             {
-                double maxID;
-                SqlConnection connr = new SqlConnection(SqlStatements.ConnectionString);
-                connr.Open();
-                SqlCommand cmdr = new SqlCommand("select max(id) as maxID from dbo.crm_activity", connr);
-                SqlDataReader rdr = cmdr.ExecuteReader();
+                //Prompts user to add task to ToDo  System
+                DialogResult dr = MessageBox.Show("Do you want to create a task from this activity?", "Create Task?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (rdr.Read())
+                if (dr == DialogResult.Yes)
                 {
-                    maxID = Convert.ToDouble(rdr["maxID"]);
-                }
-                else
-                {
-                    maxID = 0;
-                }
+                    double maxID;
+                    SqlConnection connr = new SqlConnection(SqlStatements.ConnectionString);
+                    connr.Open();
+                    SqlCommand cmdr = new SqlCommand("select max(id) as maxID from dbo.crm_activity", connr);
+                    SqlDataReader rdr = cmdr.ExecuteReader();
 
-                frmNewTask nt = new frmNewTask(maxID, cmbRecipient.Text, txtReference.Text, txtDetails.Text, lblCustomer.Text);
-                nt.ShowDialog();
+                    if (rdr.Read())
+                    {
+                        maxID = Convert.ToDouble(rdr["maxID"]);
+                    }
+                    else
+                    {
+                        maxID = 0;
+                    }
+
+                    frmNewTask nt = new frmNewTask(maxID, cmbRecipient.Text, txtReference.Text, txtDetails.Text, lblCustomer.Text);
+                    nt.ShowDialog();
+                }
             }
 
             this.Close();
+        }
+
+        private void btnAddContact_Click(object sender, EventArgs e)
+        {
+            frmNewContact frm = new frmNewContact(_custAccRef);
+            frm.ShowDialog();
+            populateContacts();
         }
     }
 }
