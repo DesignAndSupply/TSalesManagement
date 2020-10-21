@@ -54,13 +54,21 @@ namespace TSalesManagement
                     //we need to find the next user who entered a note and grab their id (if they exist)
                     sql = "SELECT TOP 1 noteByID FROM dbo.crm_activity_notes where activityID = " + activityID.ToString() + " AND noteByID <> " + sender_id + " ORDER BY noteID DESC";
                     using (SqlCommand senderCMD = new SqlCommand(sql, conn))
-                    {
+                    { //usp_crm_activity_notification_email
                         var getdata = senderCMD.ExecuteScalar(); //for checking if it returns anything
                         if (getdata != null)
                         {
                             validation = -1;
                             email_id = Convert.ToInt32(getdata); //we email this user isntead
-                            MessageBox.Show(email_id.ToString());
+                            //MessageBox.Show(email_id.ToString());
+
+                            using (SqlCommand command = new SqlCommand("usp_crm_activity_notification_email", conn))
+                            {
+                                command.CommandType = CommandType.StoredProcedure;
+                                command.Parameters.Add("@activityID", SqlDbType.Int).Value = activityID;
+                                command.Parameters.Add("@emailID", SqlDbType.Int).Value = email_id;
+                                command.ExecuteNonQuery();
+                            }
                         }
                         else
                         {
@@ -72,7 +80,14 @@ namespace TSalesManagement
                 else
                 {
                     //they are not the same so we can email the original user without worrying
-                    MessageBox.Show(sender_id.ToString());
+                  //  MessageBox.Show(sender_id.ToString());
+                    using (SqlCommand command = new SqlCommand("usp_crm_activity_notification_email", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.Add("@activityID", SqlDbType.Int).Value = activityID;
+                        command.Parameters.Add("@emailID", SqlDbType.Int).Value = sender_id;
+                        command.ExecuteNonQuery();
+                    }
                 }
 
                
