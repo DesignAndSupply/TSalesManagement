@@ -511,6 +511,13 @@ namespace TSalesManagement
                         dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.HotPink;
                     }
                 }
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                {
+                    if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "Complete")
+                    {
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                    }
+                }
 
             }
 
@@ -631,7 +638,7 @@ namespace TSalesManagement
                             selectedTaskID.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value));
                             updateListBox();
                         }
-
+                        
 
                     }
                     if (tabControl1.SelectedIndex == 1) //activity
