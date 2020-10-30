@@ -158,8 +158,12 @@
     <Compile Include="ActivityCentre.Designer.cs">
       <DependentUpon>ActivityCentre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Class\Connection.cs" />
     <Compile Include="Class\Customer.cs" />
+    <Compile Include="Class\Date.cs" />
     <Compile Include="Class\DateConversion.cs" />
+    <Compile Include="Class\Login.cs" />
+    <Compile Include="Class\Userinfo.cs" />
     <Compile Include="CustomerVm.cs" />
     <Compile Include="Class\NewCustomer.cs" />
     <Compile Include="Class\Pipeline.cs" />
@@ -551,12 +555,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="S:\Design and Supply CSharp\Class Libraries\General\StartupClass.csproj">
-      <Project>{c0721d32-ee8c-4891-8fbe-76f975b2d944}</Project>
-      <Name>StartupClass</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="AcroPDFLib">

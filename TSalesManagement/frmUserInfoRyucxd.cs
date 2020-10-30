@@ -249,6 +249,7 @@ namespace TSalesManagement
                 dataGridView1.Columns[8].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
                 dataGridView1.Columns[10].Visible = false;
+                //dataGridView1.Columns[11].Visible = false;
                 //dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 //dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these columns are hidden, i read data from these but dont actually need the user to see them
                 //dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -1469,7 +1470,31 @@ namespace TSalesManagement
 
                     frmAmendToDo frmAA = new frmAmendToDo(aID);
                     frmAA.ShowDialog();
-                    loadData();
+
+
+                    if (Login.activityAdded == -1)
+                    {
+                        DialogResult result = MessageBox.Show("Would you like to mark this task as complete?", "", MessageBoxButtons.YesNo);
+                        if (result == DialogResult.Yes)
+                        {
+                            using (SqlConnection toDoConn = new SqlConnection(SqlStatements.ConnectionStringToDo))
+                            {
+                                sql = "UPDATE dbo.task SET taskStatus = 'Complete', timeComplete = GETDATE() WHERE id = " + aID.ToString();
+                                using (SqlCommand cmd = new SqlCommand(sql, toDoConn))
+                                {
+                                    toDoConn.Open();
+                                    cmd.ExecuteNonQuery();
+                                    toDoConn.Close();
+                                }
+                                Login.activityAdded = 0;
+                                dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Complete";
+                                dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                            }
+                        }
+                    }
+
+                    // loadData();
+
                     //fillActivityGrid();
                 }
             }

@@ -94,25 +94,6 @@ namespace TSalesManagement
             frm.ShowDialog();
             //after making the task prompt user for marking this task as complete
 
-
-            if (Login.activityAdded == -1)
-            {
-                DialogResult result = MessageBox.Show("Would you like to mark this task as complete?", "", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
-                    using (SqlConnection toDoConn = new SqlConnection(SqlStatements.ConnectionStringToDo))
-                    {
-                        sql = "UPDATE dbo.task SET taskStatus = 'Complete', timeComplete = GETDATE() WHERE id = " + _taskID.ToString();
-                        using (SqlCommand cmd = new SqlCommand(sql, toDoConn))
-                        {
-                            toDoConn.Open();
-                            cmd.ExecuteNonQuery();
-                            toDoConn.Close();
-                        }
-                        MessageBox.Show("Task is complete");
-                    }
-                }
-            }
         }
     }
 }
