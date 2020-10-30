@@ -53,10 +53,11 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>AB624F15B375C58A67F95011D7C2BE9B9509AC88</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>1838360E0295381C943981FFE41415D0F4FE47F1</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>TSalesManagement_5_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
