@@ -1486,7 +1486,8 @@ namespace TSalesManagement
                         {
                             using (SqlConnection toDoConn = new SqlConnection(SqlStatements.ConnectionStringToDo))
                             {
-                                sql = "UPDATE dbo.task SET taskStatus = 'Complete', timeComplete = GETDATE() WHERE id = " + aID.ToString();
+                                sql = "UPDATE dbo.task SET taskStatus = 'Complete', timeComplete = GETDATE(), completeDate = GETDATE(), completeDateAddDays = [order_database].dbo.func_work_days_plus(GETDATE(),7)  WHERE id = " + aID.ToString();
+                                //this needs to update completeAddDays otherwise it wont mark the item as blue -- timeComplete and completeDate seems to be the same thing but i think they are both being used for different things
                                 using (SqlCommand cmd = new SqlCommand(sql, toDoConn))
                                 {
                                     toDoConn.Open();
@@ -1509,7 +1510,6 @@ namespace TSalesManagement
             if (tabControl1.SelectedIndex == 3)
             {
                 int aID;
-
 
                 if (dataGridView1.SelectedCells.Count > 0)
                 {
