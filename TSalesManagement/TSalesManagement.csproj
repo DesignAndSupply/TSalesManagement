@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>66</ApplicationRevision>
+    <ApplicationRevision>71</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -189,6 +189,12 @@
     <Compile Include="frmActivityNote.Designer.cs">
       <DependentUpon>frmActivityNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmAddSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddSector.Designer.cs">
+      <DependentUpon>frmAddSector.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAmendToDo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +206,12 @@
     </Compile>
     <Compile Include="frmEmailUserManagement.Designer.cs">
       <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinkSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinkSector.Designer.cs">
+      <DependentUpon>frmLinkSector.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPDF.cs">
       <SubType>Form</SubType>
@@ -386,11 +398,17 @@
     <EmbeddedResource Include="frmActivityNote.resx">
       <DependentUpon>frmActivityNote.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAddSector.resx">
+      <DependentUpon>frmAddSector.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAmendToDo.resx">
       <DependentUpon>frmAmendToDo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmailUserManagement.resx">
       <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkSector.resx">
+      <DependentUpon>frmLinkSector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPDF.resx">
       <DependentUpon>frmPDF.cs</DependentUpon>

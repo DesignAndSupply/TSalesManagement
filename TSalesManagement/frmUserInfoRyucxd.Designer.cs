@@ -53,6 +53,9 @@
             this.lblPipeline = new System.Windows.Forms.Label();
             this.c_view_sales_program_usersTableAdapter = new TSalesManagement.user_infoDataSetTableAdapters.c_view_sales_program_usersTableAdapter();
             this.ryucxd = new System.Windows.Forms.Button();
+            this.btn_sector = new System.Windows.Forms.Button();
+            this.txtSector = new System.Windows.Forms.TextBox();
+            this.lblsector = new System.Windows.Forms.Label();
             this.selectedGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
@@ -136,7 +139,7 @@
             // btnEmail
             // 
             this.btnEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEmail.Location = new System.Drawing.Point(1036, 25);
+            this.btnEmail.Location = new System.Drawing.Point(1176, 36);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(122, 23);
             this.btnEmail.TabIndex = 21;
@@ -150,7 +153,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.CornflowerBlue;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(766, 26);
+            this.label6.Location = new System.Drawing.Point(904, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(266, 15);
             this.label6.TabIndex = 26;
@@ -162,7 +165,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.OrangeRed;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(766, 46);
+            this.label4.Location = new System.Drawing.Point(904, 46);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(144, 15);
             this.label4.TabIndex = 25;
@@ -174,7 +177,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.HotPink;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(766, 6);
+            this.label3.Location = new System.Drawing.Point(904, 6);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 15);
             this.label3.TabIndex = 24;
@@ -253,9 +256,10 @@
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Location = new System.Drawing.Point(249, 66);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(909, 483);
+            this.dataGridView1.Size = new System.Drawing.Size(1047, 483);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentDoubleClick);
@@ -270,7 +274,7 @@
             "Pending",
             "Ordered",
             "Lost"});
-            this.comboPipeLine.Location = new System.Drawing.Point(547, 38);
+            this.comboPipeLine.Location = new System.Drawing.Point(685, 38);
             this.comboPipeLine.Name = "comboPipeLine";
             this.comboPipeLine.Size = new System.Drawing.Size(121, 21);
             this.comboPipeLine.TabIndex = 29;
@@ -280,7 +284,7 @@
             // buttonPipeline
             // 
             this.buttonPipeline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonPipeline.Location = new System.Drawing.Point(674, 38);
+            this.buttonPipeline.Location = new System.Drawing.Point(812, 38);
             this.buttonPipeline.Name = "buttonPipeline";
             this.buttonPipeline.Size = new System.Drawing.Size(85, 23);
             this.buttonPipeline.TabIndex = 31;
@@ -293,7 +297,7 @@
             // 
             this.lblPipeline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPipeline.AutoSize = true;
-            this.lblPipeline.Location = new System.Drawing.Point(575, 16);
+            this.lblPipeline.Location = new System.Drawing.Point(713, 16);
             this.lblPipeline.Name = "lblPipeline";
             this.lblPipeline.Size = new System.Drawing.Size(69, 13);
             this.lblPipeline.TabIndex = 30;
@@ -306,7 +310,7 @@
             // 
             // ryucxd
             // 
-            this.ryucxd.Location = new System.Drawing.Point(484, 3);
+            this.ryucxd.Location = new System.Drawing.Point(812, 6);
             this.ryucxd.Name = "ryucxd";
             this.ryucxd.Size = new System.Drawing.Size(75, 23);
             this.ryucxd.TabIndex = 32;
@@ -315,11 +319,44 @@
             this.ryucxd.Visible = false;
             this.ryucxd.Click += new System.EventHandler(this.ryucxd_Click);
             // 
+            // btn_sector
+            // 
+            this.btn_sector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_sector.Location = new System.Drawing.Point(1176, 6);
+            this.btn_sector.Name = "btn_sector";
+            this.btn_sector.Size = new System.Drawing.Size(122, 23);
+            this.btn_sector.TabIndex = 33;
+            this.btn_sector.Text = "Add Customer Sector";
+            this.btn_sector.UseVisualStyleBackColor = true;
+            this.btn_sector.Click += new System.EventHandler(this.btn_sector_Click);
+            // 
+            // txtSector
+            // 
+            this.txtSector.Location = new System.Drawing.Point(485, 25);
+            this.txtSector.Name = "txtSector";
+            this.txtSector.Size = new System.Drawing.Size(189, 20);
+            this.txtSector.TabIndex = 35;
+            this.txtSector.Visible = false;
+            this.txtSector.TextChanged += new System.EventHandler(this.txtSector_TextChanged);
+            // 
+            // lblsector
+            // 
+            this.lblsector.Location = new System.Drawing.Point(485, 8);
+            this.lblsector.Name = "lblsector";
+            this.lblsector.Size = new System.Drawing.Size(189, 13);
+            this.lblsector.TabIndex = 34;
+            this.lblsector.Text = "Search Sector:";
+            this.lblsector.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblsector.Visible = false;
+            // 
             // frmUserInfoRyucxd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 561);
+            this.ClientSize = new System.Drawing.Size(1308, 561);
+            this.Controls.Add(this.txtSector);
+            this.Controls.Add(this.lblsector);
+            this.Controls.Add(this.btn_sector);
             this.Controls.Add(this.ryucxd);
             this.Controls.Add(this.comboPipeLine);
             this.Controls.Add(this.buttonPipeline);
@@ -374,5 +411,8 @@
         private System.Windows.Forms.BindingSource cviewsalesprogramusersBindingSource;
         private user_infoDataSetTableAdapters.c_view_sales_program_usersTableAdapter c_view_sales_program_usersTableAdapter;
         private System.Windows.Forms.Button ryucxd;
+        private System.Windows.Forms.Button btn_sector;
+        private System.Windows.Forms.TextBox txtSector;
+        private System.Windows.Forms.Label lblsector;
     }
 }

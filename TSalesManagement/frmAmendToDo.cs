@@ -8,7 +8,7 @@ namespace TSalesManagement
 {
     public partial class frmAmendToDo : Form
     {
-        public int _taskID { get; set; }
+        public int _taskID { get; set; } // i think this i
 
         public frmAmendToDo(int tID)
         {
@@ -18,8 +18,8 @@ namespace TSalesManagement
             fillData();
             fillGrid();
 
-            
-        }
+
+       }
 
         private void fillGrid()
         {
@@ -64,17 +64,30 @@ namespace TSalesManagement
 
         private void FrmAmendToDo_Load(object sender, EventArgs e)
         {
-        }
+
+  }
 
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
-            //first step we need to go and grab customer details (acc ref)
-            string customerAccRef = txtDetail.Text;
-            customerAccRef = customerAccRef.Substring(customerAccRef.IndexOf(":") + 2);
-            customerAccRef =  customerAccRef.Trim();
+            string customerAccRef = "";
+            string sql = "SELECT [NAME] FROM [ToDo].dbo.c_view_task_list_crm WHERE [Task ID] = " + _taskID;
+            using (SqlConnection zzz = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmdzz = new SqlCommand(sql,zzz))
+                {
+                    zzz.Open();
+                    customerAccRef = Convert.ToString(cmdzz.ExecuteScalar());
+                    zzz.Close();
+                }
+            }
+
+                //first step we need to go and grab customer details (acc ref) 
+            //    string customerAccRef = txtDetail.Text;
+            //customerAccRef = customerAccRef.Substring(customerAccRef.IndexOf(":") + 2);
+            //customerAccRef =  customerAccRef.Trim();
             //MessageBox.Show(customerAccRef);
 
-            string sql = "select ACCOUNT_REF from dbo.view_SALES_LEDGER_AND_PROSPECT WHERE [NAME] = '" + customerAccRef + "'";
+            sql = "select ACCOUNT_REF from dbo.view_SALES_LEDGER_AND_PROSPECT WHERE [NAME] = '" + customerAccRef + "'";
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))

@@ -106,6 +106,11 @@ namespace TSalesManagement
                 {
                     if (tabControl1.SelectedIndex != 3)
                         cmd.Parameters.AddWithValue("@custName", "%" + customer + "%");  //this will only execute on every tab except pipeline
+                    if (tabControl1.SelectedIndex == 0 || tabControl1.SelectedIndex == 1)
+                    {
+                        if (txtSector.TextLength > 0)
+                            cmd.Parameters.AddWithValue("@sectorName", "%" + txtSector.Text + "%");
+                    }
                     conn.Open();
                     DataTable dt = new DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -140,12 +145,25 @@ namespace TSalesManagement
 
 
             if (tabControl1.SelectedIndex == 0) //customer list
-            {
-                sql = "SELECT [account ref],[Customer Name],Telephone,[Address_1],address_2,address_3,Address_4,[Account Status],[Customer Type] FROM dbo.c_sales_view_customer_data WHERE [Customer Name] LIKE @custName ORDER BY [Customer Name] ASC";
+            {  //neeeds to join to the sector tables
+                sql = "SELECT [account ref],[Customer Name],Telephone,[Address_1],address_2,address_3,Address_4,[Account Status],[Customer Type], COALESCE([sector_name],'') as [Sector Name] FROM dbo.c_sales_view_customer_data " +
+                    "LEFT JOIN dbo.tsalesmanager_sector_to_customer_link ON dbo.tsalesmanager_sector_to_customer_link.cust_acc_ref = dbo.c_sales_view_customer_data.[Account Ref] " +
+                    "LEFT JOIN dbo.tsalesmanager_customer_sector ON dbo.tsalesmanager_sector_to_customer_link.sector_id = dbo.tsalesmanager_customer_sector.id " +
+                    "WHERE [Customer Name] LIKE @custName  ";
+                if (txtSector.TextLength > 0)
+                    sql = sql + "AND [sector_name] LIKE @sectorName ";
+                sql = sql + "ORDER BY[Customer Name] ASC";
             }
             else if (tabControl1.SelectedIndex == 1) //user activity
             {
-                sql = "SELECT COALESCE(id,0),[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By] FROM dbo.c_sales_view_activity_list WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE @custName ORDER BY  [Activity Date] DESC";
+                // sql = "SELECT COALESCE(id,0),[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By] FROM dbo.c_sales_view_activity_list WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE @custName ORDER BY  [Activity Date] DESC";
+                sql = "SELECT COALESCE(dbo.c_sales_view_activity_list.id,0),[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By],COALESCE([sector_name],'') as [Sector Name] " +
+                     "FROM dbo.c_sales_view_activity_list LEFT JOIN dbo.tsalesmanager_sector_to_customer_link ON dbo.tsalesmanager_sector_to_customer_link.cust_acc_ref = dbo.c_sales_view_activity_list.customer_acc_ref " +
+                     "LEFT JOIN dbo.tsalesmanager_customer_sector ON dbo.tsalesmanager_sector_to_customer_link.sector_id = dbo.tsalesmanager_customer_sector.id " +
+                     "WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE @custName ";
+                if (txtSector.TextLength > 0)
+                    sql = sql + "AND [sector_name] LIKE @sectorName ";
+                sql = sql + "ORDER BY[Customer Name] ASC";
             }
             else if (tabControl1.SelectedIndex == 2) //tasks
             {
@@ -163,19 +181,24 @@ namespace TSalesManagement
             //adding buttons to one grid will mean i need to count the current columns and place it at the MAX column to allow for different columns having different numbers
             //if (tabControl1.SelectedIndex != 2) // removing this because chris wants to be able to select a task 13/07/2020
             //{
-            DataGridViewButtonColumn selectButton = new DataGridViewButtonColumn();
-            selectButton.Name = "Select";
-            selectButton.Text = "Select";
-            selectButton.UseColumnTextForButtonValue = true;
-            int columnIndex = (dataGridView1.Columns.Count);
-            if (dataGridView1.Columns["Select"] == null)
+
+            //adding this if because chris doesnt want to select an activity 04/11/2020
+            if (tabControl1.SelectedIndex != 1) //i think its 1
             {
-                dataGridView1.Columns.Insert(columnIndex, selectButton);
-            }
-            if (dataGridView1.Columns.Contains("Select"))
-            {
-                int index = dataGridView1.Columns["Select"].Index;
-                dataGridView1.Columns[index].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //allign the header cell because this is done AFTER format();
+                DataGridViewButtonColumn selectButton = new DataGridViewButtonColumn();
+                selectButton.Name = "Select";
+                selectButton.Text = "Select";
+                selectButton.UseColumnTextForButtonValue = true;
+                int columnIndex = (dataGridView1.Columns.Count);
+                if (dataGridView1.Columns["Select"] == null)
+                {
+                    dataGridView1.Columns.Insert(columnIndex, selectButton);
+                }
+                if (dataGridView1.Columns.Contains("Select"))
+                {
+                    int index = dataGridView1.Columns["Select"].Index;
+                    dataGridView1.Columns[index].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter; //allign the header cell because this is done AFTER format();
+                }
             }
             //}
         }
@@ -225,6 +248,9 @@ namespace TSalesManagement
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //im guessing that [9] is select
+                //dataGridView1.Columns[9].Visible = false; //this doesnt seem viable as when you add a column the [ s e l e c t ] button will move to last position
+
             }
             else if (tabControl1.SelectedIndex == 2) //tasks
             {
@@ -249,7 +275,7 @@ namespace TSalesManagement
                 dataGridView1.Columns[8].Visible = false;
                 dataGridView1.Columns[9].Visible = false;
                 dataGridView1.Columns[10].Visible = false;
-                //dataGridView1.Columns[11].Visible = false;
+                dataGridView1.Columns[11].Visible = false;
                 //dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 //dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these columns are hidden, i read data from these but dont actually need the user to see them
                 //dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -572,6 +598,15 @@ namespace TSalesManagement
             {
                 lblPipeline.Visible = true; buttonPipeline.Visible = true; comboPipeLine.Visible = true;
             }
+            if (tabControl1.SelectedIndex == 0 || tabControl1.SelectedIndex == 1)
+            {
+                txtSector.Visible = true; lblsector.Visible = true;
+            }
+            else
+            {
+                txtSector.Text = "";
+                txtSector.Visible = false; lblsector.Visible = false;
+            }
         }
 
         private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
@@ -638,7 +673,7 @@ namespace TSalesManagement
                             selectedTaskID.Remove(Convert.ToString(dataGridView1.CurrentRow.Cells[taskColumnIndex].Value));
                             updateListBox();
                         }
-                        
+
 
                     }
                     if (tabControl1.SelectedIndex == 1) //activity
@@ -921,7 +956,7 @@ namespace TSalesManagement
                     dataGridView1.ClearSelection();
                 }
             }
-            dataGridView1.ClearSelection();
+            
         }
 
         private void FrmUserInfoRyucxd_Load(object sender, EventArgs e)
@@ -1466,7 +1501,6 @@ namespace TSalesManagement
             {
                 int aID;
 
-
                 if (dataGridView1.SelectedCells.Count > 0)
                 {
                     int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
@@ -1501,6 +1535,7 @@ namespace TSalesManagement
                         }
                     }
 
+
                     // loadData();
 
                     //fillActivityGrid();
@@ -1526,6 +1561,18 @@ namespace TSalesManagement
                 }
             }
 
+        }
+
+        private void btn_sector_Click(object sender, EventArgs e)
+        {
+            //add a new sector here 
+            frmAddSector frm = new frmAddSector();
+            frm.ShowDialog();
+        }
+
+        private void txtSector_TextChanged(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }

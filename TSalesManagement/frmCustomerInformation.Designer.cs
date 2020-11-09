@@ -56,6 +56,7 @@
             this.lblAddContact = new System.Windows.Forms.LinkLabel();
             this.lblLinkEst = new System.Windows.Forms.LinkLabel();
             this.lblActivity = new System.Windows.Forms.LinkLabel();
+            this.lblSector = new System.Windows.Forms.LinkLabel();
             this.groupBox4.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             this.tabActivity.SuspendLayout();
@@ -344,6 +345,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblSector);
             this.groupBox1.Controls.Add(this.lblAddContact);
             this.groupBox1.Controls.Add(this.lblLinkEst);
             this.groupBox1.Controls.Add(this.lblActivity);
@@ -358,7 +360,7 @@
             // 
             this.lblAddContact.AutoSize = true;
             this.lblAddContact.LinkColor = System.Drawing.Color.Teal;
-            this.lblAddContact.Location = new System.Drawing.Point(10, 70);
+            this.lblAddContact.Location = new System.Drawing.Point(10, 72);
             this.lblAddContact.Name = "lblAddContact";
             this.lblAddContact.Size = new System.Drawing.Size(66, 13);
             this.lblAddContact.TabIndex = 3;
@@ -370,7 +372,7 @@
             // 
             this.lblLinkEst.AutoSize = true;
             this.lblLinkEst.LinkColor = System.Drawing.Color.Teal;
-            this.lblLinkEst.Location = new System.Drawing.Point(10, 48);
+            this.lblLinkEst.Location = new System.Drawing.Point(10, 49);
             this.lblLinkEst.Name = "lblLinkEst";
             this.lblLinkEst.Size = new System.Drawing.Size(104, 13);
             this.lblLinkEst.TabIndex = 2;
@@ -389,6 +391,18 @@
             this.lblActivity.TabStop = true;
             this.lblActivity.Text = "Add Activity";
             this.lblActivity.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblActivity_LinkClicked);
+            // 
+            // lblSector
+            // 
+            this.lblSector.AutoSize = true;
+            this.lblSector.LinkColor = System.Drawing.Color.Teal;
+            this.lblSector.Location = new System.Drawing.Point(10, 95);
+            this.lblSector.Name = "lblSector";
+            this.lblSector.Size = new System.Drawing.Size(77, 13);
+            this.lblSector.TabIndex = 4;
+            this.lblSector.TabStop = true;
+            this.lblSector.Text = "Link To Sector";
+            this.lblSector.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSector_LinkClicked);
             // 
             // frmCustomerInformation
             // 
@@ -447,5 +461,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgContacts;
         private System.Windows.Forms.LinkLabel lblAddContact;
+        private System.Windows.Forms.LinkLabel lblSector;
     }
 }

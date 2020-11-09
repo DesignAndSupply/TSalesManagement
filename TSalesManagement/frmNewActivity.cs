@@ -13,7 +13,8 @@ namespace TSalesManagement
         public string _custAccRef { get; set; }
         public int _taskID { get; set; }
         public int _validation { get; set; }
-        public frmNewActivity(string custAccRef,int taskID,int validation)
+        public int sector { get; set; }
+        public frmNewActivity(string custAccRef, int taskID, int validation)
         {
             InitializeComponent();
             _custAccRef = custAccRef;
@@ -23,7 +24,30 @@ namespace TSalesManagement
 
             lblCustomer.Text = c._customerName;
             populateContacts();
-            
+            refreshSector();
+
+            //before we jump into the main code we need to check if this acc_ref is tied to a sector
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                string sql = "SELECT sector_name FROM dbo.view_tsalesmanager_sector WHERE cust_acc_ref = '" + _custAccRef + "' ";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    string temp = Convert.ToString(cmd.ExecuteScalar());
+                    if (temp == "")
+                    {
+                        sector = -1;
+                        lblSector.Visible = true; lblsector2.Visible = true; cmbSector.Visible = true;
+                    }
+                    else
+                    {
+                        sector = 0;
+                        lblSector.Visible = false; lblsector2.Visible = false; cmbSector.Visible = false;
+                    }
+
+                    conn.Close();
+                }
+            }
         }
 
         private void frmNewActivity_Load(object sender, EventArgs e)
@@ -58,6 +82,31 @@ namespace TSalesManagement
                 MessageBox.Show("Please select a Contact before adding the activity!");
                 return;
             }
+
+            if (sector == -1)
+            {
+                if (cmbSector.Text.Length < 1)
+                {
+                    MessageBox.Show("Please select a Contact before adding the activity!");
+                    return;
+                }
+                string sql = "SELECT id FROM dbo.tsalesmanager_customer_sector WHERE sector_name = '" + cmbSector.Text + "'";
+                int sector_id = 0;
+                using (SqlConnection conn2 = new SqlConnection(SqlStatements.ConnectionString))
+                {
+                    conn2.Open();
+                    //first up grab the id of the sector
+                    using (SqlCommand cmd2 = new SqlCommand(sql, conn2))
+                        sector_id = Convert.ToInt32(cmd2.ExecuteScalar());
+                    sql = "INSERT INTO dbo.tsalesmanager_sector_to_customer_link (cust_acc_ref,sector_id) VALUES ('" + _custAccRef + "'," + sector_id.ToString() + " )";
+                    using (SqlCommand cmd2 = new SqlCommand(sql, conn2))
+                    {
+                        cmd2.ExecuteNonQuery();
+                    }
+                    conn2.Close();
+                }
+            }
+
             SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
             conn.Open();
 
@@ -115,6 +164,30 @@ namespace TSalesManagement
             frmNewContact frm = new frmNewContact(_custAccRef);
             frm.ShowDialog();
             populateContacts();
+        }
+
+        private void refreshSector()
+        {
+            cmbSector.Items.Clear();
+            string sql = "SELECT sector_name FROM dbo.tsalesmanager_customer_sector";
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                        cmbSector.Items.Add(dr["sector_name"].ToString());
+                    conn.Close();
+                }
+            }
+        }
+
+        private void lblSector_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAddSector frm = new frmAddSector();
+            frm.ShowDialog();
+            refreshSector();
         }
     }
 }

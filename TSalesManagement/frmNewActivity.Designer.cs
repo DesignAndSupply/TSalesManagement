@@ -40,6 +40,9 @@
             this.txtReference = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAddContact = new System.Windows.Forms.Button();
+            this.cmbSector = new System.Windows.Forms.ComboBox();
+            this.lblsector2 = new System.Windows.Forms.Label();
+            this.lblSector = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lblCustomer
@@ -154,11 +157,43 @@
             this.btnAddContact.UseVisualStyleBackColor = true;
             this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
             // 
+            // cmbSector
+            // 
+            this.cmbSector.FormattingEnabled = true;
+            this.cmbSector.Location = new System.Drawing.Point(522, 95);
+            this.cmbSector.Name = "cmbSector";
+            this.cmbSector.Size = new System.Drawing.Size(209, 21);
+            this.cmbSector.TabIndex = 13;
+            // 
+            // lblsector2
+            // 
+            this.lblsector2.Location = new System.Drawing.Point(522, 76);
+            this.lblsector2.Name = "lblsector2";
+            this.lblsector2.Size = new System.Drawing.Size(209, 17);
+            this.lblsector2.TabIndex = 14;
+            this.lblsector2.Text = "This Customer Needs a Sector";
+            this.lblsector2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSector
+            // 
+            this.lblSector.AutoSize = true;
+            this.lblSector.LinkColor = System.Drawing.Color.Teal;
+            this.lblSector.Location = new System.Drawing.Point(737, 98);
+            this.lblSector.Name = "lblSector";
+            this.lblSector.Size = new System.Drawing.Size(85, 13);
+            this.lblSector.TabIndex = 25;
+            this.lblSector.TabStop = true;
+            this.lblSector.Text = "Add New Sector";
+            this.lblSector.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSector_LinkClicked);
+            // 
             // frmNewActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 596);
+            this.Controls.Add(this.lblSector);
+            this.Controls.Add(this.lblsector2);
+            this.Controls.Add(this.cmbSector);
             this.Controls.Add(this.btnAddContact);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtReference);
@@ -196,5 +231,8 @@
         private System.Windows.Forms.TextBox txtReference;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAddContact;
+        private System.Windows.Forms.ComboBox cmbSector;
+        private System.Windows.Forms.Label lblsector2;
+        private System.Windows.Forms.LinkLabel lblSector;
     }
 }

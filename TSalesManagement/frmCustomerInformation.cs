@@ -224,5 +224,12 @@ namespace TSalesManagement
         private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
         }
+
+        private void lblSector_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            // open the link to sector form
+            frmLinkSector frm = new frmLinkSector(_custAccRef);
+            frm.ShowDialog();
+        }
     }
 }
