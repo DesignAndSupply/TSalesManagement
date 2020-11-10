@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>71</ApplicationRevision>
+    <ApplicationRevision>72</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -206,6 +206,12 @@
     </Compile>
     <Compile Include="frmEmailUserManagement.Designer.cs">
       <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLinkCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLinkCustomer.Designer.cs">
+      <DependentUpon>frmLinkCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLinkSector.cs">
       <SubType>Form</SubType>
@@ -406,6 +412,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmailUserManagement.resx">
       <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLinkCustomer.resx">
+      <DependentUpon>frmLinkCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLinkSector.resx">
       <DependentUpon>frmLinkSector.cs</DependentUpon>

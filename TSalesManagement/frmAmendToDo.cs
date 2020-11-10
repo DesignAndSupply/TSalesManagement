@@ -9,6 +9,8 @@ namespace TSalesManagement
     public partial class frmAmendToDo : Form
     {
         public int _taskID { get; set; } // i think this i
+        public string customerAccRef { get; set; }
+        public int validation { get; set; }
 
         public frmAmendToDo(int tID)
         {
@@ -18,8 +20,59 @@ namespace TSalesManagement
             fillData();
             fillGrid();
 
+            getCustAccRef();    
+        }
 
-       }
+
+
+
+        private void getCustAccRef()
+        {            
+            //im moving this here from the add activity button to make things cleaner (and also to fire this on formload)
+           
+            string sql = "SELECT [NAME] FROM [ToDo].dbo.c_view_task_list_crm WHERE [Task ID] = " + _taskID;
+            using (SqlConnection zzz = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmdzz = new SqlCommand(sql, zzz))
+                {
+                    zzz.Open();
+                    var getData = Convert.ToString(cmdzz.ExecuteScalar());
+                    if (getData != null && getData != "")
+                    {
+                        customerAccRef = Convert.ToString(cmdzz.ExecuteScalar());
+                    }
+                    else
+                    {
+                        validation = 0;
+                        return;
+                    }
+                    zzz.Close();
+                }
+            }
+            sql = "select ACCOUNT_REF from dbo.view_SALES_LEDGER_AND_PROSPECT WHERE [NAME] = '" + customerAccRef + "'";
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    conn.Open();
+                    var getData = Convert.ToString(cmd.ExecuteScalar());
+                    if (getData != null && getData != "")
+                    {
+                        customerAccRef = getData;
+                        validation = -1;
+                    }
+                    else
+                    {
+                        customerAccRef = "ryucxd";
+                        validation = 0;
+                    }
+                    conn.Close();
+                }
+            }
+        }
+
+
+
 
         private void fillGrid()
         {
@@ -69,44 +122,28 @@ namespace TSalesManagement
 
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
-            string customerAccRef = "";
-            string sql = "SELECT [NAME] FROM [ToDo].dbo.c_view_task_list_crm WHERE [Task ID] = " + _taskID;
-            using (SqlConnection zzz = new SqlConnection(SqlStatements.ConnectionString))
+
+            if (validation == 0)
             {
-                using (SqlCommand cmdzz = new SqlCommand(sql,zzz))
+                MessageBox.Show("This task needs to be linked to a customer before you can create an activity!");
+                frmLinkCustomer frm2 = new frmLinkCustomer(_taskID);
+                frm2.ShowDialog();
+                validation = frmLinkCustomer.customerLinked;
+                if (validation == -1)
                 {
-                    zzz.Open();
-                    customerAccRef = Convert.ToString(cmdzz.ExecuteScalar());
-                    zzz.Close();
+                    getCustAccRef();
+                    frmNewActivity frm = new frmNewActivity(customerAccRef, _taskID, -1);
+                    frm.ShowDialog();
                 }
             }
-
-                //first step we need to go and grab customer details (acc ref) 
-            //    string customerAccRef = txtDetail.Text;
-            //customerAccRef = customerAccRef.Substring(customerAccRef.IndexOf(":") + 2);
-            //customerAccRef =  customerAccRef.Trim();
-            //MessageBox.Show(customerAccRef);
-
-            sql = "select ACCOUNT_REF from dbo.view_SALES_LEDGER_AND_PROSPECT WHERE [NAME] = '" + customerAccRef + "'";
-            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            else
             {
-                using (SqlCommand cmd = new SqlCommand(sql, conn))
-                {
-                    conn.Open();
-                    var getData = Convert.ToString(cmd.ExecuteScalar());
-                    if (getData != null)
-                        customerAccRef = getData;
-                    else
-                        customerAccRef = "ryucxd";
-                    conn.Close();
-                }
+                //MessageBox.Show(customerAccRef);
+                //this needs to add an activity with a link to the task
+                frmNewActivity frm = new frmNewActivity(customerAccRef, _taskID, -1);
+                frm.ShowDialog();
+                //after making the task prompt user for marking this task as complete
             }
-            //MessageBox.Show(customerAccRef);
-            //this needs to add an activity with a link to the task
-            frmNewActivity frm = new frmNewActivity(customerAccRef,_taskID,-1);
-            frm.ShowDialog();
-            //after making the task prompt user for marking this task as complete
-
         }
     }
 }

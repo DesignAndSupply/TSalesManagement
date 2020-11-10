@@ -10,6 +10,8 @@ namespace TSalesManagement
     {
         public int _aID { get; set; }
         private string _custAccRef { get; set; }
+        public string _sector { get; set; }
+
 
         public frmAmendActivity(int aID)
         {
@@ -43,7 +45,17 @@ namespace TSalesManagement
             }
 
             rdr.Close();
-            conn.Close();
+
+            //snag the sector here 
+            string sql = "select COALESCE(sector_name,'') from dbo.view_tsalesmanager_sector where cust_acc_ref = '" + _custAccRef + "'";
+            using (SqlCommand cmdSector = new SqlCommand(sql, conn))
+            {
+                _sector = "";
+                _sector = Convert.ToString(cmdSector.ExecuteScalar());
+                
+                txtSector.Text = _sector;
+            }
+                conn.Close();
         }
 
         private void frmAmendActivity_Load(object sender, EventArgs e)

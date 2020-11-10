@@ -87,7 +87,7 @@ namespace TSalesManagement
             {
                 if (cmbSector.Text.Length < 1)
                 {
-                    MessageBox.Show("Please select a Contact before adding the activity!");
+                    MessageBox.Show("Please select a Sector before adding the activity!");
                     return;
                 }
                 string sql = "SELECT id FROM dbo.tsalesmanager_customer_sector WHERE sector_name = '" + cmbSector.Text + "'";

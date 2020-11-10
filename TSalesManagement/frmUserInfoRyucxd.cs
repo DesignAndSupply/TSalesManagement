@@ -99,7 +99,7 @@ namespace TSalesManagement
             //null the datagridviews (in the case of switching each user) 
             nullDataGrids();
             whichTab(); //get the unique sql string based on which tab is currently active
-
+            addButtons();
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
@@ -124,7 +124,7 @@ namespace TSalesManagement
             //now that the data is loaded, its probably a good idea to add buttons and paint the DGV here
             formatDataGrid();
             //if (tabControl1.SelectedIndex != 2)
-            addButtons();
+            
             dataGridView1.ClearSelection();
         }
 
@@ -163,7 +163,7 @@ namespace TSalesManagement
                      "WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE @custName ";
                 if (txtSector.TextLength > 0)
                     sql = sql + "AND [sector_name] LIKE @sectorName ";
-                sql = sql + "ORDER BY[Customer Name] ASC";
+                sql = sql + "ORDER BY dbo.c_sales_view_activity_list.id DESC";
             }
             else if (tabControl1.SelectedIndex == 2) //tasks
             {
@@ -207,17 +207,16 @@ namespace TSalesManagement
         {
             if (tabControl1.SelectedIndex == 0) //customer list
             {
-                dataGridView1.Columns[0].HeaderText = "Account Ref";
-                dataGridView1.Columns[1].HeaderText = "Customer Name";
-                dataGridView1.Columns[2].HeaderText = "Telephone";
-                dataGridView1.Columns[3].HeaderText = "Address 1";
-                dataGridView1.Columns[4].HeaderText = "Address 2";
-                dataGridView1.Columns[5].HeaderText = "Address 3";
-                dataGridView1.Columns[6].HeaderText = "Address 4";
-                dataGridView1.Columns[7].HeaderText = "Account Status";
-                dataGridView1.Columns[8].HeaderText = "Customer Type";
+                dataGridView1.Columns[1].HeaderText = "Account Ref";
+                dataGridView1.Columns[2].HeaderText = "Customer Name";
+                dataGridView1.Columns[3].HeaderText = "Telephone";
+                dataGridView1.Columns[4].HeaderText = "Address 1";
+                dataGridView1.Columns[5].HeaderText = "Address 2";
+                dataGridView1.Columns[6].HeaderText = "Address 3";
+                dataGridView1.Columns[7].HeaderText = "Address 4";
+                dataGridView1.Columns[8].HeaderText = "Account Status";
+                dataGridView1.Columns[9].HeaderText = "Customer Type";
                 //column size stuff
-                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -226,20 +225,20 @@ namespace TSalesManagement
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
             else if (tabControl1.SelectedIndex == 1) //user activity
             {
-                dataGridView1.Columns[0].HeaderText = "ID";
-                dataGridView1.Columns[1].HeaderText = "Customer Name";
-                dataGridView1.Columns[2].HeaderText = "Activity Date";
-                dataGridView1.Columns[3].HeaderText = "Last Updated";
-                dataGridView1.Columns[4].HeaderText = "Type";
-                dataGridView1.Columns[5].HeaderText = "Reference";
-                dataGridView1.Columns[6].HeaderText = "Details";
-                dataGridView1.Columns[7].HeaderText = "Contact";
-                dataGridView1.Columns[8].HeaderText = "Logged By";
+                dataGridView1.Columns[1].HeaderText = "ID";
+                dataGridView1.Columns[2].HeaderText = "Customer Name";
+                dataGridView1.Columns[3].HeaderText = "Activity Date";
+                dataGridView1.Columns[4].HeaderText = "Last Updated";
+                dataGridView1.Columns[5].HeaderText = "Type";
+                dataGridView1.Columns[6].HeaderText = "Reference";
+                dataGridView1.Columns[7].HeaderText = "Details";
+                dataGridView1.Columns[8].HeaderText = "Contact";
+                dataGridView1.Columns[9].HeaderText = "Logged By";
                 //column size stuff
-                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -248,6 +247,7 @@ namespace TSalesManagement
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 //im guessing that [9] is select
                 //dataGridView1.Columns[9].Visible = false; //this doesnt seem viable as when you add a column the [ s e l e c t ] button will move to last position
 
@@ -282,20 +282,19 @@ namespace TSalesManagement
             }
             else //only option left is pipeline
             {
-                dataGridView1.Columns[0].HeaderText = "Pipeline ID";
-                dataGridView1.Columns[1].HeaderText = "Customer Name";
-                dataGridView1.Columns[2].HeaderText = "Door Style";
-                dataGridView1.Columns[3].HeaderText = "Order Reference";
-                dataGridView1.Columns[4].HeaderText = "Estimated Date of Order";
-                dataGridView1.Columns[5].HeaderText = "Added By";
-                dataGridView1.Columns[6].HeaderText = "Added On";
-                dataGridView1.Columns[7].HeaderText = "Estimated Value";
-                dataGridView1.Columns[8].HeaderText = "Status";
+                dataGridView1.Columns[1].HeaderText = "Pipeline ID";
+                dataGridView1.Columns[2].HeaderText = "Customer Name";
+                dataGridView1.Columns[3].HeaderText = "Door Style";
+                dataGridView1.Columns[4].HeaderText = "Order Reference";
+                dataGridView1.Columns[5].HeaderText = "Estimated Date of Order";
+                dataGridView1.Columns[6].HeaderText = "Added By";
+                dataGridView1.Columns[7].HeaderText = "Added On";
+                dataGridView1.Columns[8].HeaderText = "Estimated Value";
+                dataGridView1.Columns[9].HeaderText = "Status";
                 //column size stuff
 
 
 
-                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -304,6 +303,7 @@ namespace TSalesManagement
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             }
 
             //center all the columns

@@ -40,6 +40,8 @@
             this.btnPipeline = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAddNote = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSector = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(721, 638);
+            this.btnSave.Location = new System.Drawing.Point(721, 668);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(98, 23);
             this.btnSave.TabIndex = 21;
@@ -71,7 +73,7 @@
             // 
             // txtDetails
             // 
-            this.txtDetails.Location = new System.Drawing.Point(10, 169);
+            this.txtDetails.Location = new System.Drawing.Point(10, 199);
             this.txtDetails.Name = "txtDetails";
             this.txtDetails.Size = new System.Drawing.Size(809, 195);
             this.txtDetails.TabIndex = 18;
@@ -80,7 +82,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 148);
+            this.label4.Location = new System.Drawing.Point(10, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
             this.label4.TabIndex = 20;
@@ -127,7 +129,7 @@
             // 
             // btnPipeline
             // 
-            this.btnPipeline.Location = new System.Drawing.Point(617, 638);
+            this.btnPipeline.Location = new System.Drawing.Point(617, 668);
             this.btnPipeline.Name = "btnPipeline";
             this.btnPipeline.Size = new System.Drawing.Size(98, 23);
             this.btnPipeline.TabIndex = 23;
@@ -143,7 +145,7 @@
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 399);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 429);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
@@ -152,7 +154,7 @@
             // 
             // btnAddNote
             // 
-            this.btnAddNote.Location = new System.Drawing.Point(721, 370);
+            this.btnAddNote.Location = new System.Drawing.Point(721, 400);
             this.btnAddNote.Name = "btnAddNote";
             this.btnAddNote.Size = new System.Drawing.Size(98, 23);
             this.btnAddNote.TabIndex = 25;
@@ -160,11 +162,30 @@
             this.btnAddNote.UseVisualStyleBackColor = true;
             this.btnAddNote.Click += new System.EventHandler(this.btnAddNote_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 155);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Sector";
+            // 
+            // txtSector
+            // 
+            this.txtSector.Location = new System.Drawing.Point(10, 171);
+            this.txtSector.Name = "txtSector";
+            this.txtSector.ReadOnly = true;
+            this.txtSector.Size = new System.Drawing.Size(361, 20);
+            this.txtSector.TabIndex = 26;
+            // 
             // frmAmendActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 668);
+            this.ClientSize = new System.Drawing.Size(829, 699);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtSector);
             this.Controls.Add(this.btnAddNote);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnPipeline);
@@ -204,5 +225,7 @@
         private System.Windows.Forms.Button btnPipeline;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnAddNote;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtSector;
     }
 }
