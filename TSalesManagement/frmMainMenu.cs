@@ -1,6 +1,7 @@
 ﻿using StartUpClass;
 using System;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace TSalesManagement
 {
@@ -162,6 +163,31 @@ namespace TSalesManagement
                     Environment.Exit(1);
                 else
                     e.Cancel = true;
+            }
+        }
+
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void unfinishedTasksEmailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you sure you want to fire the unfinished task email?", "", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionStringToDo))
+                using (SqlCommand cmd = new SqlCommand("tsales_unfinished_task_email", conn))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
             }
         }
     }

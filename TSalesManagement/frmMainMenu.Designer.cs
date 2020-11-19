@@ -44,6 +44,7 @@
             this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewProjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabForms = new System.Windows.Forms.TabControl();
+            this.unfinishedTasksEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(989, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // customersToolStripMenuItem
             // 
@@ -70,6 +72,7 @@
             this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
             this.customersToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.customersToolStripMenuItem.Text = "Customers";
+            this.customersToolStripMenuItem.Click += new System.EventHandler(this.customersToolStripMenuItem_Click);
             // 
             // customerListToolStripMenuItem
             // 
@@ -126,7 +129,8 @@
             // userManagementToolStripMenuItem
             // 
             this.userManagementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userActivityToolStripMenuItem});
+            this.userActivityToolStripMenuItem,
+            this.unfinishedTasksEmailToolStripMenuItem});
             this.userManagementToolStripMenuItem.Name = "userManagementToolStripMenuItem";
             this.userManagementToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
             this.userManagementToolStripMenuItem.Text = "User Management";
@@ -134,7 +138,7 @@
             // userActivityToolStripMenuItem
             // 
             this.userActivityToolStripMenuItem.Name = "userActivityToolStripMenuItem";
-            this.userActivityToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
+            this.userActivityToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.userActivityToolStripMenuItem.Text = "User Activity";
             this.userActivityToolStripMenuItem.Click += new System.EventHandler(this.userActivityToolStripMenuItem_Click);
             // 
@@ -178,6 +182,13 @@
             this.tabForms.TabIndex = 4;
             this.tabForms.Visible = false;
             // 
+            // unfinishedTasksEmailToolStripMenuItem
+            // 
+            this.unfinishedTasksEmailToolStripMenuItem.Name = "unfinishedTasksEmailToolStripMenuItem";
+            this.unfinishedTasksEmailToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.unfinishedTasksEmailToolStripMenuItem.Text = "Unfinished Tasks Email";
+            this.unfinishedTasksEmailToolStripMenuItem.Click += new System.EventHandler(this.unfinishedTasksEmailToolStripMenuItem_Click);
+            // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,5 +226,6 @@
         private System.Windows.Forms.ToolStripMenuItem projectsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addNewProjectToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewProjectsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem unfinishedTasksEmailToolStripMenuItem;
     }
 }

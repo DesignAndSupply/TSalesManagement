@@ -229,40 +229,15 @@ namespace TSalesManagement
             }
             else if (tabControl1.SelectedIndex == 1) //user activity
             {
-                dataGridView1.Columns[1].HeaderText = "ID";
-                dataGridView1.Columns[2].HeaderText = "Customer Name";
-                dataGridView1.Columns[3].HeaderText = "Activity Date";
-                dataGridView1.Columns[4].HeaderText = "Last Updated";
-                dataGridView1.Columns[5].HeaderText = "Type";
-                dataGridView1.Columns[6].HeaderText = "Reference";
-                dataGridView1.Columns[7].HeaderText = "Details";
-                dataGridView1.Columns[8].HeaderText = "Contact";
-                dataGridView1.Columns[9].HeaderText = "Logged By";
-                //column size stuff
-                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                //im guessing that [9] is select
-                //dataGridView1.Columns[9].Visible = false; //this doesnt seem viable as when you add a column the [ s e l e c t ] button will move to last position
-
-            }
-            else if (tabControl1.SelectedIndex == 2) //tasks
-            {
                 dataGridView1.Columns[0].HeaderText = "ID";
-                dataGridView1.Columns[1].HeaderText = "Date Created";
-                dataGridView1.Columns[2].HeaderText = "Due Date";
-                dataGridView1.Columns[3].HeaderText = "Priority";
-                dataGridView1.Columns[4].HeaderText = "Customer";
-                dataGridView1.Columns[5].HeaderText = "Detail";
-                dataGridView1.Columns[6].HeaderText = "Status";
-                dataGridView1.Columns[7].HeaderText = "Set By";
-                dataGridView1.Columns[8].HeaderText = "Set For";
+                dataGridView1.Columns[1].HeaderText = "Customer Name";
+                dataGridView1.Columns[2].HeaderText = "Activity Date";
+                dataGridView1.Columns[3].HeaderText = "Last Updated";
+                dataGridView1.Columns[4].HeaderText = "Type";
+                dataGridView1.Columns[5].HeaderText = "Reference";
+                dataGridView1.Columns[6].HeaderText = "Details";
+                dataGridView1.Columns[7].HeaderText = "Contact";
+                dataGridView1.Columns[8].HeaderText = "Logged By";
                 //column size stuff
                 dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -272,10 +247,35 @@ namespace TSalesManagement
                 dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                dataGridView1.Columns[8].Visible = false;
+                dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //im guessing that [9] is select
+                //dataGridView1.Columns[9].Visible = false; //this doesnt seem viable as when you add a column the [ s e l e c t ] button will move to last position
+
+            }
+            else if (tabControl1.SelectedIndex == 2) //tasks
+            {
+                dataGridView1.Columns[1].HeaderText = "ID";
+                dataGridView1.Columns[2].HeaderText = "Date Created";
+                dataGridView1.Columns[3].HeaderText = "Due Date";
+                dataGridView1.Columns[4].HeaderText = "Priority";
+                dataGridView1.Columns[5].HeaderText = "Customer";
+                dataGridView1.Columns[6].HeaderText = "Detail";
+                dataGridView1.Columns[7].HeaderText = "Status";
+                dataGridView1.Columns[8].HeaderText = "Set By";
+                dataGridView1.Columns[9].HeaderText = "Set For";
+                //column size stuff
+                dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[9].Visible = false;
                 dataGridView1.Columns[10].Visible = false;
                 dataGridView1.Columns[11].Visible = false;
+                dataGridView1.Columns[12].Visible = false;
                 //dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 //dataGridView1.Columns[9].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill; //these columns are hidden, i read data from these but dont actually need the user to see them
                 //dataGridView1.Columns[10].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -539,7 +539,7 @@ namespace TSalesManagement
                 }
                 for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
-                    if (dataGridView1.Rows[i].Cells[6].Value.ToString() == "Complete")
+                    if (dataGridView1.Rows[i].Cells[7].Value.ToString() == "Complete")
                     {
                         dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
                     }
@@ -1507,7 +1507,7 @@ namespace TSalesManagement
 
                     DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
 
-                    aID = Convert.ToInt32(selectedRow.Cells[0].Value);
+                    aID = Convert.ToInt32(selectedRow.Cells[1].Value);
 
                     frmAmendToDo frmAA = new frmAmendToDo(aID);
                     frmAA.ShowDialog();
@@ -1529,7 +1529,7 @@ namespace TSalesManagement
                                     toDoConn.Close();
                                 }
                                 Login.activityAdded = 0;
-                                dataGridView1.Rows[e.RowIndex].Cells[6].Value = "Complete";
+                                dataGridView1.Rows[e.RowIndex].Cells[7].Value = "Complete";
                                 dataGridView1.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.DarkSeaGreen;
                             }
                         }
@@ -1552,7 +1552,7 @@ namespace TSalesManagement
 
                     DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
 
-                    aID = Convert.ToInt32(selectedRow.Cells[0].Value);
+                    aID = Convert.ToInt32(selectedRow.Cells[1].Value);
 
                     frmAmendPipeline frmAA = new frmAmendPipeline(aID);
                     frmAA.ShowDialog();

@@ -142,6 +142,28 @@ namespace TSalesManagement
                 //this needs to add an activity with a link to the task
                 frmNewActivity frm = new frmNewActivity(customerAccRef, _taskID, -1);
                 frm.ShowDialog();
+
+                if (Login.activityAdded == -1)
+                {
+                    //quickly link up the tasks
+                    string sql = "SELECT MAX(id) FROM dbo.crm_activity ";
+                    int activityID = 0;
+                    using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+                    {
+                        conn.Open();
+                        using (SqlCommand cmd = new SqlCommand(sql, conn))
+                        {
+                            activityID =  Convert.ToInt32(cmd.ExecuteScalar());
+                        }
+                        // link the activity id to the task id 
+                        sql = "UPDATE [todo].dbo.task SET crm_activity_link = " + activityID + " WHERE id = " + _taskID;
+                        using (SqlCommand cmd = new SqlCommand(sql, conn))
+                        {
+                            cmd.ExecuteNonQuery();
+                        }
+                            conn.Close();
+                    }
+                }
                 //after making the task prompt user for marking this task as complete
             }
         }
