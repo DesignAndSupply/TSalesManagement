@@ -68,7 +68,6 @@ namespace TSalesManagement
                 }
                 conn.Close();
                 customerLinked = -1;
-                
                 this.Close();
             }
         }
@@ -89,6 +88,11 @@ namespace TSalesManagement
         private void frmLinkCustomer_FormClosing(object sender, FormClosingEventArgs e)
         {
             customerLinked = 0;
+        }
+
+        private void frmLinkCustomer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

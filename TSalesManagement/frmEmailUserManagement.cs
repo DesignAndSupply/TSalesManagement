@@ -18,7 +18,7 @@ namespace TSalesManagement
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
-            Login.emailButtonClicked = 1;
+             Login.emailButtonClicked = 1;
             //ok gonna use this space to  get the user ID 
             int cmbNameID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))

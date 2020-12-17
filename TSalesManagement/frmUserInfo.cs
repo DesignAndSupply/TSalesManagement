@@ -1123,9 +1123,18 @@ namespace TSalesManagement
                 if (row.DefaultCellStyle.BackColor == Color.HotPink)
                 {
                     string custAcc = Convert.ToString(row.Cells[0].Value);
+                    string date = "";
+                    //quickly grab the customers last order date
+                    string sql = "select TOP 1 CAST(date_order as date) from dbo.door WHERE customer_acc_ref = '" + custAcc + "' order by id desc ";
+                    using (SqlCommand cmdDateOrder = new SqlCommand(sql, conn))
+                        date = Convert.ToString(cmd.ExecuteScalar());
 
-                    //add new data
-                    cmd.CommandText = "INSERT INTO dbo.crm_customer_temp_table (CustACC) VALUES('" + custAcc + "')";
+
+                    if (date == "")
+                        date = "N/A";
+
+                        //add new data                                                                  //adding the last order date here -- i think this will be the best solution ~~
+                        cmd.CommandText = "INSERT INTO dbo.crm_customer_temp_table (CustACC,date) VALUES('" + custAcc + "','" + date + "')";
                     cmd.Connection = conn;
                     cmd.ExecuteNonQuery();
                 }

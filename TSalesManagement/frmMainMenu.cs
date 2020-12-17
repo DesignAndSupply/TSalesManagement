@@ -179,7 +179,7 @@ namespace TSalesManagement
         private void unfinishedTasksEmailToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Are you sure you want to fire the unfinished task email?", "", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            if (result == DialogResult.Yes) //some protection in case of accidental clicks 
             {
                 using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionStringToDo))
                 using (SqlCommand cmd = new SqlCommand("tsales_unfinished_task_email", conn))
