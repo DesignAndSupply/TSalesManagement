@@ -20,7 +20,7 @@ namespace TSalesManagement
 
             fillData();
             populateContacts();
-           
+
         }
 
         private void fillData()
@@ -52,14 +52,30 @@ namespace TSalesManagement
             {
                 _sector = "";
                 _sector = Convert.ToString(cmdSector.ExecuteScalar());
-                
+
                 txtSector.Text = _sector;
             }
-                conn.Close();
+            conn.Close();
         }
 
         private void frmAmendActivity_Load(object sender, EventArgs e)
         {
+            //change the text that the button displays based on if its a fave or not
+            string sql = "SELECT COALESCE(bookmarked,'') FROM dbo.crm_activity where bookmarked LIKE '%" + Login.globalUserID + "%' AND id = " + _aID.ToString();
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                {
+                    string temp = "";
+                    temp = Convert.ToString(cmd.ExecuteScalar());
+                    if (temp == "")
+                        btnBookmarks.Text = "Add To Bookmarks";
+                    else
+                        btnBookmarks.Text = "Remove From Bookmarks";
+                }
+                conn.Close();
+            }
         }
 
         private void populateContacts()
@@ -210,6 +226,54 @@ namespace TSalesManagement
         private void frmAmendActivity_Shown(object sender, EventArgs e)
         {
             fillDGV();
+        }
+
+        private void btnBookmarks_Click(object sender, EventArgs e)
+        {
+            //here we need to allocate the logged in USER to bookmarked in crm_activity
+            //find out if bookmarked is null first ig
+            string sql = "SELECT COALESCE(bookmarked,'') as bookmarked FROM dbo.crm_activity WHERE id = " + _aID.ToString();
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                conn.Open();
+                string nullValue = "0";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    nullValue = Convert.ToString(cmd.ExecuteScalar());
+
+                if (nullValue == "")
+                    nullValue = "-1";
+                else
+                    nullValue = "0";
+
+                sql = "SELECT COALESCE(bookmarked,'') as bookmarked FROM dbo.crm_activity WHERE id = " + _aID.ToString() + " AND bookmarked LIKE '%" + Login.globalUserID.ToString() + "%'";
+                string temp = "";
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    temp = Convert.ToString(cmd.ExecuteScalar());
+                if (temp == "")
+                {
+                    //if the user is NOT in the bookmark string then add it 
+                    if (nullValue == "-1")
+                        sql = "UPDATE dbo.crm_activity SET  bookmarked = '" + Login.globalUserID.ToString() + ",' WHERE id = " + _aID.ToString();
+                    else
+                        sql = "UPDATE dbo.crm_activity SET bookmarked = bookmarked + '" + Login.globalUserID.ToString() + ",' WHERE id = " + _aID.ToString();
+                }
+                else
+                {
+                    //else remove them
+                    temp = temp.Replace(Login.globalUserID + ",", "");
+
+                        sql = "UPDATE dbo.crm_activity SET  bookmarked = '" + temp + "' WHERE id = " + _aID.ToString();
+                }
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    cmd.ExecuteNonQuery();
+                conn.Close();
+
+
+                if (btnBookmarks.Text == "Remove From Bookmarks")
+                    btnBookmarks.Text = "Add To Bookmarks";
+                else
+                    btnBookmarks.Text = "Remove From Bookmarks";
+            }
         }
     }
 }

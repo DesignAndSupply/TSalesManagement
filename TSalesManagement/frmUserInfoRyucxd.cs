@@ -124,7 +124,7 @@ namespace TSalesManagement
             //now that the data is loaded, its probably a good idea to add buttons and paint the DGV here
             formatDataGrid();
             //if (tabControl1.SelectedIndex != 2)
-            
+
             dataGridView1.ClearSelection();
         }
 
@@ -157,12 +157,14 @@ namespace TSalesManagement
             else if (tabControl1.SelectedIndex == 1) //user activity
             {
                 // sql = "SELECT COALESCE(id,0),[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By] FROM dbo.c_sales_view_activity_list WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE @custName ORDER BY  [Activity Date] DESC";
-                sql = "SELECT COALESCE(dbo.c_sales_view_activity_list.id,0),[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By],COALESCE([sector_name],'') as [Sector Name] " +
+                sql = "SELECT COALESCE(dbo.c_sales_view_activity_list.id,0),[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference,Details,Contact,[Logged By],COALESCE([sector_name],'') as [Sector Name],CASE WHEN bookmarked LIKE '%" + Login.globalUserID.ToString() + "%' then -1 else 0 end as [bookmarked] " +
                      "FROM dbo.c_sales_view_activity_list LEFT JOIN dbo.tsalesmanager_sector_to_customer_link ON dbo.tsalesmanager_sector_to_customer_link.cust_acc_ref = dbo.c_sales_view_activity_list.customer_acc_ref " +
                      "LEFT JOIN dbo.tsalesmanager_customer_sector ON dbo.tsalesmanager_sector_to_customer_link.sector_id = dbo.tsalesmanager_customer_sector.id " +
                      "WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE @custName ";
                 if (txtSector.TextLength > 0)
                     sql = sql + "AND [sector_name] LIKE @sectorName ";
+                if (chkBookmarks.Checked == true)
+                    sql = sql + " AND bookmarked LIKE '%" + Login.globalUserID.ToString() + "%'";
                 sql = sql + "ORDER BY dbo.c_sales_view_activity_list.id DESC";
             }
             else if (tabControl1.SelectedIndex == 2) //tasks
@@ -248,6 +250,7 @@ namespace TSalesManagement
                 dataGridView1.Columns[6].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[7].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 dataGridView1.Columns[8].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dataGridView1.Columns[10].Visible = false;
                 //im guessing that [9] is select
                 //dataGridView1.Columns[9].Visible = false; //this doesnt seem viable as when you add a column the [ s e l e c t ] button will move to last position
 
@@ -477,8 +480,9 @@ namespace TSalesManagement
                     }
                 }
             }
-            if (tabControl1.SelectedIndex == 1)
+            if (tabControl1.SelectedIndex == 1) //activity??
             {
+
                 //this is the section where it does not notice ID --
                 string columnName;
                 columnName = "ID";
@@ -490,6 +494,9 @@ namespace TSalesManagement
                         ActivityIDIndex = i;
                         passloop = 1;
                     }
+
+                    if (Convert.ToString(dataGridView1.Rows[i].Cells[10].Value) == "-1")
+                        dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.YellowGreen;
                 }
                 // MessageBox.Show(dataGridView1.Columns[i].HeaderText.ToString());
                 if (passloop == 1) //old code  if (dataGridView1.Columns.Contains(columnName))
@@ -607,6 +614,12 @@ namespace TSalesManagement
                 txtSector.Text = "";
                 txtSector.Visible = false; lblsector.Visible = false;
             }
+            if (tabControl1.SelectedIndex == 1)
+                chkBookmarks.Visible = true;
+            else
+                chkBookmarks.Visible = false;
+
+
         }
 
         private void txtCustomerSearch_TextChanged(object sender, EventArgs e)
@@ -956,7 +969,7 @@ namespace TSalesManagement
                     dataGridView1.ClearSelection();
                 }
             }
-            
+
         }
 
         private void FrmUserInfoRyucxd_Load(object sender, EventArgs e)
@@ -1491,7 +1504,8 @@ namespace TSalesManagement
 
                     frmAmendActivity frmAA = new frmAmendActivity(aID);
                     frmAA.ShowDialog();
-
+                    loadData();
+                    paintDataGridWithListData();
                     //fillActivityGrid();
                 }
             }
@@ -1571,6 +1585,11 @@ namespace TSalesManagement
         }
 
         private void txtSector_TextChanged(object sender, EventArgs e)
+        {
+            loadData();
+        }
+
+        private void chkBookmarks_CheckedChanged(object sender, EventArgs e)
         {
             loadData();
         }

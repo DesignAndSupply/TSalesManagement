@@ -42,6 +42,7 @@
             this.btnAddNote = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSector = new System.Windows.Forms.TextBox();
+            this.btnBookmarks = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,9 +168,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 155);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 27;
-            this.label1.Text = "Sector";
+            this.label1.Text = "Sector:";
             // 
             // txtSector
             // 
@@ -179,11 +180,22 @@
             this.txtSector.Size = new System.Drawing.Size(361, 20);
             this.txtSector.TabIndex = 26;
             // 
+            // btnBookmarks
+            // 
+            this.btnBookmarks.Location = new System.Drawing.Point(414, 163);
+            this.btnBookmarks.Name = "btnBookmarks";
+            this.btnBookmarks.Size = new System.Drawing.Size(146, 28);
+            this.btnBookmarks.TabIndex = 28;
+            this.btnBookmarks.Text = "Remove from Bookmarks";
+            this.btnBookmarks.UseVisualStyleBackColor = true;
+            this.btnBookmarks.Click += new System.EventHandler(this.btnBookmarks_Click);
+            // 
             // frmAmendActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 699);
+            this.Controls.Add(this.btnBookmarks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSector);
             this.Controls.Add(this.btnAddNote);
@@ -227,5 +239,6 @@
         private System.Windows.Forms.Button btnAddNote;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSector;
+        private System.Windows.Forms.Button btnBookmarks;
     }
 }
