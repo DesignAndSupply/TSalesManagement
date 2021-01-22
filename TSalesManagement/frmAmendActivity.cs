@@ -61,7 +61,7 @@ namespace TSalesManagement
         private void frmAmendActivity_Load(object sender, EventArgs e)
         {
             //change the text that the button displays based on if its a fave or not
-            string sql = "SELECT COALESCE(bookmarked,'') FROM dbo.crm_activity where bookmarked LIKE '%" + Login.globalUserID + "%' AND id = " + _aID.ToString();
+            string sql = "SELECT COALESCE(bookmarked,'') FROM dbo.crm_activity where bookmarked LIKE '%," + Login.globalUserID + ",%' AND id = " + _aID.ToString();
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
                 conn.Open();
@@ -245,7 +245,7 @@ namespace TSalesManagement
                 else
                     nullValue = "0";
 
-                sql = "SELECT COALESCE(bookmarked,'') as bookmarked FROM dbo.crm_activity WHERE id = " + _aID.ToString() + " AND bookmarked LIKE '%" + Login.globalUserID.ToString() + "%'";
+                sql = "SELECT COALESCE(bookmarked,'') as bookmarked FROM dbo.crm_activity WHERE id = " + _aID.ToString() + " AND bookmarked LIKE '%," + Login.globalUserID.ToString() + ",%'";
                 string temp = "";
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                     temp = Convert.ToString(cmd.ExecuteScalar());
@@ -253,27 +253,29 @@ namespace TSalesManagement
                 {
                     //if the user is NOT in the bookmark string then add it 
                     if (nullValue == "-1")
-                        sql = "UPDATE dbo.crm_activity SET  bookmarked = '" + Login.globalUserID.ToString() + ",' WHERE id = " + _aID.ToString();
-                    else
-                        sql = "UPDATE dbo.crm_activity SET bookmarked = bookmarked + '" + Login.globalUserID.ToString() + ",' WHERE id = " + _aID.ToString();
+                        sql = "UPDATE dbo.crm_activity SET  bookmarked = '," + Login.globalUserID.ToString() + ",' WHERE id = " + _aID.ToString(); //comma on both side so we can search for that meaning that the instance of something like 
+                    else                                                                                                                                                                                                                       // 13,138 - a user with 13 would show for both of them, this way it wont show twice 
+                        sql = "UPDATE dbo.crm_activity SET bookmarked = bookmarked + '," + Login.globalUserID.ToString() + ",' WHERE id = " + _aID.ToString();
                 }
-                else
+                else  
                 {
-                    //else remove them
-                    temp = temp.Replace(Login.globalUserID + ",", "");
-
-                        sql = "UPDATE dbo.crm_activity SET  bookmarked = '" + temp + "' WHERE id = " + _aID.ToString();
+                    //else remove them 
+                    temp = temp.Replace("," + Login.globalUserID + ",", "");
+                    sql = "UPDATE dbo.crm_activity SET  bookmarked = '," + temp + ",' WHERE id = " + _aID.ToString();
                 }
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                     cmd.ExecuteNonQuery();
                 conn.Close();
 
-
                 if (btnBookmarks.Text == "Remove From Bookmarks")
                     btnBookmarks.Text = "Add To Bookmarks";
                 else
                     btnBookmarks.Text = "Remove From Bookmarks";
+                //starts here
+                
+                //ends here
             }
+
         }
     }
 }
