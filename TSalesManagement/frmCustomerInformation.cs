@@ -231,5 +231,21 @@ namespace TSalesManagement
             frmLinkSector frm = new frmLinkSector(_custAccRef);
             frm.ShowDialog();
         }
+
+        private void dgContacts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+  
+        }
+
+        private void dgContacts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (tabCustomer.SelectedTab.Text == "Contacts")
+            {
+                frmUpdateContact frm = new frmUpdateContact(Convert.ToInt32(dgContacts.Rows[e.RowIndex].Cells[0].Value));
+                frm.ShowDialog();
+                fillContactsGrid();
+            }
+
+        }
     }
 }

@@ -96,7 +96,7 @@ namespace TSalesManagement
 
         private void pipelineLiveChartToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPipelineLive frmPL = new frmPipelineLive();
+            frmPiplineLiveRyucxd frmPL = new frmPiplineLiveRyucxd();
             frmPL.MdiParent = this;
             frmPL.Show();
         }

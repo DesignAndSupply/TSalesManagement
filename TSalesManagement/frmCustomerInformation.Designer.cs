@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.lblAccRef = new System.Windows.Forms.Label();
@@ -53,10 +53,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.dgContacts = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblSector = new System.Windows.Forms.LinkLabel();
             this.lblAddContact = new System.Windows.Forms.LinkLabel();
             this.lblLinkEst = new System.Windows.Forms.LinkLabel();
             this.lblActivity = new System.Windows.Forms.LinkLabel();
-            this.lblSector = new System.Windows.Forms.LinkLabel();
             this.groupBox4.SuspendLayout();
             this.tabCustomer.SuspendLayout();
             this.tabActivity.SuspendLayout();
@@ -227,14 +227,14 @@
             this.dgvActivity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvActivity.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvActivity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvActivity.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvActivity.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvActivity.Location = new System.Drawing.Point(6, 6);
             this.dgvActivity.Name = "dgvActivity";
             this.dgvActivity.ReadOnly = true;
@@ -265,14 +265,14 @@
             this.dgvPipeline.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvPipeline.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvPipeline.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvPipeline.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvPipeline.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvPipeline.Location = new System.Drawing.Point(6, 10);
             this.dgvPipeline.MultiSelect = false;
             this.dgvPipeline.Name = "dgvPipeline";
@@ -342,6 +342,8 @@
             this.dgContacts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgContacts.Size = new System.Drawing.Size(880, 560);
             this.dgContacts.TabIndex = 0;
+            this.dgContacts.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgContacts_CellContentDoubleClick);
+            this.dgContacts.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgContacts_CellDoubleClick);
             // 
             // groupBox1
             // 
@@ -355,6 +357,18 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actions";
+            // 
+            // lblSector
+            // 
+            this.lblSector.AutoSize = true;
+            this.lblSector.LinkColor = System.Drawing.Color.Teal;
+            this.lblSector.Location = new System.Drawing.Point(10, 95);
+            this.lblSector.Name = "lblSector";
+            this.lblSector.Size = new System.Drawing.Size(77, 13);
+            this.lblSector.TabIndex = 4;
+            this.lblSector.TabStop = true;
+            this.lblSector.Text = "Link To Sector";
+            this.lblSector.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSector_LinkClicked);
             // 
             // lblAddContact
             // 
@@ -391,18 +405,6 @@
             this.lblActivity.TabStop = true;
             this.lblActivity.Text = "Add Activity";
             this.lblActivity.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblActivity_LinkClicked);
-            // 
-            // lblSector
-            // 
-            this.lblSector.AutoSize = true;
-            this.lblSector.LinkColor = System.Drawing.Color.Teal;
-            this.lblSector.Location = new System.Drawing.Point(10, 95);
-            this.lblSector.Name = "lblSector";
-            this.lblSector.Size = new System.Drawing.Size(77, 13);
-            this.lblSector.TabIndex = 4;
-            this.lblSector.TabStop = true;
-            this.lblSector.Text = "Link To Sector";
-            this.lblSector.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblSector_LinkClicked);
             // 
             // frmCustomerInformation
             // 

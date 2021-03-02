@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace TSalesManagement.Class
@@ -6,6 +7,15 @@ namespace TSalesManagement.Class
     internal class Pipeline
     {
         public string _status { get; set; }
+        //////////////////////////////////////////////////
+        //variables for filtering the report here~
+        public string _area { get; set; }
+        public DateTime _dateStart { get; set; }
+        public DateTime _dateEnd { get; set; }
+        public string _class { get; set; }
+        public List<int> _staff { get; set; }
+
+        //////////////////////////////////////////////////
 
         public double _janSales { get; set; }
         public double _febSales { get; set; }
@@ -47,10 +57,36 @@ namespace TSalesManagement.Class
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-            cmd.CommandText = "SELECT * FROM c_view_pipeline_chart where estimated_order_date > @now and order_status = @status;";
-            cmd.Parameters.AddWithValue("@now", DateTime.Now.AddMonths(-2));
-            cmd.Parameters.AddWithValue("@status", _status);
+    
+            string sql = "SELECT * FROM c_view_pipeline_chart where " +
+                " estimated_order_date >= '" + _dateStart.ToString("yyyy-MM-dd") + "' AND estimated_order_date <= '" + _dateEnd.ToString("yyyy-MM-dd") + "' "; //date
 
+            if (_area != "Both")
+                sql = sql + " AND door_style = '" + _area + "' "; //area, if its both then we dont need to add a where here
+
+            if (_class != "All") //same again, if its all then we dont need to add anything to the where
+                sql = sql + " AND likelihood_of_order = '" + _class + "' ";
+
+            //if (_staff.Count > 0)
+            //{
+            //    sql = sql + " AND (";
+            //    foreach (var item in _staff)
+            //    {
+            //        sql = sql + " added_by_id = " + item.ToString() + "  OR ";
+            //    }
+            //    //sql = sql.Substring(sql.Length - 3);
+            //    sql = sql.Substring(0, sql.Length - 3);
+
+            //    sql = sql + ")";
+            //}
+
+
+            //"  and order_status = '" + _status.ToString() + "'";
+
+
+            //cmd.Parameters.AddWithValue("@now", DateTime.Now.AddMonths(-2));
+            //cmd.Parameters.AddWithValue("@status", _status);
+            cmd.CommandText = sql;
             SqlDataReader rdr = cmd.ExecuteReader();
 
             while (rdr.Read())
@@ -107,6 +143,186 @@ namespace TSalesManagement.Class
 
                         case "December":
                             _decemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (loopMonth)
+                    {
+                        case "January":
+                            _SjanSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "February":
+                            _SfebSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "March":
+                            _SmarchSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "April":
+                            _SaprilSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "May":
+                            _SmaySales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "June":
+                            _SjuneSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "July":
+                            _SjulySales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "August":
+                            _SaugustSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "September":
+                            _SseptemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "October":
+                            _SoctoberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "November":
+                            _SnovemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "December":
+                            _SdecemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+            }
+        }
+
+
+
+
+        //replicate this for user#
+        public void addPipelineUser(int staff)
+        {
+            //quickly wipe all the variables
+            _SjanSales = 0;
+            _SfebSales = 0;
+            _SmarchSales = 0;
+            _SaprilSales = 0;
+            _SmaySales = 0;
+            _SjuneSales = 0;
+            _SjulySales = 0;
+            _SaugustSales = 0;
+            _SseptemberSales = 0;
+            _SoctoberSales = 0;
+            _SnovemberSales = 0;
+            _SdecemberSales = 0;
+
+            SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
+            conn.Open();
+
+            string loopMonth;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+
+
+            string sql = "SELECT * FROM c_view_pipeline_chart where " +
+                " estimated_order_date >= '" + _dateStart.ToString("yyyy-MM-dd") + "' AND estimated_order_date <= '" + _dateEnd.ToString("yyyy-MM-dd") + "' "; //date
+
+            if (_area != "Both")
+                sql = sql + " AND door_style = '" + _area + "' "; //area, if its both then we dont need to add a where here
+
+            if (_class != "All") //same again, if its all then we dont need to add anything to the where
+                sql = sql + " AND likelihood_of_order = '" + _class + "' ";
+
+            sql = sql + " AND added_by_id = " + staff.ToString();
+            //if (_staff.Count > 0)
+            //{
+            //    sql = sql + " AND (";
+            //    foreach (var item in _staff)
+            //    {
+            //        sql = sql + " added_by_id = " + item.ToString() + "  OR ";
+            //    }
+            //    //sql = sql.Substring(sql.Length - 3);
+            //    sql = sql.Substring(0, sql.Length - 3);
+
+            //    sql = sql + ")";
+            //}
+
+
+            //"  and order_status = '" + _status.ToString() + "'";
+
+
+            //cmd.Parameters.AddWithValue("@now", DateTime.Now.AddMonths(-2));
+            //cmd.Parameters.AddWithValue("@status", _status);
+            cmd.CommandText = sql;
+            SqlDataReader rdr = cmd.ExecuteReader();
+
+            while (rdr.Read())
+            {
+                loopMonth = Convert.ToDateTime(rdr["estimated_order_date"]).ToString("MMMM");
+
+                if (rdr["door_style"].ToString() == "Traditional")
+                {
+                    switch (loopMonth)
+                    {
+                        case "January":
+                            _SjanSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "February":
+                            _SfebSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "March":
+                            _SmarchSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "April":
+                            _SaprilSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "May":
+                            _SmaySales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "June":
+                            _SjuneSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "July":
+                            _SjulySales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "August":
+                            _SaugustSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "September":
+                            _SseptemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "October":
+                            _SoctoberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "November":
+                            _SnovemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
+                            break;
+
+                        case "December":
+                            _SdecemberSales = Convert.ToDouble(rdr["estimated_order_value"]);
                             break;
 
                         default:

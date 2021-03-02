@@ -45,8 +45,7 @@ namespace TSalesManagement
             else
             {
                 t.createTask(Convert.ToInt32(cmbSetForID.SelectedValue), null, cmbPriority.Text, txtDetail.Text, txtSubject.Text, false, logOnBehalfOf, _activityID);
-            }
-
+            } 
             this.Close();
         }
 
@@ -59,7 +58,7 @@ namespace TSalesManagement
 
         private void chkDueDateRequired_CheckedChanged(object sender, EventArgs e)
         {
-            dueDateVisibility();
+            dueDateVisibility(); //this is for the due date (shows it or not)
         }
 
         private void dueDateVisibility()

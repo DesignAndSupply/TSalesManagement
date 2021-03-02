@@ -25,7 +25,7 @@
     <MapFileExtensions>true</MapFileExtensions>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>77</ApplicationRevision>
+    <ApplicationRevision>86</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -225,6 +225,18 @@
     <Compile Include="frmPDF.Designer.cs">
       <DependentUpon>frmPDF.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPipelineLiveData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPipelineLiveData.Designer.cs">
+      <DependentUpon>frmPipelineLiveData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPiplineLiveRyucxd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPiplineLiveRyucxd.Designer.cs">
+      <DependentUpon>frmPiplineLiveRyucxd.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmProjectEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -357,6 +369,12 @@
     <Compile Include="frmPipelineLive.Designer.cs">
       <DependentUpon>frmPipelineLive.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmUpdateContact.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateContact.Designer.cs">
+      <DependentUpon>frmUpdateContact.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmUserInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -397,18 +415,23 @@
     </Compile>
     <EmbeddedResource Include="DetailView.resx">
       <DependentUpon>DetailView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmActivityNote.resx">
       <DependentUpon>frmActivityNote.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddSector.resx">
       <DependentUpon>frmAddSector.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAmendToDo.resx">
       <DependentUpon>frmAmendToDo.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEmailUserManagement.resx">
       <DependentUpon>frmEmailUserManagement.cs</DependentUpon>
@@ -422,6 +445,12 @@
     <EmbeddedResource Include="frmPDF.resx">
       <DependentUpon>frmPDF.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPipelineLiveData.resx">
+      <DependentUpon>frmPipelineLiveData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPiplineLiveRyucxd.resx">
+      <DependentUpon>frmPiplineLiveRyucxd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmProjectEdit.resx">
       <DependentUpon>frmProjectEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -430,15 +459,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddProject.resx">
       <DependentUpon>frmAddProject.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddTask.resx">
       <DependentUpon>frmAddTask.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAmendActivity.resx">
       <DependentUpon>frmAmendActivity.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAmendPipeline.resx">
       <DependentUpon>frmAmendPipeline.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="frmCustomerInformation.resx">
       <DependentUpon>frmCustomerInformation.cs</DependentUpon>
@@ -487,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPipelineLive.resx">
       <DependentUpon>frmPipelineLive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateContact.resx">
+      <DependentUpon>frmUpdateContact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
@@ -600,6 +636,42 @@
       <Lcid>0</Lcid>
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Outlook">
+      <Guid>{00062FFF-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>9</VersionMajor>
+      <VersionMinor>6</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.OutlookViewCtl">
+      <Guid>{0006F062-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>2</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

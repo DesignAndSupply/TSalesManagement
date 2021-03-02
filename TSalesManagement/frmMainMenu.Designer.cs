@@ -39,12 +39,12 @@
             this.pipelineLiveChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userManagementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userActivityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.unfinishedTasksEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addTaskToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.projectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewProjectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewProjectsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabForms = new System.Windows.Forms.TabControl();
-            this.unfinishedTasksEmailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +58,7 @@
             this.projectsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(989, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1088, 24);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -108,21 +108,21 @@
             // monthlyChartToolStripMenuItem
             // 
             this.monthlyChartToolStripMenuItem.Name = "monthlyChartToolStripMenuItem";
-            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.monthlyChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.monthlyChartToolStripMenuItem.Text = "Monthly Chart";
             this.monthlyChartToolStripMenuItem.Click += new System.EventHandler(this.monthlyChartToolStripMenuItem_Click);
             // 
             // pipelineChartToolStripMenuItem
             // 
             this.pipelineChartToolStripMenuItem.Name = "pipelineChartToolStripMenuItem";
-            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.pipelineChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pipelineChartToolStripMenuItem.Text = "Pipeline Chart";
             this.pipelineChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineChartToolStripMenuItem_Click);
             // 
             // pipelineLiveChartToolStripMenuItem
             // 
             this.pipelineLiveChartToolStripMenuItem.Name = "pipelineLiveChartToolStripMenuItem";
-            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(172, 22);
+            this.pipelineLiveChartToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pipelineLiveChartToolStripMenuItem.Text = "Pipeline Live Chart";
             this.pipelineLiveChartToolStripMenuItem.Click += new System.EventHandler(this.pipelineLiveChartToolStripMenuItem_Click);
             // 
@@ -141,6 +141,13 @@
             this.userActivityToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.userActivityToolStripMenuItem.Text = "User Activity";
             this.userActivityToolStripMenuItem.Click += new System.EventHandler(this.userActivityToolStripMenuItem_Click);
+            // 
+            // unfinishedTasksEmailToolStripMenuItem
+            // 
+            this.unfinishedTasksEmailToolStripMenuItem.Name = "unfinishedTasksEmailToolStripMenuItem";
+            this.unfinishedTasksEmailToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.unfinishedTasksEmailToolStripMenuItem.Text = "Unfinished Tasks Email";
+            this.unfinishedTasksEmailToolStripMenuItem.Click += new System.EventHandler(this.unfinishedTasksEmailToolStripMenuItem_Click);
             // 
             // addTaskToolStripMenuItem
             // 
@@ -178,22 +185,15 @@
             this.tabForms.Location = new System.Drawing.Point(0, 24);
             this.tabForms.Name = "tabForms";
             this.tabForms.SelectedIndex = 0;
-            this.tabForms.Size = new System.Drawing.Size(989, 28);
+            this.tabForms.Size = new System.Drawing.Size(1088, 28);
             this.tabForms.TabIndex = 4;
             this.tabForms.Visible = false;
-            // 
-            // unfinishedTasksEmailToolStripMenuItem
-            // 
-            this.unfinishedTasksEmailToolStripMenuItem.Name = "unfinishedTasksEmailToolStripMenuItem";
-            this.unfinishedTasksEmailToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.unfinishedTasksEmailToolStripMenuItem.Text = "Unfinished Tasks Email";
-            this.unfinishedTasksEmailToolStripMenuItem.Click += new System.EventHandler(this.unfinishedTasksEmailToolStripMenuItem_Click);
             // 
             // frmMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 564);
+            this.ClientSize = new System.Drawing.Size(1088, 564);
             this.Controls.Add(this.tabForms);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
