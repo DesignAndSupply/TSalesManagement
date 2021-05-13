@@ -46,7 +46,7 @@ namespace TSalesManagement
 
 
                 //I think from here we need to check if the person logged in is the inital recievier of the activity > if they are then check if there was a note from someoneelse
-                if (sender_id == Login.globalUserID)
+                if (sender_id == Login.globalUserID) 
                     same = -1;
 
                 if (same == -1)
