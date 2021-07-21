@@ -33,6 +33,7 @@ namespace TSalesManagement
                 }
             }
             Login.dueDate = dateTimePicker1.Value;
+            txtBody.Text = txtBody.Text.Replace("'", "");
             Login.customerText = txtBody.Text;
 
 

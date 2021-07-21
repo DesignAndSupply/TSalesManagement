@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.selectedGroupBox = new System.Windows.Forms.GroupBox();
             this.selectedListBox = new System.Windows.Forms.ListBox();
@@ -57,10 +57,14 @@
             this.txtSector = new System.Windows.Forms.TextBox();
             this.lblsector = new System.Windows.Forms.Label();
             this.chkBookmarks = new System.Windows.Forms.CheckBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnBookmarks = new System.Windows.Forms.Button();
             this.selectedGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).BeginInit();
             this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -98,8 +102,6 @@
             // 
             // cmbStaff
             // 
-            this.cmbStaff.DataSource = this.cviewsalesprogramusersBindingSource;
-            this.cmbStaff.DisplayMember = "fullname";
             this.cmbStaff.FormattingEnabled = true;
             this.cmbStaff.Location = new System.Drawing.Point(12, 25);
             this.cmbStaff.Name = "cmbStaff";
@@ -110,8 +112,7 @@
             // 
             // cviewsalesprogramusersBindingSource
             // 
-            this.cviewsalesprogramusersBindingSource.DataMember = "c_view_sales_program_users";
-            this.cviewsalesprogramusersBindingSource.DataSource = this.user_infoDataSet;
+            this.cviewsalesprogramusersBindingSource.DataSource = this.selectedListBox.CustomTabOffsets;
             // 
             // user_infoDataSet
             // 
@@ -140,7 +141,7 @@
             // btnEmail
             // 
             this.btnEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEmail.Location = new System.Drawing.Point(1306, 36);
+            this.btnEmail.Location = new System.Drawing.Point(1306, 32);
             this.btnEmail.Name = "btnEmail";
             this.btnEmail.Size = new System.Drawing.Size(122, 23);
             this.btnEmail.TabIndex = 21;
@@ -190,7 +191,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(249, 46);
+            this.tabControl1.Location = new System.Drawing.Point(249, 61);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(911, 35);
@@ -199,6 +200,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -247,20 +249,20 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView1.Location = new System.Drawing.Point(249, 66);
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.Desktop;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView1.Location = new System.Drawing.Point(249, 81);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1177, 483);
+            this.dataGridView1.Size = new System.Drawing.Size(1177, 468);
             this.dataGridView1.TabIndex = 28;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentDoubleClick);
@@ -323,7 +325,7 @@
             // btn_sector
             // 
             this.btn_sector.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_sector.Location = new System.Drawing.Point(1306, 6);
+            this.btn_sector.Location = new System.Drawing.Point(1306, 4);
             this.btn_sector.Name = "btn_sector";
             this.btn_sector.Size = new System.Drawing.Size(122, 23);
             this.btn_sector.TabIndex = 33;
@@ -362,11 +364,47 @@
             this.chkBookmarks.Visible = false;
             this.chkBookmarks.CheckedChanged += new System.EventHandler(this.chkBookmarks_CheckedChanged);
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.OrangeRed;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(781, -2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(144, 15);
+            this.label2.TabIndex = 37;
+            this.label2.Text = "Red = Currently assigned";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.YellowGreen;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(1034, 66);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(124, 15);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "Green = Bookmarked";
+            // 
+            // btnBookmarks
+            // 
+            this.btnBookmarks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBookmarks.Location = new System.Drawing.Point(1306, 60);
+            this.btnBookmarks.Name = "btnBookmarks";
+            this.btnBookmarks.Size = new System.Drawing.Size(122, 23);
+            this.btnBookmarks.TabIndex = 38;
+            this.btnBookmarks.Text = "Email Bookmarks";
+            this.btnBookmarks.UseVisualStyleBackColor = true;
+            this.btnBookmarks.Click += new System.EventHandler(this.btnBookmarks_Click);
+            // 
             // frmUserInfoRyucxd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1438, 561);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.chkBookmarks);
             this.Controls.Add(this.txtSector);
             this.Controls.Add(this.lblsector);
@@ -386,6 +424,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.selectedGroupBox);
             this.Controls.Add(this.cmbStaff);
+            this.Controls.Add(this.btnBookmarks);
             this.Name = "frmUserInfoRyucxd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Info";
@@ -394,6 +433,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.user_infoDataSet)).EndInit();
             this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -429,5 +470,8 @@
         private System.Windows.Forms.TextBox txtSector;
         private System.Windows.Forms.Label lblsector;
         private System.Windows.Forms.CheckBox chkBookmarks;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnBookmarks;
     }
 }

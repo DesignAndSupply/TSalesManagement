@@ -71,6 +71,28 @@ namespace TSalesManagement
         public frmUserInfoRyucxd()
         {
             InitializeComponent();
+            //fill combobox
+            if (Login.globalUserID == 3 || Login.globalUserID == 260)
+            {
+                string sql = "select fullname from [user_info].dbo.c_view_sales_program_users";
+                using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, conn))
+                    {
+                        conn.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            cmbStaff.Items.Add(reader["fullname"].ToString());
+                        }
+                        conn.Close();
+                    }
+                }
+            }
+            else
+            {
+                cmbStaff.Items.Add(Login.globalFullName);
+            }
             updateListBox();
             //cmbStaff.Items.Add("ryucxd"); //hello tom, its me, corey but from the past!
             //cmbStaff.Items.Add("Corey Jones"); //you're gonna wanna remove these and add the datasource like you did last time
@@ -496,7 +518,7 @@ namespace TSalesManagement
                     }
                 }
 
-                for (int i = 0; i < dataGridView1.Rows.Count;i++)
+                for (int i = 0; i < dataGridView1.Rows.Count; i++)
                 {
                     if (Convert.ToString(dataGridView1.Rows[i].Cells[10].Value) == "-1")
                         dataGridView1.Rows[i].DefaultCellStyle.BackColor = Color.YellowGreen;
@@ -1597,6 +1619,34 @@ namespace TSalesManagement
         {
             loadData();
             paintDataGridWithListData();
+        }
+
+        private void btnBookmarks_Click(object sender, EventArgs e)
+        {
+            //maybe call another void to handle the meaty stuff
+            Login.emailButtonClicked = 0;
+
+            //from here then I will just need to bolt the new procedure onto the email tab
+            frmEmailUserManagement frmEUM = new frmEmailUserManagement(cmbStaff.Text);
+            frmEUM.ShowDialog();
+            // ^^ gets data we need for the email
+            if (Login.emailButtonClicked == 1) //im assuming that 1 is true and 0 is false
+            {
+                using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand("usp_TSalesManager_bookmarks", conn)) // this fires an email out to the user and wipes the currently selected
+                    {
+                        conn.Open();
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = Login.selectedUserID;
+                        cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = Login.customerText;
+                        cmd.Parameters.Add("@login_id", SqlDbType.Int).Value = Login.globalUserID;
+                        cmd.ExecuteNonQuery();
+                        conn.Close();
+                        MessageBox.Show("Email Sent!", "Complete", MessageBoxButtons.OK);
+                    }
+                }
+            }
         }
     }
 }
