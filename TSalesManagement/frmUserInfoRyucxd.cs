@@ -1514,15 +1514,13 @@ namespace TSalesManagement
 
 
             }
-
             if (tabControl1.SelectedIndex == 1)
             {
                 int aID;
-
-
                 if (dataGridView1.SelectedCells.Count > 0)
                 {
                     int selectedrowindex = dataGridView1.SelectedCells[0].RowIndex;
+                    int indexScroll = e.RowIndex;
 
                     DataGridViewRow selectedRow = dataGridView1.Rows[selectedrowindex];
 
@@ -1532,6 +1530,11 @@ namespace TSalesManagement
                     frmAA.ShowDialog();
                     loadData();
                     paintDataGridWithListData();
+                    if (indexScroll > dataGridView1.Rows.Count - 1)
+                    {
+                        indexScroll = indexScroll - 1;
+                    }
+                    dataGridView1.FirstDisplayedScrollingRowIndex = indexScroll;
                     //fillActivityGrid();
                 }
             }
