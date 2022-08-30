@@ -9,7 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Excel = Microsoft.Office.Interop.Excel;
 using Microsoft.PowerBI.Api.V1.Models;
+using Microsoft.Office.Interop.Excel;
 
 namespace TSalesManagement
 {
@@ -72,7 +74,7 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //fill combobox
-            if (Login.globalUserID == 3 || Login.globalUserID == 260)
+            if (Login.globalUserID == 3 || Login.globalUserID == 260 || Login.globalUserID == 29)
             {
                 string sql = "select fullname from [user_info].dbo.c_view_sales_program_users";
                 using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
@@ -134,7 +136,7 @@ namespace TSalesManagement
                             cmd.Parameters.AddWithValue("@sectorName", "%" + txtSector.Text + "%");
                     }
                     conn.Open();
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     da.Fill(dt);
                     conn.Close();
@@ -626,10 +628,13 @@ namespace TSalesManagement
             {
                 comboPipeLine.Text = "";
                 lblPipeline.Visible = false; buttonPipeline.Visible = false; comboPipeLine.Visible = false;
+                btnPrint.Visible = false;
             }
             else
             {
                 lblPipeline.Visible = true; buttonPipeline.Visible = true; comboPipeLine.Visible = true;
+                //it is pipeline so show print button
+                btnPrint.Visible = true;
             }
             if (tabControl1.SelectedIndex == 0 || tabControl1.SelectedIndex == 1)
             {
@@ -641,7 +646,10 @@ namespace TSalesManagement
                 txtSector.Visible = false; lblsector.Visible = false;
             }
             if (tabControl1.SelectedIndex == 1)
+            {
                 chkBookmarks.Visible = true;
+                btnPrint.Visible = true;
+            }
             else
                 chkBookmarks.Visible = false;
 
@@ -1650,6 +1658,53 @@ namespace TSalesManagement
                     }
                 }
             }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            //open form to print X/Y
+            frmPrintDatePicker frm = new frmPrintDatePicker();
+            frm.ShowDialog();
+
+            string sql = "";
+            if (tabControl1.SelectedIndex == 1) //activity
+            {
+                sql = "SELECT COALESCE(dbo.c_sales_view_activity_list.id,0) as [ID],[Customer Name],[Activity Date], date_modified as [Last Updated],Type,reference as [Reference],Contact,[Logged By],COALESCE([sector_name],'') as [Sector Name]  " +
+                     "FROM dbo.c_sales_view_activity_list LEFT JOIN dbo.tsalesmanager_sector_to_customer_link ON dbo.tsalesmanager_sector_to_customer_link.cust_acc_ref = dbo.c_sales_view_activity_list.customer_acc_ref " +
+                     "LEFT JOIN dbo.tsalesmanager_customer_sector ON dbo.tsalesmanager_sector_to_customer_link.sector_id = dbo.tsalesmanager_customer_sector.id " +
+                     "WHERE [Logged By] = '" + comboName + "' AND [Customer Name] LIKE '%" + txtCustomerSearch.Text + "%' ";
+                if (txtSector.TextLength > 0)
+                    sql = sql + "AND [sector_name] LIKE '" + txtSector.Text + "' ";
+                if (chkBookmarks.Checked == true)
+                    sql = sql + " AND bookmarked LIKE '%," + Login.globalUserID.ToString() + ",%'";
+                sql = sql + " AND [Activity Date] >= '" + temp._dateStart.ToString("yyyyMMdd") + "' AND [Activity Date] <= '" + temp._dateEnd.ToString("yyyyMMdd") + "'";
+                sql = sql + "ORDER BY dbo.c_sales_view_activity_list.id DESC";
+            }
+            else
+            {
+                sql = "SELECT id as 'Pipeline ID',[Customer Name], door_style as 'Door Style', order_ref as 'Order Reference', estimated_order_date as 'Estimated date of order', added_by_id as 'Added by', " +
+                    "date_added as 'Added on', estimated_order_value as 'Estimated Value', order_status as 'Status' FROM c_view_sales_pipeline_text where added_by_id =  '" + comboName + "' AND " +
+                    "order_status LIKE '%" + comboPipeLine.Text + "%' AND estimated_order_date >= '" + temp._dateStart.ToString("yyyyMMdd") + "' AND estimated_order_date <= '" + temp._dateEnd.ToString("yyyyMMdd") + "'";
+            }
+
+            
+            
+            System.Data.DataTable dt = new System.Data.DataTable();
+            using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand(sql,conn))
+                {
+                    conn.Open();
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    da.Fill(dt);
+                    conn.Close();
+                }
+            }
+
+            string fileName = @"C:\temp\TEMPLATE.xlsx";
+            ExcelClass excel = new ExcelClass(); 
+            excel.openExcel(1, fileName, dt); //1 is print -- on other form its 0 or 1
+
         }
     }
 }

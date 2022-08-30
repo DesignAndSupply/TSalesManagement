@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LiveCharts;
+﻿using LiveCharts;
 using LiveCharts.Wpf;
-using TSalesManagement.Class;
+using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
-using System.Drawing.Printing;
 
 namespace TSalesManagement
 {
@@ -24,6 +19,7 @@ namespace TSalesManagement
         public string _class { get; set; }
         public string _filter { get; set; }
         public int months { get; set; }
+
         public frmPiplineLiveRyucxd()
         {
             InitializeComponent();
@@ -55,10 +51,9 @@ namespace TSalesManagement
 
         private void getData()
         {
-            //fire the procedure and populate lists 
+            //fire the procedure and populate lists
             List<double> data = new List<double>();
             List<string> monthList = new List<string>();
-
 
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
@@ -97,7 +92,6 @@ namespace TSalesManagement
                         {
                             data.Add(Convert.ToDouble(row[0]));
                         }
-
                     }
                 }
                 if (validation == 0) //lazy but if the foreach doesnt proc then this hits instead
@@ -123,7 +117,6 @@ namespace TSalesManagement
                         cmd.Parameters.Add("@staff", SqlDbType.Int).Value = userID;
                         cmd.Parameters.Add("@monthDiff", SqlDbType.Int).Value = months;
 
-
                         DataTable dt = new DataTable();
                         SqlDataAdapter da = new SqlDataAdapter(cmd);
                         da.Fill(dt);
@@ -143,7 +136,6 @@ namespace TSalesManagement
                     //}
 
                     //dataGridView1.DataSource = dt;
-
                 }
                 conn.Close();
             }
@@ -168,27 +160,25 @@ namespace TSalesManagement
             //        Title = ""
             //}};
 
-
             foreach (var item in lstStaff.SelectedItems)
             {
                 var tempData = new ChartValues<double>();
-                for (int i = 0; i < months ; i++)
+                for (int i = 0; i < months; i++)
                 {
                     //MessageBox.Show(data[value].ToString());
                     tempData.Add(data[value]);
-                  //  MessageBox.Show(data[value].ToString()) ;
+                    //  MessageBox.Show(data[value].ToString()) ;
                     value++;
                 }
-               // value = value - 1;
+                // value = value - 1;
 
                 cartesianChart1.Series.Add(new StackedColumnSeries
                 {
-
                     Values = tempData,
                     DataLabels = true,
                     Title = item.ToString()
                 });
-            }  
+            }
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Months",
@@ -196,16 +186,13 @@ namespace TSalesManagement
                 Labels = monthList,
                 Separator = new Separator { Step = 1 }
             });
-           
+
             cartesianChart1.AxisY.Add(new Axis
             {
                 Title = "Estimated Order Value",
                 FontSize = 10,
-
             });
             cartesianChart1.LegendLocation = LegendLocation.Bottom;
-
-
         }
 
         private void btnRefresh_Click(object sender, EventArgs e)
@@ -268,7 +255,7 @@ namespace TSalesManagement
         {
             var asPixels = cartesianChart1.Base.ConvertToPixels(p.AsPoint());
             //MessageBox.Show("[EVENT] You clicked (" + p.X + ", " + p.Y + ") in pixels (" +
-                            //asPixels.X + ", " + asPixels.Y + ")");
+            //asPixels.X + ", " + asPixels.Y + ")");
 
             //can use p.x to count across how many months we are at and from there populate a datagridview to see what is there
             DateTime tempStart = new DateTime(dteStart.Value.Year, dteStart.Value.Month, 1);
@@ -279,7 +266,7 @@ namespace TSalesManagement
             ////find the users here
             //if (lstStaff.SelectedItems.Count == 1)
             //    user = lstStaff.SelectedItems[0].ToString();
-            frmPipelineLiveData frm = new frmPipelineLiveData(tempStart,"",_filter,_area,_class);
+            frmPipelineLiveData frm = new frmPipelineLiveData(tempStart, "", _filter, _area, _class);
             frm.ShowDialog();
         }
 
@@ -299,9 +286,9 @@ namespace TSalesManagement
             }
             catch
             {
-
             }
         }
+
         private void printImage()
         {
             try
@@ -312,7 +299,6 @@ namespace TSalesManagement
                     System.Drawing.Image i = System.Drawing.Image.FromFile(@"C:\temp\temp.jpg");
                     Point p = new Point(100, 100);
                     args.Graphics.DrawImage(i, args.MarginBounds);
-
                 };
 
                 pd.DefaultPageSettings.Landscape = true;
@@ -322,7 +308,6 @@ namespace TSalesManagement
             }
             catch
             {
-
             }
         }
 
@@ -337,17 +322,10 @@ namespace TSalesManagement
                 gs.CopyFromScreen(new Point(0, 0), new Point(0, 0), bit.Size);
 
                 bit.Save(@"C:\temp\temp.jpg");
-
-
             }
             catch
             {
-
             }
-
-
-
-
 
             Outlook.Application outlookApp = new Outlook.Application();
             Outlook.MailItem mailItem = outlookApp.CreateItem(Outlook.OlItemType.olMailItem);
@@ -373,9 +351,7 @@ namespace TSalesManagement
             }
             catch
             {
-
             }
         }
     }
 }
-

@@ -1,8 +1,8 @@
-﻿using System;
+﻿using StartUpClass;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
-using StartUpClass;
 
 namespace TSalesManagement
 {
@@ -20,16 +20,13 @@ namespace TSalesManagement
             fillData();
             fillGrid();
 
-            getCustAccRef();    
+            getCustAccRef();
         }
 
-
-
-
         private void getCustAccRef()
-        {            
+        {
             //im moving this here from the add activity button to make things cleaner (and also to fire this on formload)
-           
+
             string sql = "SELECT [NAME] FROM [ToDo].dbo.c_view_task_list_crm WHERE [Task ID] = " + _taskID;
             using (SqlConnection zzz = new SqlConnection(SqlStatements.ConnectionString))
             {
@@ -70,9 +67,6 @@ namespace TSalesManagement
                 }
             }
         }
-
-
-
 
         private void fillGrid()
         {
@@ -117,12 +111,10 @@ namespace TSalesManagement
 
         private void FrmAmendToDo_Load(object sender, EventArgs e)
         {
-
-  }
+        }
 
         private void btnAddActivity_Click(object sender, EventArgs e)
         {
-
             if (validation == 0)
             {
                 MessageBox.Show("This task needs to be linked to a customer before you can create an activity!");
@@ -153,15 +145,15 @@ namespace TSalesManagement
                         conn.Open();
                         using (SqlCommand cmd = new SqlCommand(sql, conn))
                         {
-                            activityID =  Convert.ToInt32(cmd.ExecuteScalar());
+                            activityID = Convert.ToInt32(cmd.ExecuteScalar());
                         }
-                        // link the activity id to the task id 
+                        // link the activity id to the task id
                         sql = "UPDATE [todo].dbo.task SET crm_activity_link = " + activityID + " WHERE id = " + _taskID;
                         using (SqlCommand cmd = new SqlCommand(sql, conn))
                         {
                             cmd.ExecuteNonQuery();
                         }
-                            conn.Close();
+                        conn.Close();
                     }
                 }
                 //after making the task prompt user for marking this task as complete

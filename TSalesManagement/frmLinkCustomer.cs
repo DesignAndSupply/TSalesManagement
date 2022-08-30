@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
@@ -15,15 +8,14 @@ namespace TSalesManagement
     {
         public static int customerLinked { get; set; }
         public int _taskID { get; set; }
+
         public frmLinkCustomer(int taskID)
         {
             InitializeComponent();
             refreshCombo();
 
             _taskID = taskID;
-
         }
-
 
         private void refreshCombo()
         {
@@ -92,7 +84,6 @@ namespace TSalesManagement
 
         private void frmLinkCustomer_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

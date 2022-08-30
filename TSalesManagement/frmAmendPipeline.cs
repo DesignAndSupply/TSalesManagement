@@ -109,7 +109,6 @@ namespace TSalesManagement
                 cmd.Parameters.AddWithValue("@status", cmbStatus.Text);
                 cmd.Parameters.AddWithValue("@order", cmbOrder.Text);
 
-
                 cmd.ExecuteNonQuery();
 
                 conn.Close();

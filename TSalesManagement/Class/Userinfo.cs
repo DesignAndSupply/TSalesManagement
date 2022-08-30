@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Userinfo
+﻿namespace Userinfo
 {
     public static class UserInformation
     {
@@ -14,7 +8,6 @@ namespace Userinfo
 
         static UserInformation()
         {
-
         }
     }
 }

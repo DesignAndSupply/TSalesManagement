@@ -43,6 +43,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtSector = new System.Windows.Forms.TextBox();
             this.btnBookmarks = new System.Windows.Forms.Button();
+            this.btnPrint = new System.Windows.Forms.Button();
+            this.btnEmail = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,11 +193,33 @@
             this.btnBookmarks.UseVisualStyleBackColor = true;
             this.btnBookmarks.Click += new System.EventHandler(this.btnBookmarks_Click);
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Location = new System.Drawing.Point(719, 21);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(98, 23);
+            this.btnPrint.TabIndex = 29;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
+            // btnEmail
+            // 
+            this.btnEmail.Location = new System.Drawing.Point(719, 45);
+            this.btnEmail.Name = "btnEmail";
+            this.btnEmail.Size = new System.Drawing.Size(98, 23);
+            this.btnEmail.TabIndex = 30;
+            this.btnEmail.Text = "Email";
+            this.btnEmail.UseVisualStyleBackColor = true;
+            this.btnEmail.Click += new System.EventHandler(this.btnEmail_Click);
+            // 
             // frmAmendActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 699);
+            this.Controls.Add(this.btnEmail);
+            this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.btnBookmarks);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSector);
@@ -240,5 +265,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtSector;
         private System.Windows.Forms.Button btnBookmarks;
+        private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.Button btnEmail;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

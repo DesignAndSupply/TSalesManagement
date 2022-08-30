@@ -7,9 +7,11 @@ namespace TSalesManagement.Class
     internal class Pipeline
     {
         public string _status { get; set; }
+
         //////////////////////////////////////////////////
         //variables for filtering the report here~
         public string _area { get; set; }
+
         public DateTime _dateStart { get; set; }
         public DateTime _dateEnd { get; set; }
         public string _class { get; set; }
@@ -57,7 +59,6 @@ namespace TSalesManagement.Class
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-    
             string sql = "SELECT * FROM c_view_pipeline_chart where " +
                 " estimated_order_date >= '" + _dateStart.ToString("yyyy-MM-dd") + "' AND estimated_order_date <= '" + _dateEnd.ToString("yyyy-MM-dd") + "' "; //date
 
@@ -80,9 +81,7 @@ namespace TSalesManagement.Class
             //    sql = sql + ")";
             //}
 
-
             //"  and order_status = '" + _status.ToString() + "'";
-
 
             //cmd.Parameters.AddWithValue("@now", DateTime.Now.AddMonths(-2));
             //cmd.Parameters.AddWithValue("@status", _status);
@@ -208,9 +207,6 @@ namespace TSalesManagement.Class
             }
         }
 
-
-
-
         //replicate this for user#
         public void addPipelineUser(int staff)
         {
@@ -236,7 +232,6 @@ namespace TSalesManagement.Class
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
 
-
             string sql = "SELECT * FROM c_view_pipeline_chart where " +
                 " estimated_order_date >= '" + _dateStart.ToString("yyyy-MM-dd") + "' AND estimated_order_date <= '" + _dateEnd.ToString("yyyy-MM-dd") + "' "; //date
 
@@ -260,9 +255,7 @@ namespace TSalesManagement.Class
             //    sql = sql + ")";
             //}
 
-
             //"  and order_status = '" + _status.ToString() + "'";
-
 
             //cmd.Parameters.AddWithValue("@now", DateTime.Now.AddMonths(-2));
             //cmd.Parameters.AddWithValue("@status", _status);

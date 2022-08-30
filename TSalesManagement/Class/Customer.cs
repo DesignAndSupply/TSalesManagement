@@ -20,8 +20,8 @@ namespace TSalesManagement.Class
             {
                 SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
                 conn.Open();
-                
-                SqlCommand cmd = new SqlCommand("SELECT [Name] from dbo.view_SALES_LEDGER_AND_PROSPECT where [Account_Ref]=@accRef", conn);   
+
+                SqlCommand cmd = new SqlCommand("SELECT [Name] from dbo.view_SALES_LEDGER_AND_PROSPECT where [Account_Ref]=@accRef", conn);
                 //c_sales_view_customer_data  -- swapped the left view out for the sales ledger one, seems archived accoutns returned null and broke the code
                 cmd.Parameters.AddWithValue("@accRef", _custAccRef);
                 return cmd.ExecuteScalar().ToString();

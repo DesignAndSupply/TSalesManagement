@@ -50,6 +50,7 @@
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtDept = new System.Windows.Forms.TextBox();
             this.txtValue = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.sALESLEDGERBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.order_databaseDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cviewsalesprogramusersBindingSource)).BeginInit();
@@ -194,12 +195,23 @@
             this.txtValue.Size = new System.Drawing.Size(129, 22);
             this.txtValue.TabIndex = 24;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(200, 28);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "Print";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmPipeLine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1351, 749);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.txtDept);
             this.Controls.Add(this.txtDate);
@@ -241,5 +253,6 @@
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.TextBox txtDept;
         private System.Windows.Forms.TextBox txtValue;
+        private System.Windows.Forms.Button button1;
     }
 }

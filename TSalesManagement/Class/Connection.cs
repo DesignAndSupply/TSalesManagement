@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace ConnectionNew
 {
-    class ConnectionRyucxd
+    internal class ConnectionRyucxd
     {
         public static SqlConnection GetConnection_orderdatabase()
         {
@@ -24,6 +19,7 @@ namespace ConnectionNew
                 sqlConnection.Close();
             sqlConnection.Dispose();
         }
+
         public static SqlConnection GetConnection_userdatabase()
         {
             string connection_string = "Data Source = 192.168.0.150\\SQLEXPRESS; Initial Catalog = user_info; Integrated Security = False; User ID = sa; Password = Dodid1";
@@ -39,7 +35,5 @@ namespace ConnectionNew
                 sqlConnection.Close();
             sqlConnection.Dispose();
         }
-
-
     }
 }

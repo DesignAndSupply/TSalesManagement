@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -13,7 +7,6 @@ namespace TSalesManagement
 {
     public partial class frmPipelineLiveData : Form
     {
-
         public frmPipelineLiveData(DateTime tempDate, string selectedUser, string status, string area, string tempClass)
         {
             InitializeComponent();
@@ -54,7 +47,6 @@ namespace TSalesManagement
                 col.HeaderCell.Style.WrapMode = DataGridViewTriState.False;
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
-            
 
             int index = dataGridView1.Columns["Estimated Order Value"].Index;
             dataGridView1.Columns[index].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -64,7 +56,6 @@ namespace TSalesManagement
 
             index = dataGridView1.Columns["Description"].Index;
             dataGridView1.Columns[index].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
         }
     }
 }

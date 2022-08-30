@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using StartUpClass;
+using System;
 using System.Data;
-using System.Drawing;
-using StartUpClass;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace TSalesManagement
 {
     public partial class frmActivityNote : Form
     {
         public int activityID { get; set; }
+
         public frmActivityNote(int activiy_id)
         {
             InitializeComponent();
@@ -35,18 +30,14 @@ namespace TSalesManagement
                     sender_id = Convert.ToInt32(command.ExecuteScalar());
 
                 //this should be enough to determine if the logged in user is the same as the activity owner
-                
-               
 
-
-                    sql = "INSERT INTO dbo.crm_activity_notes (activityID,noteDate,detail,noteByID,noteBy) VALUES(" + activityID.ToString() + ", GETDATE(),'" + txtNote.Text + "'," + Login.globalUserID.ToString() + ",'" + Login.globalFullName.ToString() + "')";
+                sql = "INSERT INTO dbo.crm_activity_notes (activityID,noteDate,detail,noteByID,noteBy) VALUES(" + activityID.ToString() + ", GETDATE(),'" + txtNote.Text + "'," + Login.globalUserID.ToString() + ",'" + Login.globalFullName.ToString() + "')";
 
                 using (SqlCommand cmd = new SqlCommand(sql, conn))
                     cmd.ExecuteNonQuery();
 
-
                 //I think from here we need to check if the person logged in is the inital recievier of the activity > if they are then check if there was a note from someoneelse
-                if (sender_id == Login.globalUserID) 
+                if (sender_id == Login.globalUserID)
                     same = -1;
 
                 if (same == -1)
@@ -75,12 +66,12 @@ namespace TSalesManagement
                             validation = 0; //there is no one to email?
                             MessageBox.Show("email no one");
                         }
-                    }    
+                    }
                 }
                 else
                 {
                     //they are not the same so we can email the original user without worrying
-                  //  MessageBox.Show(sender_id.ToString());
+                    //  MessageBox.Show(sender_id.ToString());
                     using (SqlCommand command = new SqlCommand("usp_crm_activity_notification_email", conn))
                     {
                         command.CommandType = CommandType.StoredProcedure;
@@ -90,8 +81,6 @@ namespace TSalesManagement
                     }
                 }
 
-               
-                
                 conn.Close();
             }
             this.Close();

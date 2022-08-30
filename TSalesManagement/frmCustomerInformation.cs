@@ -189,7 +189,7 @@ namespace TSalesManagement
 
         private void lblActivity_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            frmNewActivity frmna = new frmNewActivity(_custAccRef,-1,0);
+            frmNewActivity frmna = new frmNewActivity(_custAccRef, -1, 0);
             frmna.ShowDialog();
             fillActivityGrid();
             fillPipelineGrid();
@@ -234,7 +234,6 @@ namespace TSalesManagement
 
         private void dgContacts_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-  
         }
 
         private void dgContacts_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -245,7 +244,6 @@ namespace TSalesManagement
                 frm.ShowDialog();
                 fillContactsGrid();
             }
-
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using StartUpClass;
 using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -18,8 +17,8 @@ namespace TSalesManagement
 
         private void BtnSend_Click(object sender, EventArgs e)
         {
-             Login.emailButtonClicked = 1;
-            //ok gonna use this space to  get the user ID 
+            Login.emailButtonClicked = 1;
+            //ok gonna use this space to  get the user ID
             int cmbNameID;
             using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
             {
@@ -29,13 +28,11 @@ namespace TSalesManagement
                     cmbNameID = Convert.ToInt32(cmd.ExecuteScalar());
                     conn.Close();
                     Login.selectedUserID = cmbNameID;
-
                 }
             }
             Login.dueDate = dateTimePicker1.Value;
             txtBody.Text = txtBody.Text.Replace("'", "");
             Login.customerText = txtBody.Text;
-
 
             //need to move this code because its not longer being used here, will need to be after uploadListToTempTable
             //SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString);
@@ -47,7 +44,6 @@ namespace TSalesManagement
             //cmd.Parameters.Add("@user_id ", SqlDbType.Int).Value = cmbUser.SelectedValue;
             //cmd.Parameters.Add("@text ", SqlDbType.NVarChar).Value = txtBody.Text;
             //Login.userSelectedForEmail = Convert.ToString(cmbUser.SelectedValue);
-
 
             //cmd.ExecuteNonQuery();
             //conn.Close();

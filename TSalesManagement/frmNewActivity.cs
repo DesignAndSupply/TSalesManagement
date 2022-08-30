@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Windows.Forms;
 using TSalesManagement.Class;
 
-
 namespace TSalesManagement
 {
     public partial class frmNewActivity : Form
@@ -14,6 +13,7 @@ namespace TSalesManagement
         public int _taskID { get; set; }
         public int _validation { get; set; }
         public int sector { get; set; }
+
         public frmNewActivity(string custAccRef, int taskID, int validation)
         {
             InitializeComponent();

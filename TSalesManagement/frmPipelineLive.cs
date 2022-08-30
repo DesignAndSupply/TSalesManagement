@@ -1,11 +1,11 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
 using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using TSalesManagement.Class;
-using System.Data.SqlClient;
-using System.Data;
-using System.Collections.Generic;
 
 namespace TSalesManagement
 {
@@ -84,8 +84,6 @@ namespace TSalesManagement
                     DataLabels = true,
                     Title = "Slimline"
                 }
-
-
             };
 
             if (lstStaff.Items.Count > 0)
@@ -111,7 +109,6 @@ namespace TSalesManagement
                 }
             }
 
-
             ////adding values also updates and animates
             cartesianChart1.Series[1].Values.Add(4d);
 
@@ -121,7 +118,7 @@ namespace TSalesManagement
             cartesianChart1.AxisX.Add(new Axis
             {
                 Title = "Month",
-                Labels = new[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November","December" },
+                Labels = new[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" },
                 Separator = DefaultAxes.CleanSeparator
             });
 
@@ -130,9 +127,6 @@ namespace TSalesManagement
                 Title = "Sales Value",
                 LabelFormatter = value => value + ""
             });
-
-
-
 
             //cartesianChart1.DataTooltip = new CustomersTooltip();
         }

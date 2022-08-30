@@ -1,15 +1,11 @@
-﻿using System;
-using System.Data;
+﻿using ConnectionNew;
+using System;
 using System.Data.SqlClient;
-using System.Windows;
-using System.Windows.Forms;
-using ConnectionNew;
 
 namespace StartUpClass
 {
     public class Login
     {
-
         public static int globalUserID;
         public static string globalUserName;
         public static bool globalAdmin;
@@ -24,10 +20,8 @@ namespace StartUpClass
         public static int activityAdded;
         public static int noteForID { get; set; }
 
-
         public string UserName { get; set; }
         public string PassWord { get; set; }
-
 
         public Login(string user, string pass)
         {
@@ -41,8 +35,6 @@ namespace StartUpClass
             pass = string.Empty;
         }
 
-
-
         public bool IsLoggedIn(string user, string pass)
         {
             if (string.IsNullOrEmpty(user))
@@ -52,7 +44,6 @@ namespace StartUpClass
             }
             else
             {
-
                 SqlConnection sqlConnection = ConnectionRyucxd.GetConnection_userdatabase();
                 SqlCommand sqlCmd = new SqlCommand();
                 sqlCmd.Connection = sqlConnection;
@@ -89,7 +80,6 @@ namespace StartUpClass
 
                     ConnectionRyucxd.Dispose_userdatabase(sqlConnection);
                     return true;
-
                 }
                 else
                 {
@@ -97,11 +87,7 @@ namespace StartUpClass
                     ConnectionRyucxd.Dispose_userdatabase(sqlConnection);
                     return false;
                 }
-
-
-
             }
         }
-
     }
 }

@@ -19,7 +19,6 @@ namespace TSalesManagement
 
         private void frmNewPipeline_Load(object sender, EventArgs e)
         {
-
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
