@@ -74,7 +74,7 @@ namespace TSalesManagement
         {
             InitializeComponent();
             //fill combobox
-            if (Login.globalUserID == 3 || Login.globalUserID == 260 || Login.globalUserID == 29)
+            if (Login.globalUserID == 3 || Login.globalUserID == 260 || Login.globalUserID == 29 ||  Login.globalUserID == 7)
             {
                 string sql = "select fullname from [user_info].dbo.c_view_sales_program_users";
                 using (SqlConnection conn = new SqlConnection(SqlStatements.ConnectionString))
